@@ -1,0 +1,129 @@
+{
+  "document": "Kaiserschnitt",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-4b",
+    "name": "Qwen 3-4B"
+  },
+  "execution_time_seconds": 136.46,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "statement": "Ein Kaiserschnitt kann lebensbedrohliche Komplikationen verursachen, z.B. schwerer Herzfrequenzabfall des Kindes oder Uterusruptur.",
+      "rationale": "Mögliche schwerwiegende Komplikationen während des Eingriffs erfordern eine umfassende Aufklärung."
+    },
+    {
+      "statement": "Nach einem Kaiserschnitt besteht das Risiko einer Gebärmutterentfernung oder weiterer Operationen.",
+      "rationale": "Seltene, aber ernste Komplikationen wie Blutungen oder Infektionen können eine weitere Operation erfordern."
+    },
+    {
+      "statement": "Eine Plazentationsstörung wie Placenta praevia erhöht das Risiko für Blutungen und Frühgeburten.",
+      "rationale": "Diese Situation kann lebensbedrohliche Komplikationen für Mutter und Kind verursachen."
+    },
+    {
+      "statement": "Nach einem Kaiserschnitt besteht das Risiko einer Uterusruptur bei späteren Schwangerschaften.",
+      "rationale": "Mehrmals durchgeführte Kaiserschnitte erhöhen das Risiko für schwerwiegende Komplikationen."
+    },
+    {
+      "statement": "Suchen Sie bei Beschwerden wie Fieber oder Blutungen umgehend medizinische Hilfe auf.",
+      "rationale": "Sofortige Intervention kann lebensbedrohliche Komplikationen verhindern."
+    },
+    {
+      "statement": "Ein Kaiserschnitt erfolgt in regionaler oder allgemeiner Betäubung.",
+      "rationale": "Die Wahl des Betäubungsverfahrens ist für die Sicherheit des Patienten wichtig."
+    },
+    {
+      "statement": "Nach dem Eingriff ist eine Rückbildungsgymnastik und Nachuntersuchung erforderlich.",
+      "rationale": "Diese Maßnahmen fördern die Genesung und vermeiden Komplikationen."
+    },
+    {
+      "statement": "Es besteht das Risiko einer Narbenbildung oder Schmerzen im Bauchbereich.",
+      "rationale": "Diese Nebenwirkungen sind bei der Nachbehandlung zu berücksichtigen."
+    },
+    {
+      "statement": "Eine Sterilisation erfordert eine sorgfältige Entscheidung und ist nicht kurz vor der Geburt zu planen.",
+      "rationale": "Die Risiken und Folgen einer Sterilisation müssen klar kommuniziert werden."
+    },
+    {
+      "statement": "Nach einem Kaiserschnitt besteht das Risiko von Blutungen oder Infektionen.",
+      "rationale": "Diese Komplikationen können die Genesung verzögern oder erneute Operationen erfordern."
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"INSTRUCTION\",\n          \"PREREQUISITE\",\n          \"GENERAL_INFO\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\",\n        \"description\": \"The medical topic, e.g., 'Anesthesia'\"\n      },\n      \"statement\": {\n        \"type\": \"string\",\n        \"description\": \"The specific statement to communicate with the patient\"\n      },\n      \"rationale\": {\n        \"type\": \"string\",\n        \"description\": \"Brief explanation of why this should be discussed\"\n      },\n      \"priority\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"HIGH\",\n          \"MEDIUM\",\n          \"LOW\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"rationale\",\n      \"priority\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, INSTRUCTION, PREREQUISITE, GENERAL_INFO.\n2. Assign a PRIORITY based on patient safety importance.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Ein Kaiserschnitt kann lebensbedrohliche Komplikationen verursachen, z.B. schwerer Herzfrequenzabfall des Kindes oder Uterusruptur.",
+        "rationale": "Mögliche schwerwiegende Komplikationen während des Eingriffs erfordern eine umfassende Aufklärung.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Nach einem Kaiserschnitt besteht das Risiko einer Gebärmutterentfernung oder weiterer Operationen.",
+        "rationale": "Seltene, aber ernste Komplikationen wie Blutungen oder Infektionen können eine weitere Operation erfordern.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Eine Plazentationsstörung wie Placenta praevia erhöht das Risiko für Blutungen und Frühgeburten.",
+        "rationale": "Diese Situation kann lebensbedrohliche Komplikationen für Mutter und Kind verursachen.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Nach einem Kaiserschnitt besteht das Risiko einer Uterusruptur bei späteren Schwangerschaften.",
+        "rationale": "Mehrmals durchgeführte Kaiserschnitte erhöhen das Risiko für schwerwiegende Komplikationen.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Kaiserschnitt",
+        "statement": "Suchen Sie bei Beschwerden wie Fieber oder Blutungen umgehend medizinische Hilfe auf.",
+        "rationale": "Sofortige Intervention kann lebensbedrohliche Komplikationen verhindern.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "GENERAL_INFO",
+        "topic": "Kaiserschnitt",
+        "statement": "Ein Kaiserschnitt erfolgt in regionaler oder allgemeiner Betäubung.",
+        "rationale": "Die Wahl des Betäubungsverfahrens ist für die Sicherheit des Patienten wichtig.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "GENERAL_INFO",
+        "topic": "Kaiserschnitt",
+        "statement": "Nach dem Eingriff ist eine Rückbildungsgymnastik und Nachuntersuchung erforderlich.",
+        "rationale": "Diese Maßnahmen fördern die Genesung und vermeiden Komplikationen.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Es besteht das Risiko einer Narbenbildung oder Schmerzen im Bauchbereich.",
+        "rationale": "Diese Nebenwirkungen sind bei der Nachbehandlung zu berücksichtigen.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Eine Sterilisation erfordert eine sorgfältige Entscheidung und ist nicht kurz vor der Geburt zu planen.",
+        "rationale": "Die Risiken und Folgen einer Sterilisation müssen klar kommuniziert werden.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Nach einem Kaiserschnitt besteht das Risiko von Blutungen oder Infektionen.",
+        "rationale": "Diese Komplikationen können die Genesung verzögern oder erneute Operationen erfordern.",
+        "priority": "MEDIUM"
+      }
+    ]
+  }
+}

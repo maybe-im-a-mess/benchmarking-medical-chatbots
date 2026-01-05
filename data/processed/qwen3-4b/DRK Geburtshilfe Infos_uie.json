@@ -1,0 +1,140 @@
+{
+  "document": "DRK Geburtshilfe Infos",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-4b",
+    "name": "Qwen 3-4B"
+  },
+  "execution_time_seconds": 172.71,
+  "item_count": 11,
+  "extracted_data": [
+    {
+      "statement": "Die Anmeldung zur Geburt sollte ab der 32. Schwangerschaftswoche erfolgen.",
+      "rationale": "Eine frühzeitige Anmeldung ermöglicht eine gezielte Planung und Vorbereitung auf die Geburt."
+    },
+    {
+      "statement": "Geburtsvorbereitungskurse sind für werdende Eltern empfehlenswert.",
+      "rationale": "Geburtsvorbereitungskurse unterstützen die psychische und physische Vorbereitung auf die Geburt."
+    },
+    {
+      "statement": "Im Falle eines Kaiserschnitts ist eine schnelle Intervention möglich.",
+      "rationale": "Ein Kaiserschnitt kann aufgrund von Komplikationen notwendig sein, weshalb die Klinik 24/7 vorbereitet ist."
+    },
+    {
+      "statement": "PDA (Periduralanästhesie) ist jederzeit für Schmerzlinderung verfügbar.",
+      "rationale": "PDA ist eine effektive Methode zur Schmerzlinderung während der Geburt."
+    },
+    {
+      "statement": "Mutter und Kind werden gemeinsam im Wochenbettstation betreut (Rooming-in-Prinzip).",
+      "rationale": "Die gemeinsame Betreuung fördert das Bonding und die körperliche Genesung."
+    },
+    {
+      "statement": "Familien und Freunde können ab dem ersten Tag bis 19:00 Uhr besuchen.",
+      "rationale": "Besuche sind in der Geburtsphase wichtig für die psychische Stabilisierung."
+    },
+    {
+      "statement": "Die Kliniktasche sollte Dokumente, Kleidung und Hygieneprodukte beinhalten.",
+      "rationale": "Die Vorbereitung auf die Klinikreise ist wichtig für eine reibungslose Aufnahme."
+    },
+    {
+      "statement": "Leichte Gelbsucht wird auf der Wochenbettstation mit Fototherapie behandelt.",
+      "rationale": "Schnelle Behandlung von Komplikationen ist entscheidend für die Gesundheit des Neugeborenen."
+    },
+    {
+      "statement": "Stillprobleme werden in einem Stillzimmer gemeinsam gelöst.",
+      "rationale": "Fachkraftbetreuung ist entscheidend für eine erfolgreiche Stillversorgung."
+    },
+    {
+      "statement": "Der Kreißsaal ist 24/7 geöffnet und bietet individuelle Betreuung.",
+      "rationale": "Eine kontinuierliche Betreuung ist für eine sichere Geburt entscheidend."
+    },
+    {
+      "statement": "Eine spontane Geburt zwischen 37+0 und 41+3 SSW ist voraussetzungsgemäß.",
+      "rationale": "Die Voraussetzungen sind für eine sichere und natürliche Geburt entscheidend."
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"INSTRUCTION\",\n          \"PREREQUISITE\",\n          \"GENERAL_INFO\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\",\n        \"description\": \"The medical topic, e.g., 'Anesthesia'\"\n      },\n      \"statement\": {\n        \"type\": \"string\",\n        \"description\": \"The specific statement to communicate with the patient\"\n      },\n      \"rationale\": {\n        \"type\": \"string\",\n        \"description\": \"Brief explanation of why this should be discussed\"\n      },\n      \"priority\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"HIGH\",\n          \"MEDIUM\",\n          \"LOW\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"rationale\",\n      \"priority\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, INSTRUCTION, PREREQUISITE, GENERAL_INFO.\n2. Assign a PRIORITY based on patient safety importance.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "PREREQUISITE",
+        "topic": "Geburtsterminanmeldung",
+        "statement": "Die Anmeldung zur Geburt sollte ab der 32. Schwangerschaftswoche erfolgen.",
+        "rationale": "Eine frühzeitige Anmeldung ermöglicht eine gezielte Planung und Vorbereitung auf die Geburt.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Geburtsvorbereitung",
+        "statement": "Geburtsvorbereitungskurse sind für werdende Eltern empfehlenswert.",
+        "rationale": "Geburtsvorbereitungskurse unterstützen die psychische und physische Vorbereitung auf die Geburt.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Im Falle eines Kaiserschnitts ist eine schnelle Intervention möglich.",
+        "rationale": "Ein Kaiserschnitt kann aufgrund von Komplikationen notwendig sein, weshalb die Klinik 24/7 vorbereitet ist.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Schmerzmanagement",
+        "statement": "PDA (Periduralanästhesie) ist jederzeit für Schmerzlinderung verfügbar.",
+        "rationale": "PDA ist eine effektive Methode zur Schmerzlinderung während der Geburt.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "GENERAL_INFO",
+        "topic": "Wochenbettbetreuung",
+        "statement": "Mutter und Kind werden gemeinsam im Wochenbettstation betreut (Rooming-in-Prinzip).",
+        "rationale": "Die gemeinsame Betreuung fördert das Bonding und die körperliche Genesung.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Besuchszeiten",
+        "statement": "Familien und Freunde können ab dem ersten Tag bis 19:00 Uhr besuchen.",
+        "rationale": "Besuche sind in der Geburtsphase wichtig für die psychische Stabilisierung.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "GENERAL_INFO",
+        "topic": "Krankenhaustasche",
+        "statement": "Die Kliniktasche sollte Dokumente, Kleidung und Hygieneprodukte beinhalten.",
+        "rationale": "Die Vorbereitung auf die Klinikreise ist wichtig für eine reibungslose Aufnahme.",
+        "priority": "LOW"
+      },
+      {
+        "category": "RISK",
+        "topic": "Neugeborenenversorgung",
+        "statement": "Leichte Gelbsucht wird auf der Wochenbettstation mit Fototherapie behandelt.",
+        "rationale": "Schnelle Behandlung von Komplikationen ist entscheidend für die Gesundheit des Neugeborenen.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Stillberatung",
+        "statement": "Stillprobleme werden in einem Stillzimmer gemeinsam gelöst.",
+        "rationale": "Fachkraftbetreuung ist entscheidend für eine erfolgreiche Stillversorgung.",
+        "priority": "HIGH"
+      },
+      {
+        "category": "GENERAL_INFO",
+        "topic": "Kreißsaal",
+        "statement": "Der Kreißsaal ist 24/7 geöffnet und bietet individuelle Betreuung.",
+        "rationale": "Eine kontinuierliche Betreuung ist für eine sichere Geburt entscheidend.",
+        "priority": "MEDIUM"
+      },
+      {
+        "category": "PREREQUISITE",
+        "topic": "Geburtsvoraussetzungen",
+        "statement": "Eine spontane Geburt zwischen 37+0 und 41+3 SSW ist voraussetzungsgemäß.",
+        "rationale": "Die Voraussetzungen sind für eine sichere und natürliche Geburt entscheidend.",
+        "priority": "HIGH"
+      }
+    ]
+  }
+}
