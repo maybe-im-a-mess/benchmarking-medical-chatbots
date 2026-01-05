@@ -116,29 +116,13 @@ def main():
     print("=" * 70)
     print("RE-RUNNING FAILED EXTRACTIONS")
     print("=" * 70)
-    
-    # Failed GPT-5 CoT extractions (all 6 documents)
-    gpt5_cot_docs = [
-        "DRK Geburtshilfe Infos",
-        "Geburtseinleitung",
-        "Geburtshilfliche Maßnahmen",
-        "Kaiserschnitt",
-        "Narkose",
-        "Äußere Wendung"
-    ]
+
     
     # Failed Qwen atomic extractions (2 documents with increased timeout)
     qwen_atomic_docs = [
         "Kaiserschnitt",
         "Narkose"
     ]
-    
-    print("\n" + "=" * 70)
-    print("GPT-5 CoT Extractions (6 documents)")
-    print("=" * 70 + "\n")
-    
-    for doc in gpt5_cot_docs:
-        run_extraction(doc, "cot", "gpt-5-mini")
     
     print("\n" + "=" * 70)
     print("Qwen Atomic Extractions (2 documents, timeout=900s)")
