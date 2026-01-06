@@ -77,9 +77,16 @@ def get_summary_statistics(results: Dict) -> Dict:
         for doc_name, doc_data in model_data.items():
             for method, extraction in doc_data.items():
                 # Check if extraction failed
+                extracted_data = extraction.get("extracted_data", [])
                 is_failed = (
-                    extraction.get("item_count", 0) > 0 and
-                    "error" in extraction["extracted_data"][0]
+                    # Case 1: extracted_data is a dict with error info (API failure)
+                    isinstance(extracted_data, dict) and "error" in extracted_data
+                ) or (
+                    # Case 2: extracted_data is a list but first item contains error
+                    isinstance(extracted_data, list) and 
+                    len(extracted_data) > 0 and
+                    isinstance(extracted_data[0], dict) and
+                    "error" in extracted_data[0]
                 )
                 
                 item_count = 0 if is_failed else extraction.get("item_count", 0)
@@ -217,9 +224,16 @@ def compare_methods_for_document(results: Dict, document_name: str, model_key: s
                 continue
                 
             extraction = doc_data[method_name]
+            extracted_data = extraction.get("extracted_data", [])
             is_failed = (
-                extraction.get("item_count", 0) > 0 and
-                "error" in extraction["extracted_data"][0]
+                # Case 1: extracted_data is a dict with error info (API failure)
+                isinstance(extracted_data, dict) and "error" in extracted_data
+            ) or (
+                # Case 2: extracted_data is a list but first item contains error
+                isinstance(extracted_data, list) and 
+                len(extracted_data) > 0 and
+                isinstance(extracted_data[0], dict) and
+                "error" in extracted_data[0]
             )
             
             if is_failed:
@@ -246,9 +260,16 @@ def export_comparison_csv(results: Dict, output_path: Path = Path("data/evaluati
         for model_key, model_data in results.items():
             for doc_name, doc_data in model_data.items():
                 for method, extraction in doc_data.items():
+                    extracted_data = extraction.get("extracted_data", [])
                     is_failed = (
-                        extraction.get("item_count", 0) > 0 and
-                        "error" in extraction["extracted_data"][0]
+                        # Case 1: extracted_data is a dict with error info (API failure)
+                        isinstance(extracted_data, dict) and "error" in extracted_data
+                    ) or (
+                        # Case 2: extracted_data is a list but first item contains error
+                        isinstance(extracted_data, list) and 
+                        len(extracted_data) > 0 and
+                        isinstance(extracted_data[0], dict) and
+                        "error" in extracted_data[0]
                     )
                     
                     status = "failed" if is_failed else "success"
