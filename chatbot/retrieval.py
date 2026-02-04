@@ -12,7 +12,7 @@ class DocumentRetriever:
     """
     Retrieval component to fetch relevant document chunks based on user queries.
     """
-    def __init__(self, document_store, top_k=5):
+    def __init__(self, document_store, top_k=3):
         self.document_store = document_store
         self.top_k = top_k
         self.pipeline = self.build_pipeline()
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # Test the retriever
     from embeddings import load_document_store
     document_store = load_document_store()
-    retriever = DocumentRetriever(document_store, top_k=5)
+    retriever = DocumentRetriever(document_store, top_k=3)
 
     query = "Wofür wird die Narkose bei einer Operation eingesetzt?"
     results = retriever.retrieve_with_scores(query)

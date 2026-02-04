@@ -4,7 +4,7 @@ from haystack.components.generators import OpenAIGenerator  # or HuggingFaceAPIG
 from haystack.utils import Secret
 import os
 from dotenv import load_dotenv
-from retrieval import DocumentRetriever
+from .retrieval import DocumentRetriever
 
 load_dotenv()
 
@@ -19,7 +19,7 @@ class DoctorAgent:
         self.model = model
         
         # Initialize retriever
-        self.retriever = DocumentRetriever(document_store, top_k=5)
+        self.retriever = DocumentRetriever(document_store, top_k=3)
         
         # Build RAG pipeline
         self.pipeline = self._build_pipeline()
@@ -29,8 +29,7 @@ class DoctorAgent:
         
         # System prompt for medical context
         prompt_template = """Du bist ein medizinischer Fachmann, der Patienten über medizinische Eingriffe aufklärt.
-Beantworte die Frage des Patienten basierend auf dem folgenden Kontext genau und einfühlsam.
-Verwende eine klare, verständliche Sprache.
+Beantworte die Patientenfrage kurz und klar basierend auf diesem Kontext:
 
 Kontext:
 {% for doc in documents %}
@@ -53,6 +52,9 @@ Antwort:"""
         pipeline.add_component("generator", OpenAIGenerator(
             api_key=Secret.from_token(os.getenv("OPENAI_API_KEY")),
             model=self.model,
+            generation_kwargs={
+                "max_completion_tokens": 2000
+            }
         ))
         
         pipeline.connect("prompt_builder", "generator")
