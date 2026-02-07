@@ -1,5 +1,6 @@
 import json
 import time
+import sys
 from pathlib import Path
 
 from utils.llm_config import MODELS
@@ -12,6 +13,10 @@ from information_extraction.cot_extraction import extract_statements_cot
 # CONFIGURATION
 INPUT_DIR = Path("data/raw_md_files")
 OUTPUT_BASE_DIR = Path("data/processed")
+
+# Optional: restrict to specific model keys (e.g., ["qwen3-4b"]).
+# If empty/None, all models in MODELS will be used.
+MODEL_KEYS = ["gpt-5-mini"]
 
 # Map method names to their functions for easy iteration
 METHODS = {
@@ -107,6 +112,15 @@ def process_document(file_path: Path, model_key: str, model_id: str, model_displ
 
 def main():
     """Process all documents with all models and all extraction methods."""
+
+    # Allow selecting specific models via CLI args: python scripts/run_extraction.py qwen3-4b gpt-5-mini
+    selected_keys = sys.argv[1:] if len(sys.argv) > 1 else None
+    if selected_keys:
+        models_to_run = {k: v for k, v in MODELS.items() if k in selected_keys}
+    elif MODEL_KEYS:
+        models_to_run = {k: v for k, v in MODELS.items() if k in MODEL_KEYS}
+    else:
+        models_to_run = MODELS
     
     # Get all markdown files from input directory
     md_files = sorted(INPUT_DIR.glob("*.md"))
@@ -121,8 +135,8 @@ def main():
     print(f"Found {len(md_files)} documents:")
     for f in md_files:
         print(f"  - {f.name}")
-    print(f"\nModels to test: {len(MODELS)}")
-    for key, config in MODELS.items():
+    print(f"\nModels to test: {len(models_to_run)}")
+    for key, config in models_to_run.items():
         print(f"  - {key}: {config['display_name']}")
     print(f"\nMethods: {', '.join(METHODS.keys())}")
     print(f"=" * 70)
@@ -130,7 +144,7 @@ def main():
     total_start = time.time()
     
     # Iterate over each model
-    for model_key, model_config in MODELS.items():
+    for model_key, model_config in models_to_run.items():
         model_id = model_config["model_id"]
         model_display = model_config["display_name"]
         
@@ -150,8 +164,8 @@ def main():
     print(f"ALL DONE!")
     print(f"Total time: {total_duration:.2f} seconds ({total_duration/60:.1f} minutes)")
     print(f"Results saved in: {OUTPUT_BASE_DIR.absolute()}/")
-    print(f"  - {len(MODELS)} models x {len(md_files)} documents x {len(METHODS)} methods")
-    print(f"  - Total extractions: {len(MODELS) * len(md_files) * len(METHODS)}")
+    print(f"  - {len(models_to_run)} models x {len(md_files)} documents x {len(METHODS)} methods")
+    print(f"  - Total extractions: {len(models_to_run) * len(md_files) * len(METHODS)}")
     print(f"={'='*70}")
 
 if __name__ == "__main__":
