@@ -16,13 +16,13 @@ def extract_statements_schema(text: str, model_name: str = None) -> List[Dict]:
         "items": {
             "type": "object",
             "properties": {
-                "category": {"type": "string", "enum": ["RISK", "INSTRUCTION", "PREREQUISITE", "GENERAL_INFO"]},
-                "topic": {"type": "string", "description": "The medical topic, e.g., 'Anesthesia'"},
-                "statement": {"type": "string", "description": "The specific statement to communicate with the patient"},
-                "rationale": {"type": "string", "description": "Brief explanation of why this should be discussed"},
-                "priority": {"type": "string", "enum": ["HIGH", "MEDIUM", "LOW"]}
+                "category": {"type": "string", "enum": ["RISK", "PROCEDURE", "INSTRUCTION", "GENERAL"]},
+                "topic": {"type": "string"},
+                "statement": {"type": "string"},
+                "rationale": {"type": "string"},
+                "importance": {"type": "string", "enum": ["Critical", "High", "Medium", "Low"]} 
             },
-            "required": ["category", "topic", "statement", "rationale", "priority"]
+            "required": ["category", "topic", "statement", "importance"]
         }
     }, indent=2)
 
@@ -32,8 +32,8 @@ def extract_statements_schema(text: str, model_name: str = None) -> List[Dict]:
         "Structure them exactly according to the provided JSON Schema.\n\n"
         f"SCHEMA DEFINITION:\n{schema_definition}\n\n"
         "RULES:\n"
-        "1. Classify each statement into one of the allowed categories: RISK, INSTRUCTION, PREREQUISITE, GENERAL_INFO.\n"
-        "2. Assign a PRIORITY based on patient safety importance.\n"
+        "1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n"
+        "2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n"
         "3. Provide a rationale explaining why this statement should be discussed with the patient.\n"
         "4. Do not include conversational filler. Output ONLY the JSON array.\n"
         "\n"
@@ -58,12 +58,13 @@ def extract_statements_schema(text: str, model_name: str = None) -> List[Dict]:
     except Exception:
         raise RuntimeError("JSON parsing failed.")
 
-    # Flatten to consistent output format: statement, rationale
+    # Flatten to consistent output format
     out: List[Dict] = []
     for item in data:
         out.append({
+            "category": item.get('category', 'General'),
             "statement": item.get('statement', ''),
-            "rationale": item.get('rationale', '')
+            "importance": item.get('importance', 'Medium')
         })
 
     return {

@@ -19,18 +19,18 @@ def extract_statements_atomic(text: str, model_name: str = None) -> List[Dict]:
     system_msg_step1 = (
         "Extract key medical facts from text. Each fact should be a single, independent statement. "
         "Focus on: risks, contraindications, procedures, patient requirements, and informed consent items. "
-        "List as bullet points (max 30 facts)."
+        "List as bullet points. Be comprehensive and include all relevant details."
     )
     
     atomic_raw = get_completion(f"TEXT:\n{text}", model_name, system_message=system_msg_step1)
     
     system_msg_step2 = (
-        "Group medical facts into statements that should be communicated with the patient. "
-        "These statements represent information for patient consultation. "
-        "Filter out irrelevant details. "
-        "Return JSON array with format: [{\"statement\": \"...\", \"rationale\": \"...\"}]. "
-        "Keep it concise. "
-        "LANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology."
+        "Group the atomic facts into categories for a patient consultation.\n"
+        "Return a JSON array of objects with these fields:\n"
+        "- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n"
+        "- 'statement': The consolidated medical fact\n"
+        "- 'importance': Rate medical importance ('Critical', 'High', 'Medium', 'Low')\n\n"
+        "LANGUAGE: German."
     )
     
     final_content = get_completion(f"FACTS:\n{atomic_raw}", model_name, system_message=system_msg_step2)
@@ -56,7 +56,7 @@ def extract_statements_atomic(text: str, model_name: str = None) -> List[Dict]:
     }
 
 if __name__ == "__main__":
-    with open("data/raw_md_files/DRK Geburtshilfe Infos.md", "r") as f:
+    with open("data/raw_md_files/Narkose.md", "r") as f:
         sample = f.read()
     results = extract_statements_atomic(sample)
     print(json.dumps(results["extracted_data"], indent=2))

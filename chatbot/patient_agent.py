@@ -93,14 +93,14 @@ class PatientAgent:
     def __init__(self,
                 procedure_name: str = "Narkose",
                 persona: Optional[PatientPersona] = None,
-                persona_name: Optional[str] = None,
+                persona_type: Optional[str] = None,
                 model: str = "gpt-5-mini",
                 max_questions: int = 8):
         """
         Parameters:
             :param procedure_name: A procedure the patient agent is discussing
             :param persona: PatientPersona object; if None, a random persona is chosen
-            :param persona_name: Optional name of predefined persona to use from PERSONAS
+            :param persona_type: Optional type of predefined persona to use from PERSONAS
             :param model: OpenAI model
             :param max_questions: Maximum number of questions the patient will ask
         """
@@ -112,8 +112,8 @@ class PatientAgent:
         # Set persona
         if persona:
             self.persona = persona
-        elif persona_name and persona_name in self.PERSONAS:
-            self.persona = self.PERSONAS[persona_name]
+        elif persona_type and persona_type in self.PERSONAS:
+            self.persona = self.PERSONAS[persona_type]
         else:
             # Default persona
             self.persona = PatientPersona(age=27, sex="male", language="de", education_level="high", detail_preference="medium", name="Johan")
@@ -133,21 +133,14 @@ class PatientAgent:
         
         base_prompt = f"""{self.persona.get_persona_description()}
 
-Du hast einen Termin für eine {self.procedure_name} und sprichst mit einem Arzt.
+Du hast einen Termin für eine {self.procedure_name} und sprichst mit einem medizinischen Assistenten.
 {language_instructions.get(self.persona.language, language_instructions["de"])}
 
-Stelle realistische Fragen, die zu deinem Profil und Prozedur passen.
-
-Typische Themen für Fragen:
-- Ablauf und Dauer des Eingriffs
-- Risiken und Komplikationen
-- Vorbereitung (Nüchternheit, Medikamente)
-- Schmerzen und Erholung
-- Allergien und Vorerkrankungen
-- Spezielle Sorgen basierend auf deinem Alter und Gesundheitszustand
-
-Stelle EINE kurze, natürliche Frage pro Nachricht."""
-
+Deine Interaktions-Richtlinien:
+1. Belehre nicht: Sprich wie ein unbedarfter Patient. Verwende kurze Sätze.
+2. Simuliere Missverständnisse: Wenn die KI komplexe Fachbegriffe ohne Erklärung verwendet, drücke Verwirrung aus (z. B. "Was bedeutet 'Laparotomie'?").
+3. Fordere die KI heraus: Wenn die KI vage bleibt, bitte um Klarstellung (z. B. "Aber wie sehr genau wird es wehtun?").
+4. Ziel: Dein Ziel ist es, dich sicher und informiert zu fühlen. Beende das Gespräch erst, wenn du das Gefühl hast, dass deine Fragen beantwortet wurden."""
         # Add persona-specific adjustments
         if self.persona.education_level == "low":
             base_prompt += "\nVermeide Fachbegriffe. Stelle einfache, direkte Fragen."
@@ -215,17 +208,23 @@ Stelle EINE kurze, natürliche Frage pro Nachricht."""
     
     def _generate_question(self) -> str:
         """Generate a question using the LLM."""
-        messages = [{"role": "system", "content": self._get_system_prompt()}]
         
-        # Add conversation history (last 6 messages to stay within context)
-        for msg in self.conversation_history[-6:]:
-            role = "assistant" if msg["role"] == "patient" else "user"
-            messages.append({"role": role, "content": msg["content"]})
+        # Format conversation history
+        conv_summary = self._format_conversation_for_context()
         
-        # Prompt for next question
+        system_prompt_with_context = f"""{self._get_system_prompt()}
+
+    BISHERIGE KONVERSATION:
+    {conv_summary}
+
+    Basierend auf diesem Gespräch, stelle jetzt eine logische Folgefrage oder ein neues relevantes Thema."""
+
+        messages = [{"role": "system", "content": system_prompt_with_context}]
+        
+        # Don't add history again since it's in system prompt
         messages.append({
             "role": "user", 
-            "content": "Stelle jetzt deine nächste Frage basierend auf der bisherigen Konversation."
+            "content": "Stelle jetzt deine nächste Frage."
         })
         
         response = self.client.chat.completions.create(
@@ -234,6 +233,20 @@ Stelle EINE kurze, natürliche Frage pro Nachricht."""
         )
         
         return response.choices[0].message.content.strip()
+    
+    def _format_conversation_for_context(self) -> str:
+        """Format conversation history for context awareness."""
+        if not self.conversation_history:
+            return "Dies ist das erste Gespräch."
+        
+        formatted = []
+        for msg in self.conversation_history[-6:]:  # Last 3 exchanges
+            role = "Du" if msg["role"].lower() == "patient" else "Doctor"
+            content = msg["content"][:200]  # Truncate long messages
+            formatted.append(f"{role}: {content}...")
+        
+        return "\n".join(formatted)
+
     
     def is_satisfied(self) -> bool:
         """Check if patient has asked enough questions."""
@@ -257,7 +270,7 @@ Wenn du etwas nicht weißt, sage das ehrlich."""
         
         # Build conversation context
         conversation_text = "\n".join([
-            f"{'Patient' if msg['role'] == 'patient' else 'Arzt'}: {msg['content']}"
+            f"{'Patient' if msg['role'] == 'patient' else 'Doctor'}: {msg['content']}"
             for msg in self.conversation_history
         ])
         
@@ -302,7 +315,7 @@ def create_patient(persona_type: str = "middle_aged", **kwargs) -> PatientAgent:
     Returns:
         PatientAgent instance
     """
-    return PatientAgent(persona_name=persona_type, **kwargs)
+    return PatientAgent(persona_type=persona_type, **kwargs)
 
 
 if __name__ == "__main__":

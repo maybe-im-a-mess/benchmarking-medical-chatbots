@@ -1,9 +1,6 @@
-import os
 import json
 import time
 from pathlib import Path
-from typing import Dict, List, Callable
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from utils.llm_config import MODELS
 from information_extraction.naive_llm import extract_statements_naive
@@ -15,8 +12,6 @@ from information_extraction.cot_extraction import extract_statements_cot
 # CONFIGURATION
 INPUT_DIR = Path("data/raw_md_files")
 OUTPUT_BASE_DIR = Path("data/processed")
-PARALLEL = True  # Set to False for sequential processing
-MAX_WORKERS = 1  # Local models (LM Studio) can only handle 1 request at a time
 
 # Map method names to their functions for easy iteration
 METHODS = {
@@ -75,56 +70,6 @@ def save_result(doc_name: str, method_name: str, model_key: str, model_display: 
     
     print(f"  -> Saved: {output_filename} ({len(extracted_items)} items, {execution_time:.1f}s)")
 
-def process_single_extraction(file_path: Path, method_name: str, extraction_func: Callable,
-                              model_key: str, model_id: str, model_display: str, 
-                              output_dir: Path) -> Dict:
-    """Process a single extraction task. Designed for parallel execution.
-    
-    Returns:
-        dict with status, timing, and result info
-    """
-    doc_name = file_path.stem
-    start_time = time.time()
-    
-    try:
-        # Read document
-        with open(file_path, "r", encoding="utf-8") as f:
-            text_content = f.read()
-        
-        # Execute extraction
-        result_data = extraction_func(text_content, model_name=model_id)
-        duration = time.time() - start_time
-        
-        # Save results
-        save_result(doc_name, method_name, model_key, model_display, result_data, duration, output_dir)
-        
-        # Get item count for reporting
-        if isinstance(result_data, dict) and "extracted_data" in result_data:
-            item_count = len(result_data["extracted_data"])
-        else:
-            item_count = len(result_data) if isinstance(result_data, list) else 0
-        
-        return {
-            "status": "success",
-            "doc": doc_name,
-            "method": method_name,
-            "items": item_count,
-            "time": duration
-        }
-    
-    except Exception as e:
-        duration = time.time() - start_time
-        error_log = [{"error": str(e), "status": "failed"}]
-        save_result(doc_name, method_name, model_key, model_display, error_log, duration, output_dir)
-        
-        return {
-            "status": "failed",
-            "doc": doc_name,
-            "method": method_name,
-            "error": str(e),
-            "time": duration
-        }
-
 def process_document(file_path: Path, model_key: str, model_id: str, model_display: str, output_dir: Path):
     """Run all 4 methods on a single document for one model."""
     doc_name = file_path.stem # e.g., "DRK_Info" without .md
@@ -180,9 +125,6 @@ def main():
     for key, config in MODELS.items():
         print(f"  - {key}: {config['display_name']}")
     print(f"\nMethods: {', '.join(METHODS.keys())}")
-    print(f"Parallel processing: {'ENABLED' if PARALLEL else 'DISABLED'}")
-    if PARALLEL:
-        print(f"Max workers: {MAX_WORKERS}")
     print(f"=" * 70)
     
     total_start = time.time()
@@ -199,38 +141,8 @@ def main():
         # Create output directory for this model
         output_dir = check_directories(model_key)
         
-        if PARALLEL:
-            # Parallel processing: submit all tasks and collect results
-            print(f"\nSubmitting {len(md_files) * len(METHODS)} extraction tasks...")
-            
-            tasks = []
-            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-                # Submit all extraction tasks
-                for file_path in md_files:
-                    for method_name, extraction_func in METHODS.items():
-                        future = executor.submit(
-                            process_single_extraction,
-                            file_path, method_name, extraction_func,
-                            model_key, model_id, model_display, output_dir
-                        )
-                        tasks.append((future, file_path.stem, method_name))
-                
-                # Collect results as they complete
-                for future, doc_name, method_name in tasks:
-                    try:
-                        result = future.result()
-                        if result["status"] == "success":
-                            print(f"✓ {doc_name:30s} | {method_name:10s} | "
-                                  f"{result['items']:3d} items | {result['time']:6.1f}s")
-                        else:
-                            print(f"✗ {doc_name:30s} | {method_name:10s} | FAILED: {result.get('error', 'Unknown')[:40]}")
-                    except Exception as e:
-                        print(f"✗ {doc_name:30s} | {method_name:10s} | ERROR: {str(e)[:40]}")
-        
-        else:
-            # Sequential processing (original behavior)
-            for file_path in md_files:
-                process_document(file_path, model_key, model_id, model_display, output_dir)
+        for file_path in md_files:
+            process_document(file_path, model_key, model_id, model_display, output_dir)
         
     total_duration = time.time() - total_start
     

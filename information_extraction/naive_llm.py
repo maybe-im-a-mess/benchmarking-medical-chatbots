@@ -4,7 +4,7 @@ import json
 import requests
 from typing import Any, Dict, List, Optional
 
-from utils.llm_config import LOCAL_MODEL_URL, MODEL_NAME, make_api_call
+from utils.llm_config import make_api_call
 
 
 def extract_statements_naive(
@@ -16,24 +16,15 @@ def extract_statements_naive(
 	"""
 
 	system_message = (
-		"You are a medical information extraction specialist. Extract key statements "
-		"that a healthcare provider should communicate with the patient based on medical documents. "
-		"These statements represent information that needs to be discussed during patient consultation.\n\n"
-		"CRITICAL: Return ONLY a valid JSON array. Each object MUST have exactly these two fields:\n"
-		"- 'statement': The specific statement to communicate with the patient\n"
-		"- 'rationale': Brief explanation of why this should be discussed\n"
-		"\n"
-		"DO NOT use alternative field names like 'point', 'topic', 'title', 'summary', or 'explanation'.\n"
-		"DO NOT add extra fields or wrap the JSON in markdown code blocks.\n"
-		"\n"
-		"Example format:\n"
-		'[{"statement": "...", "rationale": "..."}]\n'
-		"\n"
-		"LANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.\n"
-		"\n"
-		"Include all relevant statements without arbitrary limits. "
-		"Focus on clinical relevance, patient safety, and informed consent. "
-		"Each statement should be concrete and directly supported by the document."
+		"You are a medical information extraction specialist. Extract the key facts from the document.\n"
+		"Return a JSON array of objects. Each object must have exactly these fields:\n"
+		"- 'category': Classify strictly into one of: ['RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL']\n"
+		"- 'statement': The specific medical fact\n"
+		"- 'importance': One of ['Critical', 'High', 'Medium', 'Low']\n"
+		"  (Use 'Critical' for life-threatening risks or mandatory legal warnings)\n\n"
+		"Example:\n"
+		'[{"category": "Risks", "statement": "Infection is possible.", "importance": "Medium"}]\n'
+		"LANGUAGE: German."
 	)
 	
 	user_message = f"Document:\n{text}"
@@ -68,12 +59,10 @@ def extract_statements_naive(
 
 if __name__ == "__main__":
 	sample = open("data/raw_md_files/DRK Geburtshilfe Infos.md").read()
-	print(sample)
 	try:
 		results = extract_statements_naive(sample)
 	except RuntimeError as e:
 		print(f"Extraction failed: {e}")
 	else:
 		for i, t in enumerate(results["extracted_data"], 1):
-			print(f"{i}. {t['statement']}")
-			print(f"   Why: {t['rationale']}\n")
+			print(f"{i}. [{t['importance']}] {t['category']}: {t['statement']}")

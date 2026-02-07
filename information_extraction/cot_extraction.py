@@ -18,7 +18,11 @@ def extract_statements_cot(text: str, model_name: str = None) -> List[Dict]:
         "First, analyze the document section by section. Identify complex instructions, "
         "contraindications, and risks. Write down your reasoning for what is critical to mention.\n\n"
         "STEP 2: JSON GENERATION\n"
-        "After your analysis, output the final list as a JSON array with 'statement' and 'rationale'.\n\n"
+        "Output the list as a JSON array where each item has:\n"
+        "- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n"
+        "- 'statement': The fact content\n"
+        "- 'importance': Assign 'Critical', 'High', 'Medium', or 'Low'.\n"
+        "  (Note: 'Critical' = Essential safety warnings or absolute contraindications)\n"
         "LANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.\n\n"
         "Output format:\n"
         "Thinking: <your analysis here>\n"
@@ -28,9 +32,8 @@ def extract_statements_cot(text: str, model_name: str = None) -> List[Dict]:
     user_message = f"DOCUMENT:\n{text}"
 
     try:
-        # Use minimal reasoning since CoT prompt already handles explicit reasoning
         content = make_api_call(user_message, model_name, temperature=0.3, timeout=600,
-                               system_message=system_message, reasoning_effort="minimal")
+                               system_message=system_message)
     except Exception as exc:
         raise RuntimeError(f"API call failed: {exc}")
 
