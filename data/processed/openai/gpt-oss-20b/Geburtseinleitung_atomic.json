@@ -1,0 +1,73 @@
+{
+  "document": "Geburtseinleitung",
+  "method": "atomic",
+  "model": {
+    "key": "openai/gpt-oss-20b",
+    "name": "GPT-OSS 20B"
+  },
+  "execution_time_seconds": 54.01,
+  "item_count": 11,
+  "extracted_data": [
+    {
+      "category": "RISK",
+      "statement": "Bei einer Ruptur der Fruchtblase ab 34 Wochen (oder früher, wenn keine Kontraktionen innerhalb von 24 h einsetzen) besteht ein erhöhtes Risiko für eine uterine Infektion, die Bauchschmerzen, Blutungen und Fieber verursachen kann. Falls sich die Infektion ausbreitet, sind Antibiotika oder sogar eine Intensivstation nötig.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Eine postterminale Schwangerschaft (≥ 41 Wochen) erhöht das Risiko für eine verminderte Fruchtwassermenge, fetale Aspiration, Atemnot und Lungenverletzungen. Außerdem steigt die Gefahr von Schulterdystokie, Knochenbrüchen und Nabelschnurkompression.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Frauen mit früherer Kaiserschnittoperation besteht ein erhöhtes Risiko für eine Uterusruptur, insbesondere bei Prostaglandin‑Induktion. Misoprostol ist kontraindiziert; eine vaginale Geburt nach Kaiserschnitt (VBAC) ist nur unter strenger Überwachung möglich.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Alle Induktionsmethoden können zu einer Hyperstimulation der Gebärmutter führen, was fetale Hypoxie und ggf. eine Notfallentbindung nach sich ziehen kann.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Infektionen (uterine, postpartum) sind besonders nach Fruchtblasenruptur oder bei längerer Induktion ein Risiko. Bei Ausbreitung kann eine Sepsis entstehen, die intensive medizinische Versorgung erfordert.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Die geburtshilfliche Induktion erfolgt über verschiedene Methoden: Prostaglandine (Misoprostol, Dinoprostone), Oxytocin‑Infusion, Rutinöl, mechanische Mittel (Eierschalenlösung, Ballonkatheter, sterile Stäbchen) oder Amniotomie.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Während der Induktion ist eine kontinuierliche Überwachung des fetalen Herzrhythmus und der uterinen Kontraktionen unerlässlich. Regelmäßige Beurteilung des Gebärmutterhalses (Bishop‑Score) wird durchgeführt.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Der Patient muss vor Beginn der Induktion über die Gründe (materielle oder fetale Risiken), die gewählte Methode, mögliche Komplikationen und Alternativen aufgeklärt werden. Die Einwilligung muss die Risiken der Induktion, mögliche operative Entbindung und Infektionsrisiken beinhalten.",
+      "importance": "Critical"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Bei einer Fruchtblasenruptur oder bei Anzeichen von Hyperstimulation muss sofort eine Notfall‑Kaiserschnittoperation in Betracht gezogen werden. Blutprodukte und ein Bereitschaftsteam für eine Notfallentbindung sollten sofort verfügbar sein.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Induktion von Labor ist nur dann indiziert, wenn ein medizinischer Nutzen vorliegt (z. B. Ruptur der Fruchtblase, postterminale Schwangerschaft, materielle oder fetale Risikofaktoren). Bei einer freiwilligen Induktion vor 40 Wochen muss der Nutzen gegen die potenziellen Risiken abgewogen werden.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Nach einer Induktion kann ein operativer Eingriff (Forceps, Vakuum oder Kaiserschnitt) erforderlich sein, wenn Dystokie auftritt. Die Entscheidung erfolgt unter Berücksichtigung der aktuellen Situation und des Gesundheitszustands von Mutter und Kind.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message_stage1": "Extract key medical facts from text. Each fact should be a single, independent statement. Focus on: risks, contraindications, procedures, patient requirements, and informed consent items. List as bullet points. Be comprehensive and include all relevant details.",
+    "system_message_stage2": "Group the atomic facts into categories for a patient consultation.\nReturn a JSON array of objects with these fields:\n- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n- 'statement': The consolidated medical fact\n- 'importance': Rate medical importance ('Critical', 'High', 'Medium', 'Low')\n\nLANGUAGE: German.",
+    "temperature": 0.3,
+    "two_stage": true
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "document": "Geburtshilfliche Maßnahmen",
+  "method": "uie",
+  "model": {
+    "key": "mistralai/ministral-3-14b-reasoning",
+    "name": "Mistral 3-14B Reasoning"
+  },
+  "execution_time_seconds": 357.16,
+  "item_count": 18,
+  "extracted_data": [
+    {
+      "category": "RISK",
+      "statement": "Die Überwachungsmethoden (z.B. Abhören der kindlichen Herztöne, Kardiotokografie) können seltene Komplikationen wie Wundinfektionen oder anhaltenden Blutverlust beim Kind verursachen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei der Schmerzbekämpfung können Allergien oder Unverträglichkeiten (z.B. auf Medikamente) zu lebensbedrohlichen Reaktionen wie Kreislaufstillstand führen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Verletzungen der Scheide, des Damms oder der Gebärmutter (z.B. Risse, Fisteln) können zu langfristigen Folgen wie Inkontinenz oder chronischen Schmerzen führen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Ein Nabelschnurvorfall kann zu Sauerstoffmangel und Spätschäden beim Kind führen, wenn die Nabelschnur abgedrückt wird.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei einer Schulterdystokie besteht die Gefahr von Sauerstoffunterversorgung und Verletzungen des Kindes (z.B. Schulterbruch, Nervenschäden).",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Ein Kaiserschnitt birgt Risiken wie starke Blutungen, Infektionen oder Narbenverwachsungen, die weitere Operationen erfordern können.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Rhesus-Unverträglichkeit (Mutter Rhesus-negativ, Kind Rhesus-positiv) ist eine Anti-D-Prophylaxe nach der Geburt erforderlich, um Komplikationen in späteren Schwangerschaften zu vermeiden.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Die Kardiotokografie (CTG) zeichnet Wehentätigkeit und kindliche Herztöne auf. In manchen Fällen wird eine Elektrode an der kindlichen Kopfhaut befestigt, was eine kleine Hautverletzung verursacht.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Die Periduralanästhesie (PDA) betäubt die Nerven im rückenmarksnahen Raum und ist eine wirksame Methode zur Schmerzausschaltung während der Geburt.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Ein Dammschnitt kann erforderlich sein, um Verletzungen des Beckenbodens oder der Harnröhre zu vermeiden und die Pressphase zu verkürzen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bei Gefährdung von Kind oder Mutter (z.B. Stillstand der Geburt, Abfall kindlicher Herztöne) wird eine Saugglocke oder Zange eingesetzt, um den Geburtsvorgang zu beschleunigen.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Ein Kaiserschnitt kann als geplante oder Notfallmaßnahme durchgeführt werden und erfordert eine Bauchdecken- und Gebärmuttereröffnung.",
+      "importance": "Critical"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Zur Linderung von Geburtsschmerzen können Entspannungsübungen, Atemtechnik, Akupunktur oder medikamentöse Methoden (z.B. Lachgas, PDA) eingesetzt werden.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Suchen Sie ärztliche Hilfe bei Fieber über 38 °C, starken Bauchschmerzen, ungewöhnlichen Blutungen oder Rötungen/Schwellungen an den Beinen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Medizinische Maßnahmen während der Geburt (z.B. CTG-Elektrode, PDA) erfordern Ihre Einwilligung.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Blutgerinnsel (z.B. Beinvenenthrombose, Lungenembolie) können schwerwiegende Folgen haben und werden mit blutverdünnenden Medikamenten behandelt.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "In seltenen Fällen kann Fruchtwasser in die Blutgefäße gelangen und eine lebensbedrohliche Embolie auslösen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Plazenta wird nach der Geburt auf Vollständigkeit untersucht. Falls erforderlich, wird ein wehenauslösendes Medikament verabreicht.",
+      "importance": "Low"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "RISK",
+        "topic": "Geburtsüberwachung",
+        "statement": "Die Überwachungsmethoden (z.B. Abhören der kindlichen Herztöne, Kardiotokografie) können seltene Komplikationen wie Wundinfektionen oder anhaltenden Blutverlust beim Kind verursachen.",
+        "rationale": "Der Patient muss über mögliche seltene, aber schwerwiegende Risiken informiert werden, um eine fundierte Entscheidung zu treffen.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Schmerzlinderung",
+        "statement": "Bei der Schmerzbekämpfung können Allergien oder Unverträglichkeiten (z.B. auf Medikamente) zu lebensbedrohlichen Reaktionen wie Kreislaufstillstand führen.",
+        "rationale": "Kritische Risiken müssen dem Patienten klar kommuniziert werden, um rechtzeitig Gegenmaßnahmen einleiten zu können.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Geburtstrauma",
+        "statement": "Verletzungen der Scheide, des Damms oder der Gebärmutter (z.B. Risse, Fisteln) können zu langfristigen Folgen wie Inkontinenz oder chronischen Schmerzen führen.",
+        "rationale": "Der Patient sollte über mögliche geburtshilfliche Komplikationen informiert werden, um die Risiken abwägen zu können.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Nabelschnurvorfall",
+        "statement": "Ein Nabelschnurvorfall kann zu Sauerstoffmangel und Spätschäden beim Kind führen, wenn die Nabelschnur abgedrückt wird.",
+        "rationale": "Dieses Risiko muss dem Patienten erklärt werden, um im Notfall schnell handeln zu können.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Schulterdystokie",
+        "statement": "Bei einer Schulterdystokie besteht die Gefahr von Sauerstoffunterversorgung und Verletzungen des Kindes (z.B. Schulterbruch, Nervenschäden).",
+        "rationale": "Der Patient sollte über dieses seltene, aber potenziell schwerwiegende Risiko informiert werden.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt",
+        "statement": "Ein Kaiserschnitt birgt Risiken wie starke Blutungen, Infektionen oder Narbenverwachsungen, die weitere Operationen erfordern können.",
+        "rationale": "Der Patient muss über die spezifischen Risiken eines Kaiserschnitts aufgeklärt werden, um eine informierte Entscheidung zu treffen.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Anti-D-Prophylaxe",
+        "statement": "Bei Rhesus-Unverträglichkeit (Mutter Rhesus-negativ, Kind Rhesus-positiv) ist eine Anti-D-Prophylaxe nach der Geburt erforderlich, um Komplikationen in späteren Schwangerschaften zu vermeiden.",
+        "rationale": "Diese Maßnahme ist entscheidend für die Prävention von Komplikationen und muss dem Patienten klar erklärt werden.",
+        "importance": "Critical"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Kardiotokografie (CTG)",
+        "statement": "Die Kardiotokografie (CTG) zeichnet Wehentätigkeit und kindliche Herztöne auf. In manchen Fällen wird eine Elektrode an der kindlichen Kopfhaut befestigt, was eine kleine Hautverletzung verursacht.",
+        "rationale": "Der Patient sollte über den Zweck und mögliche Nebenwirkungen des Verfahrens informiert werden.",
+        "importance": "Medium"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Periduralanästhesie (PDA)",
+        "statement": "Die Periduralanästhesie (PDA) betäubt die Nerven im rückenmarksnahen Raum und ist eine wirksame Methode zur Schmerzausschaltung während der Geburt.",
+        "rationale": "Der Patient muss über Vor- und Nachteile sowie mögliche Komplikationen aufgeklärt werden.",
+        "importance": "High"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Dammschnitt",
+        "statement": "Ein Dammschnitt kann erforderlich sein, um Verletzungen des Beckenbodens oder der Harnröhre zu vermeiden und die Pressphase zu verkürzen.",
+        "rationale": "Der Patient sollte über Indikationen und mögliche Folgen eines Dammschnitts informiert werden.",
+        "importance": "Medium"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Saugglocke oder Zange",
+        "statement": "Bei Gefährdung von Kind oder Mutter (z.B. Stillstand der Geburt, Abfall kindlicher Herztöne) wird eine Saugglocke oder Zange eingesetzt, um den Geburtsvorgang zu beschleunigen.",
+        "rationale": "Der Patient muss über das Verfahren und mögliche Risiken aufgeklärt werden.",
+        "importance": "High"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Kaiserschnitt (Sectio caesarea)",
+        "statement": "Ein Kaiserschnitt kann als geplante oder Notfallmaßnahme durchgeführt werden und erfordert eine Bauchdecken- und Gebärmuttereröffnung.",
+        "rationale": "Der Patient muss über die Durchführung, Risiken und Alternativen informiert werden.",
+        "importance": "Critical"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Schmerzlinderungstechniken",
+        "statement": "Zur Linderung von Geburtsschmerzen können Entspannungsübungen, Atemtechnik, Akupunktur oder medikamentöse Methoden (z.B. Lachgas, PDA) eingesetzt werden.",
+        "rationale": "Der Patient sollte über verfügbare Optionen zur Schmerzlinderung informiert und zu einer gemeinsamen Entscheidung mit dem Arzt ermutigt werden.",
+        "importance": "Medium"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Verhalten nach der Geburt",
+        "statement": "Suchen Sie ärztliche Hilfe bei Fieber über 38 °C, starken Bauchschmerzen, ungewöhnlichen Blutungen oder Rötungen/Schwellungen an den Beinen.",
+        "rationale": "Der Patient muss über Warnzeichen für Komplikationen informiert werden, um rechtzeitig medizinische Hilfe in Anspruch zu nehmen.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Einwilligung zu medizinischen Maßnahmen",
+        "statement": "Medizinische Maßnahmen während der Geburt (z.B. CTG-Elektrode, PDA) erfordern Ihre Einwilligung.",
+        "rationale": "Der Patient muss über die Notwendigkeit einer informierten Einwilligung aufgeklärt werden.",
+        "importance": "High"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Risikofaktoren für Thrombose/Embolie",
+        "statement": "Blutgerinnsel (z.B. Beinvenenthrombose, Lungenembolie) können schwerwiegende Folgen haben und werden mit blutverdünnenden Medikamenten behandelt.",
+        "rationale": "Der Patient sollte über das größte vitale Risiko während der Geburt informiert werden.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Fruchtwasserembolie",
+        "statement": "In seltenen Fällen kann Fruchtwasser in die Blutgefäße gelangen und eine lebensbedrohliche Embolie auslösen.",
+        "rationale": "Dieses seltene, aber kritische Risiko muss dem Patienten erklärt werden.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Nachgeburtsperiode",
+        "statement": "Die Plazenta wird nach der Geburt auf Vollständigkeit untersucht. Falls erforderlich, wird ein wehenauslösendes Medikament verabreicht.",
+        "rationale": "Der Patient sollte über diesen natürlichen Vorgang und mögliche Maßnahmen informiert werden.",
+        "importance": "Low"
+      }
+    ]
+  }
+}

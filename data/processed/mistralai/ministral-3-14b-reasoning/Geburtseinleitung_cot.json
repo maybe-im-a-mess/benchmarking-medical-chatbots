@@ -1,0 +1,63 @@
+{
+  "document": "Geburtseinleitung",
+  "method": "cot",
+  "model": {
+    "key": "mistralai/ministral-3-14b-reasoning",
+    "name": "Mistral 3-14B Reasoning"
+  },
+  "execution_time_seconds": 97.15,
+  "item_count": 9,
+  "extracted_data": [
+    {
+      "category": "RISK",
+      "statement": "Nach einem Fruchtblasensprung erhöht sich das Infektionsrisiko für Mutter und Kind. Bei aufsteigender Infektion kann es zu schweren kindlichen Schäden (z. B. Beatmungspflicht, Hirnschäden) oder mütterlicher Sepsis/Peritonitis mit Risiko einer dauerhaften Unfruchtbarkeit kommen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Terminüberschreitung (>41. SSW) steigen die Risiken für Kind (Aspiration, Lungen-/Hirnschäden) und Mutter (Geburtsverletzungen, Blutungen). Ab 42+0 SSW sollte dringend eingeleitet werden.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Nach einem früheren Kaiserschnitt besteht bei vaginaler Geburt ein erhöhtes Risiko für Uterusruptur (Notfall-Kaiserschnitt nötig) oder schwere kindliche Schäden. Misoprostol darf in diesem Fall nicht eingesetzt werden.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Prostaglandinpräparate (z. B. Misoprostol, Dinoproston) verkürzen den Gebärmutterhals und lösen Wehen aus. Sie können als Tablette, Gel oder Membran appliziert werden und erfordern ggf. wiederholte Gaben.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Oxytocin wird als Infusion eingesetzt, wenn der Muttermund bereits etwas geöffnet ist. Es kann die Wehentätigkeit steuern, erfordert aber engmaschige Überwachung.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Prostaglandine können zu Übelkeit/Erbrechen oder gefährlicher Überstimulation (Wehensturm) führen. Extrem selten: Fruchtwasserembolie mit tödlichem Verlauf für Mutter und Kind.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Amniotomie (Fruchtblasensprengung) besteht das Risiko eines Nabelschnurvorfalls, der einen Notfall-Kaiserschnitt erfordert.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Melden Sie sofort Wehen, vaginale Blutungen oder schmerzhafte/kurze Wehen – besonders bei Vorliegen eines früheren Kaiserschnitts!",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Bei Diabetes, Bluthochdruck oder kindlicher Wachstumsverzögerung kann eine frühere Einleitung sinnvoll sein.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "thinking_process": "****\nDer Text beschreibt Gründe, Methoden und Risiken der Geburtseinleitung sowie spezifische Hinweise für Patientinnen nach einem früheren Kaiserschnitt. Kritische Punkte sind:\n1. **Risiken bei Fruchtblasensprung** (Infektionen, kindliche Schäden)\n2. **Terminüberschreitung/Übertragung** (erhöhte Komplikationsrisiken für Kind und Mutter)\n3. **Kaiserschnitt in der Vorgeschichte** (Risiko einer Uterusruptur, absolute Kontraindikation für Misoprostol)\n4. **Methodenspezifische Risiken** (Prostaglandine: Überstimulation/Wehensturm; Oxytocin: Steuerbarkeit vs. Risiko; Amniotomie: Nabelschnurvorfall)\n5. **Allgemeine Handlungsanweisungen** (ärztliche Überwachung, Meldepflicht bei Komplikationen).\n\nWichtige Kategorien:\n- **RISK**: Lebensbedrohliche oder schwere Komplikationen (z. B. Sepsis, Uterusruptur).\n- **PROCEDURE**: Methoden der Einleitung und deren Durchführung.\n- **INSTRUCTION**: Verhaltensregeln für die Patientin (z. B. Überwachungspflicht).\n- **GENERAL**: Allgemeine Informationen zu Indikationen oder Risikofaktoren.\n\n**",
+    "system_message": "You are a medical assistant. Your task is to extract statements that should be communicated with the patient. These statements represent information for patient consultation.\n\nSTEP 1: THINKING PROCESS\nFirst, analyze the document section by section. Identify complex instructions, contraindications, and risks. Write down your reasoning for what is critical to mention.\n\nSTEP 2: JSON GENERATION\nOutput the list as a JSON array where each item has:\n- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n- 'statement': The fact content\n- 'importance': Assign 'Critical', 'High', 'Medium', or 'Low'.\n  (Note: 'Critical' = Essential safety warnings or absolute contraindications)\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.\n\nOutput format:\nThinking: <your analysis here>\nJSON: <the json array>",
+    "temperature": 0.3,
+    "has_reasoning": true
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "document": "Narkose",
+  "method": "atomic",
+  "model": {
+    "key": "openai/gpt-oss-20b",
+    "name": "GPT-OSS 20B"
+  },
+  "execution_time_seconds": 70.6,
+  "item_count": 19,
+  "extracted_data": [
+    {
+      "category": "INSTRUCTION",
+      "statement": "Sie müssen bis zu 6 h vor dem Eingriff nüchtern bleiben. Zwischen 6–2 h vor dem Eingriff dürfen nur klare Flüssigkeiten ohne Fett, feste Nahrung oder Alkohol eingenommen werden.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Bringen Sie alle relevanten medizinischen Unterlagen mit: Allergieliste, aktuelle Medikation, Antikoagulanzstatus und Implantatinformationen.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Entfernen Sie Kontaktlinsen, herausnehmbare Zahnprothesen, Schmuck, Piercings und künstliche Haare. Tragen Sie keine Make‑up- oder Kosmetikprodukte am Tag des Eingriffs.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach der Operation sollten Sie mindestens 24 h nicht fahren, schwere Maschinen bedienen oder wichtige Entscheidungen treffen.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Bei Frauen, die hormonelle Verhütungsmittel nutzen, kann die Wirksamkeit für bis zu 7 Tage nach der Anästhesie beeinträchtigt sein.",
+      "importance": "Low"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bei einer Allgemeinanästhesie erfolgt die Induktion mit einem schnell wirkenden intravenösen Anästhetikum, gefolgt von der Aufrechterhaltung durch IV‑Medikamente und/oder Inhalationsgase.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Die Atemwege werden bei einer Allgemeinanästhesie entweder durch eine Endotrachealintubation oder einen Larynxmasken-Ansatz geschützt.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bei einer Regionalanästhesie wird ein Lokalanästhetikum in die Nähe der Zielnerven injiziert (z. B. Spinal, Epidural, Plexusblock).",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Ein Katheter kann für die postoperative Schmerzbehandlung vor oder während des Eingriffs platziert werden und bleibt ggf. nach der Operation.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Aspiration von Mageninhalt kann bei Allgemeinanästhesie zu Pneumonie und Atemversagen führen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Laryngo‑ oder Bronchospasmen sind behandelbar, können aber selten eine Intensivstation erfordern.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Systemische Toxizität durch Lokalanästhetikum bei Regionalanästhesie kann Herzrhythmusstörungen oder Krampfanfälle auslösen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Pneumothorax ist ein mögliches Komplikationsrisiko bei thorakalen Epidural- oder Interskalene-Blöcken.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Nervenverletzungen können zu vorübergehenden oder selten dauerhaften sensorischen/motorischen Defiziten führen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Katheter‑Komplikationen wie Blutungen, Hämatome oder Infektionen sind selten, aber möglich.",
+      "importance": "Low"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Wahl zwischen Allgemeinanästhesie und Regionalanästhesie hängt von der Art des Eingriffs, den Patientenpräferenzen und medizinischen Indikationen ab.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Patienten mit Antikoagulanzien benötigen eine individuelle Anpassung der Medikation vor dem Eingriff, ggf. mit Bridging.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Bei bekannten Latex‑ oder Medikamentallergien werden alternative Materialien und Medikamente verwendet.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Nach der Anästhesie erfolgt eine kontinuierliche Überwachung bis die Vitalparameter stabil sind; ggf. ICU‑ oder Aufwachstation.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message_stage1": "Extract key medical facts from text. Each fact should be a single, independent statement. Focus on: risks, contraindications, procedures, patient requirements, and informed consent items. List as bullet points. Be comprehensive and include all relevant details.",
+    "system_message_stage2": "Group the atomic facts into categories for a patient consultation.\nReturn a JSON array of objects with these fields:\n- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n- 'statement': The consolidated medical fact\n- 'importance': Rate medical importance ('Critical', 'High', 'Medium', 'Low')\n\nLANGUAGE: German.",
+    "temperature": 0.3,
+    "two_stage": true
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "document": "DRK Geburtshilfe Infos",
+  "method": "uie",
+  "model": {
+    "key": "gpt-5-mini",
+    "name": "GPT-5 mini"
+  },
+  "execution_time_seconds": 38.05,
+  "item_count": 15,
+  "extracted_data": [
+    {
+      "category": "PROCEDURE",
+      "statement": "Eine Anästhesistin ist rund um die Uhr verfügbar; eine Periduralanästhesie (PDA) kann jederzeit gelegt werden, und auf Wunsch ist eine vorherige Aufklärung in einer Anästhesie-Sprechstunde möglich.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Es kann während der Geburt ein ungeplanter Kaiserschnitt erforderlich werden; dafür steht ein Operationssaal direkt neben den Kreißsälen bereit.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bei Kaiserschnitt wird in der Regel die schonende Misgav-Ladach-Technik angewendet und meist eine rückenmarksnahe Betäubung (Spinalanästhesie/PDA) gewählt, sodass die Mutter wach bleibt und direkte Haut-zu-Haut-Kontakte möglich sind.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Jedes Neugeborene wird unmittelbar nach der Geburt ärztlich untersucht (U1/U2); zudem erfolgt ein Neugeborenen-Hörscreening und bei Risikofaktoren ggf. ein Hüftultraschall.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Leichte Neugeborenen-Gelbsucht wird direkt auf der Wochenbettstation mit Fototherapie behandelt, damit Mutter und Kind nicht getrennt werden müssen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Falls ein Baby intensivere medizinische Hilfe benötigt, erfolgt die Zusammenarbeit und ggf. Verlegung in die Neonatologie des Vivantes Klinikums Neukölln.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Rooming-in ist Standard: Mutter und Neugeborenes bleiben gemeinsam; unmittelbar nach der Geburt erfolgt Bonding mit direktem Hautkontakt und Beginn des Stillens im Kreißsaal.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Der hebammengeleitete Kreißsaal ist für unauffällige Schwangerschaften (spontaner Geburtsbeginn 37+0 bis 41+3 SSW) vorgesehen; bei Wunsch oder medizinischer Notwendigkeit ist eine schnelle Überleitung in den interdisziplinären Kreißsaal möglich.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Die Anmeldung zur Geburt sollte ab der 32. Schwangerschaftswoche erfolgen; zur Anmeldung und Aufnahme mitbringen: Mutterpass, Krankenversicherungskarte, Personalausweis sowie ggf. Überweisung und alle Schwangerschaftsbefunde.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach der Entlassung sollte idealerweise eine Nachsorgehebamme die Betreuung zuhause übernehmen; wenn keine Hebamme gefunden wird, unterstützen die Babylotsinnen bei der Vermittlung.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Eine ambulante Geburt ist möglich, wenn Mutter und Kind gesund sind und die ambulante Betreuung gesichert ist; die Entlassung erfolgt zwischen 4 und 24 Stunden nach Geburt.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Es wird empfohlen, direkt nach der Geburt und vormittags Besuche möglichst zu vermeiden, um Erholung, Bonding und Stillbeginn nicht zu stören; Besuchszeiten für andere Gäste sind täglich 15:00–19:00 Uhr.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Es steht ein breites Spektrum an Schmerzlinderungsoptionen zur Verfügung, darunter Akupunktur, Homöopathie, Lachgas, TENS, Entspannungsbad sowie medikamentöse Schmerzmittel und PDA.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Unterbringung einer Begleitperson im Familienzimmer ist möglich und kostet 95 Euro pro Nacht (inklusive Verpflegung).",
+      "importance": "Low"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Die Anmeldung und telefonische Erreichbarkeit des Kreißsaals erfolgt montags bis freitags von 8:30 bis 13:30 Uhr unter der Nummer (030) 3035 - 3170; außerhalb bei Geburtsbeginn direkt in den Kreißsaal kommen.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "PROCEDURE",
+        "topic": "Periduralanästhesie (PDA) und Anästhesieversorgung",
+        "statement": "Eine Anästhesistin ist rund um die Uhr verfügbar; eine Periduralanästhesie (PDA) kann jederzeit gelegt werden, und auf Wunsch ist eine vorherige Aufklärung in einer Anästhesie-Sprechstunde möglich.",
+        "rationale": "Die jederzeitige Verfügbarkeit von Anästhesie und die Möglichkeit einer PDA beeinflussen Schmerzmanagement und Sicherheit bei akut auftretenden starken Wehenschmerzen oder bei notwendigen Eingriffen; Aufklärung reduziert Entscheidungsdruck in der Geburtssituation.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Notwendigkeit eines Kaiserschnitts",
+        "statement": "Es kann während der Geburt ein ungeplanter Kaiserschnitt erforderlich werden; dafür steht ein Operationssaal direkt neben den Kreißsälen bereit.",
+        "rationale": "Patientinnen müssen informiert sein, dass Komplikationen eine sofortige operative Entbindung erforderlich machen können und dass das Team für schnelle Interventionen vorbereitet ist, um Mutter und Kind zu schützen.",
+        "importance": "Critical"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Sanfte Kaiserschnitt-Technik und Anästhesie",
+        "statement": "Bei Kaiserschnitt wird in der Regel die schonende Misgav-Ladach-Technik angewendet und meist eine rückenmarksnahe Betäubung (Spinalanästhesie/PDA) gewählt, sodass die Mutter wach bleibt und direkte Haut-zu-Haut-Kontakte möglich sind.",
+        "rationale": "Diese Information ist wichtig für die Erwartungsbildung bezüglich Operationsablauf, postoperativer Bindung und zur Vorbereitung auf die unmittelbare Zeit nach der Geburt.",
+        "importance": "High"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Neugeborenenuntersuchungen (U1/U2) und Screening",
+        "statement": "Jedes Neugeborene wird unmittelbar nach der Geburt ärztlich untersucht (U1/U2); zudem erfolgt ein Neugeborenen-Hörscreening und bei Risikofaktoren ggf. ein Hüftultraschall.",
+        "rationale": "Frühe Untersuchungen und Screenings erkennen angeborene oder früh auftretende Probleme und ermöglichen zeitnahe Interventionen zum Schutz der kindlichen Gesundheit.",
+        "importance": "Critical"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Behandlung von Neugeborenen-Gelbsucht",
+        "statement": "Leichte Neugeborenen-Gelbsucht wird direkt auf der Wochenbettstation mit Fototherapie behandelt, damit Mutter und Kind nicht getrennt werden müssen.",
+        "rationale": "Wichtig für Eltern zu wissen, dass eine häufige Anpassungserscheinung behandelt werden kann, ohne getrennt zu werden, was Bonding und Stillen fördert.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Intensivere Neugeborenenbetreuung/Neonatologie",
+        "statement": "Falls ein Baby intensivere medizinische Hilfe benötigt, erfolgt die Zusammenarbeit und ggf. Verlegung in die Neonatologie des Vivantes Klinikums Neukölln.",
+        "rationale": "Eltern sollten über die Möglichkeit informiert sein, dass bei Anpassungsstörungen oder kritischem Zustand eine stationäre Intensivbetreuung außer Haus notwendig werden kann und welche Kooperation besteht.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Rooming-in und Bonding",
+        "statement": "Rooming-in ist Standard: Mutter und Neugeborenes bleiben gemeinsam; unmittelbar nach der Geburt erfolgt Bonding mit direktem Hautkontakt und Beginn des Stillens im Kreißsaal.",
+        "rationale": "Diese Versorgungspolitik fördert Bindung, Stillbeginn und elterliche Sicherheit und sollte vorab kommuniziert werden, um Erwartungen an die postpartale Betreuung zu klären.",
+        "importance": "High"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Hebammenkreißsaal - Voraussetzungen und Übergang",
+        "statement": "Der hebammengeleitete Kreißsaal ist für unauffällige Schwangerschaften (spontaner Geburtsbeginn 37+0 bis 41+3 SSW) vorgesehen; bei Wunsch oder medizinischer Notwendigkeit ist eine schnelle Überleitung in den interdisziplinären Kreißsaal möglich.",
+        "rationale": "Wesentlich für die Geburtsplanung: Patientinnen müssen wissen, ob sie für die hebammengeleitete Betreuung in Frage kommen und dass bei Komplikationen ein sicherer Übergang gewährleistet ist.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Anmeldung zur Geburt und mitzubringende Unterlagen",
+        "statement": "Die Anmeldung zur Geburt sollte ab der 32. Schwangerschaftswoche erfolgen; zur Anmeldung und Aufnahme mitbringen: Mutterpass, Krankenversicherungskarte, Personalausweis sowie ggf. Überweisung und alle Schwangerschaftsbefunde.",
+        "rationale": "Frühzeitige Anmeldung ermöglicht individuelle Geburtsplanung; vollständige Unterlagen beschleunigen administrative Aufnahme und sichern die medizinische Versorgung.",
+        "importance": "Medium"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nachsorge durch Hebamme (Hausbesuche)",
+        "statement": "Nach der Entlassung sollte idealerweise eine Nachsorgehebamme die Betreuung zuhause übernehmen; wenn keine Hebamme gefunden wird, unterstützen die Babylotsinnen bei der Vermittlung.",
+        "rationale": "Die Nachsorgehebamme kontrolliert Rückbildung, Stillen und Gewichtsentwicklung des Neugeborenen; fehlende Nachsorge erhöht das Risiko unbehandelter Probleme nach Entlassung.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Ambulante Geburt - Kriterien und Entlassungszeitraum",
+        "statement": "Eine ambulante Geburt ist möglich, wenn Mutter und Kind gesund sind und die ambulante Betreuung gesichert ist; die Entlassung erfolgt zwischen 4 und 24 Stunden nach Geburt.",
+        "rationale": "Wichtig für die Entscheidungsfindung zur Entlassungsart und zur Sicherstellung der häuslichen Nachsorge durch Hebamme und Kinderarzt.",
+        "importance": "Medium"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Besuchsregelung unmittelbar nach der Geburt",
+        "statement": "Es wird empfohlen, direkt nach der Geburt und vormittags Besuche möglichst zu vermeiden, um Erholung, Bonding und Stillbeginn nicht zu stören; Besuchszeiten für andere Gäste sind täglich 15:00–19:00 Uhr.",
+        "rationale": "Ruhezeiten nach der Geburt sind wichtig für Erholung und Bonding; klare Besuchsregeln schützen die Gesundheit von Mutter und Kind und erleichtern die Pflege.",
+        "importance": "Medium"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Schmerzlinderungsangebot (inkl. nicht-medikamentös)",
+        "statement": "Es steht ein breites Spektrum an Schmerzlinderungsoptionen zur Verfügung, darunter Akupunktur, Homöopathie, Lachgas, TENS, Entspannungsbad sowie medikamentöse Schmerzmittel und PDA.",
+        "rationale": "Information über verfügbare Optionen ermöglicht individuelle Geburtssplanung und Vorbereitung auf Schmerzmanagement während der Geburt.",
+        "importance": "Medium"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Kosten für Übernachtung der Begleitperson im Familienzimmer",
+        "statement": "Die Unterbringung einer Begleitperson im Familienzimmer ist möglich und kostet 95 Euro pro Nacht (inklusive Verpflegung).",
+        "rationale": "Finanzielle Information ist für die Vorbereitung und Entscheidungsfindung relevant und beeinflusst die Organisation des Wochenbettaufenthalts.",
+        "importance": "Low"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Kontakt und Erreichbarkeit Kreißsaal für Anmeldung",
+        "statement": "Die Anmeldung und telefonische Erreichbarkeit des Kreißsaals erfolgt montags bis freitags von 8:30 bis 13:30 Uhr unter der Nummer (030) 3035 - 3170; außerhalb bei Geburtsbeginn direkt in den Kreißsaal kommen.",
+        "rationale": "Klarheit über Kontaktwege und Zeiten erleichtert die Anmeldung und reduziert Stress beim Geburtsbeginn; Patienten wissen, wann sie anrufen können und wie die Aufnahme erfolgt.",
+        "importance": "Medium"
+      }
+    ]
+  }
+}

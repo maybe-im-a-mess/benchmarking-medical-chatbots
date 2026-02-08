@@ -1,0 +1,115 @@
+{
+  "document": "Äußere Wendung",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-32b",
+    "name": "Qwen 3-32B"
+  },
+  "execution_time_seconds": 286.6,
+  "item_count": 8,
+  "extracted_data": [
+    {
+      "category": "GENERAL",
+      "statement": "Die äußere Wendung wird empfohlen, wenn das Kind in der 37. oder 38. Schwangerschaftswoche nicht in die Schädellage (Köpfchen nach unten) gedreht hat.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Eine äußere Wendung kann lebensbedrohliche Komplikationen wie eine Not-Kaiserschnittnotwendigkeit aufgrund von Herzschlagveränderungen oder Plazentenablösung auslösen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bevor die Wendung durchgeführt wird, erfolgt eine Ultraschalluntersuchung zur Bestimmung der Kindeslage sowie ein CTG und Doppler-Untersuchung.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Die Patientin sollte vor der geplanten äußeren Wendung einige Stunden nichts essen und trinken, um für eine eventuelle Narkose gerüstet zu sein.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Rhesus-negativen Schwangeren kann eine äußere Wendung zu einer fetomaternalen Transfusion führen, was eine Immunreaktion auslösen kann.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Erfolgsrate der äußeren Wendung hängt von Faktoren wie Kindesgröße, Plazentenlage und Fruchtwassermenge ab.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Eine gelegentliche Abnahme der kindlichen Herztöne nach der Wendung kann auftreten und ggf. einen Kaiserschnitt erfordern.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Die Patientin sollte ihren Mutterpass zum Aufklärungsgespräch mitbringen.",
+      "importance": "Low"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "GENERAL",
+        "topic": "Empfehlung der äußeren Wendung",
+        "statement": "Die äußere Wendung wird empfohlen, wenn das Kind in der 37. oder 38. Schwangerschaftswoche nicht in die Schädellage (Köpfchen nach unten) gedreht hat.",
+        "rationale": "Diese Information ist grundlegend für das Verständnis des Eingriffs und hilft der Patientin, den Zweck der äußeren Wendung zu begreifen.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Not-Kaiserschnitt",
+        "statement": "Eine äußere Wendung kann lebensbedrohliche Komplikationen wie eine Not-Kaiserschnittnotwendigkeit aufgrund von Herzschlagveränderungen oder Plazentenablösung auslösen.",
+        "rationale": "Diese Risiken müssen explizit kommuniziert werden, um die Patientin über potenzielle Eingriffe in Notfällen zu informieren.",
+        "importance": "Critical"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Vorbereitung der äußeren Wendung",
+        "statement": "Bevor die Wendung durchgeführt wird, erfolgt eine Ultraschalluntersuchung zur Bestimmung der Kindeslage sowie ein CTG und Doppler-Untersuchung.",
+        "rationale": "Diese Schritte sind entscheidend für die Sicherheit des Eingriffs und müssen der Patientin detailliert erläutert werden.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Vorbereitung vor der Wendung",
+        "statement": "Die Patientin sollte vor der geplanten äußeren Wendung einige Stunden nichts essen und trinken, um für eine eventuelle Narkose gerüstet zu sein.",
+        "rationale": "Diese Vorbereitung ist notwendig, um den Ablauf des Eingriffs und ggf. einen Kaiserschnitt sicherzustellen.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Blutübertragung bei Rhesus-negativen Müttern",
+        "statement": "Bei Rhesus-negativen Schwangeren kann eine äußere Wendung zu einer fetomaternalen Transfusion führen, was eine Immunreaktion auslösen kann.",
+        "rationale": "Diese Information ist entscheidend für das Verständnis der Notwendigkeit einer Impfung zur Vorbeugung von Rhesus-Komplikationen.",
+        "importance": "High"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Erfolgsaussichten der äußeren Wendung",
+        "statement": "Die Erfolgsrate der äußeren Wendung hängt von Faktoren wie Kindesgröße, Plazentenlage und Fruchtwassermenge ab.",
+        "rationale": "Diese Erklärung hilft der Patientin, realistische Erwartungen an den Eingriff zu entwickeln.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Herzschlagabfall des Kindes",
+        "statement": "Eine gelegentliche Abnahme der kindlichen Herztöne nach der Wendung kann auftreten und ggf. einen Kaiserschnitt erfordern.",
+        "rationale": "Diese Risikoinformation ist notwendig, um die Patientin auf mögliche Folgeeinschränkungen vorzubereiten.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Mitbringen des Mutterpasses",
+        "statement": "Die Patientin sollte ihren Mutterpass zum Aufklärungsgespräch mitbringen.",
+        "rationale": "Der Mutterpass enthält wichtige medizinische Hintergrundinformationen für die Planung der äußeren Wendung.",
+        "importance": "Low"
+      }
+    ]
+  }
+}

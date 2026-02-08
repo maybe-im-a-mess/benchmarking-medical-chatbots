@@ -1,0 +1,139 @@
+{
+  "document": "DRK Geburtshilfe Infos",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-32b",
+    "name": "Qwen 3-32B"
+  },
+  "execution_time_seconds": 389.35,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "category": "PROCEDURE",
+      "statement": "Es werden geburtsvorbereitende Kurse angeboten, die Atem- und Entspannungstechniken sowie Tipps für die erste Zeit mit dem Baby vermitteln.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Für den Geburtsbeginn sollten Dokumente wie Mutterpass, Krankenversichertenkarte und Allergiepass sowie bequeme Kleidung für Mutter und Baby mitgenommen werden.",
+      "importance": "Low"
+    },
+    {
+      "category": "RISK",
+      "statement": "Ein Kaiserschnitt kann notwendig sein bei Risikoschwangerschaften wie Beckenendlage oder Schwangerschaftsdiabetes.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Besucherzeiten für Familien und Freunde sind auf 15:00–19:00 Uhr beschränkt, um Mutter und Kind Ruhephasen zu gewährleisten.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Zur Schmerzreduktion während der Geburt stehen Akupunktur, Homöopathie, Lachgas sowie Periduralanästhesie (PDA) zur Verfügung.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Eine ambulante Entlassung nach der Geburt ist möglich, sofern Mutter und Kind gesund sind und Hebamme sowie Kinderarzt betreuen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Leichte Gelbsucht wird durch Fototherapie auf der Wochenbettstation behandelt, um Trennung von Mutter und Kind zu vermeiden.",
+      "importance": "Critical"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Übernachtung einer Begleitperson im Familienzimmer kostet 95 Euro pro Nacht inklusive Verpflegung.",
+      "importance": "Low"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Jedes Neugeborene wird durch eine Kinderärztin untersucht und erhält ein Hörscreening sowie bei Bedarf einen Hüftultraschall.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach der Entlassung aus dem Krankenhaus ist eine Nachsorgehebamme für die häusliche Betreuung zuständig.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "PROCEDURE",
+        "topic": "Geburtsvorbereitungskurse",
+        "statement": "Es werden geburtsvorbereitende Kurse angeboten, die Atem- und Entspannungstechniken sowie Tipps für die erste Zeit mit dem Baby vermitteln.",
+        "rationale": "Diese Kurse bereiten werdende Eltern gezielt auf die Geburt vor und tragen zur Entspannung sowie zum Vertrauen in den Geburtsverlauf bei.",
+        "importance": "Medium"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Checkliste für die Kliniktasche",
+        "statement": "Für den Geburtsbeginn sollten Dokumente wie Mutterpass, Krankenversichertenkarte und Allergiepass sowie bequeme Kleidung für Mutter und Baby mitgenommen werden.",
+        "rationale": "Eine vorbereitete Kliniktasche vermeidet Stress und Störungen während der Geburtsvorbereitung.",
+        "importance": "Low"
+      },
+      {
+        "category": "RISK",
+        "topic": "Kaiserschnitt-Indikationen",
+        "statement": "Ein Kaiserschnitt kann notwendig sein bei Risikoschwangerschaften wie Beckenendlage oder Schwangerschaftsdiabetes.",
+        "rationale": "Diese Risiken müssen vorab besprochen werden, um eine sichere Geburtsplanung zu ermöglichen.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Besuchszeiten nach der Geburt",
+        "statement": "Besucherzeiten für Familien und Freunde sind auf 15:00–19:00 Uhr beschränkt, um Mutter und Kind Ruhephasen zu gewährleisten.",
+        "rationale": "Klar definierte Besuchszeiten tragen zur Erholung der Mutter und zum Wohlergehen des Neugeborenen bei.",
+        "importance": "Medium"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Schmerzlinderungsangebote",
+        "statement": "Zur Schmerzreduktion während der Geburt stehen Akupunktur, Homöopathie, Lachgas sowie Periduralanästhesie (PDA) zur Verfügung.",
+        "rationale": "Die Kenntnis der verfügbaren Schmerzlinderungsmethoden ermöglicht eine gezielte Geburtsplanung.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Ambulante Geburt",
+        "statement": "Eine ambulante Entlassung nach der Geburt ist möglich, sofern Mutter und Kind gesund sind und Hebamme sowie Kinderarzt betreuen.",
+        "rationale": "Diese Option muss vorab mit dem medizinischen Team besprochen werden, um Sicherheit und Voraussetzungen zu klären.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Neugeborenen-Gelbsucht",
+        "statement": "Leichte Gelbsucht wird durch Fototherapie auf der Wochenbettstation behandelt, um Trennung von Mutter und Kind zu vermeiden.",
+        "rationale": "Die Behandlungsmöglichkeit muss den Eltern bekannt sein, um rechtzeitig auf Verläufe reagieren zu können.",
+        "importance": "Critical"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Familienzimmer-Preisgestaltung",
+        "statement": "Die Übernachtung einer Begleitperson im Familienzimmer kostet 95 Euro pro Nacht inklusive Verpflegung.",
+        "rationale": "Diese Kosteninformation ist für die finanzielle Planung der Eltern relevant.",
+        "importance": "Low"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Neugeborenen-Versorgung",
+        "statement": "Jedes Neugeborene wird durch eine Kinderärztin untersucht und erhält ein Hörscreening sowie bei Bedarf einen Hüftultraschall.",
+        "rationale": "Diese Untersuchungen sind standardisiert und tragen zur Früherkennung von Erkrankungen bei.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nachsorgehebamme",
+        "statement": "Nach der Entlassung aus dem Krankenhaus ist eine Nachsorgehebamme für die häusliche Betreuung zuständig.",
+        "rationale": "Die Eltern müssen wissen, dass diese Betreuung nach der Klinikphase fortdauert.",
+        "importance": "Medium"
+      }
+    ]
+  }
+}

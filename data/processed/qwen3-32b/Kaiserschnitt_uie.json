@@ -1,0 +1,139 @@
+{
+  "document": "Kaiserschnitt",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-32b",
+    "name": "Qwen 3-32B"
+  },
+  "execution_time_seconds": 315.03,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "category": "RISK",
+      "statement": "Bei einem Kaiserschnitt kann es zu stärkeren, nicht beherrschbaren Blutungen oder Nachblutungen kommen, die eine Bluttransfusion erfordern können.",
+      "importance": "Critical"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Zur Vermeidung von Infektionen wird ein Antibiotikum vor Beginn des Kaiserschnitts verabreicht.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Bei Fieber, Bauchschmerzen oder Rötung des Bauchschnitts ist umgehend ärztliche Hilfe aufzusuchen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Eine Wundinfektion kann zu Narbenbruch oder erneuter Operation führen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Eine Sterilisation kann gleichzeitig mit dem Kaiserschnitt erfolgen, sollte aber nicht kurz vor der Geburt entschieden werden.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Das Risiko für eine Lungenembolie ist bei Kaiserschnitt erhöht und kann lebensbedrohlich sein.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach einem Kaiserschnitt ist eine Rückbildungsgymnastik notwendig, um die Bauchmuskulatur zu stärken.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Kinder mit Kaiserschnittgeburten haben ein erhöhtes Risiko für Asthma oder Diabetes.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Der Kaiserschnitt erfolgt in regionaler Betäubung oder Allgemeinanästhesie.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Nach einem Kaiserschnitt besteht ein erhöhtes Risiko für eine Uterusruptur bei einer zukünftigen Spontangeburt.",
+      "importance": "Critical"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "RISK",
+        "topic": "Blutungen und Nachblutungen",
+        "statement": "Bei einem Kaiserschnitt kann es zu stärkeren, nicht beherrschbaren Blutungen oder Nachblutungen kommen, die eine Bluttransfusion erfordern können.",
+        "rationale": "Diese Information ist für die Patientin entscheidend, um das Risiko einer Blutverlustsituation zu verstehen und auf mögliche Notfallmaßnahmen vorbereitet zu sein.",
+        "importance": "Critical"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Antibiotikagabe",
+        "statement": "Zur Vermeidung von Infektionen wird ein Antibiotikum vor Beginn des Kaiserschnitts verabreicht.",
+        "rationale": "Die Patientin muss wissen, dass eine prophylaktische Antibiotikagabe Standard ist und wie sie das Infektionsrisiko reduziert.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nachsorge bei Beschwerden",
+        "statement": "Bei Fieber, Bauchschmerzen oder Rötung des Bauchschnitts ist umgehend ärztliche Hilfe aufzusuchen.",
+        "rationale": "Diese Anweisung ist notwendig, um die Patientin auf mögliche postoperative Komplikationen hinzuweisen und rechtzeitige Behandlung zu gewährleisten.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Infektionsrisiko",
+        "statement": "Eine Wundinfektion kann zu Narbenbruch oder erneuter Operation führen.",
+        "rationale": "Die Patientin muss das Risiko einer Infektion und deren mögliche Folgen verstehen, um auf Hygienemaßnahmen achten zu können.",
+        "importance": "Medium"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Sterilisation bei Kaiserschnitt",
+        "statement": "Eine Sterilisation kann gleichzeitig mit dem Kaiserschnitt erfolgen, sollte aber nicht kurz vor der Geburt entschieden werden.",
+        "rationale": "Diese Information ermöglicht eine sorgfältige Entscheidungsfindung über dauerhafte Verhütungsmaßnahmen.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Thrombose- und Embolierisiko",
+        "statement": "Das Risiko für eine Lungenembolie ist bei Kaiserschnitt erhöht und kann lebensbedrohlich sein.",
+        "rationale": "Die Patientin muss das erhöhte Risiko für Blutgerinnsel und deren Folgen kennen, um präventive Maßnahmen zu verstehen.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Rückbildungsgymnastik",
+        "statement": "Nach einem Kaiserschnitt ist eine Rückbildungsgymnastik notwendig, um die Bauchmuskulatur zu stärken.",
+        "rationale": "Diese Anweisung hilft der Patientin, die Wichtigkeit von postpartalen Übungen für ihre körperliche Erholung zu erkennen.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Langzeitfolgen für das Kind",
+        "statement": "Kinder mit Kaiserschnittgeburten haben ein erhöhtes Risiko für Asthma oder Diabetes.",
+        "rationale": "Die Patientin sollte über mögliche Langzeitfolgen für das Kind informiert sein, um Risikofaktoren abzuwägen.",
+        "importance": "Medium"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Anästhesieverfahren",
+        "statement": "Der Kaiserschnitt erfolgt in regionaler Betäubung oder Allgemeinanästhesie.",
+        "rationale": "Die Patientin muss wissen, welche Betäubungsverfahren eingesetzt werden und deren Risiken.",
+        "importter": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Uterusruptur bei zukünftigen Geburten",
+        "statement": "Nach einem Kaiserschnitt besteht ein erhöhtes Risiko für eine Uterusruptur bei einer zukünftigen Spontangeburt.",
+        "rationale": "Diese Information ist entscheidend für die Planung zukünftiger Geburten und das Verständnis der Risiken.",
+        "importance": "Critical"
+      }
+    ]
+  }
+}

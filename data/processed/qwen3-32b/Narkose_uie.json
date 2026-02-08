@@ -1,0 +1,139 @@
+{
+  "document": "Narkose",
+  "method": "uie",
+  "model": {
+    "key": "qwen3-32b",
+    "name": "Qwen 3-32B"
+  },
+  "execution_time_seconds": 401.84,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "category": "INSTRUCTION",
+      "statement": "Erwachsene dürfen bis zu 6 Stunden vor der Narkose eine leicht verdauliche kleine Mahlzeit einnehmen und 6–2 Stunden vorher klare Flüssigkeit ohne Fett, feste Bestandteile oder Alkohol trinken. Jugendliche bis 18 Jahren dürfen bis zu 6 Stunden vor der Narkose nicht essen und nur klare Flüssigkeit trinken.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei nicht-nüchternen Patienten kann Mageninhalt in die Lunge gelangen und zu lebensbedrohlichen Komplikationen wie Lungenentzündung oder Lungenschäden führen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Kontaktlinsen, herausnehmbaren Zahnersatz, Schmuck und künstliche Haarteile müssen vor der Anästhesie entfernt werden.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei längerer Verweildauer von Venenverweilkanülen kann es zu schwerwiegenden Infektionen wie Sepsis kommen.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach einem ambulanten Eingriff müssen Sie 24 Stunden lang von einer erwachsenen Person betreut werden und dürfen nicht fahren, Alkohol trinken oder rauchen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei genetisch veranlagten Patienten kann die Gabe von Narkosegas oder muskelentspannenden Mitteln eine lebensbedrohliche Stoffwechselentgleisung mit hohem Fieber auslösen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Der Arzt bespricht mit Ihnen, welche Medikamente Sie vor der Operation absetzen oder ersetzen müssen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Nervenschäden durch Katheter oder Nadeln können zu dauerhaften Empfindungsstörungen oder Lähmungen führen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Bringen Sie Ihre Patientenunterlagen wie Narkosepass, Allergieausweis oder Impfpass mit.",
+      "importance": "Medium"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Melden Sie unverzüglich Beschwerden wie Atemnot, Fieber über 38 °C oder Störungen des Bewusstseins.",
+      "importance": "Critical"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nüchternheitsvorschriften vor der Narkose",
+        "statement": "Erwachsene dürfen bis zu 6 Stunden vor der Narkose eine leicht verdauliche kleine Mahlzeit einnehmen und 6–2 Stunden vorher klare Flüssigkeit ohne Fett, feste Bestandteile oder Alkohol trinken. Jugendliche bis 18 Jahren dürfen bis zu 6 Stunden vor der Narkose nicht essen und nur klare Flüssigkeit trinken.",
+        "importance": "Critical",
+        "rationale": "Die Einhaltung der Nüchternheitsvorschriften ist entscheidend, um das Risiko einer Aspiration (Magenerbrechen in die Lunge) während der Narkose zu minimieren, was lebensbedrohliche Folgen haben kann."
+      },
+      {
+        "category": "RISK",
+        "topic": "Aspirationsgefahr während der Narkose",
+        "statement": "Bei nicht-nüchternen Patienten kann Mageninhalt in die Lunge gelangen und zu lebensbedrohlichen Komplikationen wie Lungenentzündung oder Lungenschäden führen.",
+        "importance": "Critical",
+        "rationale": "Die Aspiration ist eine lebensbedrohliche Komplikation der Narkoseeinleitung und kann durch Nicht-Einhaltung der Nüchternheitsvorschriften verursacht werden."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Entfernen von Gegenständen vor der Narkose",
+        "statement": "Kontaktlinsen, herausnehmbaren Zahnersatz, Schmuck und künstliche Haarteile müssen vor der Anästhesie entfernt werden.",
+        "importance": "High",
+        "rationale": "Diese Maßnahmen verhindern Verletzungen während der Narkoseeinleitung und Operation sowie Störungen durch Fremdkörper bei medizinischen Geräten."
+      },
+      {
+        "category": "RISK",
+        "topic": "Blutvergiftung durch Katheter",
+        "statement": "Bei längerer Verweildauer von Venenverweilkanülen kann es zu schwerwiegenden Infektionen wie Sepsis kommen.",
+        "importance": "High",
+        "rationale": "Eine Blutvergiftung (Sepsis) ist eine lebensbedrohliche Komplikation, die durch Infektionen an Katheterstelle entstehen kann."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nachsorge nach ambulanter Operation",
+        "statement": "Nach einem ambulanten Eingriff müssen Sie 24 Stunden lang von einer erwachsenen Person betreut werden und dürfen nicht fahren, Alkohol trinken oder rauchen.",
+        "importance": "High",
+        "rationale": "Die Nachwirkungen von Betäubungsmitteln beeinträchtigen das Reaktionsvermögen und die Fähigkeit zur Selbstversorgung, was Unfälle oder gesundheitliche Risiken verursachen kann."
+      },
+      {
+        "category": "RISK",
+        "topic": "Maligne Hyperthermie",
+        "statement": "Bei genetisch veranlagten Patienten kann die Gabe von Narkosegas oder muskelentspannenden Mitteln eine lebensbedrohliche Stoffwechselentgleisung mit hohem Fieber auslösen.",
+        "importance": "Critical",
+        "rationale": "Die maligne Hyperthermie ist eine seltene, aber lebensbedrohliche Reaktion auf Anästhetika und erfordert sofortige intensivmedizinische Behandlung."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Medikamentenanpassung vor der Operation",
+        "statement": "Der Arzt bespricht mit Ihnen, welche Medikamente Sie vor der Operation absetzen oder ersetzen müssen.",
+        "importance": "Medium",
+        "rationale": "Die Anpassung von Medikamenten ist erforderlich, um unerwünschte Wechselwirkungen oder Verstärkung von Nebenwirkungen während der Narkose zu vermeiden."
+      },
+      {
+        "category": "RISK",
+        "topic": "Chronische Schmerzen nach Nervenverletzungen",
+        "statement": "Nervenschäden durch Katheter oder Nadeln können zu dauerhaften Empfindungsstörungen oder Lähmungen führen.",
+        "importance": "Medium",
+        "rationale": "Chronische Schmerzen oder Lähmungen sind seltene, aber schwerwiegende Langzeitfolgen von Nervenverletzungen während der Anästhesie."
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Patientenunterlagen mitbringen",
+        "statement": "Bringen Sie Ihre Patientenunterlagen wie Narkosepass, Allergieausweis oder Impfpass mit.",
+        "importance": "Medium",
+        "rationale": "Diese Dokumente sind für die sichere Planung und Durchführung der Anästhesie sowie zur Vermeidung von Allergien oder Kontraindikationen erforderlich."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Verhalten nach der Operation",
+        "statement": "Melden Sie unverzüglich Beschwerden wie Atemnot, Fieber über 38 °C oder Störungen des Bewusstseins.",
+        "importance": "Critical",
+        "rationale": "Diese Symptome können auf lebensbedrohliche Komplikationen wie Infektionen oder Herz-Kreislauf-Störungen hinweisen und erfordern sofortige medizinische Behandlung."
+      }
+    ]
+  }
+}

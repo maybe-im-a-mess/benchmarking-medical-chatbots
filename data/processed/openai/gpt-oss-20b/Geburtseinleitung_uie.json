@@ -1,0 +1,139 @@
+{
+  "document": "Geburtseinleitung",
+  "method": "uie",
+  "model": {
+    "key": "openai/gpt-oss-20b",
+    "name": "GPT-OSS 20B"
+  },
+  "execution_time_seconds": 32.53,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "category": "RISK",
+      "statement": "Wenn die Fruchtblase platzt, steigt das Risiko einer Infektion, die Sie und Ihr Kind gefährden kann.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Nach einem vorangegangenen Kaiserschnitt besteht die Gefahr, dass die Gebärmutter während der Geburt reißt.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Prostaglandinpräparate können zu einer übermäßigen Wehentätigkeit führen, die das Kind mit Sauerstoffmangel gefährden kann.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Oxytocin kann ebenfalls zu einer Überstimulation der Wehen führen, was das Kind schädigen kann.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Die Einlage eines Doppelballonkatheters kann das Risiko einer aufsteigenden Infektion erhöhen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei einer Geburt nach 41 Wochen kann das vermehrte Fruchtwasser in die Atemwege des Kindes gelangen und zu Aspiration führen.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Eine Geburtseinleitung wird ab der vollendeten 41. Schwangerschaftswoche empfohlen, um das Risiko von Komplikationen zu reduzieren.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Ab der vollendeten 42. Schwangerschaftswoche ist eine dringende Geburtseinleitung oder ein Kaiserschnitt zu erwägen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Alle wehenfördernden Mittel müssen ärztlich überwacht werden. Melden Sie sofort, wenn Sie Wehen verspüren oder Blutungen auftreten.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Wir wägen die Gefahren für Ihre Gesundheit und Ihr Kind ab, um gemeinsam mit Ihnen die beste Vorgehensweise zu wählen.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "RISK",
+        "topic": "Infektion nach Fruchtblasensprung",
+        "statement": "Wenn die Fruchtblase platzt, steigt das Risiko einer Infektion, die Sie und Ihr Kind gefährden kann.",
+        "rationale": "Eine Infektion kann zu Fieber, Blutungen und in seltenen Fällen zu einer lebensbedrohlichen Sepsis führen.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Uterusruptur bei früherem Kaiserschnitt",
+        "statement": "Nach einem vorangegangenen Kaiserschnitt besteht die Gefahr, dass die Gebärmutter während der Geburt reißt.",
+        "rationale": "Eine Uterusruptur erfordert einen sofortigen Notfallkaiserschnitt und kann schwere Blutungen sowie Komplikationen für Mutter und Kind verursachen.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Überstimulation durch Prostaglandine",
+        "statement": "Prostaglandinpräparate können zu einer übermäßigen Wehentätigkeit führen, die das Kind mit Sauerstoffmangel gefährden kann.",
+        "rationale": "Eine Überstimulation erfordert häufig eine medikamentöse Hemmung und kann zu Fruchtwasserembolie führen.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Überstimulation durch Oxytocin",
+        "statement": "Oxytocin kann ebenfalls zu einer Überstimulation der Wehen führen, was das Kind schädigen kann.",
+        "rationale": "Eine zu starke Wehentätigkeit kann die Sauerstoffversorgung des Kindes beeinträchtigen und muss ggf. medikamentös gestoppt werden.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Infektionsrisiko bei Ballonkatheter",
+        "statement": "Die Einlage eines Doppelballonkatheters kann das Risiko einer aufsteigenden Infektion erhöhen.",
+        "rationale": "Infektionen können die Geburt verlängern und zusätzliche medizinische Maßnahmen erfordern.",
+        "importance": "Medium"
+      },
+      {
+        "category": "RISK",
+        "topic": "Aspiration bei Terminüberschreitung",
+        "statement": "Bei einer Geburt nach 41 Wochen kann das vermehrte Fruchtwasser in die Atemwege des Kindes gelangen und zu Aspiration führen.",
+        "rationale": "Aspiration kann schwere Atemstörungen, Lungenentzündung und langfristige Schäden verursachen.",
+        "importance": "High"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Induktion bei 41 Wochen",
+        "statement": "Eine Geburtseinleitung wird ab der vollendeten 41. Schwangerschaftswoche empfohlen, um das Risiko von Komplikationen zu reduzieren.",
+        "rationale": "Durch die Induktion kann das Risiko von Infektionen, Übergewicht des Kindes und Geburtserkrankungen verringert werden.",
+        "importance": "High"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Induktion bei 42 Wochen",
+        "statement": "Ab der vollendeten 42. Schwangerschaftswoche ist eine dringende Geburtseinleitung oder ein Kaiserschnitt zu erwägen.",
+        "rationale": "Die Risiken für Mutter und Kind steigen deutlich, daher ist eine frühzeitige Entbindung wichtig.",
+        "importance": "Critical"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Überwachung bei wehenfördernden Mitteln",
+        "statement": "Alle wehenfördernden Mittel müssen ärztlich überwacht werden. Melden Sie sofort, wenn Sie Wehen verspüren oder Blutungen auftreten.",
+        "rationale": "Eine kontinuierliche Überwachung verhindert Komplikationen und ermöglicht rechtzeitige Intervention.",
+        "importance": "High"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Entscheidungsfindung",
+        "statement": "Wir wägen die Gefahren für Ihre Gesundheit und Ihr Kind ab, um gemeinsam mit Ihnen die beste Vorgehensweise zu wählen.",
+        "rationale": "Eine informierte Entscheidung erhöht das Vertrauen und die Zufriedenheit mit der Betreuung.",
+        "importance": "Medium"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "document": "Narkose",
+  "method": "atomic",
+  "model": {
+    "key": "qwen3-32b",
+    "name": "Qwen 3-32B"
+  },
+  "execution_time_seconds": 514.85,
+  "item_count": 10,
+  "extracted_data": [
+    {
+      "category": "PROCEDURE",
+      "statement": "Allgemeine Narkose wird über intravenöse Medikamente oder inhaltliche Gase verabreicht und erfordert eine Venenkanülierung für die Medikamentenzufuhr.",
+      "importance": "High"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Regionale Anästhesie umfasst Injektionen von Lokalanästhetika in der Nähe von Nerven (z.B. Lumbalpunksion für Spinalanästhesie).",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei allgemeiner Narkose besteht ein Aspirationsrisiko durch Mageninhalt in die Lunge, was zu Pneumonie oder Lungenschäden führen kann.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Regionale Anästhesie kann zu Nervenverletzungen führen, die temporäre oder dauerhafte Taubheit/Muskelschwäche verursachen können.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Patienten müssen vor der Operation ≥6 Stunden nüchtern sein (Erwachsene) oder 1 Stunde bei klaren Flüssigkeiten bleiben.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Nach ambulanter Operation benötigen Patienten einen Erwachsenen, der sie ≥24 Stunden betreut und Alkohol/Entscheidungen vermeiden.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Patienten müssen über alternative Verfahren und off-label Medikamentenrisiken informiert werden.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Spinalanästhesie kann es zu postlumbalen Kopfschmerzen kommen, die eine Blutauflage erfordern.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Brachialplexusblockaden werden über axilläre/infrascapuläre/Supraklavikularansätze mit Ultraschallkontrolle durchgeführt.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Patienten müssen vor der Operation ihre Allergie- und Anästhesiegeschichte sowie Implantate (z.B. Herzschrittmacher) angeben.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message_stage1": "Extract key medical facts from text. Each fact should be a single, independent statement. Focus on: risks, contraindications, procedures, patient requirements, and informed consent items. List as bullet points. Be comprehensive and include all relevant details.",
+    "system_message_stage2": "Group the atomic facts into categories for a patient consultation.\nReturn a JSON array of objects with these fields:\n- 'category': Select one: 'RISK', 'PROCEDURE', 'INSTRUCTION', 'GENERAL'\n- 'statement': The consolidated medical fact\n- 'importance': Rate medical importance ('Critical', 'High', 'Medium', 'Low')\n\nLANGUAGE: German.",
+    "temperature": 0.3,
+    "two_stage": true
+  }
+}

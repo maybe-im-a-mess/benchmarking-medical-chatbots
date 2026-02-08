@@ -1,0 +1,115 @@
+{
+  "document": "Narkose",
+  "method": "uie",
+  "model": {
+    "key": "openai/gpt-oss-20b",
+    "name": "GPT-OSS 20B"
+  },
+  "execution_time_seconds": 30.98,
+  "item_count": 8,
+  "extracted_data": [
+    {
+      "category": "INSTRUCTION",
+      "statement": "Sie dürfen bis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit zu sich nehmen, danach nur noch klare Flüssigkeit ohne Fett, feste Bestandteile oder Alkohol.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Das Rauchen erhöht grundsätzlich die Risiken der Anästhesie und Operation, z. B. das Risiko von Lungenentzündungen, Durchblutungsstörungen und Herz‑Kreislauf-Problemen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Wenn Mageninhalt in die Lunge gelangt (Aspiration), kann dies lebensgefährliche Folgen haben, z. B. Lungenentzündung oder Lungenversagen.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Ein krampfartiger Verschluss der Luftwege kann bei Einführung des Tubus auftreten und erfordert in Ausnahmefällen eine intensivmedizinische Behandlung.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Durch Nadeln, Kanülen oder Katheter können vorübergehende oder in seltenen Fällen dauerhafte Nervenverletzungen entstehen, die Schmerzen, Taubheitsgefühl und Bewegungseinschränkungen verursachen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Bei der Intubationsanästhesie wird ein Beatmungsschlauch (Tubus) durch Mund oder Nase in die Luftröhre eingeführt, um das Risiko einer Aspiration zu verringern.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Sie sollten zunächst nicht allein aufstehen, Ihre Bewegungsfreiheit vorübergehend einschränken und bei Atem‑ oder Kreislaufstörungen sofort einen Arzt verständigen.",
+      "importance": "High"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell absetzen oder ersetzen müssen.",
+      "importance": "Medium"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nüchternheitsregeln vor der Anästhesie",
+        "statement": "Sie dürfen bis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit zu sich nehmen, danach nur noch klare Flüssigkeit ohne Fett, feste Bestandteile oder Alkohol.",
+        "rationale": "Die Nüchternheit reduziert das Risiko einer Aspiration während der Anästhesie.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Rauchen vor der Anästhesie",
+        "statement": "Das Rauchen erhöht grundsätzlich die Risiken der Anästhesie und Operation, z. B. das Risiko von Lungenentzündungen, Durchblutungsstörungen und Herz‑Kreislauf-Problemen.",
+        "rationale": "Patienten sollten wissen, dass Rauchen die Komplikationsrate erhöht und daher vor dem Eingriff vermieden werden sollte.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Aspiration",
+        "statement": "Wenn Mageninhalt in die Lunge gelangt (Aspiration), kann dies lebensgefährliche Folgen haben, z. B. Lungenentzündung oder Lungenversagen.",
+        "rationale": "Aspiration ist eine schwerwiegende Komplikation, die sofortige medizinische Behandlung erfordert.",
+        "importance": "Critical"
+      },
+      {
+        "category": "RISK",
+        "topic": "Laryngo-/Bronchospasmus",
+        "statement": "Ein krampfartiger Verschluss der Luftwege kann bei Einführung des Tubus auftreten und erfordert in Ausnahmefällen eine intensivmedizinische Behandlung.",
+        "rationale": "Diese Komplikation kann die Atmung unmittelbar gefährden und muss dem Patienten bewusst gemacht werden.",
+        "importance": "High"
+      },
+      {
+        "category": "RISK",
+        "topic": "Nervenverletzungen bei Regionalanästhesie",
+        "statement": "Durch Nadeln, Kanülen oder Katheter können vorübergehende oder in seltenen Fällen dauerhafte Nervenverletzungen entstehen, die Schmerzen, Taubheitsgefühl und Bewegungseinschränkungen verursachen.",
+        "rationale": "Patienten sollten über mögliche neurologische Nebenwirkungen informiert sein, um Symptome frühzeitig zu erkennen.",
+        "importance": "Medium"
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Intubation bei Allgemeinanästhesie",
+        "statement": "Bei der Intubationsanästhesie wird ein Beatmungsschlauch (Tubus) durch Mund oder Nase in die Luftröhre eingeführt, um das Risiko einer Aspiration zu verringern.",
+        "rationale": "Der Patient muss wissen, welche Technik angewendet wird und warum sie wichtig ist.",
+        "importance": "High"
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Nachsorge nach Anästhesie",
+        "statement": "Sie sollten zunächst nicht allein aufstehen, Ihre Bewegungsfreiheit vorübergehend einschränken und bei Atem‑ oder Kreislaufstörungen sofort einen Arzt verständigen.",
+        "rationale": "Sicherheit und frühzeitige Erkennung von Komplikationen sind entscheidend für die postoperative Genesung.",
+        "importance": "High"
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Medikamentenwechsel vor der Anästhesie",
+        "statement": "Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell absetzen oder ersetzen müssen.",
+        "rationale": "Ein korrektes Medikamentenmanagement reduziert Risiken während der Anästhesie.",
+        "importance": "Medium"
+      }
+    ]
+  }
+}

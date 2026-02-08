@@ -1,0 +1,175 @@
+{
+  "document": "Äußere Wendung",
+  "method": "uie",
+  "model": {
+    "key": "openai/gpt-oss-20b",
+    "name": "GPT-OSS 20B"
+  },
+  "execution_time_seconds": 35.1,
+  "item_count": 13,
+  "extracted_data": [
+    {
+      "category": "GENERAL",
+      "statement": "Die äußere Wendung dient dazu, das Kind in die Schädellage zu bringen, damit eine spontane vaginale Geburt möglich ist.",
+      "importance": "Medium"
+    },
+    {
+      "category": "PROCEDURE",
+      "statement": "Die Wendung erfolgt in der Regel im Krankenhaus, meist ambulant. Vor Beginn werden Blutwerte bestimmt, eine Infusionskanüle gelegt und ggf. ein wehenhemmendes Mittel verabreicht.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Sie sollten einige Stunden vor der geplanten Wendung nichts essen und trinken, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Während des Manövers kann es hilfreich sein, sich auf die Seite zu legen und Ihre Position zu verändern.",
+      "importance": "Medium"
+    },
+    {
+      "category": "RISK",
+      "statement": "Ein sofortiger Not-Kaiserschnitt kann erforderlich werden, wenn sich die Herzfrequenz des Kindes ändert, Blutungen auftreten oder die Nabelschnur betroffen ist.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Während der Wendung werden die kindlichen Herztöne überwacht; ein Abfall kann mit Medikamenten behandelt oder ein Kaiserschnitt notwendig machen.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Es können Blutungen auftreten, die je nach Stärke einen Kaiserschnitt oder eine weitere Beobachtung erfordern.",
+      "importance": "High"
+    },
+    {
+      "category": "RISK",
+      "statement": "Eine allergische Reaktion auf Medikamente oder Latex kann zu einem Kreislaufschock führen, der intensivmedizinisch behandelt werden muss.",
+      "importance": "Critical"
+    },
+    {
+      "category": "RISK",
+      "statement": "Bei Rhesus-negativen Schwangeren kann eine Übertragung kindlicher Blutzellen in den mütterlichen Kreislauf zu einer Immunreaktion führen.",
+      "importance": "High"
+    },
+    {
+      "category": "INSTRUCTION",
+      "statement": "Sie erhalten eine Impfung, die eine mögliche Sensibilisierung verhindert und Sie vor Rhesuskomplikationen schützt.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Die Erfolgsrate ist am höchsten in der 37. oder 38. Schwangerschaftswoche, kann aber auch früher oder später erfolgen.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Nach erfolgreicher Wendung werden die Herztöne des Kindes für einige Zeit überwacht und ggf. ein Stützgurtband angelegt.",
+      "importance": "Medium"
+    },
+    {
+      "category": "GENERAL",
+      "statement": "Methoden wie Akupunktur, Moxibustion oder Homöopathie sind nicht wissenschaftlich belegt und können dennoch zum Erfolg führen.",
+      "importance": "Low"
+    }
+  ],
+  "metadata": {
+    "system_message": "You are a strict data extraction system. Your task is to extract medical statements that should be communicated with the patient. These statements represent information for patient consultation. Structure them exactly according to the provided JSON Schema.\n\nSCHEMA DEFINITION:\n{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"category\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"RISK\",\n          \"PROCEDURE\",\n          \"INSTRUCTION\",\n          \"GENERAL\"\n        ]\n      },\n      \"topic\": {\n        \"type\": \"string\"\n      },\n      \"statement\": {\n        \"type\": \"string\"\n      },\n      \"rationale\": {\n        \"type\": \"string\"\n      },\n      \"importance\": {\n        \"type\": \"string\",\n        \"enum\": [\n          \"Critical\",\n          \"High\",\n          \"Medium\",\n          \"Low\"\n        ]\n      }\n    },\n    \"required\": [\n      \"category\",\n      \"topic\",\n      \"statement\",\n      \"importance\"\n    ]\n  }\n}\n\nRULES:\n1. Classify each statement into one of the allowed categories: RISK, PROCEDURE, INSTRUCTION, GENERAL.\n2. Assign an IMPORTANCE level based on patient safety: Critical, High, Medium, or Low.\n3. Provide a rationale explaining why this statement should be discussed with the patient.\n4. Do not include conversational filler. Output ONLY the JSON array.\n\nLANGUAGE: Output all statements and rationales in German, maintaining the original medical terminology from the source document.",
+    "temperature": 0.3,
+    "schema_guided": true,
+    "raw_structured_data": [
+      {
+        "category": "GENERAL",
+        "topic": "Zweck der äußeren Wendung",
+        "statement": "Die äußere Wendung dient dazu, das Kind in die Schädellage zu bringen, damit eine spontane vaginale Geburt möglich ist.",
+        "importance": "Medium",
+        "rationale": "Der Patient muss verstehen, warum die Wendung empfohlen wird und welche Vorteile sie hat."
+      },
+      {
+        "category": "PROCEDURE",
+        "topic": "Durchführung der äußeren Wendung",
+        "statement": "Die Wendung erfolgt in der Regel im Krankenhaus, meist ambulant. Vor Beginn werden Blutwerte bestimmt, eine Infusionskanüle gelegt und ggf. ein wehenhemmendes Mittel verabreicht.",
+        "importance": "High",
+        "rationale": "Der Patient muss über die Vorbereitung und den Ablauf informiert sein, um sich sicher zu fühlen."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Vorbereitung auf die Wendung",
+        "statement": "Sie sollten einige Stunden vor der geplanten Wendung nichts essen und trinken, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind.",
+        "importance": "High",
+        "rationale": "Eine nüchterne Magengrundlage ist wichtig für die Sicherheit bei einer möglichen Narkose."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Positionierung während der Wendung",
+        "statement": "Während des Manövers kann es hilfreich sein, sich auf die Seite zu legen und Ihre Position zu verändern.",
+        "importance": "Medium",
+        "rationale": "Die richtige Körperhaltung kann die Wirksamkeit der Wendung erhöhen und Beschwerden reduzieren."
+      },
+      {
+        "category": "RISK",
+        "topic": "Notfall-Kaiserschnitt",
+        "statement": "Ein sofortiger Not-Kaiserschnitt kann erforderlich werden, wenn sich die Herzfrequenz des Kindes ändert, Blutungen auftreten oder die Nabelschnur betroffen ist.",
+        "importance": "Critical",
+        "rationale": "Der Patient muss die Notfallsituation kennen, um im Ernstfall ruhig zu bleiben."
+      },
+      {
+        "category": "RISK",
+        "topic": "Herztöne des Kindes",
+        "statement": "Während der Wendung werden die kindlichen Herztöne überwacht; ein Abfall kann mit Medikamenten behandelt oder ein Kaiserschnitt notwendig machen.",
+        "importance": "High",
+        "rationale": "Die Überwachung der Herztöne ist entscheidend für die Sicherheit des Kindes."
+      },
+      {
+        "category": "RISK",
+        "topic": "Blutungen aus der Scheide",
+        "statement": "Es können Blutungen auftreten, die je nach Stärke einen Kaiserschnitt oder eine weitere Beobachtung erfordern.",
+        "importance": "High",
+        "rationale": "Blutungen sind ein ernstes Risiko, das der Patient verstehen muss."
+      },
+      {
+        "category": "RISK",
+        "topic": "Allergische Reaktion",
+        "statement": "Eine allergische Reaktion auf Medikamente oder Latex kann zu einem Kreislaufschock führen, der intensivmedizinisch behandelt werden muss.",
+        "importance": "Critical",
+        "rationale": "Allergien können lebensbedrohlich sein und erfordern sofortige Aufmerksamkeit."
+      },
+      {
+        "category": "RISK",
+        "topic": "Fetomaternal Transfusion",
+        "statement": "Bei Rhesus-negativen Schwangeren kann eine Übertragung kindlicher Blutzellen in den mütterlichen Kreislauf zu einer Immunreaktion führen.",
+        "importance": "High",
+        "rationale": "Die Gefahr einer Immunreaktion ist für die Mutter und zukünftige Schwangerschaften relevant."
+      },
+      {
+        "category": "INSTRUCTION",
+        "topic": "Rhesus-negative Schwangere",
+        "statement": "Sie erhalten eine Impfung, die eine mögliche Sensibilisierung verhindert und Sie vor Rhesuskomplikationen schützt.",
+        "importance": "Medium",
+        "rationale": "Die Impfung ist ein wichtiger Schutzmechanismus, den der Patient kennen sollte."
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Erfolgsrate der Wendung",
+        "statement": "Die Erfolgsrate ist am höchsten in der 37. oder 38. Schwangerschaftswoche, kann aber auch früher oder später erfolgen.",
+        "importance": "Medium",
+        "rationale": "Der Patient sollte realistische Erwartungen an die Wirksamkeit haben."
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Nach der Wendung",
+        "statement": "Nach erfolgreicher Wendung werden die Herztöne des Kindes für einige Zeit überwacht und ggf. ein Stützgurtband angelegt.",
+        "importance": "Medium",
+        "rationale": "Information über die Nachsorge hilft dem Patienten, sich auf den weiteren Verlauf einzustellen."
+      },
+      {
+        "category": "GENERAL",
+        "topic": "Alternativmethoden",
+        "statement": "Methoden wie Akupunktur, Moxibustion oder Homöopathie sind nicht wissenschaftlich belegt und können dennoch zum Erfolg führen.",
+        "importance": "Low",
+        "rationale": "Der Patient sollte wissen, dass alternative Ansätze existieren, aber ihre Wirksamkeit unsicher ist."
+      }
+    ]
+  }
+}
