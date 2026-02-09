@@ -15,7 +15,10 @@ def generate_single_conversation(document_store,
                                  doc_model: str,
                                  pat_model: str,
                                  max_turns: int,
-                                 conversation_id: int = 1
+                                 conversation_id: int = 1,
+                                 min_turns: int = 4,
+                                 mandatory_questions_path: str = "data/mandatory_questions.json",
+                                 mode: str = "active"
                                  ):
     doctor = DoctorAgent(document_store, doc_model)
     patient = create_patient(procedure_name=procedure_name,
@@ -28,8 +31,10 @@ def generate_single_conversation(document_store,
         doctor_agent=doctor,
         patient_agent=patient,
         max_turns=max_turns,
-        min_turns=4,
-        procedure_name=procedure_name
+        min_turns=min_turns,
+        procedure_name=procedure_name,
+        mandatory_questions_path=mandatory_questions_path,
+        mode=mode
     )
     
     conversation_log = manager.run_conversation()
@@ -52,6 +57,9 @@ def generate_conversation_dataset(document_store,
                                   doc_model: str = "gpt-5-mini",
                                   pat_model: str = "gpt-5-mini",
                                   max_turns: int = 8,
+                                  min_turns: int = 4,
+                                  mandatory_questions_path: str = "data/mandatory_questions.json",
+                                  mode: str = "active",
                                   ):
     """
     Generate a dataset of conversations with different patients.
@@ -83,7 +91,10 @@ def generate_conversation_dataset(document_store,
                     doc_model=doc_model,
                     pat_model=pat_model,
                     max_turns=max_turns,
-                    conversation_id=conversation_id
+                    conversation_id=conversation_id,
+                    min_turns=min_turns,
+                    mandatory_questions_path=mandatory_questions_path,
+                    mode=mode
                 )
                 
                 all_conversations.append({
@@ -146,5 +157,8 @@ if __name__ == "__main__":
         document_store=document_store,
         procedures=procedures,
         persona_types=persona_types,
-        max_turns=8
+        max_turns=8,
+        min_turns=4,
+        mandatory_questions_path="data/mandatory_questions.json",
+        mode="active"
     )

@@ -1,6 +1,4 @@
-from haystack import Pipeline
-from haystack.components.builders import PromptBuilder
-from haystack.components.generators import OpenAIGenerator  # or HuggingFaceAPIGenerator
+from haystack.components.generators import OpenAIChatGenerator
 from haystack.utils import Secret
 import os
 from dotenv import load_dotenv
@@ -26,69 +24,74 @@ class DoctorAgent:
         self.mandatory_questions_asked = set()
         self.topics_discussed = set()
         self.turn_count = 0
+        self.history_max_messages = 8
         
         # Initialize retriever
         self.retriever = DocumentRetriever(document_store, top_k=3)
         
-        # Build RAG pipeline
-        self.pipeline = self._build_pipeline()
+        # Build generator
+        self.generator = self._build_generator()
+        self.core_rules = (
+            "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, "
+            "streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass "
+            "der Patient den medizinischen Eingriff vollständig versteht.\n\n"
+            "REGELN:\n"
+            "- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n"
+            "- Sei einfühlsam und verwende verständliche Sprache\n"
+            "- Wenn du etwas bereits erklärt hast, verweise kurz darauf statt es zu wiederholen\n"
+            "- Halte deine Antwort fokussiert (max 300 Wörter)\n"
+            "- Sei präzise und medizinisch korrekt\n\n"
+            "WICHTIG - ZITIERREGELN (STRIKTE BEFOLGUNG):\n"
+            "1. Du darfst NUR Informationen verwenden, die im untenstehenden 'MEDIZINISCHER KONTEXT' stehen.\n"
+            "2. JEDE medizinische Aussage muss mit einer [Quelle X] belegt werden.\n"
+            "3. Wenn die Antwort nicht im Kontext steht, sage: 'Dazu habe ich keine Informationen in den Unterlagen.'\n"
+            "4. Erfinde KEINE Fakten."
+        )
     
-    def _build_pipeline(self):
-        """Build the complete RAG pipeline: retrieval + prompt + generation"""
-        
-        # System prompt for medical context
-        prompt_template = """Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.
-
-REGELN:
-- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext
-- Sei einfühlsam und verwende verständliche Sprache
-- Wenn du etwas bereits erklärt hast, verweise kurz darauf statt es zu wiederholen
-- Halte deine Antwort fokussiert (max 300 Wörter)
-- Sei präzise und medizinisch korrekt
-
-WICHTIG - QUELLENANGABEN:
-- Wenn du Informationen aus dem Kontext verwendest, füge eine Referenz ein: [Quelle X]
-- Nutze die Quellennummern aus dem Kontext unten
-- Beispiel: "Die Narkose dauert etwa 2-3 Stunden [Quelle 1]. Dabei werden Sie kontinuierlich überwacht [Quelle 2]."
-- Gib NUR Quellen an, die du tatsächlich verwendet hast
-
-MEDIZINISCHER KONTEXT MIT QUELLEN:
-{% for doc in documents %}
-[Quelle {{ loop.index }}]:
-{{ doc.content }}
-Dokument: {{ doc.meta.file_path if doc.meta.file_path else "Unbekannt" }}
----
-{% endfor %}
-
-{% if conversation_history %}
-BISHERIGE KONVERSATION:
-{{ conversation_history }}
-{% endif %}
-
-PATIENTENFRAGE: {{ question }}
-
-ANTWORT (mit Quellenangaben [Quelle X]):"""
-        
-        pipeline = Pipeline()
-        
-        # Prompt builder
-        pipeline.add_component("prompt_builder", PromptBuilder(
-            template=prompt_template,
-            required_variables=["documents", "question"]
-        ))
-        
-        # LLM Generator
-        pipeline.add_component("generator", OpenAIGenerator(
+    def _build_generator(self):
+        """Build the chat generator."""
+        return OpenAIChatGenerator(
             api_key=Secret.from_token(os.getenv("OPENAI_API_KEY")),
             model=self.model,
             generation_kwargs={
-                "max_completion_tokens": 2000
+                "max_completion_tokens": 2000,
+                "temperature": 0.3
             }
-        ))
-        
-        pipeline.connect("prompt_builder", "generator")
-        
-        return pipeline
+        )
+
+    def _format_documents(self, documents) -> str:
+        parts = ["MEDIZINISCHER KONTEXT:"]
+        for idx, doc in enumerate(documents, 1):
+            parts.append("---")
+            parts.append(f"[Quelle {idx}]")
+            parts.append(f"(Datei: {doc.meta.get('file_path', 'Unknown')})")
+            parts.append("INHALT:")
+            parts.append(doc.content)
+            parts.append("---")
+        return "\n".join(parts)
+
+    def _build_messages(self, patient_message: str, retrieved_docs, extra_system_instructions: str) -> list:
+        messages = []
+
+        # Layer 1 — core identity
+        messages.append({"role": "system", "content": self.core_rules})
+
+        # Layer 2 — experiment condition
+        if extra_system_instructions:
+            messages.append({"role": "system", "content": extra_system_instructions})
+
+        # Layer 3 — RAG context
+        messages.append({"role": "system", "content": self._format_documents(retrieved_docs)})
+
+        # Layer 4 — conversation history (JSON-style list of messages)
+        if self.conversation_history:
+            history = self.conversation_history[-self.history_max_messages:]
+            messages.extend(history)
+
+        # Layer 5 — new question
+        messages.append({"role": "user", "content": patient_message})
+
+        return messages
     
     def _extract_citations(self, response_text: str) -> dict:
         """
@@ -113,16 +116,7 @@ ANTWORT (mit Quellenangaben [Quelle X]):"""
             "response_with_citations": response_text
         }
     
-    def _format_conversation_history(self) -> str:
-        """Format conversation history for prompt."""
-        formatted = []
-        for msg in self.conversation_history[-6:]:  # Last 3 exchanges
-            role = msg["role"]
-            content = msg["content"][:200]  # Truncate long messages
-            formatted.append(f"{role.upper()}: {content}")
-        return "\n".join(formatted)
-    
-    def respond(self, patient_message):
+    def respond(self, patient_message, extra_system_instructions: str = ""):
         """
         Generate response to patient question.
         
@@ -135,28 +129,15 @@ ANTWORT (mit Quellenangaben [Quelle X]):"""
         self.turn_count += 1
 
         try:
-            # Add patient message to history
-            self.conversation_history.append({
-                "role": "Patient",
-                "content": patient_message
-            })
-            
             # Step 1: Retrieve relevant documents
             retrieved_docs = self.retriever.retrieve(patient_message)
             
-            # Step 2: Format conversation history
-            conv_history = self._format_conversation_history()
-            
+            # Step 2: Build layered messages
+            messages = self._build_messages(patient_message, retrieved_docs, extra_system_instructions)
+
             # Step 3: Generate response with full context
-            result = self.pipeline.run({
-                "prompt_builder": {
-                    "documents": retrieved_docs,
-                    "question": patient_message,
-                    "conversation_history": conv_history,
-                }
-            })
-            
-            response = result["generator"]["replies"][0]
+            result = self.generator.run(messages=messages)
+            response = result["replies"][0]
 
             # Step 4: Extract citation information
             citation_info = self._extract_citations(response) 
@@ -174,9 +155,13 @@ ANTWORT (mit Quellenangaben [Quelle X]):"""
                         "score": doc.score
                     })
             
-            # Add doctor response to history
+            # Add patient/doctor messages to history (JSON-style)
             self.conversation_history.append({
-                "role": "Doctor",
+                "role": "user",
+                "content": patient_message
+            })
+            self.conversation_history.append({
+                "role": "assistant",
                 "content": response
             })
             
@@ -201,6 +186,8 @@ ANTWORT (mit Quellenangaben [Quelle X]):"""
                     "turn": self.turn_count,
                     "num_chunks": len(retrieved_docs),
                     "top_score": retrieved_docs[0].score if retrieved_docs else None,
+                    "citation_missing": citation_info["citation_count"] == 0,
+                    "prompt_messages": messages
                 }
             }
         
