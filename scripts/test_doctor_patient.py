@@ -13,15 +13,15 @@ from chatbot.embeddings import load_document_store
 if __name__ == "__main__":
     # Test run the conversation
     doc_store = load_document_store()
-    doctor = DoctorAgent(doc_store, model="gpt-5-mini")
-    patient = create_patient("low_education", procedure_name="Narkose", model="gpt-5-mini")
+    chatbot = DoctorAgent(doc_store, model="gpt-5-mini")
+    patient = create_patient("baseline", procedure_name="Narkose", model="gpt-5-mini")
 
-    print("=== Doctor-Patient Conversation Test ===\n")
+    print("=== Chatbot-Patient Conversation Test ===\n")
     
     question = patient.ask_question()
     print(f"Patient ({patient.persona.name}, {patient.persona.age}): {question}\n")
     
-    response = doctor.respond(question)
-    print(f"Doctor: {response['response']}\n")
+    response = chatbot.respond(question)
+    print(f"Chatbot: {response['response']}\n")
 
     

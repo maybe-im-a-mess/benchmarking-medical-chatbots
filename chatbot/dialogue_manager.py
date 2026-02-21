@@ -8,11 +8,11 @@ from pathlib import Path
 
 class DialogueManager:
     """
-    Manages the conversation flow between doctor and patient agents.
+    Manages the conversation flow between chatbot and patient agents.
     Tracks mandatory questions, conversation state, and generates conversation logs.
     """
     def __init__(self, 
-                 doctor_agent, 
+                 chatbot_agent, 
                  patient_agent, 
                  max_turns: int = 10, 
                  min_turns: int = 5,
@@ -21,13 +21,13 @@ class DialogueManager:
                  mode: str = "active"):
         """
         Parameters:
-            doctor_agent: The DoctorAgent instance
+            chatbot_agent: The chatbot agent instance
             patient_agent: The PatientAgent instance
             max_turns: Maximum conversation turns
             min_turns: Minimum turns before ending
             procedure_name: Medical procedure being discussed
         """
-        self.doctor = doctor_agent
+        self.chatbot = chatbot_agent
         self.patient = patient_agent
         self.max_turns = max_turns
         self.min_turns = min_turns
@@ -191,7 +191,7 @@ class DialogueManager:
     
     def run_conversation(self) -> List[Dict]:
         """
-        Run the complete conversation between the doctor and the patient agents.
+        Run the complete conversation between the chatbot and the patient agents.
 
         Returns:
             dict: Complete conversation log with metadata
@@ -205,17 +205,15 @@ class DialogueManager:
             self.turn_count += 1
             print(f"--- Turn {self.turn_count}/{self.max_turns} ---")
 
-            # Get previous doctor response from history (if any)
+            # Get previous chatbot response from history (if any)
             previous_response = None
             if self.conversation_history:
-                previous_response = self.conversation_history[-1]["doctor_response"]
+                previous_response = self.conversation_history[-1]["chatbot_response"]
 
 
             #Patient asks a question
             patient_question = self.patient.ask_question(previous_response)
             print(f"Patient: {patient_question}\n")
-
-            # TODO: check topic coverage
 
             # Ask mandatory question naturally when it fits
             pending_questions = []
@@ -270,28 +268,28 @@ class DialogueManager:
                 else:
                     extra_system_instructions = f"Pflichtfragen-Liste:\n{mandatory_list}" if mandatory_list else ""
 
-            # Doctor responds
-            doctor_response_data = self.doctor.respond(
+            # Chatbot responds
+            chatbot_response_data = self.chatbot.respond(
                 patient_question,
                 extra_system_instructions=extra_system_instructions
             )
-            doctor_response = doctor_response_data["response"]
-            retrieved_chunks = doctor_response_data["retrieved_chunks"]
-            citations = doctor_response_data.get("citations", {})
+            chatbot_response = chatbot_response_data["response"]
+            retrieved_chunks = chatbot_response_data["retrieved_chunks"]
+            citations = chatbot_response_data.get("citations", {})
             
-            print(f"Doctor: {doctor_response}\n")
+            print(f"Chatbot: {chatbot_response}\n")
             print(f"[Retrieved {len(retrieved_chunks)} chunks]\n")
 
             # Log the turn
             turn_data = {
                 "turn": self.turn_count,
                 "patient_question": patient_question,
-                "doctor_response": doctor_response,
+                "chatbot_response": chatbot_response,
                 "mandatory_question": mandatory_question_asked,
                 "supervisor_triggered": supervisor_triggered,
                 "intervention_type": intervention_type,
                 "citations": citations,
-                "prompt_messages": doctor_response_data.get("metadata", {}).get("prompt_messages"),
+                "prompt_messages": chatbot_response_data.get("metadata", {}).get("prompt_messages"),
                 "retrieved_chunks": [
                     {
                         "content": chunk["content"],
@@ -339,7 +337,7 @@ class DialogueManager:
                     "education_level": self.patient.persona.education_level,
                     "language": self.patient.persona.language
                 },
-                "doctor_model": self.doctor.model,
+                "chatbot_model": self.chatbot.model,
                 "patient_model": self.patient.model,
                 "total_turns": self.turn_count,
                 "conversation_date": datetime.now().isoformat()
@@ -347,9 +345,9 @@ class DialogueManager:
             "conversation": self.conversation_history,
             "summary": {
                 "total_patient_questions": len(self.conversation_history),
-                "total_doctor_responses": len(self.conversation_history),
+                "total_chatbot_responses": len(self.conversation_history),
                 "avg_response_length": sum(
-                    len(turn["doctor_response"]) 
+                    len(turn["chatbot_response"]) 
                     for turn in self.conversation_history
                 ) / len(self.conversation_history) if self.conversation_history else 0,
                 "total_citations": total_citations,
@@ -377,11 +375,11 @@ if __name__ == "__main__":
     doc_store = load_document_store()
     
     print("Initializing agents...")
-    doctor = DoctorAgent(doc_store, model="gpt-5-mini")
+    chatbot = DoctorAgent(doc_store, model="gpt-5-mini")
     patient = create_patient("middle_aged", procedure_name="Narkose")
     
     # Run conversation
-    manager = DialogueManager(doctor, patient, max_turns=3, min_turns=1)
+    manager = DialogueManager(chatbot, patient, max_turns=3, min_turns=1)
     conversation = manager.run_conversation()
     
     # Save conversation

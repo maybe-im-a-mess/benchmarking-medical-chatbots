@@ -20,7 +20,7 @@ def generate_single_conversation(document_store,
                                  mandatory_questions_path: str = "data/mandatory_questions.json",
                                  mode: str = "active"
                                  ):
-    doctor = DoctorAgent(document_store, doc_model)
+    chatbot = DoctorAgent(document_store, doc_model)
     patient = create_patient(procedure_name=procedure_name,
                                  persona_type=persona_type,
                                  model=pat_model,
@@ -28,7 +28,7 @@ def generate_single_conversation(document_store,
         
     # Run conversation
     manager = DialogueManager(
-        doctor_agent=doctor,
+        chatbot_agent=chatbot,
         patient_agent=patient,
         max_turns=max_turns,
         min_turns=min_turns,
@@ -40,8 +40,7 @@ def generate_single_conversation(document_store,
     conversation_log = manager.run_conversation()
     
     # Generate filename
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"conversation_{conversation_id}_{persona_type}_{timestamp}.json"
+    filename = f"{procedure_name}_{mode}_{persona_type}_{conversation_id:03d}.json"
     filepath = os.path.join("data", "conversations", filename)
     
     # Save conversation
@@ -68,7 +67,7 @@ def generate_conversation_dataset(document_store,
         document_store: Loaded document store for retrieval
         persona_types: List of patient persona types to simulate
         procedures: List of medical procedures to discuss
-        doc_model: Doctor LLM model
+        doc_model: Chatbot LLM model
         pat_model: Patient LLM model
         max_turns: Maximum turns per conversation
     """
@@ -99,6 +98,7 @@ def generate_conversation_dataset(document_store,
                 
                 all_conversations.append({
                     "id": conversation_id,
+                    "procedure": procedure,
                     "persona": persona_type,
                     "filepath": filepath,
                     "turns": conv_log["metadata"]["total_turns"]
@@ -121,13 +121,7 @@ def generate_conversation_dataset(document_store,
     print(f"\nTotal conversations generated: {len(all_conversations)}")
     print(f"Saved in: data/conversations/")
     
-    # Save index file
-    index_path = "data/conversations/conversation_index.json"
-    import json
-    with open(index_path, 'w') as f:
-        json.dump(all_conversations, f, indent=2)
-    
-    print(f"\nConversation index saved to {index_path}")
+    return all_conversations
     
     
 if __name__ == "__main__":
@@ -145,20 +139,38 @@ if __name__ == "__main__":
     ]
     
     persona_types = [
-        "young_educated",
-        "elderly_medium",
-        "middle_aged",
-        "low_education",
-        "detail_oriented"
+        "baseline",               # Control
+        "induction_risk",         # Tests C-section history trap
+        "anesthesia_risk",        # Tests fasting/teeth trap
+        "version_contraindication", # Tests bleeding trap
+        "allergy_risk"            # Tests allergy trap
     ]
     
+    master_index = []
+
     # Generate full dataset
-    generate_conversation_dataset(
-        document_store=document_store,
-        procedures=procedures,
-        persona_types=persona_types,
-        max_turns=8,
-        min_turns=4,
-        mandatory_questions_path="data/mandatory_questions.json",
-        mode="active"
-    )
+    for mode in ["passive", "active"]:
+        print(f"\n{'='*70}")
+        print(f"GENERATING DATASET WITH MODE: {mode.upper()}")
+        print(f"{'='*70}\n")
+        
+        mode_conversations = generate_conversation_dataset(
+            document_store=document_store,
+            procedures=procedures,
+            persona_types=persona_types,
+            max_turns=8,
+            min_turns=4,
+            mandatory_questions_path="data/mandatory_questions.json",
+            mode=mode
+        )
+        
+        for conv in mode_conversations:
+            conv["mode"] = mode
+            master_index.append(conv)
+    
+    # Save master index
+    import json
+    with open("data/conversations/conversation_index_all.json", 'w') as f:
+        json.dump(master_index, f, indent=2)
+    
+    print(f"\n✓ Master index: {len(master_index)} conversations")

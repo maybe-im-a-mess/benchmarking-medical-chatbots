@@ -1,5 +1,6 @@
-from haystack.components.generators import OpenAIChatGenerator
+from haystack.components.generators.chat import OpenAIChatGenerator
 from haystack.utils import Secret
+from haystack.dataclasses import ChatMessage
 import os
 from dotenv import load_dotenv
 from chatbot.retrieval import DocumentRetriever
@@ -21,10 +22,8 @@ class DoctorAgent:
         
         # Conversation state
         self.conversation_history = []
-        self.mandatory_questions_asked = set()
-        self.topics_discussed = set()
         self.turn_count = 0
-        self.history_max_messages = 8
+        self.history_max_messages = 20
         
         # Initialize retriever
         self.retriever = DocumentRetriever(document_store, top_k=3)
@@ -38,14 +37,16 @@ class DoctorAgent:
             "REGELN:\n"
             "- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n"
             "- Sei einfühlsam und verwende verständliche Sprache\n"
-            "- Wenn du etwas bereits erklärt hast, verweise kurz darauf statt es zu wiederholen\n"
             "- Halte deine Antwort fokussiert (max 300 Wörter)\n"
             "- Sei präzise und medizinisch korrekt\n\n"
-            "WICHTIG - ZITIERREGELN (STRIKTE BEFOLGUNG):\n"
-            "1. Du darfst NUR Informationen verwenden, die im untenstehenden 'MEDIZINISCHER KONTEXT' stehen.\n"
-            "2. JEDE medizinische Aussage muss mit einer [Quelle X] belegt werden.\n"
-            "3. Wenn die Antwort nicht im Kontext steht, sage: 'Dazu habe ich keine Informationen in den Unterlagen.'\n"
-            "4. Erfinde KEINE Fakten."
+            "ZITIERREGELN:\n"
+            "1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n"
+            "2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') "
+            "darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n"
+            "3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n"
+            "4. Erfinde KEINE spezifischen medizinischen Fakten\n"
+            "5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. "
+            "Der Chatbot kann das nicht weiter ausführen.'"
         )
     
     def _build_generator(self):
@@ -53,10 +54,6 @@ class DoctorAgent:
         return OpenAIChatGenerator(
             api_key=Secret.from_token(os.getenv("OPENAI_API_KEY")),
             model=self.model,
-            generation_kwargs={
-                "max_completion_tokens": 2000,
-                "temperature": 0.3
-            }
         )
 
     def _format_documents(self, documents) -> str:
@@ -74,22 +71,24 @@ class DoctorAgent:
         messages = []
 
         # Layer 1 — core identity
-        messages.append({"role": "system", "content": self.core_rules})
+        messages.append(ChatMessage.from_system(self.core_rules))
 
         # Layer 2 — experiment condition
         if extra_system_instructions:
-            messages.append({"role": "system", "content": extra_system_instructions})
-
+            messages.append(ChatMessage.from_system(extra_system_instructions))
+            
         # Layer 3 — RAG context
-        messages.append({"role": "system", "content": self._format_documents(retrieved_docs)})
+        messages.append(ChatMessage.from_system(self._format_documents(retrieved_docs)))
 
-        # Layer 4 — conversation history (JSON-style list of messages)
-        if self.conversation_history:
-            history = self.conversation_history[-self.history_max_messages:]
-            messages.extend(history)
+        # Layer 4 — conversation history
+        for msg in self.conversation_history[-self.history_max_messages:]:
+            if msg["role"] == "user":
+                messages.append(ChatMessage.from_user(msg["content"]))
+            elif msg["role"] == "assistant":
+                messages.append(ChatMessage.from_assistant(msg["content"]))
 
         # Layer 5 — new question
-        messages.append({"role": "user", "content": patient_message})
+        messages.append(ChatMessage.from_user(patient_message))
 
         return messages
     
@@ -137,37 +136,37 @@ class DoctorAgent:
 
             # Step 3: Generate response with full context
             result = self.generator.run(messages=messages)
-            response = result["replies"][0]
+            response_message = result["replies"][0]
+            response_text = response_message.text
 
             # Step 4: Extract citation information
-            citation_info = self._extract_citations(response) 
+            citation_info = self._extract_citations(response_text) 
             
             # Step 5: Map citations to actual documents
             citation_mapping = []
             for idx in citation_info["cited_source_indices"]:
                 if idx <= len(retrieved_docs):
-                    doc = retrieved_docs[idx - 1]  #0-indexed
+                    doc = retrieved_docs[idx - 1]
                     citation_mapping.append({
                         "citation_index": idx,
                         "document_id": doc.id,
                         "file_path": doc.meta.get("file_path", "Unknown"),
-                        "content_preview": doc.content[:100] + "...",
                         "score": doc.score
                     })
             
-            # Add patient/doctor messages to history (JSON-style)
+            # Update history
             self.conversation_history.append({
                 "role": "user",
                 "content": patient_message
             })
             self.conversation_history.append({
                 "role": "assistant",
-                "content": response
+                "content": response_text
             })
             
             # Return response + metadata for evaluation
             return {
-                "response": response,
+                "response": response_text,
                 "retrieved_chunks": [
                     {
                         "content": doc.content,
@@ -187,7 +186,7 @@ class DoctorAgent:
                     "num_chunks": len(retrieved_docs),
                     "top_score": retrieved_docs[0].score if retrieved_docs else None,
                     "citation_missing": citation_info["citation_count"] == 0,
-                    "prompt_messages": messages
+                    "prompt_messages": [m.to_dict() for m in messages]
                 }
             }
         
@@ -214,25 +213,23 @@ class DoctorAgent:
     def reset(self):
         """Reset conversation state for new dialogue."""
         self.conversation_history = []
-        self.mandatory_questions_asked = set()
-        self.topics_discussed = set()
         self.turn_count = 0
     
 
 if __name__ == "__main__":
-    # Test the doctor agent
+    # Test the chatbot agent
     from embeddings import load_document_store
     
     doc_store = load_document_store()
-    doctor = DoctorAgent(doc_store)
+    chatbot = DoctorAgent(doc_store)
     
     # Test conversation
     question = "Was sind die Risiken einer Narkose?"
     print(f"\nPatient: {question}\n")
     
-    response = doctor.respond(question)
+    response = chatbot.respond(question)
     
-    print(f"Doctor: {response['response']}\n")
+    print(f"Chatbot: {response['response']}\n")
     print(f"--- Citation Analysis ---")
     print(f"Total citations: {response['citations']['total_citations']}")
     print(f"Unique sources cited: {response['citations']['unique_sources']}")
