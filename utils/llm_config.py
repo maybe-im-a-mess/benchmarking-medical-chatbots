@@ -17,6 +17,28 @@ MODELS = {
         "api_type": "local",
         "api_url": "http://127.0.0.1:1234/v1/chat/completions"
     },
+
+    "qwen3-32b": {
+        "display_name": "Qwen 3-32B",
+        "model_id": "qwen/qwen3-32b",
+        "api_type": "local",
+        "api_url": "http://127.0.0.1:1234/v1/chat/completions"
+    },
+    
+    "ministral-3-14b-reasoning": {
+        "display_name": "Ministral 3-14B Reasoning",
+        "model_id": "mistralai/ministral-3-14b-reasoning",
+        "api_type": "local",
+        "api_url": "http://127.0.0.1:1234/v1/chat/completions"
+    },
+
+    "gpt-oss-20b": {
+        "display_name": "GPT-oss 20B",
+        "model_id": "openai/gpt-oss-20b",
+        "api_type": "local",
+        "api_url": "http://127.0.0.1:1234/v1/chat/completions"
+    },
+
     "gpt-5-mini": {
         "display_name": "GPT-5 mini",
         "model_id": "gpt-5-mini",

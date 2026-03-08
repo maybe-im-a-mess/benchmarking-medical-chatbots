@@ -335,7 +335,9 @@ class DialogueManager:
                     "age": self.patient.persona.age,
                     "sex": self.patient.persona.sex,
                     "education_level": self.patient.persona.education_level,
-                    "language": self.patient.persona.language
+                    "language": self.patient.persona.language,
+                    "anxiety_level": self.patient.persona.anxiety_level,
+                    "hidden_fact": self.patient.persona.hidden_fact
                 },
                 "chatbot_model": self.chatbot.model,
                 "patient_model": self.patient.model,
@@ -376,7 +378,7 @@ if __name__ == "__main__":
     
     print("Initializing agents...")
     chatbot = DoctorAgent(doc_store, model="gpt-5-mini")
-    patient = create_patient("middle_aged", procedure_name="Narkose")
+    patient = create_patient("baseline", procedure_name="Narkose")
     
     # Run conversation
     manager = DialogueManager(chatbot, patient, max_turns=3, min_turns=1)
