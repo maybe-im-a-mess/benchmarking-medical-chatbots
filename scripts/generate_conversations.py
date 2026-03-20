@@ -15,6 +15,7 @@ def generate_single_conversation(document_store,
                                  doc_model: str,
                                  pat_model: str,
                                  max_turns: int,
+                                 pat_temperature: float = 0.8,
                                  conversation_id: int = 1,
                                  min_turns: int = 4,
                                  mandatory_questions_path: str = "data/mandatory_questions.json",
@@ -24,7 +25,8 @@ def generate_single_conversation(document_store,
     patient = create_patient(procedure_name=procedure_name,
                                  persona_type=persona_type,
                                  model=pat_model,
-                                 max_questions=max_turns)
+                                 max_questions=max_turns,
+                                 temperature=pat_temperature)
         
     # Run conversation
     manager = DialogueManager(
@@ -53,9 +55,10 @@ def generate_single_conversation(document_store,
 def generate_conversation_dataset(document_store,
                                   persona_types: List[str],
                                   procedures: List[str],
-                                  doc_model: str = "gpt-5-mini",
-                                  pat_model: str = "gpt-5-mini",
+                                  doc_model: str = "gpt-5.4",
+                                  pat_model: str = "gpt-5.4",
                                   max_turns: int = 8,
+                                  pat_temperature: float = 0.8,
                                   min_turns: int = 4,
                                   mandatory_questions_path: str = "data/mandatory_questions.json",
                                   mode: str = "active",
@@ -90,6 +93,7 @@ def generate_conversation_dataset(document_store,
                     doc_model=doc_model,
                     pat_model=pat_model,
                     max_turns=max_turns,
+                    pat_temperature=pat_temperature,
                     conversation_id=conversation_id,
                     min_turns=min_turns,
                     mandatory_questions_path=mandatory_questions_path,
@@ -101,7 +105,8 @@ def generate_conversation_dataset(document_store,
                     "procedure": procedure,
                     "persona": persona_type,
                     "filepath": filepath,
-                    "turns": conv_log["metadata"]["total_turns"]
+                    "turns": conv_log["metadata"]["total_turns"],
+                    "patient_temperature": conv_log["metadata"].get("patient_temperature", pat_temperature)
                 })
                 
                 conversation_id += 1
@@ -159,6 +164,7 @@ if __name__ == "__main__":
             procedures=procedures,
             persona_types=persona_types,
             max_turns=8,
+            pat_temperature=0.8,
             min_turns=4,
             mandatory_questions_path="data/mandatory_questions.json",
             mode=mode

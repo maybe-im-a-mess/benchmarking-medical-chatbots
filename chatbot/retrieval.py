@@ -22,7 +22,9 @@ class DocumentRetriever:
 
         pipeline.add_component("text_embedder", HuggingFaceAPITextEmbedder(api_type="serverless_inference_api",
                                               api_params={"model": "Qwen/Qwen3-Embedding-8B"},
-                                              token=Secret.from_token(os.getenv("HF_TOKEN"))))
+                                              token=Secret.from_token(os.getenv("HF_TOKEN")),
+                                              truncate=None,
+                                              normalize=None))
         pipeline.add_component("retriever", InMemoryEmbeddingRetriever(document_store=self.document_store, top_k=self.top_k))
         
         pipeline.connect("text_embedder.embedding", "retriever.query_embedding")

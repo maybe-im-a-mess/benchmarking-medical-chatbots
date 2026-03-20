@@ -341,6 +341,8 @@ class DialogueManager:
                 },
                 "chatbot_model": self.chatbot.model,
                 "patient_model": self.patient.model,
+                "patient_temperature": getattr(self.patient, "temperature", None),
+                "patient_chat_style": "chatbot_aware_informal",
                 "total_turns": self.turn_count,
                 "conversation_date": datetime.now().isoformat()
             },

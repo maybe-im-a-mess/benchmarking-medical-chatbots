@@ -1,0 +1,1442 @@
+{
+  "metadata": {
+    "procedure": "Narkose",
+    "mandatory_questions_total": 5,
+    "mandatory_questions_asked": 0,
+    "mode": "passive",
+    "patient_persona": {
+      "name": "Lotte",
+      "age": 25,
+      "sex": "female",
+      "education_level": "low",
+      "language": "de",
+      "anxiety_level": "medium",
+      "hidden_fact": "Ich habe eine schwere Latex-Allergie."
+    },
+    "chatbot_model": "gpt-5.4",
+    "patient_model": "gpt-5.4",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 8,
+    "conversation_date": "2026-03-14T19:31:58.976425"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös.",
+      "chatbot_response": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 8,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5621557779266724
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5299861742236732
+          },
+          {
+            "citation_index": 3,
+            "document_id": "80284bfc5baa5b5236ed48d6cdcd50b1e10858123a2044c919f9fa0caafbb601",
+            "file_path": "Narkose.md",
+            "score": 0.49630622376610334
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nder Tubus verringert die Gefahr, dass Speichel oder Mageninhalt in die Lunge dringt (Aspiration). Damit er schonend eingeführt werden kann, wird ein muskelentspannendes Mittel gegeben, das außerdem die Operationsbedingungen verbessern kann. Die Regionalanästhesie Bei einer Regionalanästhesie spritzt der Arzt ein örtliches Betäubungsmittel in die Nähe schmerleitender Nerven. Dieses „blockiert“ die Weiterleitung von Schmerzreizen aus dem Operationsgebiet zum Gehirn. Das Schmerzempfinden ist in der Regel für mehrere Stunden ausgeschaltet.\nDie Betäubung macht sich zuerst durch ein Kribbeln und Wärmegefühl bemerkbar. Dann werden die betäubten Körperbereiche (z. B. Schulter, Arm, Unterkörper oder Beine) schwer und gefühllos. Solange die Wirkung anhält, können die betäubten Körperbereiche \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5621557779266724,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5299861742236732,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "der Tubus verringert die Gefahr, dass Speichel oder Mageninhalt in die Lunge dringt (Aspiration). Damit er schonend eingeführt werden kann, wird ein muskelentspannendes Mittel gegeben, das außerdem die Operationsbedingungen verbessern kann. Die Regionalanästhesie Bei einer Regionalanästhesie spritzt der Arzt ein örtliches Betäubungsmittel in die Nähe schmerleitender Nerven. Dieses „blockiert“ die Weiterleitung von Schmerzreizen aus dem Operationsgebiet zum Gehirn. Das Schmerzempfinden ist in der Regel für mehrere Stunden ausgeschaltet.\nDie Betäubung macht sich zuerst durch ein Kribbeln und Wärmegefühl bemerkbar. Dann werden die betäubten Körperbereiche (z. B. Schulter, Arm, Unterkörper oder Beine) schwer und gefühllos. Solange die Wirkung anhält, können die betäubten Körperbereiche ",
+          "score": 0.49630622376610334,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 2,
+            "split_idx_start": 1550
+          },
+          "id": "80284bfc5baa5b5236ed48d6cdcd50b1e10858123a2044c919f9fa0caafbb601"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:07.570186"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?",
+      "chatbot_response": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5791682280492558
+          },
+          {
+            "citation_index": 2,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.5780696561634173
+          },
+          {
+            "citation_index": 3,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.5739439962478234
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5791682280492558,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.5780696561634173,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5739439962478234,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:16.375795"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?",
+      "chatbot_response": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.5418415378416921
+          },
+          {
+            "citation_index": 2,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.5314608783347515
+          },
+          {
+            "citation_index": 3,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.48926141089503594
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5418415378416921,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.5314608783347515,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.48926141089503594,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:24.262797"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?",
+      "chatbot_response": "Ja, **das ist sinnvoll**.\n\nAuch wenn Sie es schon angegeben haben, können und sollten Sie **direkt vor der Narkose nochmal klar und deutlich sagen**:  \n**„Ich habe eine schwere Latex-Allergie.“**\n\nGerade wichtige Angaben wie Allergien sollten dem Team bekannt sein; solche Patientenunterlagen bzw. Informationen sollen ausdrücklich vorgelegt bzw. genannt werden [Quelle 1]. Es ist also nicht „übertrieben“, sondern vernünftig, das **mehrfach anzusprechen**.\n\nAm besten nennen Sie es:\n- **bei der Aufnahme**\n- **im Narkosegespräch**\n- **beim OP-Team direkt vor dem Eingriff**\n- und ruhig **noch einmal unmittelbar vor dem Einschlafen**\n\nWenn Sie einen **Allergiepass** haben, bringen Sie ihn mit und zeigen Sie ihn vor [Quelle 1].\n\nSie machen das genau richtig: lieber einmal zu viel sagen als einmal zu wenig.  \nDa Sie nach dem Eingriff betreut werden und auf **Autofahren/Alkohol für 24 Stunden** verzichten, ist das schon gut vorbereitet [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen noch einen **kurzen Satz zum Auswendig-Sagen** formulieren, den Sie am OP-Tag verwenden können.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.45056102008483917
+          },
+          {
+            "citation_index": 3,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.4298403953473494
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---\n---\n[Quelle 2]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.45056102008483917,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.4323715193396801,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.4298403953473494,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:31.943507"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Ja, bitte. So ein kurzer Satz wäre gut, dann vergesse ich das nicht vor Aufregung.",
+      "chatbot_response": "Klar — sagen Sie einfach:\n\n**„Wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das bei allen Materialien und Medikamenten.“**\n\nNoch kürzer:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn Sie möchten, können Sie auch ergänzen:\n**„Hier ist mein Allergiepass.“** [Quelle 3]\n\nDas ist kurz, klar und völlig in Ordnung.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.25402579921306384
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nKrankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist sinnvoll**.\n\nAuch wenn Sie es schon angegeben haben, können und sollten Sie **direkt vor der Narkose nochmal klar und deutlich sagen**:  \n**„Ich habe eine schwere Latex-Allergie.“**\n\nGerade wichtige Angaben wie Allergien sollten dem Team bekannt sein; solche Patientenunterlagen bzw. Informationen sollen ausdrücklich vorgelegt bzw. genannt werden [Quelle 1]. Es ist also nicht „übertrieben“, sondern vernünftig, das **mehrfach anzusprechen**.\n\nAm besten nennen Sie es:\n- **bei der Aufnahme**\n- **im Narkosegespräch**\n- **beim OP-Team direkt vor dem Eingriff**\n- und ruhig **noch einmal unmittelbar vor dem Einschlafen**\n\nWenn Sie einen **Allergiepass** haben, bringen Sie ihn mit und zeigen Sie ihn vor [Quelle 1].\n\nSie machen das genau richtig: lieber einmal zu viel sagen als einmal zu wenig.  \nDa Sie nach dem Eingriff betreut werden und auf **Autofahren/Alkohol für 24 Stunden** verzichten, ist das schon gut vorbereitet [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen noch einen **kurzen Satz zum Auswendig-Sagen** formulieren, den Sie am OP-Tag verwenden können."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte. So ein kurzer Satz wäre gut, dann vergesse ich das nicht vor Aufregung."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.3720303783652623,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.28713650794516843,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "Krankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin ",
+          "score": 0.25402579921306384,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 29,
+            "split_idx_start": 22795
+          },
+          "id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:35.728695"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Okay, das ist gut, den Satz merk ich mir. Ich hab nur bisschen Angst, dass ich kurz vor der Narkose so nervös bin, dass ich irgendwas durcheinander bringe.\n\nKann ich mir den Satz einfach auf einen Zettel oder ins Handy schreiben und denen zeigen?",
+      "chatbot_response": "Ja, **das ist eine sehr gute Idee**.\n\nSie können sich den Satz **auf einen Zettel schreiben oder im Handy notieren** und ihn dem Team einfach zeigen, wenn Sie vor Aufregung nicht gut sprechen können. Das ist völlig in Ordnung und sogar sinnvoll, gerade bei einer **schweren Allergie**. Wichtig ist, dass solche Angaben zum Behandlungsteam gelangen; relevante Patienteninformationen bzw. Unterlagen sollen mitgeteilt oder vorgelegt werden [Quelle 2].\n\nAm besten notieren Sie:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn vorhanden, können Sie zusätzlich Ihren **Allergiepass** bereithalten und zeigen [Quelle 2].\n\nDas nimmt oft Druck raus: Sie müssen sich dann nicht darauf verlassen, im stressigen Moment alles perfekt zu sagen.  \nSie sind damit gut vorbereitet.\n\nKurz zusammengefasst für den OP-Tag:\n- Hinweis **im Handy oder auf Papier**\n- **Allergiepass** mitnehmen, falls vorhanden [Quelle 2]\n- Allergie **trotzdem nochmal aktiv erwähnen**\n- bei Unsicherheit ruhig sagen: **„Bitte lesen Sie kurz meinen Hinweis.“**\n\nDas ist absolut angemessen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.46902516735884814
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist sinnvoll**.\n\nAuch wenn Sie es schon angegeben haben, können und sollten Sie **direkt vor der Narkose nochmal klar und deutlich sagen**:  \n**„Ich habe eine schwere Latex-Allergie.“**\n\nGerade wichtige Angaben wie Allergien sollten dem Team bekannt sein; solche Patientenunterlagen bzw. Informationen sollen ausdrücklich vorgelegt bzw. genannt werden [Quelle 1]. Es ist also nicht „übertrieben“, sondern vernünftig, das **mehrfach anzusprechen**.\n\nAm besten nennen Sie es:\n- **bei der Aufnahme**\n- **im Narkosegespräch**\n- **beim OP-Team direkt vor dem Eingriff**\n- und ruhig **noch einmal unmittelbar vor dem Einschlafen**\n\nWenn Sie einen **Allergiepass** haben, bringen Sie ihn mit und zeigen Sie ihn vor [Quelle 1].\n\nSie machen das genau richtig: lieber einmal zu viel sagen als einmal zu wenig.  \nDa Sie nach dem Eingriff betreut werden und auf **Autofahren/Alkohol für 24 Stunden** verzichten, ist das schon gut vorbereitet [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen noch einen **kurzen Satz zum Auswendig-Sagen** formulieren, den Sie am OP-Tag verwenden können."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte. So ein kurzer Satz wäre gut, dann vergesse ich das nicht vor Aufregung."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar — sagen Sie einfach:\n\n**„Wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das bei allen Materialien und Medikamenten.“**\n\nNoch kürzer:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn Sie möchten, können Sie auch ergänzen:\n**„Hier ist mein Allergiepass.“** [Quelle 3]\n\nDas ist kurz, klar und völlig in Ordnung."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das ist gut, den Satz merk ich mir. Ich hab nur bisschen Angst, dass ich kurz vor der Narkose so nervös bin, dass ich irgendwas durcheinander bringe.\n\nKann ich mir den Satz einfach auf einen Zettel oder ins Handy schreiben und denen zeigen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.49274486638217263,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.46902516735884814,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.4434198397012469,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:44.021934"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Ja okay, das beruhigt mich schon etwas. Dann mach ich mir den Satz ins Handy und auf Papier, sicher ist sicher.\n\nEine Sache noch: Kann ich vor der Narkose sagen, dass ich SEHR nervös bin, damit die das wissen?",
+      "chatbot_response": "Ja, **unbedingt**. Sagen Sie vor der Narkose ruhig ganz offen, dass Sie **sehr nervös** sind.\n\nDas ist nichts Ungewöhnliches, und es ist sinnvoll, dass das Team Bescheid weiß. Auch wenn ich **keine Details in den Unterlagen** dazu habe, **wie genau** darauf reagiert wird, gilt: Solche wichtigen Informationen sollten Sie im Gespräch mit dem Arzt bzw. Team ansprechen [Quelle 1].\n\nSie können zum Beispiel sagen:\n**„Ich bin sehr nervös und habe Angst vor der Narkose.“**\n\nOder zusammen mit dem Allergie-Hinweis:\n**„Ich bin sehr nervös. Und wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das.“**\n\nDas dürfen Sie jederzeit sagen:\n- beim **Vorgespräch**\n- bei der **Aufnahme**\n- **direkt vor dem Einschlafen**\n\nSie müssen das nicht „aushalten“ oder herunterspielen. Je besser das Team informiert ist, desto besser kann es auf Sie eingehen.\n\nIhr Plan für den OP-Tag ist schon sehr gut:\n- Hinweis zur **Latex-Allergie** im Handy und auf Papier\n- falls vorhanden **Allergiepass mitnehmen** [Quelle 1]\n- Nüchternheitsvorgaben einhalten und Bescheid sagen, falls das nicht geklappt hat [Quelle 1]\n\nWenn Sie möchten, formuliere ich Ihnen noch einen **kompletten Merksatz für beide Punkte zusammen**: Nervosität + Latex-Allergie.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.508072578422559
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist sinnvoll**.\n\nAuch wenn Sie es schon angegeben haben, können und sollten Sie **direkt vor der Narkose nochmal klar und deutlich sagen**:  \n**„Ich habe eine schwere Latex-Allergie.“**\n\nGerade wichtige Angaben wie Allergien sollten dem Team bekannt sein; solche Patientenunterlagen bzw. Informationen sollen ausdrücklich vorgelegt bzw. genannt werden [Quelle 1]. Es ist also nicht „übertrieben“, sondern vernünftig, das **mehrfach anzusprechen**.\n\nAm besten nennen Sie es:\n- **bei der Aufnahme**\n- **im Narkosegespräch**\n- **beim OP-Team direkt vor dem Eingriff**\n- und ruhig **noch einmal unmittelbar vor dem Einschlafen**\n\nWenn Sie einen **Allergiepass** haben, bringen Sie ihn mit und zeigen Sie ihn vor [Quelle 1].\n\nSie machen das genau richtig: lieber einmal zu viel sagen als einmal zu wenig.  \nDa Sie nach dem Eingriff betreut werden und auf **Autofahren/Alkohol für 24 Stunden** verzichten, ist das schon gut vorbereitet [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen noch einen **kurzen Satz zum Auswendig-Sagen** formulieren, den Sie am OP-Tag verwenden können."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte. So ein kurzer Satz wäre gut, dann vergesse ich das nicht vor Aufregung."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar — sagen Sie einfach:\n\n**„Wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das bei allen Materialien und Medikamenten.“**\n\nNoch kürzer:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn Sie möchten, können Sie auch ergänzen:\n**„Hier ist mein Allergiepass.“** [Quelle 3]\n\nDas ist kurz, klar und völlig in Ordnung."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das ist gut, den Satz merk ich mir. Ich hab nur bisschen Angst, dass ich kurz vor der Narkose so nervös bin, dass ich irgendwas durcheinander bringe.\n\nKann ich mir den Satz einfach auf einen Zettel oder ins Handy schreiben und denen zeigen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist eine sehr gute Idee**.\n\nSie können sich den Satz **auf einen Zettel schreiben oder im Handy notieren** und ihn dem Team einfach zeigen, wenn Sie vor Aufregung nicht gut sprechen können. Das ist völlig in Ordnung und sogar sinnvoll, gerade bei einer **schweren Allergie**. Wichtig ist, dass solche Angaben zum Behandlungsteam gelangen; relevante Patienteninformationen bzw. Unterlagen sollen mitgeteilt oder vorgelegt werden [Quelle 2].\n\nAm besten notieren Sie:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn vorhanden, können Sie zusätzlich Ihren **Allergiepass** bereithalten und zeigen [Quelle 2].\n\nDas nimmt oft Druck raus: Sie müssen sich dann nicht darauf verlassen, im stressigen Moment alles perfekt zu sagen.  \nSie sind damit gut vorbereitet.\n\nKurz zusammengefasst für den OP-Tag:\n- Hinweis **im Handy oder auf Papier**\n- **Allergiepass** mitnehmen, falls vorhanden [Quelle 2]\n- Allergie **trotzdem nochmal aktiv erwähnen**\n- bei Unsicherheit ruhig sagen: **„Bitte lesen Sie kurz meinen Hinweis.“**\n\nDas ist absolut angemessen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja okay, das beruhigt mich schon etwas. Dann mach ich mir den Satz ins Handy und auf Papier, sicher ist sicher.\n\nEine Sache noch: Kann ich vor der Narkose sagen, dass ich SEHR nervös bin, damit die das wissen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.508072578422559,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5039377361502672,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.49291118671085515,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:54.676955"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Ja, mach mal bitte so einen **kurzen Merksatz für beides zusammen**. Ich will das am Ende einfach sagen können, ohne durcheinander zu kommen.",
+      "chatbot_response": "Klar — ganz kurz und gut merkbar:\n\n**„Ich bin sehr nervös. Und wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das.“**\n\nNoch etwas kürzer:\n**„Ich bin sehr nervös und habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn Sie möchten, können Sie am Ende noch ergänzen:\n**„Hier ist mein Allergiepass.“** [Quelle 2]\n\nDas ist klar, freundlich und reicht völlig aus.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "6e5eace6c07dbd16c26f391a81fbeae1d4dc86a10e54456762af2368d677f33c",
+            "file_path": "Kaiserschnitt.md",
+            "score": 0.270658285754135
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Kaiserschnitt.md)\nINHALT:\neine Imp-fung, um Rhesuskomplikationen bei späteren Schwangerschaften vorzubeugen (Anti-D-Prophylaxe). Sollte dies bei Ihnen der Fall sein, werden Sie darüber gesondert aufgeklärt. Gleichzeitig mit einer Schnittentbindung kann eine Sterilisation erfolgen. Diese Maßnahme sollten Sie sich jedoch sehr sorgfältig überlegen und auf keinen Fall kurz vor der Geburt entscheiden. Falls Sie eine Sterilisation wünschen, werden Sie über Risiken und Folgen anhand eines eigenen Aufklärungsbogens aufgeklärt. Risiken und mögliche Komplikationen Trotz aller Sorgfalt kann es zu – u. U. auch lebensbedrohlichen – Komplikationen kommen, die weitere Behandlungsmaßnahmen/Operationen erfordern. Die Häufigkeitsangaben sind eine allgemeine Einschätzung und sollen helfen, die Risiken untereinander zu gewichten. Sie \n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nSie gesondert über die Besonderheiten und Risiken informiert. Nachgeburtsperiode Kurze Zeit nach der Geburt Ihres Kindes wird der Mutterkuchen (Plazenta) ausgestoßen. Dies geschieht meist spontan, gelegentlich muss es wehenauslösendes Medikament verabreicht werden. Die Plazenta wird auf Vollständigkeit untersucht. Anti-D-Prophylaxe: Ist Ihre Blutgruppe Rhesus-negativ, die Ihres Kindes Rhesus-positiv, erhalten Sie nach der Geburt eine Impfung, um Komplikationen bei späteren Schwangerschaften zu vermeiden. Darüber klären wir Sie gesondert auf. Mögliche Risiken und Komplikationen Der Geburtsvorgang birgt sowohl für Ihr Kind als auch für Sie gewisse Risiken. Trotz sachgerechter Geburtsleitung kann es keine Garantie für ein gesundes Kind geben. Trotz aller Sorgfalt kann \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab? Ich bin da echt bisschen nervös."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist völlig verständlich. Kurz gesagt läuft es so ab:\n\nVor der Narkose bekommen Sie eine **Verweilkanüle in eine Vene** an Hand oder Arm. Darüber erhalten Sie Flüssigkeit und bei Bedarf Medikamente [Quelle 1].\n\nDann gibt es grundsätzlich **zwei Möglichkeiten**:\n- **Vollnarkose**: Sie bekommen ein schnell wirkendes Narkosemittel über die Vene, dadurch schlafen Sie ein [Quelle 2]. Die Narkose wird dann mit weiteren Medikamenten über die Vene und/oder mit Narkosegasen aufrechterhalten [Quelle 2].\n- **Regionalanästhesie**: Dabei spritzt der Arzt ein örtliches Betäubungsmittel **in die Nähe von Nerven**, damit Schmerzreize aus dem Operationsgebiet nicht zum Gehirn weitergeleitet werden [Quelle 3]. Die Wirkung beginnt oft mit **Kribbeln und Wärmegefühl**, danach wird der Bereich **schwer und gefühllos** [Quelle 3].\n\nBei einer Vollnarkose wird die Atmung gesichert, zum Beispiel mit einem **Beatmungsschlauch (Tubus)** oder einer **Kehlkopfmaske** über den Mund [Quelle 2]. Der Tubus senkt dabei das Risiko, dass Speichel oder Mageninhalt in die Lunge gelangen [Quelle 3].\n\nWelche Form für Sie am besten geeignet ist, bespricht der Arzt mit Ihnen, auch mit Blick auf Vor- und Nachteile sowie Risiken [Quelle 1].\n\nWenn Sie möchten, können wir das gleich ganz praktisch durchgehen. Wichtig wäre dafür:\n- Bevorzugen Sie eher **Regionalanästhesie (wach)** oder **Vollnarkose (schlafen)**?\n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaub eher Vollnarkose, ich will lieber schlafen. Lose Zähne oder so hab ich nicht, und ja, danach ist jemand bei mir — und wichtig: Ich habe eine schwere Latex-Allergie. Muss ich das vor der Narkose extra nochmal sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Eine **schwere Latex-Allergie** sollten Sie dem Anästhesie‑Team und auch dem OP‑Team **vor der Narkose unbedingt nochmal ausdrücklich sagen**. Solche Allergie‑Informationen gehören zu den wichtigen Patientenunterlagen, die Sie angeben bzw. vorlegen sollen [Quelle 2].\n\nPraktisch am besten so:\n- **Schon bei der Aufnahme / im Vorgespräch** klar sagen: „Ich habe eine **schwere Latex-Allergie**.“\n- **Am OP-Tag erneut** erwähnen, auch wenn Sie es schon einmal gesagt haben.\n- Wenn Sie einen **Allergiepass** haben, bitte **mitbringen/vorzeigen** [Quelle 2].\n\nGut ist auch, dass Sie schon sagen konnten:\n- Sie möchten eher eine **Vollnarkose**; die Wahl des Verfahrens wird mit dem Arzt besprochen [Quelle 1].\n- **Lose Zähne** haben Sie nicht.\n- Für die Zeit nach dem Eingriff ist eine **Betreuung organisiert**.\n\nWichtig vor der Narkose ist außerdem:\n- **Nüchternheitsvorgaben genau einhalten**; wenn Sie doch gegessen oder getrunken haben, müssen Sie das unbedingt sagen [Quelle 2].\n- **Schmuck und Piercings entfernen** [Quelle 2][Quelle 3].\n\nEine Frage noch, weil sie für die Planung wichtig sein kann: **Nutzen Sie hormonelle Verhütungsmittel**, zum Beispiel die Pille oder eine Hormonspirale?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nee, ich nehm keine Hormone zur Verhütung.\n\nOkay, und wie merke ich am OP-Tag, dass wirklich alles latex-frei für mich vorbereitet ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr berechtigte Frage. **Dazu habe ich keine Details in den Unterlagen, wie genau eine latex-freie Vorbereitung im Krankenhaus organisiert und überprüft wird. Der Chatbot kann das nicht weiter ausführen.**\n\nWas Sie aber sinnvoll tun können:\n- Sagen Sie Ihre **schwere Latex-Allergie mehrfach aktiv an**: bei der Aufnahme, im Narkosegespräch und direkt **am OP-Tag vor dem Eingriff**.\n- Zeigen Sie, wenn vorhanden, Ihren **Allergiepass**; wichtige Patientenunterlagen sollen vorgelegt werden [Quelle 3].\n- Bitten Sie das Team ausdrücklich um eine **Bestätigung**, dass Ihre Allergie beachtet wurde.  \n- Fragen Sie direkt nach, wenn Sie unsicher sind.\n\nFür den OP-Tag allgemein ist noch wichtig:\n- **Schmuck, Piercings, Kontaktlinsen und herausnehmbaren Zahnersatz** vorher entfernen [Quelle 3].\n- **Kein Make-up oder Nagellack** verwenden [Quelle 1].\n- Nach der Anästhesie dürfen Sie wegen **Sturzgefahr zunächst nicht allein aufstehen** und werden überwacht, bis wichtige Körperfunktionen stabil sind [Quelle 1].\n- Nach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt** [Quelle 2].\n\nNoch ein wichtiger Punkt: Ist Ihnen bewusst, dass Sie nach einem ambulanten Eingriff **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken dürfen** [Quelle 2]?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das weiß ich. Ich fahr dann nicht selbst und trink auch nix.\n\nIch bin nur noch unsicher, ob ich direkt vorm Einschlafen nochmal laut sagen soll, dass ich eine SCHWERE Latex-Allergie hab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist sinnvoll**.\n\nAuch wenn Sie es schon angegeben haben, können und sollten Sie **direkt vor der Narkose nochmal klar und deutlich sagen**:  \n**„Ich habe eine schwere Latex-Allergie.“**\n\nGerade wichtige Angaben wie Allergien sollten dem Team bekannt sein; solche Patientenunterlagen bzw. Informationen sollen ausdrücklich vorgelegt bzw. genannt werden [Quelle 1]. Es ist also nicht „übertrieben“, sondern vernünftig, das **mehrfach anzusprechen**.\n\nAm besten nennen Sie es:\n- **bei der Aufnahme**\n- **im Narkosegespräch**\n- **beim OP-Team direkt vor dem Eingriff**\n- und ruhig **noch einmal unmittelbar vor dem Einschlafen**\n\nWenn Sie einen **Allergiepass** haben, bringen Sie ihn mit und zeigen Sie ihn vor [Quelle 1].\n\nSie machen das genau richtig: lieber einmal zu viel sagen als einmal zu wenig.  \nDa Sie nach dem Eingriff betreut werden und auf **Autofahren/Alkohol für 24 Stunden** verzichten, ist das schon gut vorbereitet [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen noch einen **kurzen Satz zum Auswendig-Sagen** formulieren, den Sie am OP-Tag verwenden können."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte. So ein kurzer Satz wäre gut, dann vergesse ich das nicht vor Aufregung."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar — sagen Sie einfach:\n\n**„Wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das bei allen Materialien und Medikamenten.“**\n\nNoch kürzer:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn Sie möchten, können Sie auch ergänzen:\n**„Hier ist mein Allergiepass.“** [Quelle 3]\n\nDas ist kurz, klar und völlig in Ordnung."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das ist gut, den Satz merk ich mir. Ich hab nur bisschen Angst, dass ich kurz vor der Narkose so nervös bin, dass ich irgendwas durcheinander bringe.\n\nKann ich mir den Satz einfach auf einen Zettel oder ins Handy schreiben und denen zeigen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **das ist eine sehr gute Idee**.\n\nSie können sich den Satz **auf einen Zettel schreiben oder im Handy notieren** und ihn dem Team einfach zeigen, wenn Sie vor Aufregung nicht gut sprechen können. Das ist völlig in Ordnung und sogar sinnvoll, gerade bei einer **schweren Allergie**. Wichtig ist, dass solche Angaben zum Behandlungsteam gelangen; relevante Patienteninformationen bzw. Unterlagen sollen mitgeteilt oder vorgelegt werden [Quelle 2].\n\nAm besten notieren Sie:\n**„Ich habe eine schwere Latex-Allergie. Bitte latex-frei arbeiten.“**\n\nWenn vorhanden, können Sie zusätzlich Ihren **Allergiepass** bereithalten und zeigen [Quelle 2].\n\nDas nimmt oft Druck raus: Sie müssen sich dann nicht darauf verlassen, im stressigen Moment alles perfekt zu sagen.  \nSie sind damit gut vorbereitet.\n\nKurz zusammengefasst für den OP-Tag:\n- Hinweis **im Handy oder auf Papier**\n- **Allergiepass** mitnehmen, falls vorhanden [Quelle 2]\n- Allergie **trotzdem nochmal aktiv erwähnen**\n- bei Unsicherheit ruhig sagen: **„Bitte lesen Sie kurz meinen Hinweis.“**\n\nDas ist absolut angemessen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja okay, das beruhigt mich schon etwas. Dann mach ich mir den Satz ins Handy und auf Papier, sicher ist sicher.\n\nEine Sache noch: Kann ich vor der Narkose sagen, dass ich SEHR nervös bin, damit die das wissen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, **unbedingt**. Sagen Sie vor der Narkose ruhig ganz offen, dass Sie **sehr nervös** sind.\n\nDas ist nichts Ungewöhnliches, und es ist sinnvoll, dass das Team Bescheid weiß. Auch wenn ich **keine Details in den Unterlagen** dazu habe, **wie genau** darauf reagiert wird, gilt: Solche wichtigen Informationen sollten Sie im Gespräch mit dem Arzt bzw. Team ansprechen [Quelle 1].\n\nSie können zum Beispiel sagen:\n**„Ich bin sehr nervös und habe Angst vor der Narkose.“**\n\nOder zusammen mit dem Allergie-Hinweis:\n**„Ich bin sehr nervös. Und wichtig: Ich habe eine schwere Latex-Allergie. Bitte beachten Sie das.“**\n\nDas dürfen Sie jederzeit sagen:\n- beim **Vorgespräch**\n- bei der **Aufnahme**\n- **direkt vor dem Einschlafen**\n\nSie müssen das nicht „aushalten“ oder herunterspielen. Je besser das Team informiert ist, desto besser kann es auf Sie eingehen.\n\nIhr Plan für den OP-Tag ist schon sehr gut:\n- Hinweis zur **Latex-Allergie** im Handy und auf Papier\n- falls vorhanden **Allergiepass mitnehmen** [Quelle 1]\n- Nüchternheitsvorgaben einhalten und Bescheid sagen, falls das nicht geklappt hat [Quelle 1]\n\nWenn Sie möchten, formuliere ich Ihnen noch einen **kompletten Merksatz für beide Punkte zusammen**: Nervosität + Latex-Allergie."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, mach mal bitte so einen **kurzen Merksatz für beides zusammen**. Ich will das am Ende einfach sagen können, ohne durcheinander zu kommen."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.35215847673240674,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "eine Imp-fung, um Rhesuskomplikationen bei späteren Schwangerschaften vorzubeugen (Anti-D-Prophylaxe). Sollte dies bei Ihnen der Fall sein, werden Sie darüber gesondert aufgeklärt. Gleichzeitig mit einer Schnittentbindung kann eine Sterilisation erfolgen. Diese Maßnahme sollten Sie sich jedoch sehr sorgfältig überlegen und auf keinen Fall kurz vor der Geburt entscheiden. Falls Sie eine Sterilisation wünschen, werden Sie über Risiken und Folgen anhand eines eigenen Aufklärungsbogens aufgeklärt. Risiken und mögliche Komplikationen Trotz aller Sorgfalt kann es zu – u. U. auch lebensbedrohlichen – Komplikationen kommen, die weitere Behandlungsmaßnahmen/Operationen erfordern. Die Häufigkeitsangaben sind eine allgemeine Einschätzung und sollen helfen, die Risiken untereinander zu gewichten. Sie ",
+          "score": 0.270658285754135,
+          "meta": {
+            "file_path": "Kaiserschnitt.md",
+            "source_id": "ab2e1e9ad3df12dd9315024d484f5544932eefff5bf14772c4a6c2257bfb317b",
+            "page_number": 1,
+            "split_id": 6,
+            "split_idx_start": 4698
+          },
+          "id": "6e5eace6c07dbd16c26f391a81fbeae1d4dc86a10e54456762af2368d677f33c"
+        },
+        {
+          "content": "Sie gesondert über die Besonderheiten und Risiken informiert. Nachgeburtsperiode Kurze Zeit nach der Geburt Ihres Kindes wird der Mutterkuchen (Plazenta) ausgestoßen. Dies geschieht meist spontan, gelegentlich muss es wehenauslösendes Medikament verabreicht werden. Die Plazenta wird auf Vollständigkeit untersucht. Anti-D-Prophylaxe: Ist Ihre Blutgruppe Rhesus-negativ, die Ihres Kindes Rhesus-positiv, erhalten Sie nach der Geburt eine Impfung, um Komplikationen bei späteren Schwangerschaften zu vermeiden. Darüber klären wir Sie gesondert auf. Mögliche Risiken und Komplikationen Der Geburtsvorgang birgt sowohl für Ihr Kind als auch für Sie gewisse Risiken. Trotz sachgerechter Geburtsleitung kann es keine Garantie für ein gesundes Kind geben. Trotz aller Sorgfalt kann ",
+          "score": 0.26785133178956405,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 11,
+            "split_idx_start": 8961
+          },
+          "id": "97606aa7243bbfbf9ffd9ed8958ecb7dafc3568a81e250828bfd3d67bd16e110"
+        }
+      ],
+      "timestamp": "2026-03-14T19:31:58.976153"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 8,
+    "total_chatbot_responses": 8,
+    "avg_response_length": 1031.25,
+    "total_citations": 31,
+    "turns_missing_citations": 0
+  }
+}

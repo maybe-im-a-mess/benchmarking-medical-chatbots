@@ -14,9 +14,15 @@ if __name__ == "__main__":
     # Test run the conversation
     doc_store = load_document_store()
     chatbot = DoctorAgent(doc_store, model="gpt-5-mini")
-    patient = create_patient("baseline", procedure_name="Narkose", model="gpt-5-mini")
+    patient = create_patient(
+        "baseline",
+        procedure_name="Narkose",
+        model="gpt-5-mini",
+        temperature=0.8,
+    )
 
     print("=== Chatbot-Patient Conversation Test ===\n")
+    print(f"Patient style: chatbot-aware informal | temperature={patient.temperature}")
     
     question = patient.ask_question()
     print(f"Patient ({patient.persona.name}, {patient.persona.age}): {question}\n")
