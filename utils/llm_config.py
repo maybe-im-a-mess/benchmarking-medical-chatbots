@@ -45,6 +45,14 @@ MODELS = {
         "api_type": "openai",
         "api_url": "https://api.openai.com/v1/responses",
         "api_key": os.environ.get("OPENAI_API_KEY")
+    },
+
+    "gpt-5.4-mini": {
+        "display_name": "GPT-5.4 mini",
+        "model_id": "gpt-5.4-mini",
+        "api_type": "openai",
+        "api_url": "https://api.openai.com/v1/responses",
+        "api_key": os.environ.get("OPENAI_API_KEY")
     }
 }
 

@@ -9,7 +9,7 @@ SOURCE_DOCS_DIR = Path("data/raw_md_files")
 PROCESSED_DIR = Path("data/processed")
 RESULTS_DIR = Path("data/evaluation_results")
 CACHE_DIR = Path("data/embedding_cache")
-EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-0.6B"
+EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-8B"
 METHODS = ["naive", "cot", "atomic", "uie"]
 
 _model_cache = {}

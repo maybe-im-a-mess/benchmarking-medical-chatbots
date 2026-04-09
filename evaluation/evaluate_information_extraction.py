@@ -8,7 +8,7 @@ GROUND_TRUTH_PATH = Path("data/ground_truth.json")
 PROCESSED_DIR = Path("data/processed")
 RESULTS_DIR = Path("data/evaluation_results")
 
-EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-0.6B"
+EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-8B"
 DEFAULT_THRESHOLD = 0.55
 METHODS = ["naive", "cot", "atomic", "uie"]
 
