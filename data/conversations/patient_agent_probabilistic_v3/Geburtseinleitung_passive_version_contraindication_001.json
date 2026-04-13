@@ -1,0 +1,1427 @@
+{
+  "metadata": {
+    "procedure": "Geburtseinleitung",
+    "mandatory_questions_total": 3,
+    "mandatory_questions_asked": 0,
+    "mode": "passive",
+    "patient_persona": {
+      "name": "Margot",
+      "age": 31,
+      "sex": "female",
+      "education_level": "medium",
+      "language": "de",
+      "anxiety_level": "low",
+      "hidden_fact": "Ich hatte gestern Abend leichte Blutungen aus der Scheide."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 8,
+    "conversation_date": "2026-04-12T17:05:05.841460",
+    "dataset_tag": "patient_agent_probabilistic_v3",
+    "repeat_index": 1,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "Okay, wie läuft die Geburtseinleitung genau ab?",
+      "chatbot_response": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 7,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.6192441495037285
+          },
+          {
+            "citation_index": 2,
+            "document_id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.5889277002964699
+          },
+          {
+            "citation_index": 3,
+            "document_id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5843975637009735
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nGeburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nMethoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.6192441495037285,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "Geburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das ",
+          "score": 0.5889277002964699,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a"
+        },
+        {
+          "content": "Methoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals ",
+          "score": 0.5843975637009735,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 8,
+            "split_idx_start": 5944
+          },
+          "id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:37.173534"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?",
+      "chatbot_response": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5617915398498464
+          },
+          {
+            "citation_index": 3,
+            "document_id": "3c36234840781134043998feafa26bc194182daceea00e1f835d05fa68e5e446",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.511814625856545
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nMethoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nim Abstand von einigen Stunden gegeben werden. Eventuell wechselt man das Präparat ab einem bestimmten Zeitpunkt und gibt stattdessen das Wehenhormon Oxytocin. Oxytocin:\nWenn der Gebärmutterhals verkürzt und der Muttermund schon etwas geöffnet ist (geburtsreifer Befund), besonders auch dann, wenn Sie schon ein Kind auf natürlichem Weg geboren haben, wird eventuell das Wehenhormon Oxytocin in Form einer Tropfinfusion als primäre Maßnahme zur Geburtseinleitung eingesetzt. Es kann auch sein, dass der Fortgang der Geburt mittels Oxytocininfusion unterstützt wird, nachdem die Geburtseinleitung mit anderen Methoden begonnen wurde. Rizinusöl (Wehencocktail):\nRizinusöl wird anderen Flüssigkeiten beigegeben oder auf einem Spiegel eingenommen. Es wirkt abführend und kann \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Methoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals ",
+          "score": 0.5617915398498464,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 8,
+            "split_idx_start": 5944
+          },
+          "id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4"
+        },
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.5332864564110349,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "im Abstand von einigen Stunden gegeben werden. Eventuell wechselt man das Präparat ab einem bestimmten Zeitpunkt und gibt stattdessen das Wehenhormon Oxytocin. Oxytocin:\nWenn der Gebärmutterhals verkürzt und der Muttermund schon etwas geöffnet ist (geburtsreifer Befund), besonders auch dann, wenn Sie schon ein Kind auf natürlichem Weg geboren haben, wird eventuell das Wehenhormon Oxytocin in Form einer Tropfinfusion als primäre Maßnahme zur Geburtseinleitung eingesetzt. Es kann auch sein, dass der Fortgang der Geburt mittels Oxytocininfusion unterstützt wird, nachdem die Geburtseinleitung mit anderen Methoden begonnen wurde. Rizinusöl (Wehencocktail):\nRizinusöl wird anderen Flüssigkeiten beigegeben oder auf einem Spiegel eingenommen. Es wirkt abführend und kann ",
+          "score": 0.511814625856545,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 9,
+            "split_idx_start": 6757
+          },
+          "id": "3c36234840781134043998feafa26bc194182daceea00e1f835d05fa68e5e446"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:40.853301"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz.",
+      "chatbot_response": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5340814409052344
+          },
+          {
+            "citation_index": 3,
+            "document_id": "a0e29ff6e12e489d1c5e3dc7af6519e19e03010d13043d4a8eccaf1bb639777f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5015055656370642
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nGeburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\ndringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Geburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den ",
+          "score": 0.5340814409052344,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f"
+        },
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.5095580925624719,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "dringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, ",
+          "score": 0.5015055656370642,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 723
+          },
+          "id": "a0e29ff6e12e489d1c5e3dc7af6519e19e03010d13043d4a8eccaf1bb639777f"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:45.218128"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?",
+      "chatbot_response": "Das lässt sich bei der Untersuchung vor allem daran erkennen, wie weit der Muttermund geöffnet und wie der Gebärmutterhals beschaffen ist. In den Unterlagen steht: Wenn der Muttermund für einen Finger passierbar ist, kann eine Eipollösung möglich sein [Quelle 1]. Bei „geburtsreifem Befund“ ist der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet; dann kann auch eine Fruchtblasensprengung gemacht werden [Quelle 1].\n\nKonkret bedeutet das in einfachen Worten:\n- Der Muttermund ist nicht mehr ganz geschlossen, sondern schon etwas offen [Quelle 1].\n- Der Gebärmutterhals ist kürzer geworden [Quelle 1].\n- Je nach Befund kann die Fruchtblase dann eröffnet werden [Quelle 1].\n\nZusätzlich wird bei der Geburt das Kind und Ihr Zustand überwacht, damit mögliche Gefährdungen früh erkannt werden [Quelle 2].\n\nWichtig: Die genaue Beurteilung erfolgt durch die vaginale Untersuchung. Mehr Details, z. B. zu Messwerten oder einem genauen Punktesystem, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz und verständlich erklären, wie so eine vaginale Untersuchung bei der Einleitung abläuft.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5094687901595046
+          },
+          {
+            "citation_index": 2,
+            "document_id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.47115585744407534
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nGeburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das \n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nÄrztin/der Arzt bei eröffnetem Muttermund und gesprungener Fruchtblase – je nach Lage des Kindes – aus Kopf- oder Steißhaut des Kindes einige Tropfen Blut zur Untersuchung entnehmen. So erhält sie/er Informationen und kann ggf. bei Sauerstoffmangel notwendige Maßnahmen ergreifen. Super! Hier kommt der nächste Abschnitt – Linderung von Geburtsschmerzen – komplett und wortwörtlich: Linderung von Geburtsschmerzen Die Geburt ist körperlich sehr anstrengend und schmerzhaft. Bei der Schmerzbewältigung helfen bestimmte Techniken (z. B. Entspannungsübungen, Atemtechnik), naturheilkundliche Maßnahmen und verschiedene Arten medikamentöser Schmerzlinderung. Folgende Möglichkeiten stehen zur Verfügung: Die Schmerzen durch die Eröffnungswehen – vom Beginn der Wehen bis zur vollständigen Eröffnung des \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.5094687901595046,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "Geburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das ",
+          "score": 0.47115585744407534,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a"
+        },
+        {
+          "content": "Ärztin/der Arzt bei eröffnetem Muttermund und gesprungener Fruchtblase – je nach Lage des Kindes – aus Kopf- oder Steißhaut des Kindes einige Tropfen Blut zur Untersuchung entnehmen. So erhält sie/er Informationen und kann ggf. bei Sauerstoffmangel notwendige Maßnahmen ergreifen. Super! Hier kommt der nächste Abschnitt – Linderung von Geburtsschmerzen – komplett und wortwörtlich: Linderung von Geburtsschmerzen Die Geburt ist körperlich sehr anstrengend und schmerzhaft. Bei der Schmerzbewältigung helfen bestimmte Techniken (z. B. Entspannungsübungen, Atemtechnik), naturheilkundliche Maßnahmen und verschiedene Arten medikamentöser Schmerzlinderung. Folgende Möglichkeiten stehen zur Verfügung: Die Schmerzen durch die Eröffnungswehen – vom Beginn der Wehen bis zur vollständigen Eröffnung des ",
+          "score": 0.4490385126837848,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 2,
+            "split_idx_start": 1617
+          },
+          "id": "2bd17e10a8300f90d8296e1322696196f4d0381871d5fa86e77245c53c6517f3"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:49.659295"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Hm, das macht mich ehrlich gesagt noch etwas unsicher, weil ich gar nicht weiß, was mich bei der Untersuchung genau erwartet. Wie läuft so eine vaginale Untersuchung bei der Einleitung denn bei mir ungefähr ab?",
+      "chatbot_response": "Gern. Bei der Einleitung wird zunächst vaginal untersucht, um zu prüfen, wie weit der Muttermund bereits geöffnet ist und ob der Geburtsbefund eher unreif oder schon geburtsreif ist [Quelle 1].\n\nWenn der Muttermund für einen Finger passierbar ist, kann die Ärztin oder der Arzt mit 1–2 Fingern in den Gebärmutterhals eingehen und durch eine rundum streichende Bewegung den unteren Bereich der Fruchtblase von innen ablösen. Das nennt man Eipollösung und kann Wehen auslösen [Quelle 1].\n\nIst der Geburtsbefund schon reif, kann bei der Untersuchung auch eine Fruchtblasensprengung gemacht werden: Dabei wird die Fruchtblase mit einem kleinen Häkchen angeritzt und eröffnet [Quelle 1].\n\nDie Untersuchung dient also nicht nur zum „Nachschauen“, sondern kann je nach Befund auch direkt Teil der Einleitung sein [Quelle 1]. Mehr Details dazu, etwa wie lange die Untersuchung dauert oder wie sie sich genau anfühlt, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt auch sagen, welche Beschwerden danach normal sein können und wann Sie sich melden sollten.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.4877771730545477
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nin den Muttermund eingelegt. Sie nehmen über Stunden hinweg durch Flüssigkeitsaufnahme an Volumen zu und erzielen so eine Dehnung des Muttermundes und können so Wehen auslösen. Die Stäbchen müssen bei einer weiteren vaginalen Untersuchung wieder entfernt, eventuell auch mehrfach gewechselt werden. Das Verfahren wird in der Geburtshilfe nur selten eingesetzt. Risiken und mögliche Komplikationen Trotz aller Sorgfalt kann es – u. U. auch lebensbedrohlichen – Komplikationen kommen, die weitere Behandlungsmaßnahmen/Operationen erfordern. Die Häufigkeitsangaben sind eine allgemeine Einschätzung und sollen helfen, die Risiken untereinander zu gewichten. Sie entsprechen nicht den Definitionen bezüglich Nebenwirkungen in den Beipackzetteln von Medikamenten. Vor- und Begleiterkrankungen sowie \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nund trinken dürfen. Er klärt Sie im Allgemeinen auch über die Wendung über einen Kaiserschnitt auf. Dann stellt die Ärztin/der Arzt durch eine Ultraschalluntersuchung die genaue Lage des Kindes (z.B. reine Steißlage, Steiß-Fuß-Lage, Quer- oder Schräglage) und seine Größe fest. Er ermittelt die Menge an Fruchtwasser und die Lage der Plazenta. Weiterhin wird ein CTG (Ableitung der kindlichen Herztöne mit Überprüfung der Wehentätigkeit) durchgeführt. Häufig wird auch durch eine Doppleruntersuchung abgeklärt, wie die Versorgung des Kindes ist. Um vorzeitige Wehen zu verhindern, verabreicht die Ärztin/der Arzt oft ein wehenhemmendes Mittel intravenös (Tokolyse). Zu Ihrer persönlichen Betreuung ist im Allgemeinen zusätzlich \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich bei der Untersuchung vor allem daran erkennen, wie weit der Muttermund geöffnet und wie der Gebärmutterhals beschaffen ist. In den Unterlagen steht: Wenn der Muttermund für einen Finger passierbar ist, kann eine Eipollösung möglich sein [Quelle 1]. Bei „geburtsreifem Befund“ ist der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet; dann kann auch eine Fruchtblasensprengung gemacht werden [Quelle 1].\n\nKonkret bedeutet das in einfachen Worten:\n- Der Muttermund ist nicht mehr ganz geschlossen, sondern schon etwas offen [Quelle 1].\n- Der Gebärmutterhals ist kürzer geworden [Quelle 1].\n- Je nach Befund kann die Fruchtblase dann eröffnet werden [Quelle 1].\n\nZusätzlich wird bei der Geburt das Kind und Ihr Zustand überwacht, damit mögliche Gefährdungen früh erkannt werden [Quelle 2].\n\nWichtig: Die genaue Beurteilung erfolgt durch die vaginale Untersuchung. Mehr Details, z. B. zu Messwerten oder einem genauen Punktesystem, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz und verständlich erklären, wie so eine vaginale Untersuchung bei der Einleitung abläuft."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich ehrlich gesagt noch etwas unsicher, weil ich gar nicht weiß, was mich bei der Untersuchung genau erwartet. Wie läuft so eine vaginale Untersuchung bei der Einleitung denn bei mir ungefähr ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.4877771730545477,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "in den Muttermund eingelegt. Sie nehmen über Stunden hinweg durch Flüssigkeitsaufnahme an Volumen zu und erzielen so eine Dehnung des Muttermundes und können so Wehen auslösen. Die Stäbchen müssen bei einer weiteren vaginalen Untersuchung wieder entfernt, eventuell auch mehrfach gewechselt werden. Das Verfahren wird in der Geburtshilfe nur selten eingesetzt. Risiken und mögliche Komplikationen Trotz aller Sorgfalt kann es – u. U. auch lebensbedrohlichen – Komplikationen kommen, die weitere Behandlungsmaßnahmen/Operationen erfordern. Die Häufigkeitsangaben sind eine allgemeine Einschätzung und sollen helfen, die Risiken untereinander zu gewichten. Sie entsprechen nicht den Definitionen bezüglich Nebenwirkungen in den Beipackzetteln von Medikamenten. Vor- und Begleiterkrankungen sowie ",
+          "score": 0.4544841544820112,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9039
+          },
+          "id": "05360bb2aa6f2f5834cd4a973ab4f532ef7124bc04767ed5b6f3aeb5d0a2e2d9"
+        },
+        {
+          "content": "und trinken dürfen. Er klärt Sie im Allgemeinen auch über die Wendung über einen Kaiserschnitt auf. Dann stellt die Ärztin/der Arzt durch eine Ultraschalluntersuchung die genaue Lage des Kindes (z.B. reine Steißlage, Steiß-Fuß-Lage, Quer- oder Schräglage) und seine Größe fest. Er ermittelt die Menge an Fruchtwasser und die Lage der Plazenta. Weiterhin wird ein CTG (Ableitung der kindlichen Herztöne mit Überprüfung der Wehentätigkeit) durchgeführt. Häufig wird auch durch eine Doppleruntersuchung abgeklärt, wie die Versorgung des Kindes ist. Um vorzeitige Wehen zu verhindern, verabreicht die Ärztin/der Arzt oft ein wehenhemmendes Mittel intravenös (Tokolyse). Zu Ihrer persönlichen Betreuung ist im Allgemeinen zusätzlich ",
+          "score": 0.4486307805096002,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2109
+          },
+          "id": "cb205095befb3086bff460e6dc3f1a23cfb4f353b24b066f56f8ea1ad8d82abb"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:53.859941"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Okay, das klingt schon hilfreicher, aber ich hab trotzdem ein bisschen Sorge vor der Untersuchung. Vor allem, ob das weh tut oder ob ich mich dabei irgendwie verkrampfe. Wie lange dauert so eine vaginale Untersuchung ungefähr?",
+      "chatbot_response": "Die Untersuchung dauert meist nur wenige Minuten. Mehr zur genauen Dauer steht in den Unterlagen nicht.\n\nOb sie weh tut, ist unterschiedlich: Bei einer Wendung ist beschrieben, dass Druck manchmal als unangenehm erlebt wird [Quelle 3]. Für die vaginale Untersuchung bei der Einleitung steht das so nicht im Detail in den Unterlagen. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nEs kann helfen, wenn Sie dabei möglichst locker atmen und dem Team sagen, dass Sie angespannt sind. Dann kann die Untersuchung meist ruhiger durchgeführt werden. \n\nFalls Sie möchten, kann ich Ihnen als Nächstes kurz erklären, was nach der Untersuchung typischerweise passiert.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "9b30563bd54f674f6a07cdbae2f447a15a73d0054ffe535b6e208382e442f3b3",
+            "file_path": "Äußere Wendung.md",
+            "score": 0.4169666593916751
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndie erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\ndie Seite legen sollen. Während der Wendung können die Herztöne Ihres Kindes mit Ultraschall überprüft werden, um sicherzustellen, dass es Ihrem Kind gut geht. Ggf. erfolgt auch eine genaue Lagekontrolle des Kindes durch Ultraschall. Die Wendung ist meist nicht schmerzhaft, der Druck auf die Bauchdecke wird jedoch manchmal als unangenehm erlebt. Eine mögliche Wehentätigkeit wird nach der Wendung beendet. Die kindlichen Herztöne werden nochmals für einige Zeit überwacht (CTG). Eventuell erhalten Sie vorübergehend einen Stützgurtband, um Ihr Kind in der neuen Lage zu stabilisieren. In Absprache mit der/dem behandelnden Ärztin/Arzt können weitere CTG-Kontrollen erfolgen. Normalerweise wird die äußere Wendung in \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich bei der Untersuchung vor allem daran erkennen, wie weit der Muttermund geöffnet und wie der Gebärmutterhals beschaffen ist. In den Unterlagen steht: Wenn der Muttermund für einen Finger passierbar ist, kann eine Eipollösung möglich sein [Quelle 1]. Bei „geburtsreifem Befund“ ist der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet; dann kann auch eine Fruchtblasensprengung gemacht werden [Quelle 1].\n\nKonkret bedeutet das in einfachen Worten:\n- Der Muttermund ist nicht mehr ganz geschlossen, sondern schon etwas offen [Quelle 1].\n- Der Gebärmutterhals ist kürzer geworden [Quelle 1].\n- Je nach Befund kann die Fruchtblase dann eröffnet werden [Quelle 1].\n\nZusätzlich wird bei der Geburt das Kind und Ihr Zustand überwacht, damit mögliche Gefährdungen früh erkannt werden [Quelle 2].\n\nWichtig: Die genaue Beurteilung erfolgt durch die vaginale Untersuchung. Mehr Details, z. B. zu Messwerten oder einem genauen Punktesystem, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz und verständlich erklären, wie so eine vaginale Untersuchung bei der Einleitung abläuft."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich ehrlich gesagt noch etwas unsicher, weil ich gar nicht weiß, was mich bei der Untersuchung genau erwartet. Wie läuft so eine vaginale Untersuchung bei der Einleitung denn bei mir ungefähr ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Bei der Einleitung wird zunächst vaginal untersucht, um zu prüfen, wie weit der Muttermund bereits geöffnet ist und ob der Geburtsbefund eher unreif oder schon geburtsreif ist [Quelle 1].\n\nWenn der Muttermund für einen Finger passierbar ist, kann die Ärztin oder der Arzt mit 1–2 Fingern in den Gebärmutterhals eingehen und durch eine rundum streichende Bewegung den unteren Bereich der Fruchtblase von innen ablösen. Das nennt man Eipollösung und kann Wehen auslösen [Quelle 1].\n\nIst der Geburtsbefund schon reif, kann bei der Untersuchung auch eine Fruchtblasensprengung gemacht werden: Dabei wird die Fruchtblase mit einem kleinen Häkchen angeritzt und eröffnet [Quelle 1].\n\nDie Untersuchung dient also nicht nur zum „Nachschauen“, sondern kann je nach Befund auch direkt Teil der Einleitung sein [Quelle 1]. Mehr Details dazu, etwa wie lange die Untersuchung dauert oder wie sie sich genau anfühlt, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt auch sagen, welche Beschwerden danach normal sein können und wann Sie sich melden sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon hilfreicher, aber ich hab trotzdem ein bisschen Sorge vor der Untersuchung. Vor allem, ob das weh tut oder ob ich mich dabei irgendwie verkrampfe. Wie lange dauert so eine vaginale Untersuchung ungefähr?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.4208632855877444,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "die erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen ",
+          "score": 0.4172896697637737,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9556
+          },
+          "id": "f88b9d161637cb12ebe97ae44b945037c3214a433b02210e731ef2d5dac78e82"
+        },
+        {
+          "content": "die Seite legen sollen. Während der Wendung können die Herztöne Ihres Kindes mit Ultraschall überprüft werden, um sicherzustellen, dass es Ihrem Kind gut geht. Ggf. erfolgt auch eine genaue Lagekontrolle des Kindes durch Ultraschall. Die Wendung ist meist nicht schmerzhaft, der Druck auf die Bauchdecke wird jedoch manchmal als unangenehm erlebt. Eine mögliche Wehentätigkeit wird nach der Wendung beendet. Die kindlichen Herztöne werden nochmals für einige Zeit überwacht (CTG). Eventuell erhalten Sie vorübergehend einen Stützgurtband, um Ihr Kind in der neuen Lage zu stabilisieren. In Absprache mit der/dem behandelnden Ärztin/Arzt können weitere CTG-Kontrollen erfolgen. Normalerweise wird die äußere Wendung in ",
+          "score": 0.4169666593916751,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 6,
+            "split_idx_start": 4229
+          },
+          "id": "9b30563bd54f674f6a07cdbae2f447a15a73d0054ffe535b6e208382e442f3b3"
+        }
+      ],
+      "timestamp": "2026-04-12T17:04:57.836031"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Okay, das beruhigt mich etwas. Ich hab trotzdem ein bisschen Angst davor, dass ich mich total verkrampfe oder dass es dann länger dauert.  \nWie kann ich mich denn während der Untersuchung am besten entspannen?",
+      "chatbot_response": "Das ist sehr verständlich. In den Unterlagen stehen dazu keine konkreten Entspannungstechniken für die vaginale Untersuchung. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein kann es aber helfen:\n- ruhig und langsam atmen\n- den Beckenboden bewusst loslassen\n- dem Team vorher sagen, dass Sie angespannt sind\n- eine bequeme Position einnehmen und auf Anweisung mitarbeiten\n\nWichtig: Sie müssen die Untersuchung nicht „aushalten, ohne etwas zu sagen“. Wenn es unangenehm wird, sagen Sie es bitte direkt, damit das Team langsamer oder behutsamer vorgehen kann.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt noch erklären, was nach einer solchen Untersuchung bei der Einleitung typischerweise als Nächstes passiert.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 0,
+        "unique_sources": 0,
+        "citation_mapping": []
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nder Tubus verringert die Gefahr, dass Speichel oder Mageninhalt in die Lunge dringt (Aspiration). Damit er schonend eingeführt werden kann, wird ein muskelentspannendes Mittel gegeben, das außerdem die Operationsbedingungen verbessern kann. Die Regionalanästhesie Bei einer Regionalanästhesie spritzt der Arzt ein örtliches Betäubungsmittel in die Nähe schmerleitender Nerven. Dieses „blockiert“ die Weiterleitung von Schmerzreizen aus dem Operationsgebiet zum Gehirn. Das Schmerzempfinden ist in der Regel für mehrere Stunden ausgeschaltet.\nDie Betäubung macht sich zuerst durch ein Kribbeln und Wärmegefühl bemerkbar. Dann werden die betäubten Körperbereiche (z. B. Schulter, Arm, Unterkörper oder Beine) schwer und gefühllos. Solange die Wirkung anhält, können die betäubten Körperbereiche \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich bei der Untersuchung vor allem daran erkennen, wie weit der Muttermund geöffnet und wie der Gebärmutterhals beschaffen ist. In den Unterlagen steht: Wenn der Muttermund für einen Finger passierbar ist, kann eine Eipollösung möglich sein [Quelle 1]. Bei „geburtsreifem Befund“ ist der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet; dann kann auch eine Fruchtblasensprengung gemacht werden [Quelle 1].\n\nKonkret bedeutet das in einfachen Worten:\n- Der Muttermund ist nicht mehr ganz geschlossen, sondern schon etwas offen [Quelle 1].\n- Der Gebärmutterhals ist kürzer geworden [Quelle 1].\n- Je nach Befund kann die Fruchtblase dann eröffnet werden [Quelle 1].\n\nZusätzlich wird bei der Geburt das Kind und Ihr Zustand überwacht, damit mögliche Gefährdungen früh erkannt werden [Quelle 2].\n\nWichtig: Die genaue Beurteilung erfolgt durch die vaginale Untersuchung. Mehr Details, z. B. zu Messwerten oder einem genauen Punktesystem, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz und verständlich erklären, wie so eine vaginale Untersuchung bei der Einleitung abläuft."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich ehrlich gesagt noch etwas unsicher, weil ich gar nicht weiß, was mich bei der Untersuchung genau erwartet. Wie läuft so eine vaginale Untersuchung bei der Einleitung denn bei mir ungefähr ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Bei der Einleitung wird zunächst vaginal untersucht, um zu prüfen, wie weit der Muttermund bereits geöffnet ist und ob der Geburtsbefund eher unreif oder schon geburtsreif ist [Quelle 1].\n\nWenn der Muttermund für einen Finger passierbar ist, kann die Ärztin oder der Arzt mit 1–2 Fingern in den Gebärmutterhals eingehen und durch eine rundum streichende Bewegung den unteren Bereich der Fruchtblase von innen ablösen. Das nennt man Eipollösung und kann Wehen auslösen [Quelle 1].\n\nIst der Geburtsbefund schon reif, kann bei der Untersuchung auch eine Fruchtblasensprengung gemacht werden: Dabei wird die Fruchtblase mit einem kleinen Häkchen angeritzt und eröffnet [Quelle 1].\n\nDie Untersuchung dient also nicht nur zum „Nachschauen“, sondern kann je nach Befund auch direkt Teil der Einleitung sein [Quelle 1]. Mehr Details dazu, etwa wie lange die Untersuchung dauert oder wie sie sich genau anfühlt, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt auch sagen, welche Beschwerden danach normal sein können und wann Sie sich melden sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon hilfreicher, aber ich hab trotzdem ein bisschen Sorge vor der Untersuchung. Vor allem, ob das weh tut oder ob ich mich dabei irgendwie verkrampfe. Wie lange dauert so eine vaginale Untersuchung ungefähr?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Untersuchung dauert meist nur wenige Minuten. Mehr zur genauen Dauer steht in den Unterlagen nicht.\n\nOb sie weh tut, ist unterschiedlich: Bei einer Wendung ist beschrieben, dass Druck manchmal als unangenehm erlebt wird [Quelle 3]. Für die vaginale Untersuchung bei der Einleitung steht das so nicht im Detail in den Unterlagen. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nEs kann helfen, wenn Sie dabei möglichst locker atmen und dem Team sagen, dass Sie angespannt sind. Dann kann die Untersuchung meist ruhiger durchgeführt werden. \n\nFalls Sie möchten, kann ich Ihnen als Nächstes kurz erklären, was nach der Untersuchung typischerweise passiert."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich etwas. Ich hab trotzdem ein bisschen Angst davor, dass ich mich total verkrampfe oder dass es dann länger dauert.  \nWie kann ich mich denn während der Untersuchung am besten entspannen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.41033472503060764,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.3772306141572045,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "der Tubus verringert die Gefahr, dass Speichel oder Mageninhalt in die Lunge dringt (Aspiration). Damit er schonend eingeführt werden kann, wird ein muskelentspannendes Mittel gegeben, das außerdem die Operationsbedingungen verbessern kann. Die Regionalanästhesie Bei einer Regionalanästhesie spritzt der Arzt ein örtliches Betäubungsmittel in die Nähe schmerleitender Nerven. Dieses „blockiert“ die Weiterleitung von Schmerzreizen aus dem Operationsgebiet zum Gehirn. Das Schmerzempfinden ist in der Regel für mehrere Stunden ausgeschaltet.\nDie Betäubung macht sich zuerst durch ein Kribbeln und Wärmegefühl bemerkbar. Dann werden die betäubten Körperbereiche (z. B. Schulter, Arm, Unterkörper oder Beine) schwer und gefühllos. Solange die Wirkung anhält, können die betäubten Körperbereiche ",
+          "score": 0.36811982409637045,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 2,
+            "split_idx_start": 1550
+          },
+          "id": "80284bfc5baa5b5236ed48d6cdcd50b1e10858123a2044c919f9fa0caafbb601"
+        }
+      ],
+      "timestamp": "2026-04-12T17:05:01.848708"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Hm, okay… ich glaub, mir würde es helfen, wenn ich vorher genau wüsste, **was direkt danach passiert** und ob ich dann gleich wieder aufstehen kann oder erstmal liegen bleiben muss.",
+      "chatbot_response": "Gern. Direkt nach der Untersuchung bzw. nach der Anästhesie oder einem Eingriff werden Sie noch eine Zeit lang überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 2]. Je nach Situation kann die Überwachung auch auf einer Wach- oder Intensivstation stattfinden [Quelle 2].\n\nWichtig ist außerdem: Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen [Quelle 2]. Es kann nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken, zum Beispiel durch Bettgitter [Quelle 2]. Wenn Körperbereiche noch betäubt sind, sollen diese vor Druckschäden und Verletzungen geschützt werden [Quelle 2].\n\nFür die vaginale Untersuchung bei der Einleitung selbst stehen in den Unterlagen keine genauen Angaben dazu, ob Sie danach liegen bleiben müssen oder sofort aufstehen können. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, welche Zeichen nach der Einleitung normal sind und wann Sie sich melden sollten.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.4042830275698545
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nnur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Die Geburtseinleitung kann je nach Befund unterschiedlich ablaufen. Im Wesentlichen gibt es:\n\n1. Medikamentöse Einleitung mit Prostaglandinen  \nProstaglandine können den Gebärmutterhals weicher machen, verkürzen und den Muttermund öffnen [Quelle 3]. Sie werden vor allem eingesetzt, wenn der Geburtsbefund noch unreif ist [Quelle 3]. Verabreicht werden sie je nach Präparat als Tablette, die geschluckt oder in die Scheide gelegt wird, als Gel in die Scheide oder in den Gebärmutterhals, oder als tamponähnliche Membran in die Scheide [Quelle 3]. Sie müssen eventuell mehrmals gegeben werden [Quelle 3].\n\n2. Mechanische Maßnahmen  \nWenn der Muttermund schon für einen Finger passierbar ist, kann eine Eipollösung durchgeführt werden: Dabei wird bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].  \nBei geburtsreifem Befund kann auch eine Fruchtblasensprengung (Amniotomie) gemacht werden: Mit einem kleinen Häkchen wird die Fruchtblase angeritzt und eröffnet. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt werden [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, welche Methode typischerweise wann gewählt wird."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, verstehe. Ich bin vor allem gespannt, wie lange das bei mir ungefähr dauern kann, weil ich mich darauf einstellen will. Wie entscheidet dein, ob eher mit Tabletten oder mit so einem Gel eingeleitet wird?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Dauer kann sehr unterschiedlich sein: Wenn der Gebärmutterhals noch unreif ist, kann es länger dauern und es werden Prostaglandine ggf. mehrmals gegeben [Quelle 3]. Bei einem geburtsreifen Befund kann eine Fruchtblasensprengung oft innerhalb weniger Stunden zur Geburt führen [Quelle 1].\n\nOb eher Tabletten, Gel oder eine andere Form gewählt wird, hängt vor allem vom Geburtsbefund ab: Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt [Quelle 3]. Sie können als Tablette, als Gel oder als tamponähnliche Membran gegeben werden [Quelle 3]. Welches Präparat im Einzelfall gewählt wird, ist in den Unterlagen nicht genauer beschrieben. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig wären für die Einschätzung auch:  \n- Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?  \n- In welcher Schwangerschaftswoche befinden Sie sich aktuell?  \n- Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bei mir ist kein Kaiserschnitt oder so gewesen, und ich bin in der 40. Woche. Einen Blasensprung hatte ich noch nicht, also die Fruchtblase ist noch ganz."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft für die Einordnung. In der 40. Schwangerschaftswoche kann eine Einleitung laut Unterlagen ab der vollendeten 40. SSW erwogen werden [Quelle 1]. Da bei Ihnen kein Blasensprung vorliegt, spielt dieser Auslöser hier aktuell keine Rolle [Quelle 1].\n\nWelche Methode gewählt wird, hängt vor allem davon ab, wie „geburtsreif“ der Befund am Muttermund ist:  \n- Ist der Geburtsbefund noch unreif, werden meist Prostaglandine eingesetzt, um den Gebärmutterhals zu weichen und den Muttermund zu öffnen [Quelle 3].  \n- Ist der Befund schon geburtsreif, kann eine Fruchtblasensprengung erfolgen, die oft innerhalb weniger Stunden Wehen auslöst [Quelle 1].\n\nOb in Ihrem Fall eher Tablette, Gel oder eine andere Form verwendet wird, ist in den Unterlagen nicht näher festgelegt. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Die Dauer lässt sich vorher nur grob abschätzen. Bei unreifem Befund kann es mehrere Schritte und auch mehr Zeit brauchen; bei reifem Befund geht es oft schneller [Quelle 1][Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie der Arzt oder die Hebamme entscheidet, ob Ihr Muttermund schon „geburtsreif“ ist."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt für mich noch ziemlich unklar, und genau das macht mich etwas nervös. Ich würde gern wissen: Woran merkt dein konkret, ob mein Muttermund schon geburtsreif ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich bei der Untersuchung vor allem daran erkennen, wie weit der Muttermund geöffnet und wie der Gebärmutterhals beschaffen ist. In den Unterlagen steht: Wenn der Muttermund für einen Finger passierbar ist, kann eine Eipollösung möglich sein [Quelle 1]. Bei „geburtsreifem Befund“ ist der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet; dann kann auch eine Fruchtblasensprengung gemacht werden [Quelle 1].\n\nKonkret bedeutet das in einfachen Worten:\n- Der Muttermund ist nicht mehr ganz geschlossen, sondern schon etwas offen [Quelle 1].\n- Der Gebärmutterhals ist kürzer geworden [Quelle 1].\n- Je nach Befund kann die Fruchtblase dann eröffnet werden [Quelle 1].\n\nZusätzlich wird bei der Geburt das Kind und Ihr Zustand überwacht, damit mögliche Gefährdungen früh erkannt werden [Quelle 2].\n\nWichtig: Die genaue Beurteilung erfolgt durch die vaginale Untersuchung. Mehr Details, z. B. zu Messwerten oder einem genauen Punktesystem, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz und verständlich erklären, wie so eine vaginale Untersuchung bei der Einleitung abläuft."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich ehrlich gesagt noch etwas unsicher, weil ich gar nicht weiß, was mich bei der Untersuchung genau erwartet. Wie läuft so eine vaginale Untersuchung bei der Einleitung denn bei mir ungefähr ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Bei der Einleitung wird zunächst vaginal untersucht, um zu prüfen, wie weit der Muttermund bereits geöffnet ist und ob der Geburtsbefund eher unreif oder schon geburtsreif ist [Quelle 1].\n\nWenn der Muttermund für einen Finger passierbar ist, kann die Ärztin oder der Arzt mit 1–2 Fingern in den Gebärmutterhals eingehen und durch eine rundum streichende Bewegung den unteren Bereich der Fruchtblase von innen ablösen. Das nennt man Eipollösung und kann Wehen auslösen [Quelle 1].\n\nIst der Geburtsbefund schon reif, kann bei der Untersuchung auch eine Fruchtblasensprengung gemacht werden: Dabei wird die Fruchtblase mit einem kleinen Häkchen angeritzt und eröffnet [Quelle 1].\n\nDie Untersuchung dient also nicht nur zum „Nachschauen“, sondern kann je nach Befund auch direkt Teil der Einleitung sein [Quelle 1]. Mehr Details dazu, etwa wie lange die Untersuchung dauert oder wie sie sich genau anfühlt, stehen in den Unterlagen nicht. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt auch sagen, welche Beschwerden danach normal sein können und wann Sie sich melden sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon hilfreicher, aber ich hab trotzdem ein bisschen Sorge vor der Untersuchung. Vor allem, ob das weh tut oder ob ich mich dabei irgendwie verkrampfe. Wie lange dauert so eine vaginale Untersuchung ungefähr?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Die Untersuchung dauert meist nur wenige Minuten. Mehr zur genauen Dauer steht in den Unterlagen nicht.\n\nOb sie weh tut, ist unterschiedlich: Bei einer Wendung ist beschrieben, dass Druck manchmal als unangenehm erlebt wird [Quelle 3]. Für die vaginale Untersuchung bei der Einleitung steht das so nicht im Detail in den Unterlagen. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nEs kann helfen, wenn Sie dabei möglichst locker atmen und dem Team sagen, dass Sie angespannt sind. Dann kann die Untersuchung meist ruhiger durchgeführt werden. \n\nFalls Sie möchten, kann ich Ihnen als Nächstes kurz erklären, was nach der Untersuchung typischerweise passiert."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich etwas. Ich hab trotzdem ein bisschen Angst davor, dass ich mich total verkrampfe oder dass es dann länger dauert.  \nWie kann ich mich denn während der Untersuchung am besten entspannen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist sehr verständlich. In den Unterlagen stehen dazu keine konkreten Entspannungstechniken für die vaginale Untersuchung. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein kann es aber helfen:\n- ruhig und langsam atmen\n- den Beckenboden bewusst loslassen\n- dem Team vorher sagen, dass Sie angespannt sind\n- eine bequeme Position einnehmen und auf Anweisung mitarbeiten\n\nWichtig: Sie müssen die Untersuchung nicht „aushalten, ohne etwas zu sagen“. Wenn es unangenehm wird, sagen Sie es bitte direkt, damit das Team langsamer oder behutsamer vorgehen kann.\n\nWenn Sie möchten, kann ich Ihnen im nächsten Schritt noch erklären, was nach einer solchen Untersuchung bei der Einleitung typischerweise als Nächstes passiert."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… ich glaub, mir würde es helfen, wenn ich vorher genau wüsste, **was direkt danach passiert** und ob ich dann gleich wieder aufstehen kann oder erstmal liegen bleiben muss."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.43314573820387725,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.4042830275698545,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "nur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). ",
+          "score": 0.38409003967879074,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2343
+          },
+          "id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17"
+        }
+      ],
+      "timestamp": "2026-04-12T17:05:05.841022"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 8,
+    "total_chatbot_responses": 8,
+    "avg_response_length": 1062.5,
+    "total_citations": 33,
+    "turns_missing_citations": 1
+  }
+}

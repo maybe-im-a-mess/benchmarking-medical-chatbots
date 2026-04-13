@@ -4,6 +4,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from datetime import datetime
 from pathlib import Path
+import os
 
 
 class DialogueManager:
@@ -11,6 +12,8 @@ class DialogueManager:
     Manages the conversation flow between chatbot and patient agents.
     Tracks mandatory questions, conversation state, and generates conversation logs.
     """
+    _EMBEDDER_CACHE = {}
+
     def __init__(self, 
                  chatbot_agent, 
                  patient_agent, 
@@ -43,8 +46,15 @@ class DialogueManager:
 
         # Embedding model for semantic matching
         self.embedding_model_name = "paraphrase-multilingual-mpnet-base-v2"
+        self.embedding_device = os.getenv("DIALOGUE_EMBEDDING_DEVICE", "cpu")
         self.similarity_threshold = 0.55
-        self.embedder = SentenceTransformer(self.embedding_model_name)
+        cache_key = (self.embedding_model_name, self.embedding_device)
+        if cache_key not in DialogueManager._EMBEDDER_CACHE:
+            DialogueManager._EMBEDDER_CACHE[cache_key] = SentenceTransformer(
+                self.embedding_model_name,
+                device=self.embedding_device,
+            )
+        self.embedder = DialogueManager._EMBEDDER_CACHE[cache_key]
 
         # Load mandatory questions
         self.mandatory_questions = self._load_mandatory_questions()
@@ -359,9 +369,12 @@ class DialogueManager:
             }
         }
     
-    def save_conversation(self, filepath: str):
+    def save_conversation(self, filepath: str, extra_metadata: Optional[Dict] = None):
         """Save conversation log to JSON file."""
         conversation_log = self._generate_conversation_log()
+
+        if extra_metadata:
+            conversation_log.setdefault("metadata", {}).update(extra_metadata)
         
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(conversation_log, f, ensure_ascii=False, indent=2)

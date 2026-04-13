@@ -1,260 +1,425 @@
+import hashlib
 import json
 import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
-import numpy as np
+from utils.llm_config import make_api_call
 
-CONVERSATIONS_DIR = Path("data/conversations")
+
+CONVERSATIONS_DIR = Path("data/conversations/v1")
 RESULTS_DIR = Path("data/evaluation_results")
+DEFAULT_JUDGE_MODEL = "gpt-4o-mini"
 
-EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-8B"
-DEFAULT_SUPPORT_THRESHOLD = 0.6
+CITATION_PATTERN = re.compile(r"\[Quelle\s*(\d+)\]")
 
-_model_cache = {}
+FULL_SUPPORT = "full_support"
+PARTIAL_SUPPORT = "partial_support"
+NO_SUPPORT = "no_support"
 
-
-def get_embedding_model(model_name: str = EMBEDDING_MODEL):
-	if model_name not in _model_cache:
-		from sentence_transformers import SentenceTransformer
-
-		print(f"Loading embedding model: {model_name}")
-		_model_cache[model_name] = SentenceTransformer(model_name)
-	return _model_cache[model_name]
+_judge_cache: Dict[str, Dict[str, str]] = {}
 
 
-def encode(texts: List[str], model_name: str = EMBEDDING_MODEL) -> np.ndarray:
-	if not texts:
-		return np.empty((0, 0), dtype=float)
-	model = get_embedding_model(model_name)
-	return np.array(model.encode(texts, normalize_embeddings=True, show_progress_bar=False))
-
-
-def load_conversation(file_path: Path) -> Dict:
-	with open(file_path, "r", encoding="utf-8") as f:
+def load_json(path: Path) -> Dict:
+	with open(path, "r", encoding="utf-8") as f:
 		return json.load(f)
 
 
-def split_into_sentences(text: str) -> List[str]:
-	if not text:
-		return []
-	parts = re.split(r"(?<=[.!?])\s+", text.strip())
-	return [p.strip() for p in parts if p.strip()]
-
-
-def extract_citations_from_sentence(sentence: str) -> List[int]:
-	return [int(x) for x in re.findall(r"\[Quelle\s+(\d+)\]", sentence)]
-
-
-def remove_citation_tags(text: str) -> str:
-	return re.sub(r"\[Quelle\s+\d+\]", "", text).strip()
-
-
-def evaluate_turn_citations(
-	turn: Dict,
-	procedure: str,
-	support_threshold: float,
-	model_name: str,
-) -> Dict:
-	response = turn.get("chatbot_response", "")
-	chunks = turn.get("retrieved_chunks", [])
-
-	sentences = split_into_sentences(response)
-	cited_sentence_records = []
-
-	total_cited_claims = 0
-	supported_cited_claims = 0
-	valid_index_claims = 0
-	same_doc_claims = 0
-
-	procedure_file = f"{procedure}.md" if procedure else None
-
-	for sent in sentences:
-		cited_indices = extract_citations_from_sentence(sent)
-		if not cited_indices:
-			continue
-
-		claim_text = remove_citation_tags(sent)
-		if not claim_text:
-			continue
-
-		emb_claim = encode([claim_text], model_name)
-		claim_supported = False
-
-		for idx in cited_indices:
-			total_cited_claims += 1
-			chunk_pos = idx - 1
-			if chunk_pos < 0 or chunk_pos >= len(chunks):
-				cited_sentence_records.append({
-					"sentence": sent,
-					"citation_index": idx,
-					"valid_index": False,
-					"support_similarity": None,
-					"supported": False,
-					"same_procedure_document": False,
-				})
-				continue
-
-			valid_index_claims += 1
-			chunk = chunks[chunk_pos]
-			chunk_text = chunk.get("content", "")
-			chunk_file = (chunk.get("meta", {}) or {}).get("file_path")
-
-			emb_chunk = encode([chunk_text], model_name)
-			sim = float((emb_claim @ emb_chunk.T)[0, 0]) if emb_chunk.size else 0.0
-			supported = sim >= support_threshold
-			if supported:
-				claim_supported = True
-
-			same_doc = bool(procedure_file and chunk_file == procedure_file)
-			if same_doc:
-				same_doc_claims += 1
-
-			cited_sentence_records.append({
-				"sentence": sent,
-				"citation_index": idx,
-				"valid_index": True,
-				"chunk_file": chunk_file,
-				"support_similarity": round(sim, 4),
-				"supported": supported,
-				"same_procedure_document": same_doc,
-			})
-
-		if claim_supported:
-			supported_cited_claims += 1
-
-	citation_meta = turn.get("citations", {})
-	reported_total_citations = citation_meta.get("total_citations", 0)
-
-	citation_precision = (
-		supported_cited_claims / total_cited_claims if total_cited_claims else 0.0
-	)
-	valid_index_rate = valid_index_claims / total_cited_claims if total_cited_claims else 0.0
-	same_doc_rate = same_doc_claims / total_cited_claims if total_cited_claims else 0.0
-
-	return {
-		"turn": turn.get("turn"),
-		"reported_total_citations": reported_total_citations,
-		"parsed_total_cited_claims": total_cited_claims,
-		"supported_cited_claims": supported_cited_claims,
-		"citation_precision": round(float(citation_precision), 4),
-		"valid_index_rate": round(float(valid_index_rate), 4),
-		"same_procedure_doc_rate": round(float(same_doc_rate), 4),
-		"details": cited_sentence_records,
-	}
-
-
-def aggregate_turn_results(turn_results: List[Dict]) -> Dict:
-	total_reported = sum(t["reported_total_citations"] for t in turn_results)
-	total_parsed = sum(t["parsed_total_cited_claims"] for t in turn_results)
-	total_supported = sum(t["supported_cited_claims"] for t in turn_results)
-
-	weighted_valid = sum(
-		t["valid_index_rate"] * t["parsed_total_cited_claims"] for t in turn_results
-	)
-	weighted_same_doc = sum(
-		t["same_procedure_doc_rate"] * t["parsed_total_cited_claims"] for t in turn_results
-	)
-
-	if total_parsed > 0:
-		citation_accuracy = total_supported / total_parsed
-		valid_index_rate = weighted_valid / total_parsed
-		same_doc_rate = weighted_same_doc / total_parsed
-	else:
-		citation_accuracy = 0.0
-		valid_index_rate = 0.0
-		same_doc_rate = 0.0
-
-	turns_with_no_citations = sum(1 for t in turn_results if t["parsed_total_cited_claims"] == 0)
-
-	return {
-		"reported_total_citations": total_reported,
-		"parsed_total_cited_claims": total_parsed,
-		"supported_cited_claims": total_supported,
-		"citation_accuracy": round(float(citation_accuracy), 4),
-		"valid_index_rate": round(float(valid_index_rate), 4),
-		"same_procedure_doc_rate": round(float(same_doc_rate), 4),
-		"turns_with_no_citations": turns_with_no_citations,
-	}
-
-
-def save_json(path: Path, data: List[Dict]) -> None:
+def save_json(path: Path, data) -> None:
 	path.parent.mkdir(parents=True, exist_ok=True)
 	with open(path, "w", encoding="utf-8") as f:
 		json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-def summarize(rows: List[Dict]) -> List[Dict]:
-	by_mode: Dict[str, List[Dict]] = {}
-	for row in rows:
-		mode = row.get("mode", "unknown")
-		by_mode.setdefault(mode, []).append(row)
+def discover_conversation_files(conversations_dir: Path) -> List[Path]:
+	files = [
+		p for p in conversations_dir.rglob("*.json")
+		if not p.name.startswith("conversation_index_")
+	]
+	return sorted(files)
 
-	out = []
-	for mode, items in by_mode.items():
-		out.append({
-			"mode": mode,
-			"conversation_count": len(items),
-			"mean_citation_accuracy": round(
-				float(np.mean([x["citation_accuracy"] for x in items])), 4
-			),
-			"mean_same_procedure_doc_rate": round(
-				float(np.mean([x["same_procedure_doc_rate"] for x in items])), 4
-			),
-			"mean_valid_index_rate": round(
-				float(np.mean([x["valid_index_rate"] for x in items])), 4
-			),
+
+def split_response_into_sentences(response_text: str) -> List[str]:
+	if not response_text:
+		return []
+
+	# Keep bullets and line-level statements visible before sentence split.
+	chunks = []
+	for raw_line in response_text.replace("\r", "").split("\n"):
+		line = raw_line.strip()
+		if not line:
+			continue
+		line = re.sub(r"^[\-•*]\s*", "", line)
+		chunks.append(line)
+
+	sentences: List[str] = []
+	for chunk in chunks:
+		parts = re.split(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ0-9(\[\"„])", chunk)
+		for part in parts:
+			cleaned = part.strip()
+			if cleaned:
+				sentences.append(cleaned)
+
+	return sentences
+
+
+def strip_citations(text: str) -> str:
+	without = CITATION_PATTERN.sub("", text)
+	return re.sub(r"\s+", " ", without).strip()
+
+
+def is_factual_sentence(sentence: str) -> bool:
+	s = sentence.strip()
+	if not s:
+		return False
+
+	lower = s.lower()
+
+	if s.endswith("?"):
+		return False
+
+	# Ignore conversational filler and empathy-only utterances.
+	filler_prefixes = (
+		"das ist verständlich",
+		"das ist sehr verständlich",
+		"ich verstehe",
+		"wenn sie möchten",
+		"okay",
+		"alles klar",
+		"danke",
+	)
+	if lower.startswith(filler_prefixes):
+		return False
+
+	# Treat standalone "gern/gerne" intro lines as filler, but keep longer factual lines.
+	if re.match(r"^gerne?[\s,.:\-–—]*$", lower):
+		return False
+
+	# Very short fragments are usually conversational, not factual claims.
+	if len(strip_citations(s)) < 20:
+		return False
+
+	return True
+
+
+def extract_atomic_claims(response_text: str) -> List[Dict]:
+	claims = []
+	for sentence in split_response_into_sentences(response_text):
+		claim_text = strip_citations(sentence)
+		citations = [int(x) for x in CITATION_PATTERN.findall(sentence)]
+
+		if not is_factual_sentence(sentence):
+			continue
+
+		claims.append({
+			"claim_text": claim_text,
+			"citations": citations,
+			"raw_sentence": sentence,
 		})
-	return sorted(out, key=lambda x: x["mode"])
+
+	return claims
+
+
+def build_source_map(turn: Dict) -> Dict[int, Dict]:
+	mapping: Dict[int, Dict] = {}
+
+	retrieved_chunks = turn.get("retrieved_chunks", []) or []
+	citation_mapping = turn.get("citations", {}).get("citation_mapping", []) or []
+
+	for m in citation_mapping:
+		idx = m.get("citation_index")
+		if not isinstance(idx, int):
+			continue
+
+		# In current generation pipeline, citation index maps to retrieved chunk position.
+		chunk = retrieved_chunks[idx - 1] if 1 <= idx <= len(retrieved_chunks) else None
+
+		mapping[idx] = {
+			"citation_index": idx,
+			"document_id": m.get("document_id"),
+			"file_path": m.get("file_path"),
+			"retrieval_score": m.get("score"),
+			"chunk_content": (chunk or {}).get("content"),
+			"chunk_meta": (chunk or {}).get("meta"),
+			"chunk_id": (chunk or {}).get("id"),
+		}
+
+	return mapping
+
+
+def _judge_key(claim: str, source_chunk: str, model_name: str) -> str:
+	raw = f"{model_name}\n{claim}\n{source_chunk}"
+	return hashlib.md5(raw.encode("utf-8")).hexdigest()
+
+
+def _normalize_label(label: str) -> str:
+	if not label:
+		return NO_SUPPORT
+
+	lower = label.lower().strip()
+	if lower in {"full", "full_support", "fully supported", "supported"}:
+		return FULL_SUPPORT
+	if lower in {"partial", "partial_support", "partially supported"}:
+		return PARTIAL_SUPPORT
+	if lower in {"none", "no support", "no_support", "unsupported"}:
+		return NO_SUPPORT
+
+	if "full" in lower:
+		return FULL_SUPPORT
+	if "partial" in lower:
+		return PARTIAL_SUPPORT
+	return NO_SUPPORT
+
+def _extract_json_object(text: str) -> str:
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end < start:
+        return text
+    return text[start : end + 1]
+
+
+def judge_claim_support(claim: str, source_chunk: str, model_name: str) -> Dict[str, str]:
+	if not source_chunk:
+		return {
+			"support_label": NO_SUPPORT,
+			"rationale": "Missing mapped source chunk for this citation.",
+			"raw_judge_output": "",
+		}
+
+	key = _judge_key(claim, source_chunk, model_name)
+	if key in _judge_cache:
+		return _judge_cache[key]
+
+	system_message = (
+		"You are a strict factual support judge. Compare CLAIM against SOURCE CHUNK only. "
+		"Do not use outside knowledge. Return JSON only."
+	)
+
+	prompt = f"""
+Task: Classify whether SOURCE CHUNK supports CLAIM.
+
+Labels:
+- full_support: Claim is directly and fully supported by the source.
+- partial_support: Source supports only part of the claim or is less specific.
+- no_support: Claim is unsupported or contradicted by the source.
+
+Return JSON with keys:
+- label: one of full_support, partial_support, no_support
+- rationale: brief explanation (max 2 sentences)
+
+CLAIM:
+{claim}
+
+SOURCE CHUNK:
+{source_chunk}
+""".strip()
+
+	try:
+		raw = make_api_call(
+			prompt=prompt,
+			model_name=model_name,
+			temperature=0.0,
+			system_message=system_message,
+		)
+	except Exception as e:
+		error_details = str(e)
+		if hasattr(e, 'response') and hasattr(e.response, 'text'):
+			error_details += f" | Reason: {e.response.text}"
+
+		print(f"API ERROR: {error_details}")  # Print it to your terminal
+		result = {
+			"support_label": NO_SUPPORT,
+			"rationale": f"Judge call failed: {e}",
+			"raw_judge_output": "",
+		}
+		_judge_cache[key] = result
+		return result
+
+	label = NO_SUPPORT
+	rationale = ""
+
+	try:
+		clean_raw = _extract_json_object(raw)
+		parsed = json.loads(clean_raw)
+		label = _normalize_label(str(parsed.get("label", "")))
+		rationale = str(parsed.get("rationale", "")).strip()
+	except json.JSONDecodeError:
+		label = _normalize_label(raw)
+		rationale = "Parser fallback used because judge did not return valid JSON."
+
+	result = {
+		"support_label": label,
+		"rationale": rationale,
+		"raw_judge_output": raw,
+	}
+	_judge_cache[key] = result
+	return result
+
+
+def evaluate_conversation_file(path: Path, judge_model: str) -> Dict:
+	data = load_json(path)
+	turns = data.get("conversation", []) or []
+
+	pair_rows: List[Dict] = []
+	total_claims = 0
+	claims_with_citations = 0
+
+	for turn in turns:
+		response_text = turn.get("chatbot_response", "")
+		claims = extract_atomic_claims(response_text)
+		source_map = build_source_map(turn)
+
+		total_claims += len(claims)
+		claims_with_citations += sum(1 for c in claims if c["citations"])
+
+		for claim_idx, claim in enumerate(claims, start=1):
+			for citation_idx in claim["citations"]:
+				source_info = source_map.get(citation_idx, {})
+				source_chunk = source_info.get("chunk_content", "")
+
+				judge = judge_claim_support(
+					claim=claim["claim_text"],
+					source_chunk=source_chunk,
+					model_name=judge_model,
+				)
+
+				pair_rows.append({
+					"file": str(path),
+					"turn": turn.get("turn"),
+					"claim_index_in_turn": claim_idx,
+					"claim_text": claim["claim_text"],
+					"raw_sentence": claim["raw_sentence"],
+					"citation_index": citation_idx,
+					"support_label": judge["support_label"],
+					"judge_rationale": judge["rationale"],
+					"judge_raw_output": judge["raw_judge_output"],
+					"source": {
+						"file_path": source_info.get("file_path"),
+						"document_id": source_info.get("document_id"),
+						"retrieval_score": source_info.get("retrieval_score"),
+						"chunk_id": source_info.get("chunk_id"),
+						"chunk_content": source_chunk,
+						"chunk_meta": source_info.get("chunk_meta"),
+					},
+				})
+
+	return {
+		"file": str(path),
+		"total_factual_claims": total_claims,
+		"claims_with_citations": claims_with_citations,
+		"citation_pairs": pair_rows,
+	}
+
+
+def calculate_metrics(pair_rows: List[Dict], total_claims: int, claims_with_citations: int) -> Dict:
+	total_citations = len(pair_rows)
+	full_count = sum(1 for r in pair_rows if r["support_label"] == FULL_SUPPORT)
+	partial_count = sum(1 for r in pair_rows if r["support_label"] == PARTIAL_SUPPORT)
+	none_count = sum(1 for r in pair_rows if r["support_label"] == NO_SUPPORT)
+
+	strict_supported = full_count
+	relaxed_supported = full_count + partial_count
+
+	strict_precision = strict_supported / total_citations if total_citations else 0.0
+	relaxed_precision = relaxed_supported / total_citations if total_citations else 0.0
+	support_coverage = claims_with_citations / total_claims if total_claims else 0.0
+
+	full_pct = full_count / total_citations if total_citations else 0.0
+	partial_pct = partial_count / total_citations if total_citations else 0.0
+	none_pct = none_count / total_citations if total_citations else 0.0
+
+	return {
+		"citation_precision": {
+			"strict_full_only": round(strict_precision, 4),
+			"relaxed_full_plus_partial": round(relaxed_precision, 4),
+			"supported_citations_strict": strict_supported,
+			"supported_citations_relaxed": relaxed_supported,
+			"total_citations": total_citations,
+		},
+		"support_coverage": {
+			"claims_with_citations": claims_with_citations,
+			"total_factual_claims": total_claims,
+			"coverage": round(support_coverage, 4),
+		},
+		"support_distribution": {
+			"full_support": {
+				"count": full_count,
+				"percentage": round(full_pct, 4),
+			},
+			"partial_support": {
+				"count": partial_count,
+				"percentage": round(partial_pct, 4),
+			},
+			"no_support": {
+				"count": none_count,
+				"percentage": round(none_pct, 4),
+			},
+		},
+	}
 
 
 def run_evaluation(
 	conversations_dir: Path = CONVERSATIONS_DIR,
 	results_dir: Path = RESULTS_DIR,
-	support_threshold: float = DEFAULT_SUPPORT_THRESHOLD,
-	model_name: str = EMBEDDING_MODEL,
-) -> List[Dict]:
-	rows = []
+	judge_model: str = DEFAULT_JUDGE_MODEL,
+	max_files: int = None,
+) -> Tuple[Dict, List[Dict]]:
+	files = discover_conversation_files(conversations_dir)
+	if max_files is not None:
+		files = files[:max_files]
 
-	for conv_file in sorted(conversations_dir.glob("*.json")):
-		if conv_file.name == "conversation_index_all.json":
-			continue
+	all_pairs: List[Dict] = []
+	file_summaries: List[Dict] = []
+	total_claims = 0
+	claims_with_citations = 0
 
-		conv = load_conversation(conv_file)
-		procedure = conv.get("metadata", {}).get("procedure", "")
-		turn_results = [
-			evaluate_turn_citations(
-				turn=turn,
-				procedure=procedure,
-				support_threshold=support_threshold,
-				model_name=model_name,
-			)
-			for turn in conv.get("conversation", [])
-		]
+	for i, file_path in enumerate(files, start=1):
+		print(f"[{i}/{len(files)}] Evaluating {file_path.name}")
+		file_result = evaluate_conversation_file(file_path, judge_model)
 
-		agg = aggregate_turn_results(turn_results)
-		rows.append({
-			"file": conv_file.name,
-			"procedure": procedure,
-			"mode": conv.get("metadata", {}).get("mode"),
-			"chatbot_model": conv.get("metadata", {}).get("chatbot_model"),
-			"support_threshold": support_threshold,
-			**agg,
-			"turn_details": turn_results,
+		file_pairs = file_result["citation_pairs"]
+		file_total_claims = file_result["total_factual_claims"]
+		file_claims_with_citations = file_result["claims_with_citations"]
+
+		total_claims += file_total_claims
+		claims_with_citations += file_claims_with_citations
+		all_pairs.extend(file_pairs)
+
+		file_metrics = calculate_metrics(file_pairs, file_total_claims, file_claims_with_citations)
+		file_summaries.append({
+			"file": file_result["file"],
+			"total_factual_claims": file_total_claims,
+			"claims_with_citations": file_claims_with_citations,
+			**file_metrics,
 		})
 
-	save_json(results_dir / f"citation_evaluation_thr{int(support_threshold * 100)}.json", rows)
-	save_json(results_dir / f"citation_summary_thr{int(support_threshold * 100)}.json", summarize(rows))
-	return rows
+	global_metrics = calculate_metrics(all_pairs, total_claims, claims_with_citations)
+	summary = {
+		"judge_model": judge_model,
+		"files_evaluated": len(files),
+		**global_metrics,
+	}
+
+	save_json(results_dir / "citation_pair_judgments.json", all_pairs)
+	save_json(results_dir / "citation_metrics.json", summary)
+	save_json(results_dir / "citation_metrics_per_file.json", file_summaries)
+
+	return summary, all_pairs
 
 
 if __name__ == "__main__":
 	import argparse
 
-	parser = argparse.ArgumentParser(description="Citation accuracy evaluation")
-	parser.add_argument("--threshold", type=float, default=DEFAULT_SUPPORT_THRESHOLD)
-	parser.add_argument("--model", type=str, default=EMBEDDING_MODEL)
+	parser = argparse.ArgumentParser(description="Citation support evaluation")
+	parser.add_argument("--judge-model", type=str, default=DEFAULT_JUDGE_MODEL)
+	parser.add_argument("--max-files", type=int, default=None)
 	args = parser.parse_args()
 
-	rows = run_evaluation(support_threshold=args.threshold, model_name=args.model)
-	print(f"Saved citation evaluation for {len(rows)} conversations")
+	summary, rows = run_evaluation(
+		judge_model=args.judge_model,
+		max_files=args.max_files,
+	)
+
+	print("\nCitation Evaluation Summary")
+	print(json.dumps(summary, indent=2, ensure_ascii=False))
+	print(f"Saved {len(rows)} citation pair judgments")

@@ -1,6 +1,7 @@
 from openai import OpenAI
 import os
 import re
+import random
 from dotenv import load_dotenv
 from typing import List, Dict, Optional
 
@@ -109,6 +110,30 @@ class PatientAgent:
             hidden_fact="Ich habe eine schwere Latex-Allergie.",
             name="Lotte"
         ),
+        "anticoagulation_risk": PatientPersona(
+            age=37, sex="female", language="de", anxiety_level="high",
+            education_level="medium", detail_preference="high",
+            hidden_fact="Ich nehme täglich Blutverdünner wegen einer früheren Thrombose.",
+            name="Sara"
+        ),
+        "trauma_history_risk": PatientPersona(
+            age=28, sex="female", language="de", anxiety_level="high",
+            education_level="medium", detail_preference="low",
+            hidden_fact="Ich hatte bei einer früheren OP eine sehr schlechte Erfahrung und starke Angst.",
+            name="Mila"
+        ),
+        "hypertension_risk": PatientPersona(
+            age=35, sex="female", language="de", anxiety_level="medium",
+            education_level="high", detail_preference="medium",
+            hidden_fact="Ich habe seit der Schwangerschaft häufig hohen Blutdruck.",
+            name="Clara"
+        ),
+        "language_barrier_risk": PatientPersona(
+            age=32, sex="female", language="de", anxiety_level="medium",
+            education_level="low", detail_preference="high",
+            hidden_fact="Deutsch ist nicht meine Muttersprache und ich verstehe Fachbegriffe oft nicht sofort.",
+            name="Aylin"
+        ),
     }
     
     def __init__(self,
@@ -117,7 +142,8 @@ class PatientAgent:
                 persona_type: Optional[str] = None,
                 model: str = "gpt-5-mini",
                 max_questions: int = 8,
-                temperature: float = 0.8):
+                temperature: float = 0.8,
+                random_seed: Optional[int] = None):
         """
         Parameters:
             :param procedure_name: A procedure the patient agent is discussing
@@ -131,6 +157,7 @@ class PatientAgent:
         self.procedure_name = procedure_name
         self.max_questions = max_questions
         self.temperature = temperature
+        self.random_seed = random_seed
 
         # Set persona
         if persona:
@@ -145,6 +172,8 @@ class PatientAgent:
         self.conversation_history = []
         self.questions_asked = 0
         self.hidden_fact_disclosed = False
+        self.hidden_fact_mentions = 0
+        self.max_hidden_fact_mentions = 2
 
         anxiety_map = {"low": 0.25, "medium": 0.5, "high": 0.75}
         self.emotional_state = {
@@ -152,6 +181,8 @@ class PatientAgent:
             "trust": 0.45,
             "clarity": 0.5,
         }
+        self.min_questions_before_satisfaction = max(2, min(4, self.max_questions - 1))
+        self.rng = random.Random(random_seed)
 
     def _clamp01(self, value: float) -> float:
         return max(0.0, min(1.0, value))
@@ -189,22 +220,71 @@ class PatientAgent:
             self.emotional_state["clarity"] = self._clamp01(self.emotional_state["clarity"] + 0.05)
 
     def _should_disclose_hidden_fact(self, last_chatbot_msg: Optional[str]) -> bool:
-        """Decide when a hidden fact should be disclosed naturally."""
-        if self.hidden_fact_disclosed or not self.persona.hidden_fact:
+        """Disclose hidden fact only when the chatbot explicitly asks for relevant details."""
+        if not self.persona.hidden_fact:
             return False
 
-        # Mention medically relevant facts when prompted by related content,
-        # or organically if concern remains high after a few turns.
-        text = (last_chatbot_msg or "").lower()
-        relevance_keywords = [
-            "allerg", "vorerkrank", "operation", "medik", "nüchtern", "essen", "getrunken",
-            "zahn", "krone", "piercing", "blutung", "kaiserschnitt", "risiko", "komplikation"
-        ]
+        if self.hidden_fact_mentions >= self.max_hidden_fact_mentions:
+            return False
 
-        if any(k in text for k in relevance_keywords):
-            return True
+        return self._chatbot_requested_hidden_fact(last_chatbot_msg)
 
-        return self.questions_asked >= 3 and self.emotional_state["anxiety"] >= 0.7
+    def _hidden_fact_keywords(self) -> List[str]:
+        hidden = (self.persona.hidden_fact or "").lower()
+        if not hidden:
+            return []
+
+        if "latex" in hidden:
+            return ["latex", "allerg"]
+        if "kaiserschnitt" in hidden:
+            return ["kaiserschnitt"]
+        if "blutung" in hidden:
+            return ["blutung"]
+        if "frühstück" in hidden or "veneer" in hidden or "zahn" in hidden:
+            return ["frühstück", "gegessen", "nüchtern", "veneer", "zahn"]
+
+        return [w for w in re.findall(r"[a-zA-ZäöüÄÖÜß]+", hidden) if len(w) >= 6]
+
+    def _question_mentions_hidden_fact(self, text: str) -> bool:
+        if not text or not self.persona.hidden_fact:
+            return False
+        low = text.lower()
+        return any(k in low for k in self._hidden_fact_keywords())
+
+    def _chatbot_requested_hidden_fact(self, last_chatbot_msg: Optional[str]) -> bool:
+        if not last_chatbot_msg:
+            return False
+        low = last_chatbot_msg.lower()
+        if "?" not in low:
+            return False
+        return any(k in low for k in self._hidden_fact_keywords())
+
+    def _fallback_question_without_hidden_fact(self) -> str:
+        phase = self._conversation_phase()
+        if phase == "opening":
+            return "ok, kannst du mir den ablauf kurz und einfach erklären?"
+        if phase == "exploration":
+            return "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+        return "ok, was soll ich mir als wichtigste punkte jetzt merken?"
+
+    def _satisfaction_probability(self) -> float:
+        # Readiness to stop rises with trust/clarity, lower anxiety, and later phase.
+        progress = (self.questions_asked - self.min_questions_before_satisfaction + 1) / max(
+            1, self.max_questions - self.min_questions_before_satisfaction + 1
+        )
+        progress = self._clamp01(progress)
+
+        readiness = (
+            0.45 * self.emotional_state["clarity"]
+            + 0.35 * self.emotional_state["trust"]
+            + 0.20 * (1.0 - self.emotional_state["anxiety"])
+        )
+
+        probability = 0.10 + 0.55 * progress + 0.35 * readiness
+        if self.emotional_state["anxiety"] >= 0.8:
+            probability -= 0.15
+
+        return self._clamp01(probability)
 
     def _conversation_phase(self) -> str:
         if self.max_questions <= 0:
@@ -250,7 +330,7 @@ class PatientAgent:
         if self.persona.hidden_fact:
             hidden_instruction = (
                 f"\nWICHTIGE HINTERGRUNDINFO: {self.persona.hidden_fact}\n"
-                "Bringe diese Info natürlich ein, sobald sie medizinisch relevant wird oder zu deiner Sorge passt."
+                "Nenne diese Info NICHT von dir aus. Teile sie nur mit, wenn der Chatbot dich explizit danach fragt."
             )
             
         # 3. Construct the Full Prompt
@@ -272,6 +352,8 @@ Deine Interaktions-Richtlinien:
 8. Wenn der Chatbot dir eine Frage stellt, antworte zuerst darauf
 9. Halte deine Antworten knapp (1-3 Sätze), aber menschlich und kontextbezogen
 10. Wiederhole nicht dieselbe Frage, wenn sie schon beantwortet wurde
+11. Bleibe strikt in der Rolle als Patientin: sprich über dich selbst (ich/mir/meine), nicht über den Körper oder Gesundheitszustand des Chatbots
+12. Stelle NIEMALS Fragen wie "Nimmst du Medikamente?", "Hast du Allergien?" oder ähnliche Fragen über den Chatbot
 """
         
         # Add education/age adjustments
@@ -342,6 +424,9 @@ Deine Interaktions-Richtlinien:
         # First question
         if self.questions_asked == 0:
             question = self._get_initial_question()
+            # Enforce strict hidden-fact policy also for the opening turn.
+            if self._question_mentions_hidden_fact(question):
+                question = f"ok, wie läuft die {self.procedure_name} genau ab?"
         else:
             # Generate follow-up question
             question = self._generate_question()
@@ -380,20 +465,26 @@ Deine Interaktions-Richtlinien:
             trigger = (
                 f"Gesprächsphase: {phase}. {emotional_hint} "
                 "Antworte zuerst direkt auf die Frage des Chatbots. "
-                "Falls noch Unsicherheit bleibt, stelle eine kurze Anschlussfrage."
+                "Falls noch Unsicherheit bleibt, stelle eine kurze Anschlussfrage über DEINE Situation (ich/mir/meine). "
+                "Frage nicht nach dem Gesundheitszustand des Chatbots."
             )
         else:
             trigger = (
                 f"Gesprächsphase: {phase}. {emotional_hint} "
                 "Reagiere natürlich auf die letzte Information. "
-                "Stelle eine neue, nicht wiederholte und inhaltlich passende Folgefrage oder äußere eine Sorge."
+                "Stelle eine neue, nicht wiederholte und inhaltlich passende Folgefrage oder äußere eine Sorge zu deiner eigenen Situation."
             )
 
         if disclose_hidden and self.persona.hidden_fact:
             trigger += (
                 f" Integriere jetzt diese persönliche Info unauffällig in deine Antwort: '{self.persona.hidden_fact}'."
             )
-            self.hidden_fact_disclosed = True
+
+        if self.persona.hidden_fact and self.hidden_fact_mentions >= self.max_hidden_fact_mentions:
+            trigger += (
+                " Deine persönliche Risikoinfo wurde schon genannt. Wiederhole sie jetzt NICHT erneut, "
+                "außer der Chatbot fragt dich explizit direkt danach."
+            )
         
         messages.append({
             "role": "user",
@@ -414,6 +505,22 @@ Deine Interaktions-Richtlinien:
             # Soft cleanup in case the model drifts into list-like formatting.
             text = re.sub(r"^[\-\*\d\.]\s+", "", text, flags=re.MULTILINE).strip()
             text = self._normalize_informal_style(text)
+
+            # Cap repeated hidden-fact mentions unless the chatbot explicitly asked for it.
+            if self._question_mentions_hidden_fact(text):
+                allow_repeat = self._chatbot_requested_hidden_fact(last_chatbot_msg)
+                allow_repeat = allow_repeat and (self.hidden_fact_mentions < self.max_hidden_fact_mentions)
+
+                if allow_repeat:
+                    self.hidden_fact_mentions += 1
+                    self.hidden_fact_disclosed = True
+                else:
+                    text = self._fallback_question_without_hidden_fact()
+
+            # Guardrail: keep strict patient role and prevent questions about chatbot's own health.
+            if self._is_role_confused_question(text):
+                text = self._fallback_patient_perspective_question()
+
             return text
         
         except Exception as e:
@@ -424,10 +531,40 @@ Deine Interaktions-Richtlinien:
                 "ich bin noch unsicher, was ist jetzt der WICHTIGSTE punkt?"
             ]
             return fallbacks[self.questions_asked % len(fallbacks)]
+
+    def _is_role_confused_question(self, text: str) -> bool:
+        if not text:
+            return False
+        low = text.lower()
+        patterns = [
+            r"\bnimmst du\b",
+            r"\bhast du\b",
+            r"\bleidest du\b",
+            r"\bbist du\b",
+            r"\bbei dir\b",
+            r"\bdeine tabletten\b",
+            r"\bdeine allerg",
+            r"\bdeine symptome\b",
+        ]
+        return any(re.search(p, low) for p in patterns)
+
+    def _fallback_patient_perspective_question(self) -> str:
+        phase = self._conversation_phase()
+        if phase == "opening":
+            return "ok, was ist für mich jetzt der wichtigste punkt vor dem eingriff?"
+        if phase == "exploration":
+            return "kannst du mir sagen, was ich in meiner situation konkret beachten muss?"
+        return "ok, kannst du mir kurz zusammenfassen, was ich mir für mich merken sollte?"
     
     def is_satisfied(self) -> bool:
-        """Check if patient has asked enough questions."""
-        return self.questions_asked >= self.max_questions
+        """Probabilistically decide if the patient is satisfied enough to stop."""
+        if self.questions_asked >= self.max_questions:
+            return True
+        if self.questions_asked < self.min_questions_before_satisfaction:
+            return False
+
+        probability = self._satisfaction_probability()
+        return self.rng.random() < probability
     
     def answer_comprehension_questions(self, test_questions: List[str]) -> Dict[str, str]:
         """
@@ -478,6 +615,7 @@ Wenn du etwas nicht weißt, sage das ehrlich."""
         self.conversation_history = []
         self.questions_asked = 0
         self.hidden_fact_disclosed = False
+        self.hidden_fact_mentions = 0
 
         anxiety_map = {"low": 0.25, "medium": 0.5, "high": 0.75}
         self.emotional_state = {
@@ -485,6 +623,7 @@ Wenn du etwas nicht weißt, sage das ehrlich."""
             "trust": 0.45,
             "clarity": 0.5,
         }
+        self.rng = random.Random(self.random_seed)
 
 
 # Convenience function to create patients with predefined personas

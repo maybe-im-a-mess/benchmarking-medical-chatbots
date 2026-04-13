@@ -1,0 +1,2596 @@
+{
+  "metadata": {
+    "procedure": "Narkose",
+    "mandatory_questions_total": 5,
+    "mandatory_questions_asked": 5,
+    "mode": "active",
+    "patient_persona": {
+      "name": "Mila",
+      "age": 28,
+      "sex": "female",
+      "education_level": "medium",
+      "language": "de",
+      "anxiety_level": "high",
+      "hidden_fact": "Ich hatte bei einer früheren OP eine sehr schlechte Erfahrung und starke Angst."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 12,
+    "conversation_date": "2026-04-13T09:18:42.463153",
+    "dataset_tag": "patient_agent_probabilistic_v3",
+    "repeat_index": 2,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "Ok, wie läuft die Narkose genau ab und was passiert vorher?",
+      "chatbot_response": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5577314562981781
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5245764402465417
+          },
+          {
+            "citation_index": 3,
+            "document_id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db",
+            "file_path": "Narkose.md",
+            "score": 0.48682079878324663
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5577314562981781,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5245764402465417,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.48682079878324663,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        }
+      ],
+      "timestamp": "2026-04-13T09:17:59.251861"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?",
+      "chatbot_response": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c",
+            "file_path": "Äußere Wendung.md",
+            "score": 0.4165705874425669
+          },
+          {
+            "citation_index": 2,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.3923779943639205
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.4165705874425669,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.3923779943639205,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.3803021090298176,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:03.654704"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird.",
+      "chatbot_response": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.41650561218603477
+          },
+          {
+            "citation_index": 3,
+            "document_id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c",
+            "file_path": "Äußere Wendung.md",
+            "score": 0.28595595522199296
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.41650561218603477,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.2905871664627213,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.28595595522199296,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:08.876630"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?",
+      "chatbot_response": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.502992617899613
+          },
+          {
+            "citation_index": 3,
+            "document_id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.3262184676691502
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nKrankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.502992617899613,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.33441592465872133,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Krankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin ",
+          "score": 0.3262184676691502,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 29,
+            "split_idx_start": 22795
+          },
+          "id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:14.304026"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme.",
+      "chatbot_response": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 0,
+        "unique_sources": 0,
+        "citation_mapping": []
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Kaiserschnitt.md)\nINHALT:\nKaiserschnitt Wann erfolgt ein Kaiserschnitt? Es gibt verschiedene Situationen und Dringlichkeiten bei der Planung eines Kaiserschnitts. So kann ein Kaiserschnitt ohne Dringlichkeit geplant werden, z.B. wenn Sie schon mehrere Kaiserschnitte hatten, eine Querlage des Kindes oder bestimmte Erkrankungen vorliegen. Die Notwendigkeit zum Kaiserschnitt kann sich jedoch auch ergeben, wenn die Geburt bereits begonnen hat und es zu einer Gefährdung von Kind und Mutter kommt (z.B. bei einem Geburtsstillstand, bei kindlichem Kaiserschnitt oder Geburtsstillstand ohne weitere sichtbare Gefährdungssituation). In dieser Situation wird der Kaiserschnitt zeitnah, jedoch unter Berücksichtigung einer sorgfältigen Prüfung, dringlicher Kaiserschnitt, der zügig durchgeführt wird, erfolgt. Bei einer unmittelbaren \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nentsprechen nicht den Definitionen bezüglich Nebenwirkungen in den Beipackzetteln von Medikamenten. Vor- und Begleiterkrankungen sowie individuelle Besonderheiten können die Häufigkeiten von Komplikationen wesentlich beeinflussen. Beabsichtigt der Arzt, bei Ihnen Medikamente einzusetzen, die sich in der Anästhesie bewährt haben, dafür aber nicht formell zugelassen sind (Off-Label-Use), wird er seine Gründe mit Ihnen besprechen und Sie über die üblichen Risiken aufklären. Unbekannte Risiken lassen sich dabei nicht ausschließen, und es besteht u. U. keine Haftung des Herstellers. Allgemeine Risiken von Einspritzungen/Kanülen/Kathetern Verletzungen von Blutgefäßen durch Injektionsnadeln, Kanülen oder Katheter können zu Blutungen und Blutergüssen führen. Nur selten ist eine Behandlung, insbesondere eine Operation, \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.3604957458660946,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Kaiserschnitt Wann erfolgt ein Kaiserschnitt? Es gibt verschiedene Situationen und Dringlichkeiten bei der Planung eines Kaiserschnitts. So kann ein Kaiserschnitt ohne Dringlichkeit geplant werden, z.B. wenn Sie schon mehrere Kaiserschnitte hatten, eine Querlage des Kindes oder bestimmte Erkrankungen vorliegen. Die Notwendigkeit zum Kaiserschnitt kann sich jedoch auch ergeben, wenn die Geburt bereits begonnen hat und es zu einer Gefährdung von Kind und Mutter kommt (z.B. bei einem Geburtsstillstand, bei kindlichem Kaiserschnitt oder Geburtsstillstand ohne weitere sichtbare Gefährdungssituation). In dieser Situation wird der Kaiserschnitt zeitnah, jedoch unter Berücksichtigung einer sorgfältigen Prüfung, dringlicher Kaiserschnitt, der zügig durchgeführt wird, erfolgt. Bei einer unmittelbaren ",
+          "score": 0.2914214874151053,
+          "meta": {
+            "file_path": "Kaiserschnitt.md",
+            "source_id": "ab2e1e9ad3df12dd9315024d484f5544932eefff5bf14772c4a6c2257bfb317b",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "1438198e82cc07524d92c5522dd3dcd6dc4172807aa7ba02157ad57c76d0a61e"
+        },
+        {
+          "content": "entsprechen nicht den Definitionen bezüglich Nebenwirkungen in den Beipackzetteln von Medikamenten. Vor- und Begleiterkrankungen sowie individuelle Besonderheiten können die Häufigkeiten von Komplikationen wesentlich beeinflussen. Beabsichtigt der Arzt, bei Ihnen Medikamente einzusetzen, die sich in der Anästhesie bewährt haben, dafür aber nicht formell zugelassen sind (Off-Label-Use), wird er seine Gründe mit Ihnen besprechen und Sie über die üblichen Risiken aufklären. Unbekannte Risiken lassen sich dabei nicht ausschließen, und es besteht u. U. keine Haftung des Herstellers. Allgemeine Risiken von Einspritzungen/Kanülen/Kathetern Verletzungen von Blutgefäßen durch Injektionsnadeln, Kanülen oder Katheter können zu Blutungen und Blutergüssen führen. Nur selten ist eine Behandlung, insbesondere eine Operation, ",
+          "score": 0.2582225015237998,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 8,
+            "split_idx_start": 6307
+          },
+          "id": "275cfa9bc76c2316f1b3d819997145a00aa5024ccefd7a4e11663d67c288d073"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:16.861820"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**",
+      "chatbot_response": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?",
+      "mandatory_question": {
+        "question_id": "nark_01",
+        "content": "Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?",
+        "reason": "Patienten haben ein Wahlrecht, das im Arztgespräch unter Berücksichtigung der Risiken besprochen werden muss."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.6520827141432484
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5728712892806267
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nnur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.6520827141432484,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5728712892806267,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "nur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). ",
+          "score": 0.5580088087148253,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2343
+          },
+          "id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:21.163583"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**",
+      "chatbot_response": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**.",
+      "mandatory_question": {
+        "question_id": "nark_02",
+        "content": "Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?",
+        "reason": "Anästhetika können die Wirkung hormoneller Verhütungsmittel für mindestens 7 Tage beeinträchtigen."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.4170984876331096
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nim Abstand von einigen Stunden gegeben werden. Eventuell wechselt man das Präparat ab einem bestimmten Zeitpunkt und gibt stattdessen das Wehenhormon Oxytocin. Oxytocin:\nWenn der Gebärmutterhals verkürzt und der Muttermund schon etwas geöffnet ist (geburtsreifer Befund), besonders auch dann, wenn Sie schon ein Kind auf natürlichem Weg geboren haben, wird eventuell das Wehenhormon Oxytocin in Form einer Tropfinfusion als primäre Maßnahme zur Geburtseinleitung eingesetzt. Es kann auch sein, dass der Fortgang der Geburt mittels Oxytocininfusion unterstützt wird, nachdem die Geburtseinleitung mit anderen Methoden begonnen wurde. Rizinusöl (Wehencocktail):\nRizinusöl wird anderen Flüssigkeiten beigegeben oder auf einem Spiegel eingenommen. Es wirkt abführend und kann \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nMethoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.4170984876331096,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "im Abstand von einigen Stunden gegeben werden. Eventuell wechselt man das Präparat ab einem bestimmten Zeitpunkt und gibt stattdessen das Wehenhormon Oxytocin. Oxytocin:\nWenn der Gebärmutterhals verkürzt und der Muttermund schon etwas geöffnet ist (geburtsreifer Befund), besonders auch dann, wenn Sie schon ein Kind auf natürlichem Weg geboren haben, wird eventuell das Wehenhormon Oxytocin in Form einer Tropfinfusion als primäre Maßnahme zur Geburtseinleitung eingesetzt. Es kann auch sein, dass der Fortgang der Geburt mittels Oxytocininfusion unterstützt wird, nachdem die Geburtseinleitung mit anderen Methoden begonnen wurde. Rizinusöl (Wehencocktail):\nRizinusöl wird anderen Flüssigkeiten beigegeben oder auf einem Spiegel eingenommen. Es wirkt abführend und kann ",
+          "score": 0.38998232631541047,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 9,
+            "split_idx_start": 6757
+          },
+          "id": "3c36234840781134043998feafa26bc194182daceea00e1f835d05fa68e5e446"
+        },
+        {
+          "content": "Methoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals ",
+          "score": 0.38667450112627305,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 8,
+            "split_idx_start": 5944
+          },
+          "id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:23.672701"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?",
+      "chatbot_response": "Ja, bitte beachten Sie: Bei hormoneller Verhütung kann die empfängnisverhütende Wirkung nach der Anästhesie noch **mindestens 7 Tage beeinträchtigt** sein [Quelle 1].  \n\nDazu sollten Sie sich nach dem Eingriff auf jeden Fall an die Anweisungen Ihres Arztes halten. Zu weiteren konkreten Maßnahmen stehen in den Unterlagen keine Details. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWenn Sie möchten, stelle ich jetzt die **3. Pflichtfrage**:  \n**Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?**",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.4669539908110484
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.4669539908110484,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.3969448452802067,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.3564289580652149,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:26.782412"
+    },
+    {
+      "turn": 9,
+      "patient_question": "Ja, ich habe **Kronen**. Muss ich die vorher irgendwie markieren oder sagen?",
+      "chatbot_response": "Ja, bitte sagen Sie das **vorher unbedingt dem Team**. Kronen sind für die Narkose wichtig, damit das Personal das bei der Vorbereitung berücksichtigen kann. **Zu Markieren oder speziellen Vorbereitungen steht in den Unterlagen keine Details. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nDamit wir die Pflichtfrage sauber abschließen: **Haben Sie sonst noch lose Zähne oder Piercings im Mundbereich?**\n\nUnd ich stelle direkt die nächste Pflichtfrage: **Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?**",
+      "mandatory_question": {
+        "question_id": "nark_03",
+        "content": "Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?",
+        "reason": "Wichtig für die Sicherheit während einer eventuellen Intubation bei Vollnarkose."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "safety_net",
+      "citations": {
+        "total_citations": 0,
+        "unique_sources": 0,
+        "citation_mapping": []
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nKrankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte beachten Sie: Bei hormoneller Verhütung kann die empfängnisverhütende Wirkung nach der Anästhesie noch **mindestens 7 Tage beeinträchtigt** sein [Quelle 1].  \n\nDazu sollten Sie sich nach dem Eingriff auf jeden Fall an die Anweisungen Ihres Arztes halten. Zu weiteren konkreten Maßnahmen stehen in den Unterlagen keine Details. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWenn Sie möchten, stelle ich jetzt die **3. Pflichtfrage**:  \n**Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe **Kronen**. Muss ich die vorher irgendwie markieren oder sagen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.3415682789194162,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.3241529539943641,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Krankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin ",
+          "score": 0.31968291256658926,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 29,
+            "split_idx_start": 22795
+          },
+          "id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:32.121971"
+    },
+    {
+      "turn": 10,
+      "patient_question": "Ja, ich habe sonst keine losen Zähne oder Piercings im Mundbereich.  \nUnd ja, ich bin mir nicht sicher: Muss **ich** nachher wirklich 24 Stunden von jemandem betreut werden?",
+      "chatbot_response": "Ja, das ist wichtig: Nach der Anästhesie sollen Sie sich von einer **erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden** zu Hause betreuen lassen [Quelle 2].  \n\nAußerdem dürfen Sie in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen**, **keine gefährlichen Tätigkeiten ausüben**, **keinen Alkohol trinken**, **nicht rauchen** und **keine wichtigen Entscheidungen treffen** [Quelle 2].  \n\nFalls das bei Ihnen noch nicht organisiert ist, wäre das etwas, das Sie **vor dem Eingriff klären sollten**.  \n\nWenn Sie möchten, gehen wir die letzte Pflichtfrage auch noch gemeinsam durch.",
+      "mandatory_question": {
+        "question_id": "nark_04",
+        "content": "Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?",
+        "reason": "Dies ist eine zwingende rechtliche und medizinische Sicherheitsauflage nach jeder Anästhesie."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.5258684270437954
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nImplantaten und nicht herausnehmbarem Zahnersatz (z. B. Kronen, Brücken, Prothesen) sind Schäden bis hin zum Zahnverlust möglich, v. a. bei Karies, lockeren Zähnen oder gelockertem Zahnersatz. Wachheit während der Narkose kann trotz sorgfältiger Narkoseführung in seltenen Fällen auftreten; Schmerzempfindungen sind sehr selten. Vereinzelt können belastende Erinnerungen auftreten und eine Behandlung erfordern. Allgemeine Risiken der Regionalanästhesie Krampfanfälle, Bewusstlosigkeit und schwerwiegende, in sehr seltenen Fällen auch lebensgefährliche Herz-Kreislauf- und Atemstörungen können auftreten, wenn das Betäubungsmittel bei der Einspritzung direkt in den Blutkreislauf gelangt oder sehr schnell vom Gewebe in das Blut übertritt. Diese Komplikationen sowie vorübergehende Lähmungen sind auch möglich, wenn sich das Betäubungsmittel \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte beachten Sie: Bei hormoneller Verhütung kann die empfängnisverhütende Wirkung nach der Anästhesie noch **mindestens 7 Tage beeinträchtigt** sein [Quelle 1].  \n\nDazu sollten Sie sich nach dem Eingriff auf jeden Fall an die Anweisungen Ihres Arztes halten. Zu weiteren konkreten Maßnahmen stehen in den Unterlagen keine Details. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWenn Sie möchten, stelle ich jetzt die **3. Pflichtfrage**:  \n**Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe **Kronen**. Muss ich die vorher irgendwie markieren oder sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte sagen Sie das **vorher unbedingt dem Team**. Kronen sind für die Narkose wichtig, damit das Personal das bei der Vorbereitung berücksichtigen kann. **Zu Markieren oder speziellen Vorbereitungen steht in den Unterlagen keine Details. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nDamit wir die Pflichtfrage sauber abschließen: **Haben Sie sonst noch lose Zähne oder Piercings im Mundbereich?**\n\nUnd ich stelle direkt die nächste Pflichtfrage: **Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe sonst keine losen Zähne oder Piercings im Mundbereich.  \nUnd ja, ich bin mir nicht sicher: Muss **ich** nachher wirklich 24 Stunden von jemandem betreut werden?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5294228452854193,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.5258684270437954,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "Implantaten und nicht herausnehmbarem Zahnersatz (z. B. Kronen, Brücken, Prothesen) sind Schäden bis hin zum Zahnverlust möglich, v. a. bei Karies, lockeren Zähnen oder gelockertem Zahnersatz. Wachheit während der Narkose kann trotz sorgfältiger Narkoseführung in seltenen Fällen auftreten; Schmerzempfindungen sind sehr selten. Vereinzelt können belastende Erinnerungen auftreten und eine Behandlung erfordern. Allgemeine Risiken der Regionalanästhesie Krampfanfälle, Bewusstlosigkeit und schwerwiegende, in sehr seltenen Fällen auch lebensgefährliche Herz-Kreislauf- und Atemstörungen können auftreten, wenn das Betäubungsmittel bei der Einspritzung direkt in den Blutkreislauf gelangt oder sehr schnell vom Gewebe in das Blut übertritt. Diese Komplikationen sowie vorübergehende Lähmungen sind auch möglich, wenn sich das Betäubungsmittel ",
+          "score": 0.4823633097694682,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 11446
+          },
+          "id": "3f0d1dc57336c9861ebc12989f16f245e2de970c2055c48332d239ee3a905ac3"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:35.602707"
+    },
+    {
+      "turn": 11,
+      "patient_question": "Okay, das muss ich dann echt noch organisieren… ich will nicht, dass das kurz vorher Stress macht. **Muss die Person mich direkt abholen oder reicht es, wenn jemand nur zuhause da ist?**",
+      "chatbot_response": "Für die Unterlagen ist wichtig, dass Sie sich **von einer erwachsenen Person abholen lassen** und in den ersten 24 Stunden zu Hause betreut werden [Quelle 2][Quelle 3].  \nOb die Person **direkt beim Abholen dabei sein muss** oder nur **zu Hause** sein kann, steht dort nicht genauer. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nSicher ist: Organisieren Sie am besten eine erwachsene Person, die Sie **abholt und danach bei Ihnen ist** [Quelle 3].  \n\nUnd hier noch die letzte Pflichtfrage:  \n**Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?**",
+      "mandatory_question": {
+        "question_id": "nark_05",
+        "content": "Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?",
+        "reason": "Sicherheitsprotokoll aufgrund der Beeinträchtigung des Reaktionsvermögens durch Medikamente."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "safety_net",
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "29501917887db56ceb31f06b30a4af8b5369989b4b5ae16a92bb9c733b496eed",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.3708466260453512
+          },
+          {
+            "citation_index": 3,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.34611986195876426
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nder Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ok, wie läuft die Narkose genau ab und was passiert vorher?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. Vor der Narkose wird zunächst eine Verweilkanüle in eine Vene gelegt, meist am Hand- oder Arm, damit Sie Infusionslösungen und bei Bedarf Medikamente erhalten können [Quelle 1].  \n\nFür den Eingriff gibt es verschiedene Narkoseverfahren:  \n- **Vollnarkose**: Dabei werden Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet.  \n- **Regionalanästhesie**: Nur der Bereich, der operiert wird, wird gezielt betäubt.  \n- Beide Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Verfahren für Sie am besten geeignet ist und erklärt Vor- und Nachteile sowie unterschiedliche Belastungen und Risiken [Quelle 1].  \n\nZur Einleitung der Narkose wird über die Verweilkanüle ein schnell wirkendes Narkosemittel gespritzt [Quelle 2]. Danach werden zur Aufrechterhaltung weitere Narkose- und Schmerzmittel über die Vene oder Narkosegase über die Atemluft gegeben; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation ein Beatmungsschlauch in die Luftröhre eingelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nVorher ist auch die Nüchternheit wichtig: Erwachsene dürfen bis 6 Stunden vorher noch eine leicht verdauliche kleine Mahlzeit essen, danach bis 2 Stunden vorher nur noch klare Flüssigkeiten ohne Fett oder Alkohol trinken [Quelle 3].  \n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, worauf Sie am Narkose-Tag praktisch achten sollen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte beachten Sie: Bei hormoneller Verhütung kann die empfängnisverhütende Wirkung nach der Anästhesie noch **mindestens 7 Tage beeinträchtigt** sein [Quelle 1].  \n\nDazu sollten Sie sich nach dem Eingriff auf jeden Fall an die Anweisungen Ihres Arztes halten. Zu weiteren konkreten Maßnahmen stehen in den Unterlagen keine Details. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWenn Sie möchten, stelle ich jetzt die **3. Pflichtfrage**:  \n**Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe **Kronen**. Muss ich die vorher irgendwie markieren oder sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte sagen Sie das **vorher unbedingt dem Team**. Kronen sind für die Narkose wichtig, damit das Personal das bei der Vorbereitung berücksichtigen kann. **Zu Markieren oder speziellen Vorbereitungen steht in den Unterlagen keine Details. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nDamit wir die Pflichtfrage sauber abschließen: **Haben Sie sonst noch lose Zähne oder Piercings im Mundbereich?**\n\nUnd ich stelle direkt die nächste Pflichtfrage: **Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe sonst keine losen Zähne oder Piercings im Mundbereich.  \nUnd ja, ich bin mir nicht sicher: Muss **ich** nachher wirklich 24 Stunden von jemandem betreut werden?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig: Nach der Anästhesie sollen Sie sich von einer **erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden** zu Hause betreuen lassen [Quelle 2].  \n\nAußerdem dürfen Sie in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen**, **keine gefährlichen Tätigkeiten ausüben**, **keinen Alkohol trinken**, **nicht rauchen** und **keine wichtigen Entscheidungen treffen** [Quelle 2].  \n\nFalls das bei Ihnen noch nicht organisiert ist, wäre das etwas, das Sie **vor dem Eingriff klären sollten**.  \n\nWenn Sie möchten, gehen wir die letzte Pflichtfrage auch noch gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das muss ich dann echt noch organisieren… ich will nicht, dass das kurz vorher Stress macht. **Muss die Person mich direkt abholen oder reicht es, wenn jemand nur zuhause da ist?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.467282926253451,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "der Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.",
+          "score": 0.3708466260453512,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25651
+          },
+          "id": "29501917887db56ceb31f06b30a4af8b5369989b4b5ae16a92bb9c733b496eed"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.34611986195876426,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:39.493332"
+    },
+    {
+      "turn": 12,
+      "patient_question": "Ja, das ist mir bewusst. Ich darf 24 Stunden nicht Auto fahren und keinen Alkohol trinken, oder?",
+      "chatbot_response": "Ja, genau. Nach der Anästhesie dürfen Sie für **24 Stunden** nicht aktiv am Straßenverkehr teilnehmen und **keinen Alkohol trinken** [Quelle 1]. Außerdem sollen Sie in dieser Zeit nicht rauchen, keine gefährlichen Tätigkeiten ausüben und keine wichtigen Entscheidungen treffen [Quelle 1].  \n\nWenn Sie möchten, kann ich Ihnen jetzt noch ganz kurz zusammenfassen, **was Sie vor dem Termin unbedingt organisieren sollten**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.6860575180850231
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das macht mich schon etwas nervös. Ich hab vor sowas echt Angst, weil ich nicht genau weiß, was ich vorher alles machen muss und ob ich dann einfach schlafen kann.  \n\nWie lange vorher muss ich denn da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das kann ich gut verstehen. Leider stehen **genaue Uhrzeiten oder die Ankunftszeit** in den Unterlagen nicht drin. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWas ich Ihnen sicher sagen kann: Vor dem Wendversuch sollten Sie **eventuell einige Stunden nichts essen und nichts trinken**, damit Sie für eine mögliche Narkose bei einem Kaiserschnitt vorbereitet sind [Quelle 1]. Das medizinische Team sagt Ihnen, **wie lange das in Ihrem Fall sinnvoll ist** [Quelle 1].\n\nWenn Sie dort ankommen und unsicher sind, können Sie sich einfach melden – **Ihnen wird geholfen oder jemand begleitet Sie** [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch die **Pflichtfragen vor der Narkose** direkt nacheinander stellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann bin ich da sicher nicht allein gelassen, oder? Ich hab nur Angst, dass ich vorher was falsch mache und dann alles verschoben wird."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, Sie sind damit nicht allein gelassen. Wenn Sie sich dort melden, wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].  \n\nWichtig ist vor allem, dass Sie die Anweisungen zum Essen und Trinken genau einhalten: Vor dem Wendversuch sollen Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für eine mögliche Narkose vorbereitet sind [Quelle 3]. Das genaue Zeitfenster sagt Ihnen das medizinische Personal für Ihren Fall [Quelle 3].  \n\nFalls Sie unsicher sind, sagen Sie das direkt vor Ort. Dann kann das Team prüfen, ob alles passt.  \n\nIch kann Ihnen außerdem die **Pflichtfragen zur Narkose** kurz und einzeln stellen, damit Sie sich besser vorbereiten können:\n1. Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n2. Nutzen Sie hormonelle Verhütungsmittel?\n3. Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n4. Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?\n5. Ist Ihnen bewusst, dass Sie 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich glaube schon, dass ich da nicht einfach alleine gelassen werde. Aber ich hab trotzdem Angst, dass ich vorher was vergesse und dann alles durcheinander kommt.  \n\nWie früh muss ich denn ungefähr da sein?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das verstehe ich gut. Eine genaue **Uhrzeit, wie früh Sie da sein müssen**, steht in den Unterlagen nicht. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWichtig ist: Wenn Sie sich dort melden, wird Ihnen geholfen oder jemand begleitet Sie [Quelle 1]. Außerdem sollten Sie vorab die Hinweise zum Essen und Trinken befolgen, damit es nicht zu Verzögerungen kommt [Quelle 3].\n\nWenn Sie möchten, können Sie zur Sicherheit einfach direkt bei der Klinik anrufen und fragen:  \n**„Wie früh soll ich am Tag des Eingriffs da sein und ab wann darf ich nichts mehr essen oder trinken?“**\n\nWenn Sie mögen, kann ich Ihnen jetzt noch die **5 Pflichtfragen zur Narkose** stellen – dann gehen wir sie gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar, ich kann das machen. Ich bin da **ziemlich unsicher**, weil ich echt schnell durcheinander komme."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Alles gut, wir gehen das ganz in Ruhe durch. Ich stelle Ihnen die Pflichtfragen einzeln:\n\n**1) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich glaube eher **Vollnarkose**, also schlafen, weil mich das sonst zu sehr stressen würde. Ich bin da aber unsicher: **Wie läuft das dann genau ab, wenn ich einschlafe?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist verständlich. Bei einer Vollnarkose wird das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper ausgeschaltet [Quelle 1].  \n\nDer Ablauf ist meist so: Zuerst liegt eine Verweilkanüle in einer Vene, darüber wird ein schnell wirkendes Narkosemittel gespritzt, und dadurch schlafen Sie ein [Quelle 1][Quelle 2]. Danach werden die Narkosemittel über die Vene weitergegeben oder als Narkosegas über die Atemluft verabreicht; oft wird beides kombiniert [Quelle 2].  \n\nDamit Sie sicher beatmet werden können, wird je nach Situation entweder ein Beatmungsschlauch in die Luftröhre gelegt oder eine Kehlkopfmaske verwendet [Quelle 2].  \n\nWenn Sie vorher nervös sind: Das ist sehr häufig. Sagen Sie es dem Team ruhig offen, dann können sie es erklären und Sie begleiten.  \n\nMöchten wir direkt mit der nächsten Pflichtfrage weitermachen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, machen wir.\n\n**2) Nutzen du hormonelle Verhütungsmittel?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke. **Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?**  \n\nDas ist wichtig, weil die empfängnisverhütende Wirkung nach der Anästhesie noch mindestens **7 Tage beeinträchtigt** sein kann [Quelle 1].  \n\nWenn Sie möchten, stelle ich direkt die **3. Pflichtfrage**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich nutze hormonelle Verhütung.  \nUnd hm, muss ich da jetzt vorher noch was Bestimmtes beachten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte beachten Sie: Bei hormoneller Verhütung kann die empfängnisverhütende Wirkung nach der Anästhesie noch **mindestens 7 Tage beeinträchtigt** sein [Quelle 1].  \n\nDazu sollten Sie sich nach dem Eingriff auf jeden Fall an die Anweisungen Ihres Arztes halten. Zu weiteren konkreten Maßnahmen stehen in den Unterlagen keine Details. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nWenn Sie möchten, stelle ich jetzt die **3. Pflichtfrage**:  \n**Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe **Kronen**. Muss ich die vorher irgendwie markieren oder sagen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, bitte sagen Sie das **vorher unbedingt dem Team**. Kronen sind für die Narkose wichtig, damit das Personal das bei der Vorbereitung berücksichtigen kann. **Zu Markieren oder speziellen Vorbereitungen steht in den Unterlagen keine Details. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nDamit wir die Pflichtfrage sauber abschließen: **Haben Sie sonst noch lose Zähne oder Piercings im Mundbereich?**\n\nUnd ich stelle direkt die nächste Pflichtfrage: **Ist sichergestellt, dass Sie nach dem Eingriff 24 Stunden von einer erwachsenen Person betreut werden?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, ich habe sonst keine losen Zähne oder Piercings im Mundbereich.  \nUnd ja, ich bin mir nicht sicher: Muss **ich** nachher wirklich 24 Stunden von jemandem betreut werden?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig: Nach der Anästhesie sollen Sie sich von einer **erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden** zu Hause betreuen lassen [Quelle 2].  \n\nAußerdem dürfen Sie in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen**, **keine gefährlichen Tätigkeiten ausüben**, **keinen Alkohol trinken**, **nicht rauchen** und **keine wichtigen Entscheidungen treffen** [Quelle 2].  \n\nFalls das bei Ihnen noch nicht organisiert ist, wäre das etwas, das Sie **vor dem Eingriff klären sollten**.  \n\nWenn Sie möchten, gehen wir die letzte Pflichtfrage auch noch gemeinsam durch."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das muss ich dann echt noch organisieren… ich will nicht, dass das kurz vorher Stress macht. **Muss die Person mich direkt abholen oder reicht es, wenn jemand nur zuhause da ist?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Für die Unterlagen ist wichtig, dass Sie sich **von einer erwachsenen Person abholen lassen** und in den ersten 24 Stunden zu Hause betreut werden [Quelle 2][Quelle 3].  \nOb die Person **direkt beim Abholen dabei sein muss** oder nur **zu Hause** sein kann, steht dort nicht genauer. **Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.**\n\nSicher ist: Organisieren Sie am besten eine erwachsene Person, die Sie **abholt und danach bei Ihnen ist** [Quelle 3].  \n\nUnd hier noch die letzte Pflichtfrage:  \n**Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?**"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist mir bewusst. Ich darf 24 Stunden nicht Auto fahren und keinen Alkohol trinken, oder?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.6860575180850231,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.46549812304677907,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.4392410343695994,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:18:42.462783"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 12,
+    "total_chatbot_responses": 12,
+    "avg_response_length": 686.8333333333334,
+    "total_citations": 28,
+    "turns_missing_citations": 2
+  }
+}

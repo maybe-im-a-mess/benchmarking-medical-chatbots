@@ -1,0 +1,1712 @@
+{
+  "metadata": {
+    "procedure": "Geburtseinleitung",
+    "mandatory_questions_total": 3,
+    "mandatory_questions_asked": 3,
+    "mode": "active",
+    "patient_persona": {
+      "name": "Sara",
+      "age": 37,
+      "sex": "female",
+      "education_level": "medium",
+      "language": "de",
+      "anxiety_level": "high",
+      "hidden_fact": "Ich nehme täglich Blutverdünner wegen einer früheren Thrombose."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 9,
+    "conversation_date": "2026-04-13T09:52:23.556770",
+    "dataset_tag": "patient_agent_probabilistic_v3",
+    "repeat_index": 2,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "Okay, wie läuft die Geburtseinleitung genau ab?",
+      "chatbot_response": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen.",
+      "mandatory_question": {
+        "question_id": "einl_02",
+        "content": "In welcher Schwangerschaftswoche befinden Sie sich aktuell?",
+        "reason": "Die medizinische Empfehlung ändert sich je nach Woche (z.B. Empfehlung ab 41. SSW, dringender Rat ab 42. SSW)."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.6192441495037285
+          },
+          {
+            "citation_index": 2,
+            "document_id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.5889277002964699
+          },
+          {
+            "citation_index": 3,
+            "document_id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5843975637009735
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: In welcher Schwangerschaftswoche befinden Sie sich aktuell?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nGeburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nMethoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.6192441495037285,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "Geburtshilfliche Maßnahmen Zur Geburt Die Geburt ist ein natürlicher Vorgang. Die modernen geburtshilflichen Methoden, insbesondere auch die Verfahren zur Überwachung der Geburt, haben die Risiken für Mutter und Kind deutlich vermindert. Gefahrensituationen lassen sich meist frühzeitig erkennen, sodass bei Bedarf ein rechtzeitiges Eingreifen möglich wird. Die dazu erforderlichen medizinischen Maßnahmen bedürfen jedoch Ihrer Einwilligung. Wie wird die Geburt überwacht? Während der Geburt werden Sie und Ihr Kind von Geburtshelferinnen/Geburtshelfern und Ärzt:innen überwacht. Die aufgeführten Überwachungsmethoden bieten ein hohes Maß an Sicherheit, weil damit mögliche Gefährdungen frühzeitig erkannt und Behandlungsmaßnahmen eingeleitet werden können. Abhören der kindlichen Herztöne\nÜber ein spezielles Hörrohr, das ",
+          "score": 0.5889277002964699,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "359f228e7cb90ca7af16c1c403c7cc2562041d29ddf5429583d03dbe2befcf8a"
+        },
+        {
+          "content": "Methoden zur Geburtseinleitung sind möglich: Medikamentöse Einleitung Prostaglandinpräparate (z. B. Misoprostol, Dinoproston):\nProstaglandine sind Hormone, die der Körper unter anderem am Ende der Schwangerschaft zunehmend selbst produziert. Unter ihrem Einfluss verkürzt sich der Gebärmutterhals, er weicht auf, der Muttermund öffnet sich. Prostaglandine werden hauptsächlich bei unreifem Geburtsbefund eingesetzt, wenn andere Wirkungen erwünscht sind. Man kann sie in verschiedenen Formen verabreichen: als Tablette, die geschluckt oder in die Scheide eingelegt wird, als Gel, das in die Scheide oder in den Gebärmutterhals eingebracht wird, oder als tamponähnliche Membran, die in die Scheide positioniert wird und nach kurzfris­tiger wieder herausgezogen werden kann.\nProstaglandine müssen eventuell mehrmals ",
+          "score": 0.5843975637009735,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 8,
+            "split_idx_start": 5944
+          },
+          "id": "b747d641d163fd80627152638988c8ed8bfcd9bea6cc3b30e8b2c7a2c47614b4"
+        }
+      ],
+      "timestamp": "2026-04-13T09:51:45.669326"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet.",
+      "chatbot_response": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5459a94fe5a3419980c614b02ff3fdc6df00f7148e1b19e4b6fd7bd6fddbdacb",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.39797556754490004
+          },
+          {
+            "citation_index": 2,
+            "document_id": "c2acf028bb0bf75702b67719849b5c2142836a6639b768187a0eaa4223c81f4a",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.3948353109220715
+          },
+          {
+            "citation_index": 3,
+            "document_id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.38780666126348196
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nDer Haupteingang befindet sich am Müggelschlößchenweg. Kontaktformular: Wer lieber schriftlich kommuniziert, kann das Kontaktformular auf der Website der Klinik nutzen (https://www.drk-kliniken-berlin.de/geburtshilfe-koepenick/kontakt). Die Antwort erfolgt werktags per E-Mail oder Rückruf. Anmeldung zur Geburt Die Anmeldung zur Geburt sollte idealerweise ab der 32. Schwangerschaftswoche erfolgen, um eine persönliche Planung zu ermöglichen. Terminvereinbarung ist telefonisch möglich unter (030) 3035 - 3170, montags bis freitags von 8:30 bis 13:30 Uhr. Die Anmeldung findet meist in der Hebammensprechstunde statt und beinhaltet ein ausführliches Gespräch sowie die Anlage der Patientenakte. Mitzubringen sind: Mutterpass, Krankenversichertenkarte, Personalausweis, ggf. Einweisung oder Überweisung, sowie alle relevanten Schwangerschaftsbefunde. In diesem Gespräch \n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nBabylotsinnen sind direkt in der Klinik erreichbar. (Kontakt via: babylotsin-koepenick@drk-kliniken-berlin.de) Ablauf der Geburt – von Anmeldung bis Nachsorge Vor der Geburt – Anmeldung und Vorbereitung: Ab der 32. Schwangerschaftswoche sollte die Anmeldung zur Geburt erfolgen, meist im Rahmen der Hebammensprechstunde. Dabei werden alle wichtigen Daten, Befunde und Wünsche (z. B. Wassergeburt oder Familienzimmer) besprochen. Zum Termin sollten Mutterpass, Krankenversicherungskarte, ggf. Überweisungsschein und alle Schwangerschaftsbefunde mitgebracht werden. Telefonisch erreichbar ist der Kreißsaal montags bis freitags zwischen 8:30 und 13:30 Uhr. Bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung. Zusätzlich gibt es Geburtsvorbereitungskurse sowie Infoabende für werdende Eltern. Während der Geburt – \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nGeburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Der Haupteingang befindet sich am Müggelschlößchenweg. Kontaktformular: Wer lieber schriftlich kommuniziert, kann das Kontaktformular auf der Website der Klinik nutzen (https://www.drk-kliniken-berlin.de/geburtshilfe-koepenick/kontakt). Die Antwort erfolgt werktags per E-Mail oder Rückruf. Anmeldung zur Geburt Die Anmeldung zur Geburt sollte idealerweise ab der 32. Schwangerschaftswoche erfolgen, um eine persönliche Planung zu ermöglichen. Terminvereinbarung ist telefonisch möglich unter (030) 3035 - 3170, montags bis freitags von 8:30 bis 13:30 Uhr. Die Anmeldung findet meist in der Hebammensprechstunde statt und beinhaltet ein ausführliches Gespräch sowie die Anlage der Patientenakte. Mitzubringen sind: Mutterpass, Krankenversichertenkarte, Personalausweis, ggf. Einweisung oder Überweisung, sowie alle relevanten Schwangerschaftsbefunde. In diesem Gespräch ",
+          "score": 0.39797556754490004,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 26,
+            "split_idx_start": 20428
+          },
+          "id": "5459a94fe5a3419980c614b02ff3fdc6df00f7148e1b19e4b6fd7bd6fddbdacb"
+        },
+        {
+          "content": "Babylotsinnen sind direkt in der Klinik erreichbar. (Kontakt via: babylotsin-koepenick@drk-kliniken-berlin.de) Ablauf der Geburt – von Anmeldung bis Nachsorge Vor der Geburt – Anmeldung und Vorbereitung: Ab der 32. Schwangerschaftswoche sollte die Anmeldung zur Geburt erfolgen, meist im Rahmen der Hebammensprechstunde. Dabei werden alle wichtigen Daten, Befunde und Wünsche (z. B. Wassergeburt oder Familienzimmer) besprochen. Zum Termin sollten Mutterpass, Krankenversicherungskarte, ggf. Überweisungsschein und alle Schwangerschaftsbefunde mitgebracht werden. Telefonisch erreichbar ist der Kreißsaal montags bis freitags zwischen 8:30 und 13:30 Uhr. Bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung. Zusätzlich gibt es Geburtsvorbereitungskurse sowie Infoabende für werdende Eltern. Während der Geburt – ",
+          "score": 0.3948353109220715,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 8040
+          },
+          "id": "c2acf028bb0bf75702b67719849b5c2142836a6639b768187a0eaa4223c81f4a"
+        },
+        {
+          "content": "Geburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den ",
+          "score": 0.38780666126348196,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:51:51.400952"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht.",
+      "chatbot_response": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c",
+            "file_path": "Äußere Wendung.md",
+            "score": 0.32958164073270957
+          },
+          {
+            "citation_index": 3,
+            "document_id": "54eb3212e3892365501f82f1e7668ae2cbf212e783704f55913c62c761fd9e76",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.30518416219389843
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndie erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen \n---\n---\n[Quelle 2]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nvariieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "die erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen ",
+          "score": 0.33708840318297006,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9556
+          },
+          "id": "f88b9d161637cb12ebe97ae44b945037c3214a433b02210e731ef2d5dac78e82"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.32958164073270957,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "variieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende ",
+          "score": 0.30518416219389843,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 7,
+            "split_idx_start": 5140
+          },
+          "id": "54eb3212e3892365501f82f1e7668ae2cbf212e783704f55913c62c761fd9e76"
+        }
+      ],
+      "timestamp": "2026-04-13T09:51:56.318588"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?",
+      "chatbot_response": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.5110931398446042
+          },
+          {
+            "citation_index": 3,
+            "document_id": "71763cfd5bd6be6dc90dbd4c129dc745341d1c18c178d155f439d639c3de27c3",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.44253980822527017
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nGeburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den \n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nsich eine schmerzhafte Wehe aufbaut. Eine besonders wirksame Methode zur Schmerzausschaltung ist die Periduralanästhesie (PDA). Hierbei werden die Nerven des rückenmarksnahen Raumes betäubt. Ihre Ärztin/Ihr Arzt klärt Sie über die Methoden zur Schmerzlinderung und Schmerzausschaltung (PDA) sowie über Ihre persönlichen Risiken und möglichen Komplikationen gesondert auf. Danach entscheiden Sie gemeinsam, welche Behandlungsmaßnahmen eingesetzt werden sollen. Zusatzmaßnahmen Wehenverstärkende/-hemmende Medikamente\nWehenverstärkende Medikamente sind z. B. bei mangelnder Wehentätigkeit erforderlich, um den natürlichen Geburtsverlauf zu unterstützen. Sie können auch zur Geburtseinleitung (z. B. bei vorzeitigem Blasensprung, Terminüberschreitung, verschiedenen Erkrankungen der Mutter und Störungen der Entwicklung des Kindes) eingesetzt werden. Sofern bei Ihnen eine Geburtseinleitung vorgesehen ist, \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.5110931398446042,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "Geburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den ",
+          "score": 0.4581610279171591,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f"
+        },
+        {
+          "content": "sich eine schmerzhafte Wehe aufbaut. Eine besonders wirksame Methode zur Schmerzausschaltung ist die Periduralanästhesie (PDA). Hierbei werden die Nerven des rückenmarksnahen Raumes betäubt. Ihre Ärztin/Ihr Arzt klärt Sie über die Methoden zur Schmerzlinderung und Schmerzausschaltung (PDA) sowie über Ihre persönlichen Risiken und möglichen Komplikationen gesondert auf. Danach entscheiden Sie gemeinsam, welche Behandlungsmaßnahmen eingesetzt werden sollen. Zusatzmaßnahmen Wehenverstärkende/-hemmende Medikamente\nWehenverstärkende Medikamente sind z. B. bei mangelnder Wehentätigkeit erforderlich, um den natürlichen Geburtsverlauf zu unterstützen. Sie können auch zur Geburtseinleitung (z. B. bei vorzeitigem Blasensprung, Terminüberschreitung, verschiedenen Erkrankungen der Mutter und Störungen der Entwicklung des Kindes) eingesetzt werden. Sofern bei Ihnen eine Geburtseinleitung vorgesehen ist, ",
+          "score": 0.44253980822527017,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 4,
+            "split_idx_start": 3242
+          },
+          "id": "71763cfd5bd6be6dc90dbd4c129dc745341d1c18c178d155f439d639c3de27c3"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:02.356445"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?",
+      "chatbot_response": "Ja — es gibt klare Warnzeichen, bei denen Sie **sofort** Bescheid sagen sollten.\n\nSie sollen **umgehend ärztliche Hilfe suchen** bei:\n- **Fieber**\n- **Bauchschmerzen**\n- **Rötung des Bauchschnitts** (falls ein Kaiserschnitt in der Vorgeschichte besteht)\n- **Blutungen, die über den üblichen Wochenfluss hinausgehen**\n- **Ausbleiben oder plötzliches Aufhören des Wochenflusses**\n- **Schmerzen, Rötung oder Schwellung in einem Bein**\n- **Atemnot** [Quelle 1]\n\nFalls die **Fruchtblase platzt oder ein Loch aufweist**, ist das ebenfalls ein wichtiger Punkt für die weitere Planung [Quelle 3].\n\nIch möchte Sie auch an die Pflichtfragen erinnern:\n1. **Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?**\n2. **In welcher Schwangerschaftswoche befinden Sie sich aktuell?**  \n3. **Hatten Sie bereits einen Blasensprung?**\n\nZu weiteren Warnzeichen im Kreißsaal habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "1be6b1cf41fb49ed9874a11c42e806feb274a85947ddf3f86e982496c15277cd",
+            "file_path": "Kaiserschnitt.md",
+            "score": 0.5523715551157202
+          },
+          {
+            "citation_index": 3,
+            "document_id": "a0e29ff6e12e489d1c5e3dc7af6519e19e03010d13043d4a8eccaf1bb639777f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.4921419197421252
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Kaiserschnitt.md)\nINHALT:\nnächsten Schwangerschaft erleiden. Die Studienergebnisse sind hierzu unsicher und teilweise widersprüchlich. Obwohl Kaiserschnitte weltweit sehr häufig durchgeführt werden, ist über die Kurz- und Langzeitfolgen für die Frau vieles noch unbekannt. Verhaltenshinweise Suchen Sie bei Beschwerden, z. B. bei Fieber, Bauchschmerzen, Rötung des Bauchschnitts, Blutungen, die über den üblichen Wochenfluss hinausgehen, Ausbleiben bzw. plötzliches Aufhören des Wochenflusses sowie bei Schmerzen, Rötung bzw. Schwellung in einem Bein oder bei Atemnot sofort ärztliche Hilfe auf – auch wenn diese Beschwerden erst einige Tage nach Ihrer Entlassung aus der Klinik auftreten. Stellen Sie die Betreuung durch eine Hebamme zu Hause sicher und führen Sie auch \n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nBabylotsinnen sind direkt in der Klinik erreichbar. (Kontakt via: babylotsin-koepenick@drk-kliniken-berlin.de) Ablauf der Geburt – von Anmeldung bis Nachsorge Vor der Geburt – Anmeldung und Vorbereitung: Ab der 32. Schwangerschaftswoche sollte die Anmeldung zur Geburt erfolgen, meist im Rahmen der Hebammensprechstunde. Dabei werden alle wichtigen Daten, Befunde und Wünsche (z. B. Wassergeburt oder Familienzimmer) besprochen. Zum Termin sollten Mutterpass, Krankenversicherungskarte, ggf. Überweisungsschein und alle Schwangerschaftsbefunde mitgebracht werden. Telefonisch erreichbar ist der Kreißsaal montags bis freitags zwischen 8:30 und 13:30 Uhr. Bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung. Zusätzlich gibt es Geburtsvorbereitungskurse sowie Infoabende für werdende Eltern. Während der Geburt – \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\ndringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "nächsten Schwangerschaft erleiden. Die Studienergebnisse sind hierzu unsicher und teilweise widersprüchlich. Obwohl Kaiserschnitte weltweit sehr häufig durchgeführt werden, ist über die Kurz- und Langzeitfolgen für die Frau vieles noch unbekannt. Verhaltenshinweise Suchen Sie bei Beschwerden, z. B. bei Fieber, Bauchschmerzen, Rötung des Bauchschnitts, Blutungen, die über den üblichen Wochenfluss hinausgehen, Ausbleiben bzw. plötzliches Aufhören des Wochenflusses sowie bei Schmerzen, Rötung bzw. Schwellung in einem Bein oder bei Atemnot sofort ärztliche Hilfe auf – auch wenn diese Beschwerden erst einige Tage nach Ihrer Entlassung aus der Klinik auftreten. Stellen Sie die Betreuung durch eine Hebamme zu Hause sicher und führen Sie auch ",
+          "score": 0.5523715551157202,
+          "meta": {
+            "file_path": "Kaiserschnitt.md",
+            "source_id": "ab2e1e9ad3df12dd9315024d484f5544932eefff5bf14772c4a6c2257bfb317b",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17497
+          },
+          "id": "1be6b1cf41fb49ed9874a11c42e806feb274a85947ddf3f86e982496c15277cd"
+        },
+        {
+          "content": "Babylotsinnen sind direkt in der Klinik erreichbar. (Kontakt via: babylotsin-koepenick@drk-kliniken-berlin.de) Ablauf der Geburt – von Anmeldung bis Nachsorge Vor der Geburt – Anmeldung und Vorbereitung: Ab der 32. Schwangerschaftswoche sollte die Anmeldung zur Geburt erfolgen, meist im Rahmen der Hebammensprechstunde. Dabei werden alle wichtigen Daten, Befunde und Wünsche (z. B. Wassergeburt oder Familienzimmer) besprochen. Zum Termin sollten Mutterpass, Krankenversicherungskarte, ggf. Überweisungsschein und alle Schwangerschaftsbefunde mitgebracht werden. Telefonisch erreichbar ist der Kreißsaal montags bis freitags zwischen 8:30 und 13:30 Uhr. Bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung. Zusätzlich gibt es Geburtsvorbereitungskurse sowie Infoabende für werdende Eltern. Während der Geburt – ",
+          "score": 0.4923073321786383,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 8040
+          },
+          "id": "c2acf028bb0bf75702b67719849b5c2142836a6639b768187a0eaa4223c81f4a"
+        },
+        {
+          "content": "dringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, ",
+          "score": 0.4921419197421252,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 723
+          },
+          "id": "a0e29ff6e12e489d1c5e3dc7af6519e19e03010d13043d4a8eccaf1bb639777f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:06.748152"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Okay — ich hab **noch keinen Blasensprung**. Mir wäre jetzt am wichtigsten zu wissen: **Woran merke ich denn, dass ich direkt losfahren oder anrufen muss?**",
+      "chatbot_response": "Danke, das hilft schon weiter.\n\nWenn Sie **noch keinen Blasensprung** hatten, sollten Sie den Kreißsaal **sofort anrufen**, wenn:\n- die **Wehen regelmäßig** werden und zunehmen,\n- **Fruchtwasser abgeht** oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- das **Kind sich deutlich weniger bewegt**,\n- oder Sie sich einfach **unsicher** fühlen und Hilfe brauchen.\n\nBei einem **Fruchtblasensprung** ist die weitere Planung besonders wichtig [Quelle 3]. Nach einem Blasensprung kann eine Geburtseinleitung sinnvoll sein, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen [Quelle 3].\n\nWas Sie zu Hause als Warnzeichen besonders ernst nehmen sollten, habe ich in den Unterlagen nur teilweise beschrieben; weitere Details dazu fehlen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen noch ganz kurz sagen, **wie Sie echte Wehen von Übungswehen unterscheiden**.",
+      "mandatory_question": {
+        "question_id": "einl_03",
+        "content": "Hatten Sie bereits einen Blasensprung?",
+        "reason": "Ein Blasensprung ohne Wehentätigkeit ist ein eigenständiger Grund für eine Einleitung zur Infektionsvermeidung."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.4382867524043994
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\ndringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, \n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nGeburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja — es gibt klare Warnzeichen, bei denen Sie **sofort** Bescheid sagen sollten.\n\nSie sollen **umgehend ärztliche Hilfe suchen** bei:\n- **Fieber**\n- **Bauchschmerzen**\n- **Rötung des Bauchschnitts** (falls ein Kaiserschnitt in der Vorgeschichte besteht)\n- **Blutungen, die über den üblichen Wochenfluss hinausgehen**\n- **Ausbleiben oder plötzliches Aufhören des Wochenflusses**\n- **Schmerzen, Rötung oder Schwellung in einem Bein**\n- **Atemnot** [Quelle 1]\n\nFalls die **Fruchtblase platzt oder ein Loch aufweist**, ist das ebenfalls ein wichtiger Punkt für die weitere Planung [Quelle 3].\n\nIch möchte Sie auch an die Pflichtfragen erinnern:\n1. **Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?**\n2. **In welcher Schwangerschaftswoche befinden Sie sich aktuell?**  \n3. **Hatten Sie bereits einen Blasensprung?**\n\nZu weiteren Warnzeichen im Kreißsaal habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay — ich hab **noch keinen Blasensprung**. Mir wäre jetzt am wichtigsten zu wissen: **Woran merke ich denn, dass ich direkt losfahren oder anrufen muss?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "dringenden Wunsch dazu äußern bzw. eine Situation besteht, in der für Sie ein weiteres Austragen der Schwangerschaft nur unter deutlichen Beschwerden möglich ist (z.B. Harnstau bis in die Nieren, Lockerung der Schambeinfuge [Symphyse] etc.) Wir wägen die Gefahren für Ihre Gesundheit und die Ihres Kindes genau gegeneinander ab und erklären Ihnen, warum wir eine Einleitung in Ihrem Fall für sinnvoll bzw. dringend erachten. Prüfen Sie das Für und Wider, lassen Sie Ihre „innere Stimme“ zu Wort kommen und entscheiden Sie dann in Ruhe mit uns über das weitere Vorgehen. Nach einem Fruchtblasensprung Wenn die Fruchtblase platzt oder ein Loch aufweist, ",
+          "score": 0.5052009489682381,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 723
+          },
+          "id": "a0e29ff6e12e489d1c5e3dc7af6519e19e03010d13043d4a8eccaf1bb639777f"
+        },
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.4670170536094108,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "Geburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den ",
+          "score": 0.4382867524043994,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:10.447073"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Okay… das beruhigt mich ein bisschen, aber ich hab trotzdem Angst, das falsch einzuschätzen. Was ist denn eher ein Zeichen für **echte Wehen** und nicht nur so ein Ziehen oder Übungswehen?",
+      "chatbot_response": "Echte Wehen sind meist **regelmäßig**, werden **stärker**, **länger** und kommen in **kürzeren Abständen**. Oft gehen sie **nicht weg**, wenn Sie sich hinsetzen, ausruhen oder die Position ändern.\n\nÜbungswehen oder ein Ziehen sind eher:\n- unregelmäßig,\n- bleiben gleich stark oder werden wieder schwächer,\n- und klingen oft in Ruhe ab.\n\nAus den Unterlagen habe ich dazu keine detailliertere Unterscheidung im Kreißsaal-Kontext. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig: Wenn die Wehen regelmäßig werden, die Fruchtblase springt oder Sie Blutungen haben, sollten Sie den Kreißsaal anrufen.  \n\nWenn Sie möchten, kann ich Ihnen noch in **3 kurzen Punkten** sagen, **wann Sie sofort losfahren sollten**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 0,
+        "unique_sources": 0,
+        "citation_mapping": []
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtseinleitung.md)\nINHALT:\nhiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nsich eine schmerzhafte Wehe aufbaut. Eine besonders wirksame Methode zur Schmerzausschaltung ist die Periduralanästhesie (PDA). Hierbei werden die Nerven des rückenmarksnahen Raumes betäubt. Ihre Ärztin/Ihr Arzt klärt Sie über die Methoden zur Schmerzlinderung und Schmerzausschaltung (PDA) sowie über Ihre persönlichen Risiken und möglichen Komplikationen gesondert auf. Danach entscheiden Sie gemeinsam, welche Behandlungsmaßnahmen eingesetzt werden sollen. Zusatzmaßnahmen Wehenverstärkende/-hemmende Medikamente\nWehenverstärkende Medikamente sind z. B. bei mangelnder Wehentätigkeit erforderlich, um den natürlichen Geburtsverlauf zu unterstützen. Sie können auch zur Geburtseinleitung (z. B. bei vorzeitigem Blasensprung, Terminüberschreitung, verschiedenen Erkrankungen der Mutter und Störungen der Entwicklung des Kindes) eingesetzt werden. Sofern bei Ihnen eine Geburtseinleitung vorgesehen ist, \n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nÄrztin/der Arzt bei eröffnetem Muttermund und gesprungener Fruchtblase – je nach Lage des Kindes – aus Kopf- oder Steißhaut des Kindes einige Tropfen Blut zur Untersuchung entnehmen. So erhält sie/er Informationen und kann ggf. bei Sauerstoffmangel notwendige Maßnahmen ergreifen. Super! Hier kommt der nächste Abschnitt – Linderung von Geburtsschmerzen – komplett und wortwörtlich: Linderung von Geburtsschmerzen Die Geburt ist körperlich sehr anstrengend und schmerzhaft. Bei der Schmerzbewältigung helfen bestimmte Techniken (z. B. Entspannungsübungen, Atemtechnik), naturheilkundliche Maßnahmen und verschiedene Arten medikamentöser Schmerzlinderung. Folgende Möglichkeiten stehen zur Verfügung: Die Schmerzen durch die Eröffnungswehen – vom Beginn der Wehen bis zur vollständigen Eröffnung des \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja — es gibt klare Warnzeichen, bei denen Sie **sofort** Bescheid sagen sollten.\n\nSie sollen **umgehend ärztliche Hilfe suchen** bei:\n- **Fieber**\n- **Bauchschmerzen**\n- **Rötung des Bauchschnitts** (falls ein Kaiserschnitt in der Vorgeschichte besteht)\n- **Blutungen, die über den üblichen Wochenfluss hinausgehen**\n- **Ausbleiben oder plötzliches Aufhören des Wochenflusses**\n- **Schmerzen, Rötung oder Schwellung in einem Bein**\n- **Atemnot** [Quelle 1]\n\nFalls die **Fruchtblase platzt oder ein Loch aufweist**, ist das ebenfalls ein wichtiger Punkt für die weitere Planung [Quelle 3].\n\nIch möchte Sie auch an die Pflichtfragen erinnern:\n1. **Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?**\n2. **In welcher Schwangerschaftswoche befinden Sie sich aktuell?**  \n3. **Hatten Sie bereits einen Blasensprung?**\n\nZu weiteren Warnzeichen im Kreißsaal habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay — ich hab **noch keinen Blasensprung**. Mir wäre jetzt am wichtigsten zu wissen: **Woran merke ich denn, dass ich direkt losfahren oder anrufen muss?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft schon weiter.\n\nWenn Sie **noch keinen Blasensprung** hatten, sollten Sie den Kreißsaal **sofort anrufen**, wenn:\n- die **Wehen regelmäßig** werden und zunehmen,\n- **Fruchtwasser abgeht** oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- das **Kind sich deutlich weniger bewegt**,\n- oder Sie sich einfach **unsicher** fühlen und Hilfe brauchen.\n\nBei einem **Fruchtblasensprung** ist die weitere Planung besonders wichtig [Quelle 3]. Nach einem Blasensprung kann eine Geburtseinleitung sinnvoll sein, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen [Quelle 3].\n\nWas Sie zu Hause als Warnzeichen besonders ernst nehmen sollten, habe ich in den Unterlagen nur teilweise beschrieben; weitere Details dazu fehlen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen noch ganz kurz sagen, **wie Sie echte Wehen von Übungswehen unterscheiden**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay… das beruhigt mich ein bisschen, aber ich hab trotzdem Angst, das falsch einzuschätzen. Was ist denn eher ein Zeichen für **echte Wehen** und nicht nur so ein Ziehen oder Übungswehen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "hiermit Wehen auslösen. Eipollösung:\nWenn der Muttermund für einen Finger passierbar ist, kann man bei einer vaginalen Untersuchung mit 1 oder 2 Fingern in den Gebärmutterhals eingehen und mit einer rundum streichenden Bewegung den unteren Bereich der Fruchtblase von der Innenseite der Gebärmutter ablösen. Dies wirkt bei manchen Frauen wehenauslösend. Fruchtblasensprengung (Amniotomie):\nBei geburtsreifem Befund, wenn der Gebärmutterhals deutlich verkürzt und der Muttermund leicht eröffnet ist, kann mit einem kleinen Häkchen die Fruchtblase angeritzt und eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt erfolgt in vielen Fällen wenige Stunden später. Besonders dann, wenn Sie schon ein Kind auf natürlichem Weg ",
+          "score": 0.4498365123246706,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 7529
+          },
+          "id": "ec3b9160eb38fe8c76ceaa5f5d7e62ada5b7619e6102d6670ad5c2cbd875d4bd"
+        },
+        {
+          "content": "sich eine schmerzhafte Wehe aufbaut. Eine besonders wirksame Methode zur Schmerzausschaltung ist die Periduralanästhesie (PDA). Hierbei werden die Nerven des rückenmarksnahen Raumes betäubt. Ihre Ärztin/Ihr Arzt klärt Sie über die Methoden zur Schmerzlinderung und Schmerzausschaltung (PDA) sowie über Ihre persönlichen Risiken und möglichen Komplikationen gesondert auf. Danach entscheiden Sie gemeinsam, welche Behandlungsmaßnahmen eingesetzt werden sollen. Zusatzmaßnahmen Wehenverstärkende/-hemmende Medikamente\nWehenverstärkende Medikamente sind z. B. bei mangelnder Wehentätigkeit erforderlich, um den natürlichen Geburtsverlauf zu unterstützen. Sie können auch zur Geburtseinleitung (z. B. bei vorzeitigem Blasensprung, Terminüberschreitung, verschiedenen Erkrankungen der Mutter und Störungen der Entwicklung des Kindes) eingesetzt werden. Sofern bei Ihnen eine Geburtseinleitung vorgesehen ist, ",
+          "score": 0.394317703478021,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 4,
+            "split_idx_start": 3242
+          },
+          "id": "71763cfd5bd6be6dc90dbd4c129dc745341d1c18c178d155f439d639c3de27c3"
+        },
+        {
+          "content": "Ärztin/der Arzt bei eröffnetem Muttermund und gesprungener Fruchtblase – je nach Lage des Kindes – aus Kopf- oder Steißhaut des Kindes einige Tropfen Blut zur Untersuchung entnehmen. So erhält sie/er Informationen und kann ggf. bei Sauerstoffmangel notwendige Maßnahmen ergreifen. Super! Hier kommt der nächste Abschnitt – Linderung von Geburtsschmerzen – komplett und wortwörtlich: Linderung von Geburtsschmerzen Die Geburt ist körperlich sehr anstrengend und schmerzhaft. Bei der Schmerzbewältigung helfen bestimmte Techniken (z. B. Entspannungsübungen, Atemtechnik), naturheilkundliche Maßnahmen und verschiedene Arten medikamentöser Schmerzlinderung. Folgende Möglichkeiten stehen zur Verfügung: Die Schmerzen durch die Eröffnungswehen – vom Beginn der Wehen bis zur vollständigen Eröffnung des ",
+          "score": 0.3834083512111941,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 2,
+            "split_idx_start": 1617
+          },
+          "id": "2bd17e10a8300f90d8296e1322696196f4d0381871d5fa86e77245c53c6517f3"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:15.569260"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Hm, okay… ich glaub, ich hätte dann echt Angst, das **zu spät** zu merken. Wenn ich unsicher bin: **ab wann** soll ich lieber nicht mehr abwarten, sondern direkt anrufen?",
+      "chatbot_response": "Wenn Sie **unsicher sind**, ist die sichere Faustregel: **lieber einmal zu früh im Kreißsaal anrufen als zu spät**.\n\n**Sofort anrufen bzw. losfahren**, wenn:\n- die Wehen **regelmäßig** kommen und deutlich stärker werden,\n- **Fruchtwasser** abgeht oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- Sie merken, dass sich das **Kind deutlich weniger bewegt**,\n- oder Sie einfach das Gefühl haben, dass **etwas nicht stimmt**.\n\nGerade bei einem vermuteten **Blasensprung** ist eine schnelle Rückmeldung wichtig, weil danach die weitere Planung abhängt [Quelle 3].\n\nZur **genauen Wehen-Frequenz** oder einer festen „Ab-wann“-Minutenregel habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\n**Pflichtfrage noch einmal zur Sicherheit:** Hatten Sie bereits einen **Kaiserschnitt oder eine andere Operation an der Gebärmutter**?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f",
+            "file_path": "Geburtseinleitung.md",
+            "score": 0.3903462248321023
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Pflichtfragen-Liste:\n- (einl_01) Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?\n- (einl_02) In welcher Schwangerschaftswoche befinden Sie sich aktuell?\n- (einl_03) Hatten Sie bereits einen Blasensprung?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nDer Haupteingang befindet sich am Müggelschlößchenweg. Kontaktformular: Wer lieber schriftlich kommuniziert, kann das Kontaktformular auf der Website der Klinik nutzen (https://www.drk-kliniken-berlin.de/geburtshilfe-koepenick/kontakt). Die Antwort erfolgt werktags per E-Mail oder Rückruf. Anmeldung zur Geburt Die Anmeldung zur Geburt sollte idealerweise ab der 32. Schwangerschaftswoche erfolgen, um eine persönliche Planung zu ermöglichen. Terminvereinbarung ist telefonisch möglich unter (030) 3035 - 3170, montags bis freitags von 8:30 bis 13:30 Uhr. Die Anmeldung findet meist in der Hebammensprechstunde statt und beinhaltet ein ausführliches Gespräch sowie die Anlage der Patientenakte. Mitzubringen sind: Mutterpass, Krankenversichertenkarte, Personalausweis, ggf. Einweisung oder Überweisung, sowie alle relevanten Schwangerschaftsbefunde. In diesem Gespräch \n---\n---\n[Quelle 3]\n(Datei: Geburtseinleitung.md)\nINHALT:\nGeburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja — es gibt klare Warnzeichen, bei denen Sie **sofort** Bescheid sagen sollten.\n\nSie sollen **umgehend ärztliche Hilfe suchen** bei:\n- **Fieber**\n- **Bauchschmerzen**\n- **Rötung des Bauchschnitts** (falls ein Kaiserschnitt in der Vorgeschichte besteht)\n- **Blutungen, die über den üblichen Wochenfluss hinausgehen**\n- **Ausbleiben oder plötzliches Aufhören des Wochenflusses**\n- **Schmerzen, Rötung oder Schwellung in einem Bein**\n- **Atemnot** [Quelle 1]\n\nFalls die **Fruchtblase platzt oder ein Loch aufweist**, ist das ebenfalls ein wichtiger Punkt für die weitere Planung [Quelle 3].\n\nIch möchte Sie auch an die Pflichtfragen erinnern:\n1. **Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?**\n2. **In welcher Schwangerschaftswoche befinden Sie sich aktuell?**  \n3. **Hatten Sie bereits einen Blasensprung?**\n\nZu weiteren Warnzeichen im Kreißsaal habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay — ich hab **noch keinen Blasensprung**. Mir wäre jetzt am wichtigsten zu wissen: **Woran merke ich denn, dass ich direkt losfahren oder anrufen muss?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft schon weiter.\n\nWenn Sie **noch keinen Blasensprung** hatten, sollten Sie den Kreißsaal **sofort anrufen**, wenn:\n- die **Wehen regelmäßig** werden und zunehmen,\n- **Fruchtwasser abgeht** oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- das **Kind sich deutlich weniger bewegt**,\n- oder Sie sich einfach **unsicher** fühlen und Hilfe brauchen.\n\nBei einem **Fruchtblasensprung** ist die weitere Planung besonders wichtig [Quelle 3]. Nach einem Blasensprung kann eine Geburtseinleitung sinnvoll sein, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen [Quelle 3].\n\nWas Sie zu Hause als Warnzeichen besonders ernst nehmen sollten, habe ich in den Unterlagen nur teilweise beschrieben; weitere Details dazu fehlen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen noch ganz kurz sagen, **wie Sie echte Wehen von Übungswehen unterscheiden**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay… das beruhigt mich ein bisschen, aber ich hab trotzdem Angst, das falsch einzuschätzen. Was ist denn eher ein Zeichen für **echte Wehen** und nicht nur so ein Ziehen oder Übungswehen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Echte Wehen sind meist **regelmäßig**, werden **stärker**, **länger** und kommen in **kürzeren Abständen**. Oft gehen sie **nicht weg**, wenn Sie sich hinsetzen, ausruhen oder die Position ändern.\n\nÜbungswehen oder ein Ziehen sind eher:\n- unregelmäßig,\n- bleiben gleich stark oder werden wieder schwächer,\n- und klingen oft in Ruhe ab.\n\nAus den Unterlagen habe ich dazu keine detailliertere Unterscheidung im Kreißsaal-Kontext. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig: Wenn die Wehen regelmäßig werden, die Fruchtblase springt oder Sie Blutungen haben, sollten Sie den Kreißsaal anrufen.  \n\nWenn Sie möchten, kann ich Ihnen noch in **3 kurzen Punkten** sagen, **wann Sie sofort losfahren sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… ich glaub, ich hätte dann echt Angst, das **zu spät** zu merken. Wenn ich unsicher bin: **ab wann** soll ich lieber nicht mehr abwarten, sondern direkt anrufen?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.39676991983564486,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Der Haupteingang befindet sich am Müggelschlößchenweg. Kontaktformular: Wer lieber schriftlich kommuniziert, kann das Kontaktformular auf der Website der Klinik nutzen (https://www.drk-kliniken-berlin.de/geburtshilfe-koepenick/kontakt). Die Antwort erfolgt werktags per E-Mail oder Rückruf. Anmeldung zur Geburt Die Anmeldung zur Geburt sollte idealerweise ab der 32. Schwangerschaftswoche erfolgen, um eine persönliche Planung zu ermöglichen. Terminvereinbarung ist telefonisch möglich unter (030) 3035 - 3170, montags bis freitags von 8:30 bis 13:30 Uhr. Die Anmeldung findet meist in der Hebammensprechstunde statt und beinhaltet ein ausführliches Gespräch sowie die Anlage der Patientenakte. Mitzubringen sind: Mutterpass, Krankenversichertenkarte, Personalausweis, ggf. Einweisung oder Überweisung, sowie alle relevanten Schwangerschaftsbefunde. In diesem Gespräch ",
+          "score": 0.396581417162223,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 26,
+            "split_idx_start": 20428
+          },
+          "id": "5459a94fe5a3419980c614b02ff3fdc6df00f7148e1b19e4b6fd7bd6fddbdacb"
+        },
+        {
+          "content": "Geburtseinleitung Gründe für eine Geburtseinleitung In folgenden Situationen ist es sinnvoll, eine Geburt einzuleiten: nach einem Fruchtblasensprung ab etwa der 34. Schwangerschaftswoche (SSW: ab dem 1. Tag der letzten Regelblutung) oder in Einzelfällen früher, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen; wenn eine Erkrankung der Mutter sie selbst oder das Kind gefährdet; wenn andere Anhaltspunkte dafür bestehen, dass das Kind bei längerem Verbleiben im Mutterleib gefährdet wäre; ab der vollendeten 41. SSW (sogenannte Terminüberschreitung) als Empfehlung; ab der vollendeten 42. SSW (sogenannte Übertragung) als dringender Rat; ab der vollendeten 40. SSW, gegebenenfalls auch schon früher, sofern Sie den ",
+          "score": 0.3903462248321023,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "6c526dd28bf594115234ff1fccf89a33aafe5b7c6e3594918befec77867c9e3f"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:19.857379"
+    },
+    {
+      "turn": 9,
+      "patient_question": "Nein, **ich hatte keinen Kaiserschnitt und keine OP an der Gebärmutter**.",
+      "chatbot_response": "Danke, das ist wichtig.\n\nDann gilt für Sie weiterhin: Bei **regelmäßigen, stärker werdenden Wehen**, **Fruchtwasserabgang**, **Blutungen** oder wenn sich das **Kind deutlich weniger bewegt**, sollten Sie den Kreißsaal direkt anrufen oder losfahren. Bei Unsicherheit ist ein Anruf jederzeit sinnvoll.\n\nMit Ihrer Angabe **ohne vorangegangenen Kaiserschnitt oder Gebärmutteroperation** gibt es in den Unterlagen keinen besonderen Hinweis auf diese zusätzliche Vorgeschichte [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen jetzt noch ganz kurz sagen, **wie ein Kreißsaal-Anruf meist abläuft**.",
+      "mandatory_question": {
+        "question_id": "einl_01",
+        "content": "Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?",
+        "reason": "Bei Zustand nach Kaiserschnitt ist das Medikament Misoprostol streng verboten, da ein erhöhtes Risiko für eine Uterusruptur besteht."
+      },
+      "supervisor_triggered": true,
+      "intervention_type": "contextual",
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "826a8502eed7d93b40777944224d19dfaa9017c3fa4df05a24ad85d866902891",
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "score": 0.5543494053192709
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Bitte stelle die folgende Pflichtfrage auf natürliche Weise im Verlauf deiner Antwort: Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nMehrlinge, Querlage, Frühgeburt, mütterliche Erkrankungen, Plazentastörung, frühere Kaiserschnitte etc.) als geplante Entbindungsmethode oder während der Geburt als Notfallmaßnahme durchgeführt werden. Ein Kaiserschnitt ist keine \"leichte\" Alternative zur spontanen Geburt. Ihre Ärztin/Ihr Arzt wird die Vor- und Nachteile des Kaiserschnitts gegenüber der natürlichen Geburt mit Ihnen besprechen, damit Sie gemeinsam eine Entscheidung treffen können.\nBei einer Spontangeburt können sich während der Entbindung Situationen ergeben, die einen Kaiserschnitt erforderlich machen (z.B. übermäßige Blutungen, Nabelschnurvorfall, Riss der Gebärmutter, Veränderungen der kindlichen Herztöne mit Zeichen einer drohenden Sauerstoffmangelversorgung, Begleiterkrankungen, Geburtstillstand). Möglicherweise (z.B. bei einem Notkaiserschnitt, starker Beeinträchtigung der Schmerzlinderung oder Medikamenten) können dann nicht mehr \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nmit Ihnen über die Vor- und Nachteile, Risiken und Behandlungsmaßnahmen des Kaiserschnitts gesprochen werden. Daher bitten wir Sie schon jetzt für diesen Fall um Ihr Einverständnis.\nFalls Sie einen Kaiserschnitt vorziehen, kann es zu lebensgefährlichen Komplikationen sowohl für Ihr Kind, das schwerstbehindert geboren werden oder auch versterben kann, als auch für Sie selbst (z.B. bei vorzeitiger Plazentalösung) kommen.\nBei einem Kaiserschnitt wird zuerst die Bauchdecke durch einen Schnitt – meist knapp oberhalb der Schamhaargrenze – geöffnet, die Gebärmutter eröffnet und das Kind herausgenommen. Danach wird die Plazenta entfernt, und Gebärmutter sowie Bauchdecke werden wieder verschlossen. Wassergeburt Falls Sie eine Wassergeburt wünschen, werden \n---\n---\n[Quelle 3]\n(Datei: Kaiserschnitt.md)\nINHALT:\nArzt zunächst die Bauchdecke, den Bauchraum und dann die Gebärmutterwand. Hierbei wird das Gewebe so weit wie möglich gedehnt und nicht geschnitten, da dies schonender für das Gewebe ist und sich hierdurch die Operationszeit verkürzt und weniger spätere Komplikationen (z.B. Fieber, Schmerzen) zu erwarten sind. Das Kind wird vorsichtig aus der Gebärmutter genommen und der Mutterkuchen (Plazenta) entfernt. Meist erhalten Sie Medikamente, die das Zusammenziehen (Kon-traktion) der Gebärmutter fördern und hierdurch den Blutverlust verringern. Anschließend werden die Gebärmutter, der Bauchraum und die Bauchdecke wieder verschlossen.\nHierbei wird möglichst wenig Nahtmaterial verwendet, um die Operationszeit zu verkürzen und Schmerzen nach der\nVor dem \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, wie läuft die Geburtseinleitung genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne — ich erkläre es Ihnen verständlich.\n\nEine Geburtseinleitung kann auf verschiedene Weise erfolgen, je nachdem, wie reif der Geburtsbefund ist:\n\n- **Medikamentöse Einleitung mit Prostaglandinen**: Diese Hormone helfen dabei, den Gebärmutterhals zu **verkürzen, weicher zu machen und den Muttermund zu öffnen**. Sie werden vor allem eingesetzt, wenn der Muttermund noch **unreif** ist. Die Gabe kann als **Tablette**, **Gel** oder als **tamponähnliche Membran** in die Scheide erfolgen [Quelle 3].\n- **Eipollösung**: Wenn der Muttermund für einen Finger passierbar ist, kann bei der vaginalen Untersuchung mit 1–2 Fingern der untere Bereich der Fruchtblase von innen gelöst werden. Das kann bei manchen Frauen Wehen auslösen [Quelle 1].\n- **Fruchtblasensprengung (Amniotomie)**: Wenn der Gebärmutterhals bereits deutlich verkürzt und der Muttermund leicht geöffnet ist, kann die Fruchtblase mit einem kleinen Häkchen eröffnet werden. Dadurch werden meist Wehen ausgelöst, und die Geburt folgt oft wenige Stunden später [Quelle 1].\n\nWährend der Geburt werden Sie und Ihr Kind überwacht, damit mögliche Gefährdungen frühzeitig erkannt und behandelt werden können [Quelle 2].\n\n**In welcher Schwangerschaftswoche befinden Sie sich aktuell?** Dann kann ich Ihnen den Ablauf noch genauer einordnen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich bin in der **39. Woche**. Ich bin ehrlich gesagt etwas angespannt, weil ich nicht genau weiß, was mich erwartet."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele sind vor einer Einleitung angespannt. In der **39. Woche** kann eine Einleitung je nach Befund geplant werden; ab der **40. SSW** kann sie gegebenenfalls schon empfohlen werden, und ab **41+0 SSW** ist sie eine Empfehlung, ab **42+0 SSW** ein dringender Rat [Quelle 3].\n\nDer genaue Ablauf hängt davon ab, ob der Muttermund schon reif ist:\n- **Unreifer Muttermund**: meist erst **Prostaglandine** zum Weichmachen und Öffnen des Muttermunds [Quelle 3].\n- **Reiferer Befund**: eventuell **Eipollösung** oder eine **Fruchtblasensprengung** [Quelle 1].\n\nWichtig ist: Vor der Geburt werden Ihre Daten, Befunde und Wünsche besprochen; bei Risiken oder Besonderheiten erfolgt zusätzlich eine ärztliche Geburtsplanung [Quelle 2]. Während der Geburt werden Sie und Ihr Kind überwacht [Quelle 2].\n\nZu möglichen Schmerzen, der Dauer oder dem ganz konkreten Stationsablauf habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes sagen, **welche Fragen Sie vor der Einleitung im Kreißsaal stellen können**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, ich glaub ich würde am meisten gern wissen, **wie lange so eine Einleitung bei mir ungefähr dauern kann** — ich hab echt Angst, dass das ewig zieht."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ich verstehe die Sorge sehr gut. Wie lange eine Einleitung dauert, **lässt sich vorab nicht genau vorhersagen**. Das hängt vor allem davon ab, **wie reif der Muttermund ist**, wie Ihr Körper auf die Einleitung reagiert und ob anschließend noch weitere Schritte nötig sind.\n\nAllgemein kann es so aussehen:\n- **Wenn der Muttermund noch unreif ist**, beginnt man oft mit Mitteln zum **Weichmachen und Öffnen** des Muttermunds. Das kann einige Zeit brauchen, bevor echte Wehen einsetzen.\n- **Wenn der Muttermund schon reifer ist**, kann die Geburtseinleitung deutlich schneller voranschreiten.\n\nWichtig für Sie: In den Unterlagen steht, dass bei einer Einleitung nach früherem Kaiserschnitt eine **besondere kontinuierliche Überwachung** nötig ist und das nur in einer **Klinik** erfolgen soll [Quelle 3]. Außerdem wird vor dem Wendversuch erwähnt, dass man sich auf eine mögliche Narkose vorbereiten muss, falls ein Kaiserschnitt nötig wird [Quelle 2].\n\nZur **genauen Dauer** der Einleitung habe ich in den Unterlagen keine belastbaren Angaben. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz erklären, **woran Sie merken, dass die Einleitung beginnt zu wirken**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay — ich hab jetzt etwas mehr Angst vor dem Warten, weil ich nicht weiß, ob ich dann direkt starke Wehen bekomme oder ob es erst mal nur langsam losgeht. Wie merke ich denn, dass die Einleitung bei mir überhaupt **anschlägt**?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr verständliche Sorge. Ob eine Einleitung „anschlägt“, merkt man meist daran, dass der Körper auf die Maßnahme reagiert und sich der Geburtsbefund verändert:\n\n- **Der Muttermund wird weicher, kürzer und öffnet sich weiter**\n- **Es beginnen regelmäßige Wehen**\n- Nach einer **Fruchtblasensprengung** setzen meist Wehen ein; die Geburt folgt dann oft einige Stunden später [Quelle 1]\n- Nach einer **Eipollösung** können bei manchen Frauen Wehen ausgelöst werden [Quelle 1]\n\nWenn der Muttermund noch **unreif** ist, wird häufig erst mit **Prostaglandinen** gearbeitet, damit der Muttermund reift und sich öffnet [Quelle 3]. Das heißt: Es kann durchaus **langsam beginnen** und nicht sofort mit starken Wehen losgehen.\n\nWas genau Sie bei den ersten Zeichen spüren, kann individuell sehr unterschiedlich sein. Dazu habe ich in den Unterlagen keine weiteren Details. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **welche Pflichtfragen vor der Einleitung noch wichtig sind**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… dann hab ich vor allem Angst, dass ich die Zeichen zu spät checke oder dass ich nicht weiß, **wann ich sofort Bescheid sagen muss**. Was wäre denn ein Warnzeichen, bei dem ich direkt im Kreißsaal melden sollte?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja — es gibt klare Warnzeichen, bei denen Sie **sofort** Bescheid sagen sollten.\n\nSie sollen **umgehend ärztliche Hilfe suchen** bei:\n- **Fieber**\n- **Bauchschmerzen**\n- **Rötung des Bauchschnitts** (falls ein Kaiserschnitt in der Vorgeschichte besteht)\n- **Blutungen, die über den üblichen Wochenfluss hinausgehen**\n- **Ausbleiben oder plötzliches Aufhören des Wochenflusses**\n- **Schmerzen, Rötung oder Schwellung in einem Bein**\n- **Atemnot** [Quelle 1]\n\nFalls die **Fruchtblase platzt oder ein Loch aufweist**, ist das ebenfalls ein wichtiger Punkt für die weitere Planung [Quelle 3].\n\nIch möchte Sie auch an die Pflichtfragen erinnern:\n1. **Hatten Sie bereits einen Kaiserschnitt oder eine andere Operation an der Gebärmutter?**\n2. **In welcher Schwangerschaftswoche befinden Sie sich aktuell?**  \n3. **Hatten Sie bereits einen Blasensprung?**\n\nZu weiteren Warnzeichen im Kreißsaal habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay — ich hab **noch keinen Blasensprung**. Mir wäre jetzt am wichtigsten zu wissen: **Woran merke ich denn, dass ich direkt losfahren oder anrufen muss?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Danke, das hilft schon weiter.\n\nWenn Sie **noch keinen Blasensprung** hatten, sollten Sie den Kreißsaal **sofort anrufen**, wenn:\n- die **Wehen regelmäßig** werden und zunehmen,\n- **Fruchtwasser abgeht** oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- das **Kind sich deutlich weniger bewegt**,\n- oder Sie sich einfach **unsicher** fühlen und Hilfe brauchen.\n\nBei einem **Fruchtblasensprung** ist die weitere Planung besonders wichtig [Quelle 3]. Nach einem Blasensprung kann eine Geburtseinleitung sinnvoll sein, wenn die Wehen nicht innerhalb von 24 Stunden einsetzen [Quelle 3].\n\nWas Sie zu Hause als Warnzeichen besonders ernst nehmen sollten, habe ich in den Unterlagen nur teilweise beschrieben; weitere Details dazu fehlen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen noch ganz kurz sagen, **wie Sie echte Wehen von Übungswehen unterscheiden**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay… das beruhigt mich ein bisschen, aber ich hab trotzdem Angst, das falsch einzuschätzen. Was ist denn eher ein Zeichen für **echte Wehen** und nicht nur so ein Ziehen oder Übungswehen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Echte Wehen sind meist **regelmäßig**, werden **stärker**, **länger** und kommen in **kürzeren Abständen**. Oft gehen sie **nicht weg**, wenn Sie sich hinsetzen, ausruhen oder die Position ändern.\n\nÜbungswehen oder ein Ziehen sind eher:\n- unregelmäßig,\n- bleiben gleich stark oder werden wieder schwächer,\n- und klingen oft in Ruhe ab.\n\nAus den Unterlagen habe ich dazu keine detailliertere Unterscheidung im Kreißsaal-Kontext. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig: Wenn die Wehen regelmäßig werden, die Fruchtblase springt oder Sie Blutungen haben, sollten Sie den Kreißsaal anrufen.  \n\nWenn Sie möchten, kann ich Ihnen noch in **3 kurzen Punkten** sagen, **wann Sie sofort losfahren sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay… ich glaub, ich hätte dann echt Angst, das **zu spät** zu merken. Wenn ich unsicher bin: **ab wann** soll ich lieber nicht mehr abwarten, sondern direkt anrufen?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn Sie **unsicher sind**, ist die sichere Faustregel: **lieber einmal zu früh im Kreißsaal anrufen als zu spät**.\n\n**Sofort anrufen bzw. losfahren**, wenn:\n- die Wehen **regelmäßig** kommen und deutlich stärker werden,\n- **Fruchtwasser** abgeht oder Sie einen Blasensprung vermuten,\n- **Blutungen** auftreten,\n- Sie merken, dass sich das **Kind deutlich weniger bewegt**,\n- oder Sie einfach das Gefühl haben, dass **etwas nicht stimmt**.\n\nGerade bei einem vermuteten **Blasensprung** ist eine schnelle Rückmeldung wichtig, weil danach die weitere Planung abhängt [Quelle 3].\n\nZur **genauen Wehen-Frequenz** oder einer festen „Ab-wann“-Minutenregel habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\n**Pflichtfrage noch einmal zur Sicherheit:** Hatten Sie bereits einen **Kaiserschnitt oder eine andere Operation an der Gebärmutter**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nein, **ich hatte keinen Kaiserschnitt und keine OP an der Gebärmutter**."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mehrlinge, Querlage, Frühgeburt, mütterliche Erkrankungen, Plazentastörung, frühere Kaiserschnitte etc.) als geplante Entbindungsmethode oder während der Geburt als Notfallmaßnahme durchgeführt werden. Ein Kaiserschnitt ist keine \"leichte\" Alternative zur spontanen Geburt. Ihre Ärztin/Ihr Arzt wird die Vor- und Nachteile des Kaiserschnitts gegenüber der natürlichen Geburt mit Ihnen besprechen, damit Sie gemeinsam eine Entscheidung treffen können.\nBei einer Spontangeburt können sich während der Entbindung Situationen ergeben, die einen Kaiserschnitt erforderlich machen (z.B. übermäßige Blutungen, Nabelschnurvorfall, Riss der Gebärmutter, Veränderungen der kindlichen Herztöne mit Zeichen einer drohenden Sauerstoffmangelversorgung, Begleiterkrankungen, Geburtstillstand). Möglicherweise (z.B. bei einem Notkaiserschnitt, starker Beeinträchtigung der Schmerzlinderung oder Medikamenten) können dann nicht mehr ",
+          "score": 0.5543494053192709,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 9,
+            "split_idx_start": 7288
+          },
+          "id": "826a8502eed7d93b40777944224d19dfaa9017c3fa4df05a24ad85d866902891"
+        },
+        {
+          "content": "mit Ihnen über die Vor- und Nachteile, Risiken und Behandlungsmaßnahmen des Kaiserschnitts gesprochen werden. Daher bitten wir Sie schon jetzt für diesen Fall um Ihr Einverständnis.\nFalls Sie einen Kaiserschnitt vorziehen, kann es zu lebensgefährlichen Komplikationen sowohl für Ihr Kind, das schwerstbehindert geboren werden oder auch versterben kann, als auch für Sie selbst (z.B. bei vorzeitiger Plazentalösung) kommen.\nBei einem Kaiserschnitt wird zuerst die Bauchdecke durch einen Schnitt – meist knapp oberhalb der Schamhaargrenze – geöffnet, die Gebärmutter eröffnet und das Kind herausgenommen. Danach wird die Plazenta entfernt, und Gebärmutter sowie Bauchdecke werden wieder verschlossen. Wassergeburt Falls Sie eine Wassergeburt wünschen, werden ",
+          "score": 0.5434411717879262,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 10,
+            "split_idx_start": 8204
+          },
+          "id": "57898a1e60d5d1afd0205f45566b06456aea9b498b756b0600b5cdac20197e38"
+        },
+        {
+          "content": "Arzt zunächst die Bauchdecke, den Bauchraum und dann die Gebärmutterwand. Hierbei wird das Gewebe so weit wie möglich gedehnt und nicht geschnitten, da dies schonender für das Gewebe ist und sich hierdurch die Operationszeit verkürzt und weniger spätere Komplikationen (z.B. Fieber, Schmerzen) zu erwarten sind. Das Kind wird vorsichtig aus der Gebärmutter genommen und der Mutterkuchen (Plazenta) entfernt. Meist erhalten Sie Medikamente, die das Zusammenziehen (Kon-traktion) der Gebärmutter fördern und hierdurch den Blutverlust verringern. Anschließend werden die Gebärmutter, der Bauchraum und die Bauchdecke wieder verschlossen.\nHierbei wird möglichst wenig Nahtmaterial verwendet, um die Operationszeit zu verkürzen und Schmerzen nach der\nVor dem ",
+          "score": 0.5412716181688553,
+          "meta": {
+            "file_path": "Kaiserschnitt.md",
+            "source_id": "ab2e1e9ad3df12dd9315024d484f5544932eefff5bf14772c4a6c2257bfb317b",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2407
+          },
+          "id": "4dbfc7322201f2c548a035ee1a3aca41ef15199781f6fc6e7a1cc251b06a1794"
+        }
+      ],
+      "timestamp": "2026-04-13T09:52:23.556376"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 9,
+    "total_chatbot_responses": 9,
+    "avg_response_length": 966.1111111111111,
+    "total_citations": 20,
+    "turns_missing_citations": 1
+  }
+}

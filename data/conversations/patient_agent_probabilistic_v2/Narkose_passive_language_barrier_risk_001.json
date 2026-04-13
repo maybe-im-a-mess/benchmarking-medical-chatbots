@@ -1,0 +1,1683 @@
+{
+  "metadata": {
+    "procedure": "Narkose",
+    "mandatory_questions_total": 5,
+    "mandatory_questions_asked": 0,
+    "mode": "passive",
+    "patient_persona": {
+      "name": "Aylin",
+      "age": 32,
+      "sex": "female",
+      "education_level": "low",
+      "language": "de",
+      "anxiety_level": "medium",
+      "hidden_fact": "Deutsch ist nicht meine Muttersprache und ich verstehe Fachbegriffe oft nicht sofort."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 9,
+    "conversation_date": "2026-04-12T14:46:32.296175",
+    "dataset_tag": "patient_agent_probabilistic_v2",
+    "repeat_index": 1,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "okay, wie läuft die Narkose genau ab?",
+      "chatbot_response": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit).",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 6,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5362859334287708
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5325887935982287
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5362859334287708,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5325887935982287,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.46461852532839726,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:03.011274"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?",
+      "chatbot_response": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.5082690750002923
+          },
+          {
+            "citation_index": 2,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.47716246797735196
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmit möglichen Dauerschäden des Gehirns. Vorübergehende Rückenschmerzen sind häufig, chronische Rückenschmerzen sehr selten. Vorübergehende Probleme beim Wasserlassen (Harnverhalt) sind ebenfalls häufig. Eventuell muss dann für kurze Zeit ein Blasenkatheter gelegt werden. Dadurch kann es u. a. zu Blutungen und Harnwegsinfekten/-verletzungen kommen. Die Betäubung kann auch vorübergehend zu Potenzstörungen führen. Spezielle Risiken der Armplexusanästhesie Empfindungsstörungen (z. B. Kribbeln, Taubheitsgefühl im Arm oder Nacken) und Bewegungsstörungen bis hin zu Lähmungen klingen meist innerhalb einiger Wochen oder Monate wieder ab. Bleibende Empfindungsstörungen, chronische Schmerzen und dauerhafte Lähmungen (z. B. Armlähmungen) nach Infektion, Verletzung oder Schädigung von Armplexusnerven sind selten. Eine vorübergehende Lähmung des Zwerchfellnervs kommt häufig \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.5082690750002923,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.47716246797735196,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "mit möglichen Dauerschäden des Gehirns. Vorübergehende Rückenschmerzen sind häufig, chronische Rückenschmerzen sehr selten. Vorübergehende Probleme beim Wasserlassen (Harnverhalt) sind ebenfalls häufig. Eventuell muss dann für kurze Zeit ein Blasenkatheter gelegt werden. Dadurch kann es u. a. zu Blutungen und Harnwegsinfekten/-verletzungen kommen. Die Betäubung kann auch vorübergehend zu Potenzstörungen führen. Spezielle Risiken der Armplexusanästhesie Empfindungsstörungen (z. B. Kribbeln, Taubheitsgefühl im Arm oder Nacken) und Bewegungsstörungen bis hin zu Lähmungen klingen meist innerhalb einiger Wochen oder Monate wieder ab. Bleibende Empfindungsstörungen, chronische Schmerzen und dauerhafte Lähmungen (z. B. Armlähmungen) nach Infektion, Verletzung oder Schädigung von Armplexusnerven sind selten. Eine vorübergehende Lähmung des Zwerchfellnervs kommt häufig ",
+          "score": 0.45540959141324433,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 18,
+            "split_idx_start": 14655
+          },
+          "id": "461c6474ad6be39cd0a612bf472941e667354c5e95fc05ae41e8a8c02b0d3e77"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:06.284513"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**",
+      "chatbot_response": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.42530674624037457
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nergreifen (z.B. Sauerstoffgabe).\nBei Lachgas: Manchmal treten Schwindel, kurzfristige Benommenheit, Empfindungsstörungen und Kribbeln auf. Ein Druckgefühl im Mittelohr, Blähungen und Übelkeit können gelegentlich vor allem durch die Unterbrechung erfolgen und kurzzeitige Atembeschwerden lassen die Nebenwirkungen schnell wieder nach. Bei den Überwachungsmethoden: Eine seltene vorübergehende Wundinfektion durch eine Blutanalyse unter der Elektrode des CTG sowie eine mögliche seltene Infektion der Gebärmutter durch die Sonde des Wehenmessgerätes ist möglich. Nach Keimbesiedlung, gelegentlich werden Antibiotika erforderlich.\nSehr selten kann es nach einer Blutabnahme vom kindlichen Köpfchen zu anhaltendem Blutverlust des Kindes kommen, was nach der Geburt eine Intensivbehandlung mit eventueller Bluttransfusion notwendig machen kann. Auch \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nbedingten Reaktionen lassen sich i. d. R. rasch und gut behandeln. Schwere Nebenwirkungen und schwere allergische Reaktionen bis hin zum akuten Kreislaufschock oder unerwartet auftretende Komplikationen wie Krampfanfälle oder ein Herz-, Kreislauf-, Atem- und Organversagen sind selten. Sie können aber u. U. schwerwiegende Dauerschäden verursachen (z. B. Hirnschädigung, andauernde Organschäden, Lähmungen). Jedes Medikament hat zudem eigene Risiken. Beispielsweise kann Metamizol, ein Schmerzmittel, das oft während und/oder nach dem Eingriff gegeben wird, sehr selten zu Veränderungen des Blutbilds (z. B. zu einer lebensbedrohlichen Verminderung weißer Blutkörperchen [Agranulozytose]) führen, v. a. bei einer Schmerzbehandlung über mehrere Tage. Der Arzt wird Sie deshalb gesondert über mögliche schwere Nebenwirkungen einzelner, \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.42530674624037457,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "ergreifen (z.B. Sauerstoffgabe).\nBei Lachgas: Manchmal treten Schwindel, kurzfristige Benommenheit, Empfindungsstörungen und Kribbeln auf. Ein Druckgefühl im Mittelohr, Blähungen und Übelkeit können gelegentlich vor allem durch die Unterbrechung erfolgen und kurzzeitige Atembeschwerden lassen die Nebenwirkungen schnell wieder nach. Bei den Überwachungsmethoden: Eine seltene vorübergehende Wundinfektion durch eine Blutanalyse unter der Elektrode des CTG sowie eine mögliche seltene Infektion der Gebärmutter durch die Sonde des Wehenmessgerätes ist möglich. Nach Keimbesiedlung, gelegentlich werden Antibiotika erforderlich.\nSehr selten kann es nach einer Blutabnahme vom kindlichen Köpfchen zu anhaltendem Blutverlust des Kindes kommen, was nach der Geburt eine Intensivbehandlung mit eventueller Bluttransfusion notwendig machen kann. Auch ",
+          "score": 0.38381500708056293,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 11508
+          },
+          "id": "dbd1bb98e1cfd2c0d6109145f2e9e55be29ccf2e738258314106aa70f2492e00"
+        },
+        {
+          "content": "bedingten Reaktionen lassen sich i. d. R. rasch und gut behandeln. Schwere Nebenwirkungen und schwere allergische Reaktionen bis hin zum akuten Kreislaufschock oder unerwartet auftretende Komplikationen wie Krampfanfälle oder ein Herz-, Kreislauf-, Atem- und Organversagen sind selten. Sie können aber u. U. schwerwiegende Dauerschäden verursachen (z. B. Hirnschädigung, andauernde Organschäden, Lähmungen). Jedes Medikament hat zudem eigene Risiken. Beispielsweise kann Metamizol, ein Schmerzmittel, das oft während und/oder nach dem Eingriff gegeben wird, sehr selten zu Veränderungen des Blutbilds (z. B. zu einer lebensbedrohlichen Verminderung weißer Blutkörperchen [Agranulozytose]) führen, v. a. bei einer Schmerzbehandlung über mehrere Tage. Der Arzt wird Sie deshalb gesondert über mögliche schwere Nebenwirkungen einzelner, ",
+          "score": 0.37154944705095505,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 11,
+            "split_idx_start": 8946
+          },
+          "id": "91d2dfe34026bf7f09e080f22084521c10aeec0539bfa3f213187c278b11c5f4"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:09.564572"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**",
+      "chatbot_response": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1].",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.4610794443920804
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndie erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen \n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.4610794443920804,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "die erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen ",
+          "score": 0.4525620729780712,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9556
+          },
+          "id": "f88b9d161637cb12ebe97ae44b945037c3214a433b02210e731ef2d5dac78e82"
+        },
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.4494912491401525,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:13.966071"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**",
+      "chatbot_response": "Ja, natürlich.\n\nMit **„24 Stunden betreut werden“** ist gemeint:\nNach dem Eingriff sollte **eine erwachsene Person bei Ihnen sein oder in Ihrer Nähe bleiben**, damit sie Ihnen helfen kann, falls Ihnen schwindlig, benommen oder schlecht wird [Quelle 1].\n\nDas heißt praktisch:\n- Sie sollten **nicht allein nach Hause** sein\n- Wenn Sie aufstehen, duschen oder etwas brauchen, sollte jemand erreichbar sein\n- Diese Person kann auch helfen, falls Sie sich unwohl fühlen oder Hilfe brauchen [Quelle 1]\n\nWichtig ist auch: In diesen 24 Stunden sollen Sie **nicht selbst Auto fahren**, **keinen Alkohol trinken** und **keine wichtigen Entscheidungen treffen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes eine **ganz kurze Checkliste für den Narkose-Tag** machen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "eb6c64fc028963343d6b8b1017afff6ddf00a2d68b528c06074c75199a0d4fa5",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.5551085860546611
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndie ambulante Entlassung nach 4 – 6 Stunden erfolgen. Sollte das aus medizinischen Gründen nicht möglich oder auch nicht gewünscht sein, geht es nach einer ersten Kennenlernphase auf die Wochenbettstation. Dort erfolgt die Betreuung durch das erfahrene Personal vor Ort. Es gibt zusätzlich eine tägliche Visite und die Entlassung durch das Hebammenteam. Wochenbettstation 4B (Wöchnerinnenstation) Auf der Wochenbettstation 4B werden Mutter und Kind rund um die Uhr gemeinsam betreut. Das Konzept der integrativen Wochenbettpflege bedeutet, dass Mutter und Baby immer zusammenbleiben. Es stehen Ein- und Zweibettzimmer mit eigenem Bad zur Verfügung, die auf Wunsch als Familienzimmer genutzt werden können. Insgesamt \n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndie erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen \n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ngezeigt. Stillprobleme werden gemeinsam gelöst. Dafür gibt es auch ein spezielles Stillzimmer als Rückzugsort. Eltern erhalten Unterstützung beim Baden, Wickeln und Pflegen des Kindes. Auch Flaschenfütterung wird bei Bedarf begleitet. Die durchschnittliche Aufenthaltsdauer beträgt 2 bis 4 Tage, kann aber flexibel angepasst werden. Vor der Entlassung werden alle organisatorischen Punkte besprochen: Vitamin-K- und D-Gabe, nächste U-Untersuchung, Anmeldung beim Standesamt. Die Geburtsurkunde wird nicht in der Klinik ausgestellt, sondern beim Standesamt Treptow-Köpenick. Nach der Entlassung sollte eine Nachsorgehebamme übernehmen. Wer keine Hebamme findet, wird von den Babylotsinnen unterstützt. Auch ein Termin für die U3 beim Kinderarzt sollte rechtzeitig vereinbart werden. Liste \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "die ambulante Entlassung nach 4 – 6 Stunden erfolgen. Sollte das aus medizinischen Gründen nicht möglich oder auch nicht gewünscht sein, geht es nach einer ersten Kennenlernphase auf die Wochenbettstation. Dort erfolgt die Betreuung durch das erfahrene Personal vor Ort. Es gibt zusätzlich eine tägliche Visite und die Entlassung durch das Hebammenteam. Wochenbettstation 4B (Wöchnerinnenstation) Auf der Wochenbettstation 4B werden Mutter und Kind rund um die Uhr gemeinsam betreut. Das Konzept der integrativen Wochenbettpflege bedeutet, dass Mutter und Baby immer zusammenbleiben. Es stehen Ein- und Zweibettzimmer mit eigenem Bad zur Verfügung, die auf Wunsch als Familienzimmer genutzt werden können. Insgesamt ",
+          "score": 0.5551085860546611,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 18,
+            "split_idx_start": 14098
+          },
+          "id": "eb6c64fc028963343d6b8b1017afff6ddf00a2d68b528c06074c75199a0d4fa5"
+        },
+        {
+          "content": "die erste Zeit im Kreißsaal zur Beobachtung. Nach der Geburt – Wochenbett im Krankenhaus und zu Hause: Danach geht es auf die Wochenbettstation 4B. Die Aufenthaltsdauer beträgt meist 2 bis 3 Tage (bei Kaiserschnitt etwas länger). Dort wird die junge Familie durch ein Team aus Pflege, Hebammen und Ärzten unterstützt. Rooming-in ist Standard, sodass das Baby stets bei den Eltern bleibt. Es finden Stillberatungen, Rückbildungsgymnastik und Neugeborenenuntersuchungen (z. B. U2, Hörtest) statt. Vor der Entlassung gibt es alle nötigen Unterlagen und Hinweise zur weiteren Betreuung. Danach übernimmt idealerweise eine Hebamme die Nachsorge zu Hause – sie kontrolliert Rückbildung, hilft beim Stillen ",
+          "score": 0.5239747550750737,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9556
+          },
+          "id": "f88b9d161637cb12ebe97ae44b945037c3214a433b02210e731ef2d5dac78e82"
+        },
+        {
+          "content": "gezeigt. Stillprobleme werden gemeinsam gelöst. Dafür gibt es auch ein spezielles Stillzimmer als Rückzugsort. Eltern erhalten Unterstützung beim Baden, Wickeln und Pflegen des Kindes. Auch Flaschenfütterung wird bei Bedarf begleitet. Die durchschnittliche Aufenthaltsdauer beträgt 2 bis 4 Tage, kann aber flexibel angepasst werden. Vor der Entlassung werden alle organisatorischen Punkte besprochen: Vitamin-K- und D-Gabe, nächste U-Untersuchung, Anmeldung beim Standesamt. Die Geburtsurkunde wird nicht in der Klinik ausgestellt, sondern beim Standesamt Treptow-Köpenick. Nach der Entlassung sollte eine Nachsorgehebamme übernehmen. Wer keine Hebamme findet, wird von den Babylotsinnen unterstützt. Auch ein Termin für die U3 beim Kinderarzt sollte rechtzeitig vereinbart werden. Liste ",
+          "score": 0.4845319716169958,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 15580
+          },
+          "id": "362dfad5a855e2b35a55f4a6c408b3a9ef82d520c11b35afe5c47d0f8a73c614"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:17.447061"
+    },
+    {
+      "turn": 6,
+      "patient_question": "verstehe, und was ist dabei für mich persönlich am wichtigsten?",
+      "chatbot_response": "Das Wichtigste für Sie persönlich ist vermutlich: **Sie sollten nach der Narkose nicht alleine sein und sich nicht selbst um Heimweg oder Alltag kümmern müssen** [Quelle 1].\n\nGanz praktisch heißt das:\n- **eine erwachsene Person organisiert den Heimweg**\n- **diese Person bleibt 24 Stunden für Sie da** [Quelle 1]\n- **Sie fahren nicht selbst Auto** und trinken keinen Alkohol [Quelle 1]\n- wenn Ihnen **übel, schwindlig oder schlecht** wird, melden Sie sich sofort beim Arzt/Team [Quelle 1]\n\nWenn Sie unsicher sind, ob die Betreuung wirklich organisiert ist, sagen Sie dem Team das vor dem Eingriff direkt. Dort hilft man Ihnen oder begleitet Sie [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen jetzt noch eine **ultrakurze Merkliste mit 3 Punkten** machen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.31321041585512954
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nvariieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nÄußere Wendung Warum wird Ihnen die äußere Wendung empfohlen? Im Verlauf der Schwangerschaft kann ein Kind mehrmals spontan seine Position ändern. Meist nimmt es bereits einige Zeit vor der Geburt die Schädellage ein, bei der das Köpfchen nach unten zeigt (Abb. 1). Diese Lage ist für die Spontangeburt die günstigste und am wenigsten mit Problemen behaftete, weil der größte Körperteil des Kindes – das Köpfchen – die Geburtswege dehnt und für den Durchtritt des übrigen Körpers vorbereitet. Manchmal liegt das Kind jedoch gegen Ende der Schwangerschaft in einer anderen Lage (z.B. Beckenendlage, Abb. 2). Dann kann die Ärztin/der Arzt eine \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, natürlich.\n\nMit **„24 Stunden betreut werden“** ist gemeint:\nNach dem Eingriff sollte **eine erwachsene Person bei Ihnen sein oder in Ihrer Nähe bleiben**, damit sie Ihnen helfen kann, falls Ihnen schwindlig, benommen oder schlecht wird [Quelle 1].\n\nDas heißt praktisch:\n- Sie sollten **nicht allein nach Hause** sein\n- Wenn Sie aufstehen, duschen oder etwas brauchen, sollte jemand erreichbar sein\n- Diese Person kann auch helfen, falls Sie sich unwohl fühlen oder Hilfe brauchen [Quelle 1]\n\nWichtig ist auch: In diesen 24 Stunden sollen Sie **nicht selbst Auto fahren**, **keinen Alkohol trinken** und **keine wichtigen Entscheidungen treffen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes eine **ganz kurze Checkliste für den Narkose-Tag** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.31321041585512954,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "variieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende ",
+          "score": 0.2523333119729839,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 7,
+            "split_idx_start": 5140
+          },
+          "id": "54eb3212e3892365501f82f1e7668ae2cbf212e783704f55913c62c761fd9e76"
+        },
+        {
+          "content": "Äußere Wendung Warum wird Ihnen die äußere Wendung empfohlen? Im Verlauf der Schwangerschaft kann ein Kind mehrmals spontan seine Position ändern. Meist nimmt es bereits einige Zeit vor der Geburt die Schädellage ein, bei der das Köpfchen nach unten zeigt (Abb. 1). Diese Lage ist für die Spontangeburt die günstigste und am wenigsten mit Problemen behaftete, weil der größte Körperteil des Kindes – das Köpfchen – die Geburtswege dehnt und für den Durchtritt des übrigen Körpers vorbereitet. Manchmal liegt das Kind jedoch gegen Ende der Schwangerschaft in einer anderen Lage (z.B. Beckenendlage, Abb. 2). Dann kann die Ärztin/der Arzt eine ",
+          "score": 0.2500739027145793,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "a7d69d7542431f898a1681d5d0c00aa3f0ec60c4ac11fa5af631cc73d8bfea60"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:22.460980"
+    },
+    {
+      "turn": 7,
+      "patient_question": "verstehe, und was ist dabei für mich persönlich am wichtigsten?",
+      "chatbot_response": "Für Sie persönlich ist am wichtigsten: **Planen Sie sicher eine erwachsene Begleitperson für den Heimweg und die ersten 24 Stunden danach ein** [Quelle 1]. So sind Sie nicht allein, falls Ihnen schwindlig oder übel wird.\n\nAußerdem sollten Sie für diese Zeit:\n- **nicht selbst fahren**\n- **keinen Alkohol trinken**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWenn Ihnen nachher **Übelkeit oder Erbrechen** auffällt, sollen Sie sich **sofort beim Arzt melden** [Quelle 1].\n\nWenn Sie möchten, formuliere ich Ihnen daraus noch einen **einen einzigen Merksatz**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.31321041585512954
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Geburtseinleitung.md)\nINHALT:\nvariieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nÄußere Wendung Warum wird Ihnen die äußere Wendung empfohlen? Im Verlauf der Schwangerschaft kann ein Kind mehrmals spontan seine Position ändern. Meist nimmt es bereits einige Zeit vor der Geburt die Schädellage ein, bei der das Köpfchen nach unten zeigt (Abb. 1). Diese Lage ist für die Spontangeburt die günstigste und am wenigsten mit Problemen behaftete, weil der größte Körperteil des Kindes – das Köpfchen – die Geburtswege dehnt und für den Durchtritt des übrigen Körpers vorbereitet. Manchmal liegt das Kind jedoch gegen Ende der Schwangerschaft in einer anderen Lage (z.B. Beckenendlage, Abb. 2). Dann kann die Ärztin/der Arzt eine \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, natürlich.\n\nMit **„24 Stunden betreut werden“** ist gemeint:\nNach dem Eingriff sollte **eine erwachsene Person bei Ihnen sein oder in Ihrer Nähe bleiben**, damit sie Ihnen helfen kann, falls Ihnen schwindlig, benommen oder schlecht wird [Quelle 1].\n\nDas heißt praktisch:\n- Sie sollten **nicht allein nach Hause** sein\n- Wenn Sie aufstehen, duschen oder etwas brauchen, sollte jemand erreichbar sein\n- Diese Person kann auch helfen, falls Sie sich unwohl fühlen oder Hilfe brauchen [Quelle 1]\n\nWichtig ist auch: In diesen 24 Stunden sollen Sie **nicht selbst Auto fahren**, **keinen Alkohol trinken** und **keine wichtigen Entscheidungen treffen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes eine **ganz kurze Checkliste für den Narkose-Tag** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das Wichtigste für Sie persönlich ist vermutlich: **Sie sollten nach der Narkose nicht alleine sein und sich nicht selbst um Heimweg oder Alltag kümmern müssen** [Quelle 1].\n\nGanz praktisch heißt das:\n- **eine erwachsene Person organisiert den Heimweg**\n- **diese Person bleibt 24 Stunden für Sie da** [Quelle 1]\n- **Sie fahren nicht selbst Auto** und trinken keinen Alkohol [Quelle 1]\n- wenn Ihnen **übel, schwindlig oder schlecht** wird, melden Sie sich sofort beim Arzt/Team [Quelle 1]\n\nWenn Sie unsicher sind, ob die Betreuung wirklich organisiert ist, sagen Sie dem Team das vor dem Eingriff direkt. Dort hilft man Ihnen oder begleitet Sie [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen jetzt noch eine **ultrakurze Merkliste mit 3 Punkten** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.31321041585512954,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "variieren die Aussichten auf eine erfolgreiche vaginale Geburt sehr in Abhängigkeit vom Grund für den vorausgegangenen Kaiserschnitt, der Größe des jetzigen Kindes und des Gewichts der werdenden Mutter. Eine erfolgreiche vaginale Entbindung ist mit einer kürzeren Erholungsdauer verbunden und senkt das Risiko für weitere Komplikationen in späteren Schwangerschaften. Die Geburtseinleitung nach einem früheren Kaiserschnitt bedarf einer besonderen kontinuierlichen Überwachung und soll nur in einer Klinik erfolgen. Kommt bei Ihnen eine Geburtseinleitung in Betracht, werden Sie über die Vor- und Nachteile der gegebenen Behandlungsalternativen, ihre unterschiedlichen Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch näher informiert. Methoden der Einleitung und deren Risiken Folgende ",
+          "score": 0.2523333119729839,
+          "meta": {
+            "file_path": "Geburtseinleitung.md",
+            "source_id": "801c05e57ec408dfd966e509960307fb19f731a4cd2115b9918f8d4500116782",
+            "page_number": 1,
+            "split_id": 7,
+            "split_idx_start": 5140
+          },
+          "id": "54eb3212e3892365501f82f1e7668ae2cbf212e783704f55913c62c761fd9e76"
+        },
+        {
+          "content": "Äußere Wendung Warum wird Ihnen die äußere Wendung empfohlen? Im Verlauf der Schwangerschaft kann ein Kind mehrmals spontan seine Position ändern. Meist nimmt es bereits einige Zeit vor der Geburt die Schädellage ein, bei der das Köpfchen nach unten zeigt (Abb. 1). Diese Lage ist für die Spontangeburt die günstigste und am wenigsten mit Problemen behaftete, weil der größte Körperteil des Kindes – das Köpfchen – die Geburtswege dehnt und für den Durchtritt des übrigen Körpers vorbereitet. Manchmal liegt das Kind jedoch gegen Ende der Schwangerschaft in einer anderen Lage (z.B. Beckenendlage, Abb. 2). Dann kann die Ärztin/der Arzt eine ",
+          "score": 0.2500739027145793,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "a7d69d7542431f898a1681d5d0c00aa3f0ec60c4ac11fa5af631cc73d8bfea60"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:25.847899"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Okay, dann ist für mich am wichtigsten, dass **jemand wirklich fest eingeplant ist**, der mich abholt und danach bei mir bleibt. Ich hab sonst Angst, dass ich mich allein fühle, wenn mir plötzlich schlecht wird. **Kannst du mir sagen, was ich meinem Abholer vorher kurz sagen soll?**",
+      "chatbot_response": "Ja, das ist sinnvoll. Sie können Ihrem Abholer kurz sagen:\n\n- **Ich komme gerade aus der Narkose und bin noch nicht ganz fit.**\n- **Bitte bleib die ersten 24 Stunden bei mir bzw. sei erreichbar** [Quelle 1].\n- **Ich darf heute nicht selbst fahren, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 1].\n- **Wenn mir schwindlig, übel oder schlecht wird, helf mir bitte und melde dich bei Arzt/Team** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen daraus noch einen **sehr kurzen Nachrichtentext zum Abschicken per Handy** formulieren.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.5597044787092643
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nder Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, natürlich.\n\nMit **„24 Stunden betreut werden“** ist gemeint:\nNach dem Eingriff sollte **eine erwachsene Person bei Ihnen sein oder in Ihrer Nähe bleiben**, damit sie Ihnen helfen kann, falls Ihnen schwindlig, benommen oder schlecht wird [Quelle 1].\n\nDas heißt praktisch:\n- Sie sollten **nicht allein nach Hause** sein\n- Wenn Sie aufstehen, duschen oder etwas brauchen, sollte jemand erreichbar sein\n- Diese Person kann auch helfen, falls Sie sich unwohl fühlen oder Hilfe brauchen [Quelle 1]\n\nWichtig ist auch: In diesen 24 Stunden sollen Sie **nicht selbst Auto fahren**, **keinen Alkohol trinken** und **keine wichtigen Entscheidungen treffen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes eine **ganz kurze Checkliste für den Narkose-Tag** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das Wichtigste für Sie persönlich ist vermutlich: **Sie sollten nach der Narkose nicht alleine sein und sich nicht selbst um Heimweg oder Alltag kümmern müssen** [Quelle 1].\n\nGanz praktisch heißt das:\n- **eine erwachsene Person organisiert den Heimweg**\n- **diese Person bleibt 24 Stunden für Sie da** [Quelle 1]\n- **Sie fahren nicht selbst Auto** und trinken keinen Alkohol [Quelle 1]\n- wenn Ihnen **übel, schwindlig oder schlecht** wird, melden Sie sich sofort beim Arzt/Team [Quelle 1]\n\nWenn Sie unsicher sind, ob die Betreuung wirklich organisiert ist, sagen Sie dem Team das vor dem Eingriff direkt. Dort hilft man Ihnen oder begleitet Sie [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen jetzt noch eine **ultrakurze Merkliste mit 3 Punkten** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Für Sie persönlich ist am wichtigsten: **Planen Sie sicher eine erwachsene Begleitperson für den Heimweg und die ersten 24 Stunden danach ein** [Quelle 1]. So sind Sie nicht allein, falls Ihnen schwindlig oder übel wird.\n\nAußerdem sollten Sie für diese Zeit:\n- **nicht selbst fahren**\n- **keinen Alkohol trinken**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWenn Ihnen nachher **Übelkeit oder Erbrechen** auffällt, sollen Sie sich **sofort beim Arzt melden** [Quelle 1].\n\nWenn Sie möchten, formuliere ich Ihnen daraus noch einen **einen einzigen Merksatz**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, dann ist für mich am wichtigsten, dass **jemand wirklich fest eingeplant ist**, der mich abholt und danach bei mir bleibt. Ich hab sonst Angst, dass ich mich allein fühle, wenn mir plötzlich schlecht wird. **Kannst du mir sagen, was ich meinem Abholer vorher kurz sagen soll?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.5597044787092643,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.4492732449362811,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "der Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.",
+          "score": 0.43492057445072085,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25651
+          },
+          "id": "29501917887db56ceb31f06b30a4af8b5369989b4b5ae16a92bb9c733b496eed"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:29.212409"
+    },
+    {
+      "turn": 9,
+      "patient_question": "Ja, das wäre gut. Ich hab nur noch die Sorge, dass ich nachher **zu benommen** bin und nicht klar sagen kann, wenn mir schlecht wird. **Kann ich meinem Abholer einfach sagen, dass er direkt bei mir bleiben soll?**",
+      "chatbot_response": "Ja — das ist sogar sinnvoll. Sie können Ihrem Abholer klar sagen, dass er **direkt bei Ihnen bleiben soll** und Sie **in den ersten 24 Stunden zu Hause betreuen** soll [Quelle 1].\n\nEin kurzer Text zum Abschicken wäre zum Beispiel:\n**„Ich habe eine Narkose. Bitte hol mich ab und bleib die ersten 24 Stunden bei mir, damit ich nicht allein bin. Ich darf in der Zeit nicht Auto fahren, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen.“** [Quelle 1]\n\nWenn Ihnen nach der Narkose **Übelkeit, Erbrechen, Atem- oder Kreislaufprobleme** oder andere Beschwerden auffallen, sollen Sie **sofort einen Arzt verständigen** [Quelle 1][Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen noch eine **noch kürzere Version für WhatsApp** schreiben.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.5473916080472969
+          },
+          {
+            "citation_index": 2,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.46779132215924046
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 3]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "okay, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose so ab:\n\nZuerst wird vor der Anästhesie eine Verweilkanüle in eine Vene gelegt, meist an Hand oder Arm. Über diese bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\nDann leitet der Arzt die Narkose mit einem schnell wirkenden Narkosemittel über diese Vene ein [Quelle 2]. Zur Aufrechterhaltung werden weitere Narkose- und/oder Schmerzmittel gegeben, entweder über die Vene oder als Narkosegas über die Atemluft [Quelle 2]. Oft werden beide Verfahren kombiniert [Quelle 2].\n\nWährenddessen werden Sie beatmet bzw. mit Sauerstoff versorgt; falls nötig wird dafür ein Tubus über Mund oder Nase in die Luftröhre gelegt oder eine Kehlkopfmaske eingesetzt [Quelle 2].\n\nJe nach Eingriff kann statt einer Vollnarkose auch eine Regionalanästhesie gewählt werden, bei der nur ein bestimmter Körperbereich betäubt wird. Beide Verfahren können auch kombiniert werden [Quelle 1].\n\nWichtig: Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen. Wenn Sie möchten, kann ich Ihnen als Nächstes erklären, wie Sie sich vor der Narkose vorbereiten sollten (z. B. Nüchternheit)."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay. Ich hab ein bisschen Angst davor, dass ich **nicht richtig einschlafe** oder danach direkt Übelkeit bekomme. Wie lange dauert es ungefähr, bis ich wieder wach bin?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist gut nachvollziehbar — viele haben davor Sorge.\n\nZur genauen Dauer bis zum Aufwachen habe ich in den Unterlagen **keine konkrete Zeitangabe**. Der Chatbot kann das nicht weiter ausführen. Allgemein hängt das davon ab, welche Narkosemittel und welche Eingriffsart verwendet werden.\n\nWichtig ist: Nach der Narkose kann Ihr Reaktionsvermögen vorübergehend beeinträchtigt sein [Quelle 2]. Deshalb sollen Sie sich nach einem ambulanten Eingriff von einer erwachsenen Person abholen lassen und in den ersten 24 Stunden zu Hause betreuen lassen [Quelle 2].\n\nÜbelkeit kann nach einer Narkose vorkommen; in Ihren Unterlagen ist vor allem genannt, dass Sie **sofort einen Arzt verständigen sollen**, wenn Beschwerden wie Übelkeit oder Erbrechen auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes kurz sagen, **wie man mit Angst vor dem Einschlafen oder Übelkeit vor der Narkose umgeht**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das beruhigt mich ein bisschen. Aber ich hab trotzdem Angst, dass mir danach schlecht wird und ich mich übergebe. **Kann man dagegen vorher was bekommen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, oft kann man gegen Übelkeit vorbeugend Medikamente geben — **aber dazu stehen in den Unterlagen keine konkreten Details**. Der Chatbot kann das nicht weiter ausführen.\n\nIn Ihren Unterlagen steht nur, dass Sie **sofort einen Arzt verständigen sollen**, wenn nach der Narkose Beschwerden wie **Übelkeit oder Erbrechen** auftreten [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen stattdessen kurz sagen, **welche Warnzeichen nach der Narkose besonders wichtig sind** und wann Sie Hilfe holen sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich gern wissen. Und ich hab auch Angst, dass ich **nachher allein bin**, falls mir schwindlig oder schlecht wird. **Wie lange muss man danach eigentlich noch da bleiben?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Wichtig ist zuerst: **Sie sollen nach der Narkose nicht allein sein**. Laut Unterlagen müssen Sie sich von einer **erwachsenen Person abholen lassen** und **in den ersten 24 Stunden zu Hause betreut werden** [Quelle 1].\n\nAußerdem gilt für **24 Stunden** bzw. so lange, wie der Arzt es vorgibt:\n- **nicht aktiv am Straßenverkehr teilnehmen**\n- **keine gefährlichen Tätigkeiten ausüben**\n- **keinen Alkohol trinken**\n- **nicht rauchen**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWie lange Sie **im Krankenhaus oder der Praxis bleiben müssen**, steht in den Unterlagen **nicht genau drin**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, können Sie das Team vor Ort direkt fragen:\n- „Wann darf ich nach Hause?“\n- „Wer soll mich abholen?“\n- „Was mache ich, wenn mir schwindlig oder übel wird?“\n\nWenn nach der Narkose Übelkeit oder Erbrechen auftritt, sollen Sie laut Unterlagen **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern. Ich hab da nur noch eine kurze Frage: **Kannst du mir das mit „24 Stunden betreut werden“ ganz einfach erklären?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, natürlich.\n\nMit **„24 Stunden betreut werden“** ist gemeint:\nNach dem Eingriff sollte **eine erwachsene Person bei Ihnen sein oder in Ihrer Nähe bleiben**, damit sie Ihnen helfen kann, falls Ihnen schwindlig, benommen oder schlecht wird [Quelle 1].\n\nDas heißt praktisch:\n- Sie sollten **nicht allein nach Hause** sein\n- Wenn Sie aufstehen, duschen oder etwas brauchen, sollte jemand erreichbar sein\n- Diese Person kann auch helfen, falls Sie sich unwohl fühlen oder Hilfe brauchen [Quelle 1]\n\nWichtig ist auch: In diesen 24 Stunden sollen Sie **nicht selbst Auto fahren**, **keinen Alkohol trinken** und **keine wichtigen Entscheidungen treffen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen als Nächstes eine **ganz kurze Checkliste für den Narkose-Tag** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das Wichtigste für Sie persönlich ist vermutlich: **Sie sollten nach der Narkose nicht alleine sein und sich nicht selbst um Heimweg oder Alltag kümmern müssen** [Quelle 1].\n\nGanz praktisch heißt das:\n- **eine erwachsene Person organisiert den Heimweg**\n- **diese Person bleibt 24 Stunden für Sie da** [Quelle 1]\n- **Sie fahren nicht selbst Auto** und trinken keinen Alkohol [Quelle 1]\n- wenn Ihnen **übel, schwindlig oder schlecht** wird, melden Sie sich sofort beim Arzt/Team [Quelle 1]\n\nWenn Sie unsicher sind, ob die Betreuung wirklich organisiert ist, sagen Sie dem Team das vor dem Eingriff direkt. Dort hilft man Ihnen oder begleitet Sie [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen jetzt noch eine **ultrakurze Merkliste mit 3 Punkten** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "verstehe, und was ist dabei für mich persönlich am wichtigsten?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Für Sie persönlich ist am wichtigsten: **Planen Sie sicher eine erwachsene Begleitperson für den Heimweg und die ersten 24 Stunden danach ein** [Quelle 1]. So sind Sie nicht allein, falls Ihnen schwindlig oder übel wird.\n\nAußerdem sollten Sie für diese Zeit:\n- **nicht selbst fahren**\n- **keinen Alkohol trinken**\n- **keine wichtigen Entscheidungen treffen** [Quelle 1]\n\nWenn Ihnen nachher **Übelkeit oder Erbrechen** auffällt, sollen Sie sich **sofort beim Arzt melden** [Quelle 1].\n\nWenn Sie möchten, formuliere ich Ihnen daraus noch einen **einen einzigen Merksatz**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, dann ist für mich am wichtigsten, dass **jemand wirklich fest eingeplant ist**, der mich abholt und danach bei mir bleibt. Ich hab sonst Angst, dass ich mich allein fühle, wenn mir plötzlich schlecht wird. **Kannst du mir sagen, was ich meinem Abholer vorher kurz sagen soll?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist sinnvoll. Sie können Ihrem Abholer kurz sagen:\n\n- **Ich komme gerade aus der Narkose und bin noch nicht ganz fit.**\n- **Bitte bleib die ersten 24 Stunden bei mir bzw. sei erreichbar** [Quelle 1].\n- **Ich darf heute nicht selbst fahren, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 1].\n- **Wenn mir schwindlig, übel oder schlecht wird, helf mir bitte und melde dich bei Arzt/Team** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen daraus noch einen **sehr kurzen Nachrichtentext zum Abschicken per Handy** formulieren."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das wäre gut. Ich hab nur noch die Sorge, dass ich nachher **zu benommen** bin und nicht klar sagen kann, wenn mir schlecht wird. **Kann ich meinem Abholer einfach sagen, dass er direkt bei mir bleiben soll?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.5473916080472969,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.46779132215924046,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.45946422874694426,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        }
+      ],
+      "timestamp": "2026-04-12T14:46:32.295845"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 9,
+    "total_chatbot_responses": 9,
+    "avg_response_length": 771.4444444444445,
+    "total_citations": 31,
+    "turns_missing_citations": 0
+  }
+}

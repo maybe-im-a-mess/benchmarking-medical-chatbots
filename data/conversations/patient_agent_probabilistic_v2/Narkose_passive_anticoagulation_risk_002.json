@@ -1,0 +1,1731 @@
+{
+  "metadata": {
+    "procedure": "Narkose",
+    "mandatory_questions_total": 5,
+    "mandatory_questions_asked": 0,
+    "mode": "passive",
+    "patient_persona": {
+      "name": "Sara",
+      "age": 37,
+      "sex": "female",
+      "education_level": "medium",
+      "language": "de",
+      "anxiety_level": "high",
+      "hidden_fact": "Ich nehme täglich Blutverdünner wegen einer früheren Thrombose."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 9,
+    "conversation_date": "2026-04-12T14:40:02.045531",
+    "dataset_tag": "patient_agent_probabilistic_v2",
+    "repeat_index": 2,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "ok, wie läuft die Narkose genau ab?",
+      "chatbot_response": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5504404591975319
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5443061629698289
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5504404591975319,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5443061629698289,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.4929735124030575,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:24.363034"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**",
+      "chatbot_response": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.5764519637674239
+          },
+          {
+            "citation_index": 2,
+            "document_id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db",
+            "file_path": "Narkose.md",
+            "score": 0.5752655895528784
+          },
+          {
+            "citation_index": 3,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.5621676780744009
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.5764519637674239,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.5752655895528784,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5621676780744009,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:28.563090"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?",
+      "chatbot_response": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1].",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.3996097470314668
+          },
+          {
+            "citation_index": 3,
+            "document_id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a",
+            "file_path": "Narkose.md",
+            "score": 0.3700632214064048
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nergreifen (z.B. Sauerstoffgabe).\nBei Lachgas: Manchmal treten Schwindel, kurzfristige Benommenheit, Empfindungsstörungen und Kribbeln auf. Ein Druckgefühl im Mittelohr, Blähungen und Übelkeit können gelegentlich vor allem durch die Unterbrechung erfolgen und kurzzeitige Atembeschwerden lassen die Nebenwirkungen schnell wieder nach. Bei den Überwachungsmethoden: Eine seltene vorübergehende Wundinfektion durch eine Blutanalyse unter der Elektrode des CTG sowie eine mögliche seltene Infektion der Gebärmutter durch die Sonde des Wehenmessgerätes ist möglich. Nach Keimbesiedlung, gelegentlich werden Antibiotika erforderlich.\nSehr selten kann es nach einer Blutabnahme vom kindlichen Köpfchen zu anhaltendem Blutverlust des Kindes kommen, was nach der Geburt eine Intensivbehandlung mit eventueller Bluttransfusion notwendig machen kann. Auch \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nfür Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.3996097470314668,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "ergreifen (z.B. Sauerstoffgabe).\nBei Lachgas: Manchmal treten Schwindel, kurzfristige Benommenheit, Empfindungsstörungen und Kribbeln auf. Ein Druckgefühl im Mittelohr, Blähungen und Übelkeit können gelegentlich vor allem durch die Unterbrechung erfolgen und kurzzeitige Atembeschwerden lassen die Nebenwirkungen schnell wieder nach. Bei den Überwachungsmethoden: Eine seltene vorübergehende Wundinfektion durch eine Blutanalyse unter der Elektrode des CTG sowie eine mögliche seltene Infektion der Gebärmutter durch die Sonde des Wehenmessgerätes ist möglich. Nach Keimbesiedlung, gelegentlich werden Antibiotika erforderlich.\nSehr selten kann es nach einer Blutabnahme vom kindlichen Köpfchen zu anhaltendem Blutverlust des Kindes kommen, was nach der Geburt eine Intensivbehandlung mit eventueller Bluttransfusion notwendig machen kann. Auch ",
+          "score": 0.3720484116486792,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 11508
+          },
+          "id": "dbd1bb98e1cfd2c0d6109145f2e9e55be29ccf2e738258314106aa70f2492e00"
+        },
+        {
+          "content": "für Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies ",
+          "score": 0.3700632214064048,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9780
+          },
+          "id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:32.558387"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**",
+      "chatbot_response": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b",
+            "file_path": "Narkose.md",
+            "score": 0.4570289202301026
+          },
+          {
+            "citation_index": 2,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.4445282351786931
+          },
+          {
+            "citation_index": 3,
+            "document_id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a",
+            "file_path": "Narkose.md",
+            "score": 0.4015115971289408
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nfür Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.4570289202301026,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.4445282351786931,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "für Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies ",
+          "score": 0.4015115971289408,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9780
+          },
+          "id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:36.547012"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**",
+      "chatbot_response": "Ja, nach einem ambulanten Eingriff sollen Sie sich **von einer erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden zu Hause betreuen lassen** [Quelle 2].\n\nGrund dafür ist, dass Ihr **Reaktionsvermögen vorübergehend beeinträchtigt** sein kann [Quelle 2]. Deshalb dürfen Sie in dieser Zeit auch **nicht aktiv am Straßenverkehr teilnehmen**, **keinen Alkohol trinken** und **keine gefährlichen Tätigkeiten ausüben** [Quelle 2].\n\nWenn das für Sie noch nicht organisiert ist, wäre es gut, das möglichst bald zu klären. Dafür habe ich sonst keine weiteren Details in den Unterlagen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4",
+            "file_path": "Narkose.md",
+            "score": 0.5030499586748578
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nSie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5289157863718773,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Sie sich von einer erwachsenen Person abholen und in den ersten 24 Stunden bzw. für die vom Arzt angegebene Zeit zu Hause betreuen lassen. Wegen der Medikamentennachwirkungen dürfen Sie für 24 Stunden bzw. so lange, wie vom Arzt angegeben, auch nicht aktiv am Straßenverkehr teilnehmen, keine gefährlichen Tätigkeiten ausüben, keinen Alkohol trinken und nicht rauchen. Sie sollten in dieser Zeit auch keine wichtigen Entscheidungen treffen.",
+          "score": 0.5030499586748578,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 24,
+            "split_idx_start": 19524
+          },
+          "id": "5ea3fb6ac4b162ab9f4a6cf6298561a3e07cce3f9f370641b11ccf5d58c208b4"
+        },
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.47195913338008616,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:41.261550"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Oh okay, dann muss ich das also wirklich organisieren… das macht mich grad etwas nervös. **Was ist, wenn ich niemanden finde, der mich abholt?**",
+      "chatbot_response": "Wenn Sie nach dem Eingriff **niemanden zum Abholen oder für die Betreuung zu Hause** haben, sollten Sie das **vorher unbedingt mit dem Behandlungsteam besprechen**. Dazu habe ich in den Unterlagen keine weiteren Details.\n\nWichtig ist: Nach einem ambulanten Eingriff soll Sie idealerweise **eine erwachsene Person abholen** und Sie sollen **24 Stunden betreut** sein [Quelle 2]. Wenn das noch nicht sicher ist, **melden Sie sich dort bitte**, es wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch helfen, eine kurze Nachricht an die Klinik zu formulieren.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.4987956379474324
+          },
+          {
+            "citation_index": 2,
+            "document_id": "940144a7b8cd88601416312bf7f7f638c1c8b812d13674c6063fdccf1e0f9741",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.2958415011755892
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nSozialdienst hilft bei organisatorischen und finanziellen Fragen – etwa zur Krankenversicherung, Haushaltshilfen oder Elterngeld. Außerdem steht eine psychologische Psychotherapeutin (Susan Wildenhain) für Gespräche zur Verfügung, falls Ängste oder Stimmungstiefs während oder nach der Geburt auftreten. Termine können telefonisch vereinbart werden. (Tel: (030) 3035 - 3562) Babylotsinnen – Hilfen rund um die Geburt: Die Babylotsinnen Anette Schmolla und Maika Kaltwasser-Wundersee bieten Unterstützung bei allen Fragen rund um das Elternwerden. Sie helfen zum Beispiel bei der Suche nach einer Nachsorgehebamme, beim Ausfüllen von Anträgen oder der Organisation des Familienalltags. Das Angebot ist kostenlos und steht allen offen. Hausbesuche werden nicht angeboten, die \n---\n---\n[Quelle 3]\n(Datei: Geburtshilfliche Maßnahmen.md)\nINHALT:\nder Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach einem ambulanten Eingriff sollen Sie sich **von einer erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden zu Hause betreuen lassen** [Quelle 2].\n\nGrund dafür ist, dass Ihr **Reaktionsvermögen vorübergehend beeinträchtigt** sein kann [Quelle 2]. Deshalb dürfen Sie in dieser Zeit auch **nicht aktiv am Straßenverkehr teilnehmen**, **keinen Alkohol trinken** und **keine gefährlichen Tätigkeiten ausüben** [Quelle 2].\n\nWenn das für Sie noch nicht organisiert ist, wäre es gut, das möglichst bald zu klären. Dafür habe ich sonst keine weiteren Details in den Unterlagen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, dann muss ich das also wirklich organisieren… das macht mich grad etwas nervös. **Was ist, wenn ich niemanden finde, der mich abholt?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.4987956379474324,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "Sozialdienst hilft bei organisatorischen und finanziellen Fragen – etwa zur Krankenversicherung, Haushaltshilfen oder Elterngeld. Außerdem steht eine psychologische Psychotherapeutin (Susan Wildenhain) für Gespräche zur Verfügung, falls Ängste oder Stimmungstiefs während oder nach der Geburt auftreten. Termine können telefonisch vereinbart werden. (Tel: (030) 3035 - 3562) Babylotsinnen – Hilfen rund um die Geburt: Die Babylotsinnen Anette Schmolla und Maika Kaltwasser-Wundersee bieten Unterstützung bei allen Fragen rund um das Elternwerden. Sie helfen zum Beispiel bei der Suche nach einer Nachsorgehebamme, beim Ausfüllen von Anträgen oder der Organisation des Familienalltags. Das Angebot ist kostenlos und steht allen offen. Hausbesuche werden nicht angeboten, die ",
+          "score": 0.2958415011755892,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 9,
+            "split_idx_start": 7266
+          },
+          "id": "940144a7b8cd88601416312bf7f7f638c1c8b812d13674c6063fdccf1e0f9741"
+        },
+        {
+          "content": "der Entlassung aus der Klinik auftreten. Suchen Sie bitte die Betreuung durch eine Hebamme zu Hause sicher.",
+          "score": 0.28674492157250175,
+          "meta": {
+            "file_path": "Geburtshilfliche Maßnahmen.md",
+            "source_id": "e1cc9979cb2ebd78f9171726d4f06565df549ad33967341fb501bb7894b30727",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25651
+          },
+          "id": "29501917887db56ceb31f06b30a4af8b5369989b4b5ae16a92bb9c733b496eed"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:44.229300"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Hm, das macht mich gerade echt unsicher, weil ich sowas schnell vergesse und dann Panik kriege. **Kann ich dich auch fragen, was ich am Narkosetag konkret mitbringen und anziehen soll?**",
+      "chatbot_response": "Ja, gern.\n\n**Mitbringen sollten Sie** laut Unterlagen:\n- **Krankenversicherungskarte**\n- ggf. **Einweisung oder Überweisung**\n- **Mutterpass**\n- eventuell **Geburtsplan**\n- **Allergiepass** [Quelle 1]\n\n**Praktisch für den Aufenthalt:**\n- **Bequeme Umstandskleidung**, warme Socken, genügend Unterwäsche\n- **Still-BH**, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe\n- Kleidung für den **Heimweg** (auch fürs Baby)\n- Hygieneartikel wie **Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis**\n- für das Baby: **Kleidung für die Entlassung**, **Babyschale** für die Heimfahrt\n- außerdem: **Handy und Ladegerät**, ggf. **Kamera**, etwas **Kleingeld** [Quelle 1]\n\n**Wichtig:** Verpflegung ist **nicht nötig**, Mahlzeiten werden gestellt; Snacks sind aber erlaubt. **Wertgegenstände und Schmuck sollten zu Hause bleiben** [Quelle 1].\n\nAußerdem gilt für die Narkose: **kein Make-up, kein Nagellack**, und **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** müssen vor der Anästhesie entfernt werden [Quelle 2, Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen daraus auch eine **kurze Checkliste zum Abhaken** machen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 3,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.4672557750007764
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nKrankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach einem ambulanten Eingriff sollen Sie sich **von einer erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden zu Hause betreuen lassen** [Quelle 2].\n\nGrund dafür ist, dass Ihr **Reaktionsvermögen vorübergehend beeinträchtigt** sein kann [Quelle 2]. Deshalb dürfen Sie in dieser Zeit auch **nicht aktiv am Straßenverkehr teilnehmen**, **keinen Alkohol trinken** und **keine gefährlichen Tätigkeiten ausüben** [Quelle 2].\n\nWenn das für Sie noch nicht organisiert ist, wäre es gut, das möglichst bald zu klären. Dafür habe ich sonst keine weiteren Details in den Unterlagen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, dann muss ich das also wirklich organisieren… das macht mich grad etwas nervös. **Was ist, wenn ich niemanden finde, der mich abholt?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn Sie nach dem Eingriff **niemanden zum Abholen oder für die Betreuung zu Hause** haben, sollten Sie das **vorher unbedingt mit dem Behandlungsteam besprechen**. Dazu habe ich in den Unterlagen keine weiteren Details.\n\nWichtig ist: Nach einem ambulanten Eingriff soll Sie idealerweise **eine erwachsene Person abholen** und Sie sollen **24 Stunden betreut** sein [Quelle 2]. Wenn das noch nicht sicher ist, **melden Sie sich dort bitte**, es wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch helfen, eine kurze Nachricht an die Klinik zu formulieren."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich gerade echt unsicher, weil ich sowas schnell vergesse und dann Panik kriege. **Kann ich dich auch fragen, was ich am Narkosetag konkret mitbringen und anziehen soll?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Krankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin ",
+          "score": 0.4672557750007764,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 29,
+            "split_idx_start": 22795
+          },
+          "id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.4126643472652906,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.40815373167334235,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:48.939709"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Ja, das wär echt hilfreich, weil ich dann nicht so durcheinander komme. Ich hab nur noch Angst, dass ich am Ende doch was Falsches anziehe oder vergesse und dann alles stresst. **Kannst du mir eine ganz kurze Checkliste machen?**",
+      "chatbot_response": "Klar — hier ist eine **ganz kurze Checkliste**:\n\n**Mitbringen**\n- Versicherungskarte\n- ggf. Einweisung/Überweisung\n- Mutterpass, ggf. Geburtsplan, Allergiepass [Quelle 1]\n- Handy + Ladegerät\n- ggf. Hygieneartikel, Unterwäsche, bequeme Kleidung, Kleidung für den Heimweg [Quelle 1]\n\n**Anziehen**\n- **Bequeme Umstandskleidung**\n- warme Socken\n- Hausschuhe oder bequeme Schuhe [Quelle 1]\n\n**Vor der Narkose**\n- **kein Make-up, kein Nagellack** [Quelle 3]\n- Schmuck/Piercings, Kontaktlinsen, Zahnersatz, künstliche Haarteile entfernen [Quelle 3]\n- Nüchternheitsregeln einhalten; wenn nicht, direkt sagen [Quelle 2]\n\n**Organisieren**\n- Abholung und **24-Stunden-Betreuung** zu Hause [Quelle 2]\n\nWenn Sie möchten, kann ich Ihnen daraus noch eine **ultrakurze 5-Punkte-Liste für den Handyanruf oder zum Screenshot** machen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 7,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.4230726937059198
+          },
+          {
+            "citation_index": 2,
+            "document_id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2",
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "score": 0.40394721551274354
+          },
+          {
+            "citation_index": 3,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.35156660378088916
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\nKrankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin \n---\n---\n[Quelle 2]\n(Datei: DRK Geburtshilfe Infos.md)\nINHALT:\ndu dich dort melden, es wird dir geholfen oder jemand begleitet dich.\n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach einem ambulanten Eingriff sollen Sie sich **von einer erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden zu Hause betreuen lassen** [Quelle 2].\n\nGrund dafür ist, dass Ihr **Reaktionsvermögen vorübergehend beeinträchtigt** sein kann [Quelle 2]. Deshalb dürfen Sie in dieser Zeit auch **nicht aktiv am Straßenverkehr teilnehmen**, **keinen Alkohol trinken** und **keine gefährlichen Tätigkeiten ausüben** [Quelle 2].\n\nWenn das für Sie noch nicht organisiert ist, wäre es gut, das möglichst bald zu klären. Dafür habe ich sonst keine weiteren Details in den Unterlagen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, dann muss ich das also wirklich organisieren… das macht mich grad etwas nervös. **Was ist, wenn ich niemanden finde, der mich abholt?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn Sie nach dem Eingriff **niemanden zum Abholen oder für die Betreuung zu Hause** haben, sollten Sie das **vorher unbedingt mit dem Behandlungsteam besprechen**. Dazu habe ich in den Unterlagen keine weiteren Details.\n\nWichtig ist: Nach einem ambulanten Eingriff soll Sie idealerweise **eine erwachsene Person abholen** und Sie sollen **24 Stunden betreut** sein [Quelle 2]. Wenn das noch nicht sicher ist, **melden Sie sich dort bitte**, es wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch helfen, eine kurze Nachricht an die Klinik zu formulieren."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich gerade echt unsicher, weil ich sowas schnell vergesse und dann Panik kriege. **Kann ich dich auch fragen, was ich am Narkosetag konkret mitbringen und anziehen soll?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern.\n\n**Mitbringen sollten Sie** laut Unterlagen:\n- **Krankenversicherungskarte**\n- ggf. **Einweisung oder Überweisung**\n- **Mutterpass**\n- eventuell **Geburtsplan**\n- **Allergiepass** [Quelle 1]\n\n**Praktisch für den Aufenthalt:**\n- **Bequeme Umstandskleidung**, warme Socken, genügend Unterwäsche\n- **Still-BH**, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe\n- Kleidung für den **Heimweg** (auch fürs Baby)\n- Hygieneartikel wie **Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis**\n- für das Baby: **Kleidung für die Entlassung**, **Babyschale** für die Heimfahrt\n- außerdem: **Handy und Ladegerät**, ggf. **Kamera**, etwas **Kleingeld** [Quelle 1]\n\n**Wichtig:** Verpflegung ist **nicht nötig**, Mahlzeiten werden gestellt; Snacks sind aber erlaubt. **Wertgegenstände und Schmuck sollten zu Hause bleiben** [Quelle 1].\n\nAußerdem gilt für die Narkose: **kein Make-up, kein Nagellack**, und **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** müssen vor der Anästhesie entfernt werden [Quelle 2, Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen daraus auch eine **kurze Checkliste zum Abhaken** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das wär echt hilfreich, weil ich dann nicht so durcheinander komme. Ich hab nur noch Angst, dass ich am Ende doch was Falsches anziehe oder vergesse und dann alles stresst. **Kannst du mir eine ganz kurze Checkliste machen?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Krankenversicherungskarte, ggf. Einweisung oder Überweisung, Mutterpass, eventuell Geburtsplan, Allergiepass.\nKleidung: Bequeme Umstandskleidung, warme Socken, genügend Unterwäsche, Still-BH, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe, Kleidung für den Heimweg (auch fürs Baby).\nHygieneartikel: Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis, eventuell eigene Damenbinden.\nFürs Baby: Kleidung für die Entlassung (Body, Strampler, Söckchen, Mütze, Decke), Babyschale für die Heimfahrt.\nSonstiges: Handy und Ladegerät, Kamera, Kleingeld für Schließfächer oder Automaten, Bücher oder Musik für die Wartezeit. Verpflegung ist nicht nötig – Mahlzeiten werden gestellt. Snacks sind natürlich erlaubt. Wertgegenstände und Schmuck sollten zu Hause bleiben – die Klinik übernimmt keine Haftung. Anfahrt und Parkmöglichkeiten Die DRK Kliniken Berlin ",
+          "score": 0.4230726937059198,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 29,
+            "split_idx_start": 22795
+          },
+          "id": "4132e11bad352408d96d055b9cd474f8b41bfbbbc28a831b53a724fc70dd402f"
+        },
+        {
+          "content": "du dich dort melden, es wird dir geholfen oder jemand begleitet dich.",
+          "score": 0.40394721551274354,
+          "meta": {
+            "file_path": "DRK Geburtshilfe Infos.md",
+            "source_id": "6eaa1906f396ab595c430d992fb55d8b195b107b1e5702f84fccfc0ad22475f0",
+            "page_number": 1,
+            "split_id": 32,
+            "split_idx_start": 25050
+          },
+          "id": "b5370727046b6d3a6fe3179be3982c6f77fac4ae6c1dfffbf613535a5b55bfd2"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.35156660378088916,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-04-12T14:39:53.262506"
+    },
+    {
+      "turn": 9,
+      "patient_question": "Ja, mach das gern als Screenshot, das beruhigt mich echt. Ich hab nur noch eine Sorge: **Was ist, wenn ich trotz Nüchternheit kurz vor der Narkose doch total nervös oder sogar übel werde?**",
+      "chatbot_response": "Klar — hier ist eine **Screenshot-Version**:\n\n**Narkose-Checkliste**\n1. Versicherungskarte + ggf. Einweisung/Überweisung  \n2. Mutterpass / ggf. Geburtsplan / Allergiepass [Quelle 1]  \n3. Bequeme Umstandskleidung, warme Socken, Hausschuhe [Quelle 1]  \n4. Kein Make-up, kein Nagellack, Schmuck/Piercings raus [Quelle 3]  \n5. Abholung + 24-Stunden-Betreuung organisieren [Quelle 2]  \n\nZu Ihrer Frage: Wenn Sie **kurz vor der Narkose** doch **nervös oder übel** werden, sagen Sie es **bitte direkt dem Team**. Dazu habe ich in den Unterlagen keine genaueren Details.  \nWichtig ist aber: Wenn Sie die **Nüchternheitsregeln nicht eingehalten** haben, müssen Sie das dem Arzt oder den Mitarbeitenden **unbedingt mitteilen** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch noch einen **kurzen Satz formulieren**, den Sie dem Team dann einfach sagen können.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db",
+            "file_path": "Narkose.md",
+            "score": 0.6038728455866416
+          },
+          {
+            "citation_index": 2,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.5551484002519024
+          },
+          {
+            "citation_index": 3,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.5490831677175729
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gerne. So läuft die Narkose typischerweise ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an der Hand oder am Arm. Darüber bekommen Sie bei Bedarf Infusionen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene. Dadurch schlafen Sie ein [Quelle 2].\n\n3. **Aufrechterhaltung:** Die Narkose wird dann entweder mit **weiteren Narkose- und Schmerzmitteln über die Vene** oder mit **Narkosegasen über die Atemluft** fortgeführt. Häufig werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Beatmung:** Während der Narkose werden Sie beatmet, damit Sauerstoff zugeführt werden kann. Dafür wird entweder ein **Beatmungsschlauch in die Luftröhre** eingeführt oder eine **Kehlkopfmaske** über den Mund bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **was Sie vorher beachten müssen** oder **wie das Aufwachen nach der Narkose abläuft**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar, aber ich hab trotzdem etwas Angst vor dem Einschlafen und vor dem Aufwachen, hm. **Muss ich vorher irgendwas beachten, z. B. nüchtern sein oder Medikamente weglassen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das ist wichtig. Zur **Nüchternheit** gilt, sofern der Arzt nichts anderes angeordnet hat:\n\n- **Erwachsene:** bis **6 Stunden vor der Narkose** noch eine **leicht verdauliche kleine Mahlzeit**; danach nur noch bis **2 Stunden vorher** **klare Flüssigkeiten** wie Wasser oder Tee **ohne Milch** [Quelle 2].  \n- **Kein Alkohol** in dieser Zeit [Quelle 2].\n\nGanz wichtig: **Wenn Sie die Nüchternheitsregeln nicht genau eingehalten haben, informieren Sie bitte unbedingt den Arzt oder das Team** [Quelle 1].\n\nZu **Medikamenten**: Der Arzt bespricht mit Ihnen, **welche Medikamente Sie weiternehmen, absetzen oder ersetzen müssen** [Quelle 1]. Dazu habe ich in den Unterlagen keine genaueren Details.\n\nAußerdem sollen Sie bitte **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** vor der Anästhesie ablegen/entfernen [Quelle 1, Quelle 3]. **Make-up und Nagellack** sollten Sie ebenfalls nicht verwenden [Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was nach der Narkose in den ersten Stunden wichtig ist**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das merke ich mir. Ich bin vor allem unsicher wegen dem Aufwachen — ist es normal, dass man da erstmal benommen oder übel ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das kann vorkommen. Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten; das ist oft durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente bedingt. Meist dauert das **nur einige Stunden bis Tage**, selten länger [Quelle 3].\n\nAuch eine **Beinträchtigung des Reaktionsvermögens** ist nach einem ambulanten Eingriff vorübergehend möglich, weil Betäubungsmittel, Schmerzmittel und andere Medikamente noch nachwirken [Quelle 1].\n\nZu **Übelkeit**: Dazu habe ich in den Unterlagen keine Details. Der Chatbot kann das nicht weiter ausführen.\n\nWichtig ist: Bitte lassen Sie sich nach einem ambulanten Eingriff **für 24 Stunden von einer erwachsenen Person betreuen** und **nehmen Sie 24 Stunden nicht aktiv am Straßenverkehr teil und trinken Sie keinen Alkohol** [Quelle 1].\n\nWenn nach der Narkose Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen, Halsschmerzen, Heiserkeit, Schluckstörungen, Missempfindungen oder Bewegungsstörungen** auftreten, sollen Sie **sofort einen Arzt verständigen** [Quelle 1]."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, das beruhigt mich etwas, aber ich hab trotzdem Angst, dass ich nachher nicht richtig wach werde oder mich total komisch fühle. **Wie schnell ist man danach meistens wieder klar im Kopf?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das lässt sich aus den Unterlagen nur allgemein beantworten: Nach einer Narkose können **Verwirrtheit und Einschränkungen der geistigen Fähigkeiten** auftreten, meist **nur für einige Stunden bis Tage**; **selten** können sie auch länger anhalten [Quelle 3].\n\nNach einem ambulanten Eingriff ist das **Reaktionsvermögen vorübergehend beeinträchtigt**. Deshalb sollen Sie sich **24 Stunden betreuen lassen** und in dieser Zeit **nicht aktiv am Straßenverkehr teilnehmen, keinen Alkohol trinken und keine wichtigen Entscheidungen treffen** [Quelle 2].\n\nWenn Sie sich **gar nicht richtig wach fühlen**, stark verwirrt sind oder Beschwerden wie **Atem- oder Kreislaufstörungen, Bewusstseinsstörungen, Fieber, Schüttelfrost, Übelkeit/Erbrechen** oder **Bewegungsstörungen** auftreten, bitte **sofort ärztlich melden** [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz sagen, **was Sie in den ersten 24 Stunden nach der Narkose am besten tun oder vermeiden sollten**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, okay, das hilft mir schon etwas. Ich hab aber noch Sorge, ob ich nach der Narkose dann allein sein darf oder ob ich wirklich jemanden brauche. **Muss mich nachher jemand abholen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach einem ambulanten Eingriff sollen Sie sich **von einer erwachsenen Person abholen lassen** und sich **in den ersten 24 Stunden zu Hause betreuen lassen** [Quelle 2].\n\nGrund dafür ist, dass Ihr **Reaktionsvermögen vorübergehend beeinträchtigt** sein kann [Quelle 2]. Deshalb dürfen Sie in dieser Zeit auch **nicht aktiv am Straßenverkehr teilnehmen**, **keinen Alkohol trinken** und **keine gefährlichen Tätigkeiten ausüben** [Quelle 2].\n\nWenn das für Sie noch nicht organisiert ist, wäre es gut, das möglichst bald zu klären. Dafür habe ich sonst keine weiteren Details in den Unterlagen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Oh okay, dann muss ich das also wirklich organisieren… das macht mich grad etwas nervös. **Was ist, wenn ich niemanden finde, der mich abholt?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn Sie nach dem Eingriff **niemanden zum Abholen oder für die Betreuung zu Hause** haben, sollten Sie das **vorher unbedingt mit dem Behandlungsteam besprechen**. Dazu habe ich in den Unterlagen keine weiteren Details.\n\nWichtig ist: Nach einem ambulanten Eingriff soll Sie idealerweise **eine erwachsene Person abholen** und Sie sollen **24 Stunden betreut** sein [Quelle 2]. Wenn das noch nicht sicher ist, **melden Sie sich dort bitte**, es wird Ihnen geholfen oder Sie werden begleitet [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch helfen, eine kurze Nachricht an die Klinik zu formulieren."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das macht mich gerade echt unsicher, weil ich sowas schnell vergesse und dann Panik kriege. **Kann ich dich auch fragen, was ich am Narkosetag konkret mitbringen und anziehen soll?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, gern.\n\n**Mitbringen sollten Sie** laut Unterlagen:\n- **Krankenversicherungskarte**\n- ggf. **Einweisung oder Überweisung**\n- **Mutterpass**\n- eventuell **Geburtsplan**\n- **Allergiepass** [Quelle 1]\n\n**Praktisch für den Aufenthalt:**\n- **Bequeme Umstandskleidung**, warme Socken, genügend Unterwäsche\n- **Still-BH**, Schlafanzug oder Nachthemd, Bademantel, Hausschuhe\n- Kleidung für den **Heimweg** (auch fürs Baby)\n- Hygieneartikel wie **Zahnbürste, Zahnpasta, Duschgel, Shampoo, Haarbürste, Deo, Lippenpflege, Haargummis**\n- für das Baby: **Kleidung für die Entlassung**, **Babyschale** für die Heimfahrt\n- außerdem: **Handy und Ladegerät**, ggf. **Kamera**, etwas **Kleingeld** [Quelle 1]\n\n**Wichtig:** Verpflegung ist **nicht nötig**, Mahlzeiten werden gestellt; Snacks sind aber erlaubt. **Wertgegenstände und Schmuck sollten zu Hause bleiben** [Quelle 1].\n\nAußerdem gilt für die Narkose: **kein Make-up, kein Nagellack**, und **Kontaktlinsen, herausnehmbaren Zahnersatz, Ringe, Schmuck (auch Piercings) und künstliche Haarteile** müssen vor der Anästhesie entfernt werden [Quelle 2, Quelle 3].\n\nWenn Sie möchten, kann ich Ihnen daraus auch eine **kurze Checkliste zum Abhaken** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das wär echt hilfreich, weil ich dann nicht so durcheinander komme. Ich hab nur noch Angst, dass ich am Ende doch was Falsches anziehe oder vergesse und dann alles stresst. **Kannst du mir eine ganz kurze Checkliste machen?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Klar — hier ist eine **ganz kurze Checkliste**:\n\n**Mitbringen**\n- Versicherungskarte\n- ggf. Einweisung/Überweisung\n- Mutterpass, ggf. Geburtsplan, Allergiepass [Quelle 1]\n- Handy + Ladegerät\n- ggf. Hygieneartikel, Unterwäsche, bequeme Kleidung, Kleidung für den Heimweg [Quelle 1]\n\n**Anziehen**\n- **Bequeme Umstandskleidung**\n- warme Socken\n- Hausschuhe oder bequeme Schuhe [Quelle 1]\n\n**Vor der Narkose**\n- **kein Make-up, kein Nagellack** [Quelle 3]\n- Schmuck/Piercings, Kontaktlinsen, Zahnersatz, künstliche Haarteile entfernen [Quelle 3]\n- Nüchternheitsregeln einhalten; wenn nicht, direkt sagen [Quelle 2]\n\n**Organisieren**\n- Abholung und **24-Stunden-Betreuung** zu Hause [Quelle 2]\n\nWenn Sie möchten, kann ich Ihnen daraus noch eine **ultrakurze 5-Punkte-Liste für den Handyanruf oder zum Screenshot** machen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, mach das gern als Screenshot, das beruhigt mich echt. Ich hab nur noch eine Sorge: **Was ist, wenn ich trotz Nüchternheit kurz vor der Narkose doch total nervös oder sogar übel werde?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.6038728455866416,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5551484002519024,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.5490831677175729,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        }
+      ],
+      "timestamp": "2026-04-12T14:40:02.045234"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 9,
+    "total_chatbot_responses": 9,
+    "avg_response_length": 915.5555555555555,
+    "total_citations": 36,
+    "turns_missing_citations": 0
+  }
+}

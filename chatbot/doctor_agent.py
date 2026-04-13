@@ -114,6 +114,14 @@ class DoctorAgent:
             "cited_source_indices": cited_sources,
             "response_with_citations": response_text
         }
+
+    def _is_hf_quota_error(self, error: Exception) -> bool:
+        text = str(error).lower()
+        return (
+            "payment required" in text
+            or "depleted your monthly included credits" in text
+            or "huggingfaceapitextembedder" in text and "402" in text
+        )
     
     def respond(self, patient_message, extra_system_instructions: str = ""):
         """
@@ -191,6 +199,10 @@ class DoctorAgent:
             }
         
         except Exception as e:
+            if self._is_hf_quota_error(e):
+                # Fatal for retrieval-backed generation: stop upstream run immediately.
+                raise RuntimeError("HF_EMBEDDING_CREDITS_DEPLETED") from e
+
             print(f"Error generating response: {e}")
             import traceback
             traceback.print_exc()

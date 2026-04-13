@@ -53,6 +53,20 @@ MODELS = {
         "api_type": "openai",
         "api_url": "https://api.openai.com/v1/responses",
         "api_key": os.environ.get("OPENAI_API_KEY")
+    },
+        "gpt-5-nano": {
+        "display_name": "GPT-5 nano",
+        "model_id": "gpt-5-nano",
+        "api_type": "openai",
+        "api_url": "https://api.openai.com/v1/responses",
+        "api_key": os.environ.get("OPENAI_API_KEY")
+    },
+    "gpt-4o-mini": {
+        "display_name": "GPT-4o mini",
+        "model_id": "gpt-4o-mini",
+        "api_type": "openai",
+        "api_url": "https://api.openai.com/v1/responses",
+        "api_key": os.environ.get("OPENAI_API_KEY")
     }
 }
 
@@ -98,10 +112,12 @@ def make_api_call(prompt: str, model_name: str = None, temperature: float = 0.3,
         payload = {
             "model": model_id,
             "input": full_input,
-            "reasoning": {"effort": "medium"},
-            "text": {"verbosity": "high"},
             "max_output_tokens": 30000
         }
+
+        if model_id != "gpt-4o-mini":
+            payload["reasoning"] = {"effort": "medium"}
+            payload["text"] = {"verbosity": "high"}
         
         response = requests.post(api_url, headers=headers, json=payload, timeout=timeout)
         response.raise_for_status()

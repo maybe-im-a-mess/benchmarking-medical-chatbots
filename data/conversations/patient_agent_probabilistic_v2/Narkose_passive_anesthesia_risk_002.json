@@ -1,0 +1,1427 @@
+{
+  "metadata": {
+    "procedure": "Narkose",
+    "mandatory_questions_total": 5,
+    "mandatory_questions_asked": 0,
+    "mode": "passive",
+    "patient_persona": {
+      "name": "Eva",
+      "age": 29,
+      "sex": "female",
+      "education_level": "high",
+      "language": "de",
+      "anxiety_level": "medium",
+      "hidden_fact": "Ich habe vor 30 Minuten gefrühstückt und habe ein wackeliges Veneer am Schneidezahn."
+    },
+    "chatbot_model": "gpt-5.4-mini",
+    "patient_model": "gpt-5.4-mini",
+    "patient_temperature": 0.8,
+    "patient_chat_style": "chatbot_aware_informal",
+    "total_turns": 8,
+    "conversation_date": "2026-04-12T00:04:26.123072",
+    "dataset_tag": "patient_agent_probabilistic_v2",
+    "repeat_index": 2,
+    "patient_temperature_effective": 0.8,
+    "generator_version": "patient_agent_probabilistic_v2"
+  },
+  "conversation": [
+    {
+      "turn": 1,
+      "patient_question": "ok, wie läuft die Narkose genau ab?",
+      "chatbot_response": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 5,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5504404591975319
+          },
+          {
+            "citation_index": 2,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5443061629698289
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nzur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5504404591975319,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5443061629698289,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "zur NÜCHTERNHEIT, sofern der Arzt NICHTS ANDERES angeordnet hat: Erwachsene dürfen\nbis zu 6 Stunden vor der Narkose noch eine leicht verdauliche kleine Mahlzeit (z. B. 1 Scheibe Weißbrot mit Marmelade, 1 Glas Milch) zu sich nehmen. 6–2 Stunden vor der Narkose nur noch 1–2 Gläser/Tassen klare Flüssigkeit (z. B. Wasser, Tee ohne Milch) trinken. Diese dürfen aber kein Fett, keine festen Bestandteile und keinen Alkohol enthalten! Jugendliche bis 18 Jahre dürfen\nbis zu 6 Stunden vor der Narkose nicht essen. 6 Stunden bis 1 Stunde vor der Narkose noch klare Flüssigkeit ohne Fett, ohne feste Bestandteile und ohne Alkohol (z. B. Wasser, Tee ohne ",
+          "score": 0.4929735124030575,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 20,
+            "split_idx_start": 16399
+          },
+          "id": "3b25117937f7f54d695149a06b7131f81621e57031f36ebf5cad39f0bd6743db"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:00.593364"
+    },
+    {
+      "turn": 2,
+      "patient_question": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**",
+      "chatbot_response": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b",
+            "file_path": "Narkose.md",
+            "score": 0.5012663454184385
+          },
+          {
+            "citation_index": 2,
+            "document_id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a",
+            "file_path": "Narkose.md",
+            "score": 0.4713542993806522
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nfür Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5012663454184385,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        },
+        {
+          "content": "für Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies ",
+          "score": 0.4713542993806522,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9780
+          },
+          "id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a"
+        },
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.4645264402825867,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:03.532367"
+    },
+    {
+      "turn": 3,
+      "patient_question": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**",
+      "chatbot_response": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17",
+            "file_path": "Narkose.md",
+            "score": 0.5580779093195425
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nfür Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nMedikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nnur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "für Sie vorgesehener Medikamente, ihr Nutzen-Risiko-Verhältnis und mögliche Alternativen aufklären. Eine lebensbedrohliche Stoffwechselentgleisung mit drastischem Anstieg der Körpertemperatur (maligne Hyperthermie) kommt äußerst selten bei Patienten mit einer speziellen genetischen Veranlagung nach Gabe von Narkosegas oder bestimmten muskelentspannenden Mitteln vor. Sie muss intensivmedizinisch behandelt werden. Verwirrtheit und Einschränkungen der geistigen Fähigkeiten können u. a. durch die ungewohnte Umgebung, die Operation und die verwendeten Medikamente hervorgerufen werden, v. a. bei älteren Menschen. Solche Beeinträchtigungen halten i. d. R. nur einige Stunden oder Tage, evtl. auch einige Monate an und sind nur sehr selten dauerhaft. Spezielle Risiken der Narkose Gelangt Mageninhalt in die Lunge (Aspiration), kann dies ",
+          "score": 0.564931091868101,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 12,
+            "split_idx_start": 9780
+          },
+          "id": "236d83c95ef5b74953fa23690feb7fb6afdfc374c3bc3e84fb33a940ce03138a"
+        },
+        {
+          "content": "Medikamente dürfen Sie nur nach ärztlicher Anweisung einnehmen. Bei Frauen, die hormonelle Verhütungsmittel (z. B. „Pille“, Spirale) anwenden, kann die empfängnisverhütende Wirkung nach der Anästhesie noch mind. 7 Tage beeinträchtigt sein. Bitte verständigen Sie sofort einen Arzt, wenn Beschwerden auftreten wie Atem- oder Kreislaufstörungen, Störungen des Bewusstseins, Schmerzen, Fieber (über 38 °C), Schüttelfrost, Übelkeit, Erbrechen, Halsschmerzen, Heiserkeit, Sprechstörungen, Schluckbeschwerden sowie Entzündungen, z. B. im Mund, Probleme beim Wasserlassen oder Stuhlgang, Missempfindungen (z. B. an einer Einstichstelle oder an Gliedmaßen), Bewegungsstörungen, Anzeichen von Lähmungen! Hinweise für ambulante Eingriffe Nach einem ambulanten Eingriff ist Ihr Reaktionsvermögen durch Betäubungsmittel, Schmerzmittel und andere Medikamente vorübergehend beeinträchtigt. Deshalb müssen ",
+          "score": 0.5618653340389197,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 23,
+            "split_idx_start": 18633
+          },
+          "id": "71362d358ff6a05f02f20f4da693d47c0c2d9796afe1d80b6d2a0e35bfe87c2b"
+        },
+        {
+          "content": "nur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). ",
+          "score": 0.5580779093195425,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2343
+          },
+          "id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:08.252798"
+    },
+    {
+      "turn": 4,
+      "patient_question": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?",
+      "chatbot_response": "Wenn es eine **Vollnarkose** ist, sind Sie während des Eingriffs nicht bewusst und spüren keine Schmerzen, weil das Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper aufgehoben werden [Quelle 1].\n\nEine **Sedierung** ist etwas anderes: Sie bekommen ein Beruhigungsmittel, sind dann oft **schläfrig oder dösen**, können aber je nach Tiefe noch ansprechbar sein. Nach einer Sedierung können Sie sich **nur eingeschränkt oder gar nicht an die Operation erinnern** [Quelle 2].\n\nFür **danach** heißt das praktisch:\n- Nach **Vollnarkose**: meist zunächst deutlich benommen, Aufwachen unter Überwachung.\n- Nach **Sedierung**: ebenfalls Müdigkeit/Benommenheit möglich, oft mit Erinnerungslücken [Quelle 2].\n\nIn den Unterlagen steht außerdem, dass Sie nach der Anästhesie Medikamente und Infusionen über die Vene bekommen können und gegebenenfalls beatmet werden [Quelle 3].  \nDazu habe ich keine weiteren Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtige Sicherheitsfragen, falls noch nicht geklärt:\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?\n- Ist Ihnen bewusst, dass Sie **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken** dürfen?",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 4,
+        "unique_sources": 3,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.6177489600515211
+          },
+          {
+            "citation_index": 2,
+            "document_id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17",
+            "file_path": "Narkose.md",
+            "score": 0.5694056166690449
+          },
+          {
+            "citation_index": 3,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5393529662957376
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nnur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.6177489600515211,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "nur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). ",
+          "score": 0.5694056166690449,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2343
+          },
+          "id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5393529662957376,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:13.017537"
+    },
+    {
+      "turn": 5,
+      "patient_question": "Nach einer **Vollnarkose** bin ich danach meistens erstmal **deutlich benommen und eher komplett platt**, bei einer **Sedierung** eher „halb wach“ mit weniger tiefem Wegtreten. Für mich wäre der Unterschied danach vor allem: bei Vollnarkose eher längeres Aufwachen und mehr Überwachung, bei Sedierung oft schneller klar, aber trotzdem noch müde und evtl. mit Erinnerungslücken.\n\nWeißt du, ob bei dir auch ein **Beatmungsschlauch oder eine Kehlkopfmaske** geplant ist?",
+      "chatbot_response": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein steht in den Unterlagen: Wenn Sie mit Sauerstoff beatmet und ggf. mit Narkosegas versorgt werden, kann entweder ein **Beatmungsschlauch (Tubus)** durch Mund oder Nase in die Luftröhre eingeführt werden oder eine **Kehlkopfmaske** durch den Mund bis vor die Kehlkopföfnung geschoben werden [Quelle 3].\n\nWenn Sie das noch nicht besprochen haben, fragen Sie das Anästhesieteam bitte direkt vor dem Eingriff.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 3,
+            "document_id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b",
+            "file_path": "Narkose.md",
+            "score": 0.5327916745166845
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nnur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn es eine **Vollnarkose** ist, sind Sie während des Eingriffs nicht bewusst und spüren keine Schmerzen, weil das Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper aufgehoben werden [Quelle 1].\n\nEine **Sedierung** ist etwas anderes: Sie bekommen ein Beruhigungsmittel, sind dann oft **schläfrig oder dösen**, können aber je nach Tiefe noch ansprechbar sein. Nach einer Sedierung können Sie sich **nur eingeschränkt oder gar nicht an die Operation erinnern** [Quelle 2].\n\nFür **danach** heißt das praktisch:\n- Nach **Vollnarkose**: meist zunächst deutlich benommen, Aufwachen unter Überwachung.\n- Nach **Sedierung**: ebenfalls Müdigkeit/Benommenheit möglich, oft mit Erinnerungslücken [Quelle 2].\n\nIn den Unterlagen steht außerdem, dass Sie nach der Anästhesie Medikamente und Infusionen über die Vene bekommen können und gegebenenfalls beatmet werden [Quelle 3].  \nDazu habe ich keine weiteren Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtige Sicherheitsfragen, falls noch nicht geklärt:\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?\n- Ist Ihnen bewusst, dass Sie **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken** dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach einer **Vollnarkose** bin ich danach meistens erstmal **deutlich benommen und eher komplett platt**, bei einer **Sedierung** eher „halb wach“ mit weniger tiefem Wegtreten. Für mich wäre der Unterschied danach vor allem: bei Vollnarkose eher längeres Aufwachen und mehr Überwachung, bei Sedierung oft schneller klar, aber trotzdem noch müde und evtl. mit Erinnerungslücken.\n\nWeißt du, ob bei dir auch ein **Beatmungsschlauch oder eine Kehlkopfmaske** geplant ist?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "nur wenig oder gar nicht bewegt werden.\nBei einer Regionalanästhesie sind Sie wach, können aber bei Bedarf ein Beruhigungsmittel erhalten („Dämmerschlaf“/Sedierung). Falls dies geplant ist, werden Sie gesondert darüber aufgeklärt. Nach einer Sedierung werden Sie sich nur noch eingeschränkt oder gar nicht an die Operation erinnern.\nIn manchen Fällen empfiehlt es sich, die Regionalanästhesie zusätzlich zur Narkose einzusetzen. Dann benötigen Sie weniger Narkosemittel, erholen sich schneller nach dem Eingriff und haben direkt nach der Operation kaum Schmerzen. Allerdings birgt die zusätzliche Regionalanästhesie auch eigene Risiken. Spinalanästhesie und Periduralanästhesie\nSie eignen sich für Operationen im Bereich der unteren Körperhälfte (z. B. an Beinen, Hüfte, Leiste). ",
+          "score": 0.5814395793145868,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 3,
+            "split_idx_start": 2343
+          },
+          "id": "2216bba5a1179827e234bb024ec70e81ec66392c91723c287e532c3230421d17"
+        },
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5512744711249035,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5327916745166845,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:16.226700"
+    },
+    {
+      "turn": 6,
+      "patient_question": "Hm, das würde ich echt noch vorher wissen wollen, weil das für mich den Ablauf ziemlich verändert. **Wird das im Vorgespräch noch konkret festgelegt, oder erfahre ich das erst direkt vor der OP?**",
+      "chatbot_response": "Ja, das wird in der Regel **im Vorgespräch mit dem Arzt besprochen**. In den Unterlagen steht, dass der Arzt mit Ihnen das **geeignete Anästhesieverfahren** auswählt und – falls mehrere Verfahren infrage kommen – auch **Vor- und Nachteile sowie Risiken** mit Ihnen bespricht [Quelle 2].\n\nFür die konkrete Atemwegssicherung (also **Tubus** oder **Kehlkopfmaske**) steht in den Unterlagen nur, **dass solche Verfahren verwendet werden können**, aber **nicht genau, wann final entschieden wird** [Quelle 3]. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen die **wichtigsten Fragen für das Narkosegespräch** kurz als Liste zusammenstellen.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 2,
+        "unique_sources": 2,
+        "citation_mapping": [
+          {
+            "citation_index": 2,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.508140257537922
+          },
+          {
+            "citation_index": 3,
+            "document_id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f",
+            "file_path": "Narkose.md",
+            "score": 0.4778554809973279
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nMilch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn es eine **Vollnarkose** ist, sind Sie während des Eingriffs nicht bewusst und spüren keine Schmerzen, weil das Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper aufgehoben werden [Quelle 1].\n\nEine **Sedierung** ist etwas anderes: Sie bekommen ein Beruhigungsmittel, sind dann oft **schläfrig oder dösen**, können aber je nach Tiefe noch ansprechbar sein. Nach einer Sedierung können Sie sich **nur eingeschränkt oder gar nicht an die Operation erinnern** [Quelle 2].\n\nFür **danach** heißt das praktisch:\n- Nach **Vollnarkose**: meist zunächst deutlich benommen, Aufwachen unter Überwachung.\n- Nach **Sedierung**: ebenfalls Müdigkeit/Benommenheit möglich, oft mit Erinnerungslücken [Quelle 2].\n\nIn den Unterlagen steht außerdem, dass Sie nach der Anästhesie Medikamente und Infusionen über die Vene bekommen können und gegebenenfalls beatmet werden [Quelle 3].  \nDazu habe ich keine weiteren Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtige Sicherheitsfragen, falls noch nicht geklärt:\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?\n- Ist Ihnen bewusst, dass Sie **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken** dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach einer **Vollnarkose** bin ich danach meistens erstmal **deutlich benommen und eher komplett platt**, bei einer **Sedierung** eher „halb wach“ mit weniger tiefem Wegtreten. Für mich wäre der Unterschied danach vor allem: bei Vollnarkose eher längeres Aufwachen und mehr Überwachung, bei Sedierung oft schneller klar, aber trotzdem noch müde und evtl. mit Erinnerungslücken.\n\nWeißt du, ob bei dir auch ein **Beatmungsschlauch oder eine Kehlkopfmaske** geplant ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein steht in den Unterlagen: Wenn Sie mit Sauerstoff beatmet und ggf. mit Narkosegas versorgt werden, kann entweder ein **Beatmungsschlauch (Tubus)** durch Mund oder Nase in die Luftröhre eingeführt werden oder eine **Kehlkopfmaske** durch den Mund bis vor die Kehlkopföfnung geschoben werden [Quelle 3].\n\nWenn Sie das noch nicht besprochen haben, fragen Sie das Anästhesieteam bitte direkt vor dem Eingriff."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das würde ich echt noch vorher wissen wollen, weil das für mich den Ablauf ziemlich verändert. **Wird das im Vorgespräch noch konkret festgelegt, oder erfahre ich das erst direkt vor der OP?**"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.5245156481968055,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        },
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.508140257537922,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Milch) trinken. Ab den für Sie geltenden Zeiten ist essen bzw. trinken nicht mehr erlaubt! Informieren Sie unbedingt den Arzt oder die Mitarbeitenden, falls Sie sich nicht genau an die Nüchternheitspflichten gehalten haben! RAUCHEN erhöht grundsätzlich die Risiken der Anästhesie und Operation (z. B. erhöhte Gefahr von Lungenentzündungen, Durchblutungsstörungen, Herz-Kreislauf-Problemen). Der Arzt bespricht mit Ihnen, welche Medikamente Sie eventuell noch bzw. absetzen oder ersetzen müssen. Bitte legen Sie vorhandene Patientenunterlagen (z. B. Narkose-, Allergie-, Impfpass, Marcumar-, Diabetikerausweis, Schrittmacherausweis) vor. Falls eine Patientenverfügung, Vorsorgevollmacht oder Betreuungsvollmacht besteht, bringen Sie bitte eine Kopie mit. Kontaktlinsen, herausnehmbare Zahnersatz, Ringe, Schmuck (auch Piercings!) und künstliche Haarteile ",
+          "score": 0.4778554809973279,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 21,
+            "split_idx_start": 17045
+          },
+          "id": "358870323953e0d8d740e2fd96cf7c32e746bdd9e1e739d6b12bb9c57656412f"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:19.648466"
+    },
+    {
+      "turn": 7,
+      "patient_question": "Ja, genau das würde ich auch vorher klären wollen, sonst macht mich das eher nervös. Ich würde im Vorgespräch direkt fragen, **ob die Entscheidung für Tubus oder Kehlkopfmaske schon vorher feststeht oder erst nach der Untersuchung kurz vor der OP**.",
+      "chatbot_response": "Das ist eine sehr sinnvolle Frage. **Ja, genau das sollten Sie im Vorgespräch direkt ansprechen.**\n\nDie Unterlagen sagen, dass der Arzt mit Ihnen das **geeignete Anästhesieverfahren** bespricht und dabei auch die **Vor- und Nachteile sowie Risiken** erklärt [Quelle 1]. Zur Frage, **ob Tubus oder Kehlkopfmaske schon vorher festgelegt wird oder erst nach der Untersuchung kurz vor der OP**, stehen in den Unterlagen **keine genauen Angaben**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nSie können im Gespräch ganz konkret fragen:\n- „Ist bei mir ein **Tubus** oder eher eine **Kehlkopfmaske** geplant?“\n- „Wird das **vorher festgelegt** oder **erst nach der Untersuchung kurz vor der OP** entschieden?“\n- „Warum ist dieses Verfahren für mich am besten?“\n\nWenn Sie möchten, formuliere ich Ihnen daraus eine **kurze, direkte Frage für das Vorgespräch**.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 1,
+        "unique_sources": 1,
+        "citation_mapping": [
+          {
+            "citation_index": 1,
+            "document_id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40",
+            "file_path": "Narkose.md",
+            "score": 0.5848554135979611
+          }
+        ]
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 3]\n(Datei: Äußere Wendung.md)\nINHALT:\nMutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.\n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn es eine **Vollnarkose** ist, sind Sie während des Eingriffs nicht bewusst und spüren keine Schmerzen, weil das Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper aufgehoben werden [Quelle 1].\n\nEine **Sedierung** ist etwas anderes: Sie bekommen ein Beruhigungsmittel, sind dann oft **schläfrig oder dösen**, können aber je nach Tiefe noch ansprechbar sein. Nach einer Sedierung können Sie sich **nur eingeschränkt oder gar nicht an die Operation erinnern** [Quelle 2].\n\nFür **danach** heißt das praktisch:\n- Nach **Vollnarkose**: meist zunächst deutlich benommen, Aufwachen unter Überwachung.\n- Nach **Sedierung**: ebenfalls Müdigkeit/Benommenheit möglich, oft mit Erinnerungslücken [Quelle 2].\n\nIn den Unterlagen steht außerdem, dass Sie nach der Anästhesie Medikamente und Infusionen über die Vene bekommen können und gegebenenfalls beatmet werden [Quelle 3].  \nDazu habe ich keine weiteren Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtige Sicherheitsfragen, falls noch nicht geklärt:\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?\n- Ist Ihnen bewusst, dass Sie **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken** dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach einer **Vollnarkose** bin ich danach meistens erstmal **deutlich benommen und eher komplett platt**, bei einer **Sedierung** eher „halb wach“ mit weniger tiefem Wegtreten. Für mich wäre der Unterschied danach vor allem: bei Vollnarkose eher längeres Aufwachen und mehr Überwachung, bei Sedierung oft schneller klar, aber trotzdem noch müde und evtl. mit Erinnerungslücken.\n\nWeißt du, ob bei dir auch ein **Beatmungsschlauch oder eine Kehlkopfmaske** geplant ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein steht in den Unterlagen: Wenn Sie mit Sauerstoff beatmet und ggf. mit Narkosegas versorgt werden, kann entweder ein **Beatmungsschlauch (Tubus)** durch Mund oder Nase in die Luftröhre eingeführt werden oder eine **Kehlkopfmaske** durch den Mund bis vor die Kehlkopföfnung geschoben werden [Quelle 3].\n\nWenn Sie das noch nicht besprochen haben, fragen Sie das Anästhesieteam bitte direkt vor dem Eingriff."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das würde ich echt noch vorher wissen wollen, weil das für mich den Ablauf ziemlich verändert. **Wird das im Vorgespräch noch konkret festgelegt, oder erfahre ich das erst direkt vor der OP?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das wird in der Regel **im Vorgespräch mit dem Arzt besprochen**. In den Unterlagen steht, dass der Arzt mit Ihnen das **geeignete Anästhesieverfahren** auswählt und – falls mehrere Verfahren infrage kommen – auch **Vor- und Nachteile sowie Risiken** mit Ihnen bespricht [Quelle 2].\n\nFür die konkrete Atemwegssicherung (also **Tubus** oder **Kehlkopfmaske**) steht in den Unterlagen nur, **dass solche Verfahren verwendet werden können**, aber **nicht genau, wann final entschieden wird** [Quelle 3]. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen die **wichtigsten Fragen für das Narkosegespräch** kurz als Liste zusammenstellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, genau das würde ich auch vorher klären wollen, sonst macht mich das eher nervös. Ich würde im Vorgespräch direkt fragen, **ob die Entscheidung für Tubus oder Kehlkopfmaske schon vorher feststeht oder erst nach der Untersuchung kurz vor der OP**."
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5848554135979611,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5624920338051891,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "Mutterpass zum Aufklärungsgespräch mit. Vor dem Wendversuch sollten Sie eventuell einige Stunden nichts essen und nichts trinken, damit Sie für die Narkose bei einem möglichen Kaiserschnitt vorbereitet sind. Das ärztliche Personal wird Ihnen mitteilen, wie lange dies in Ihrem Fall sinnvoll ist.",
+          "score": 0.5614561984577953,
+          "meta": {
+            "file_path": "Äußere Wendung.md",
+            "source_id": "d618db54a0b3552b1a5454a274f99834b3b78eff0d856203519bdd269c9b2d48",
+            "page_number": 1,
+            "split_id": 14,
+            "split_idx_start": 10603
+          },
+          "id": "ffa15ce765ccf0e99a14d87fed6b004ba2e6634e50fa1f1ea173f7c63bfcd58c"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:23.133528"
+    },
+    {
+      "turn": 8,
+      "patient_question": "Ja, das würde ich genau so fragen. Ich würde einfach direkt sagen: **„Wird bei mir Tubus oder Kehlkopfmaske schon vorher festgelegt, oder entscheidet dein das erst nach der Untersuchung kurz vor der OP?“**\n\nWillst du, dass ich dir noch eine **noch kürzere Version** formuliere, die du 1:1 sagen kannst?",
+      "chatbot_response": "Ja, gerne. Eine kurze Formulierung wäre:\n\n**„Wird bei mir Tubus oder Kehlkopfmaske schon vorher festgelegt, oder entscheiden Sie das erst kurz vor der OP nach der Untersuchung?“**\n\nWenn Sie möchten, kann ich Ihnen auch noch eine **zweite kurze Frage** dazu formulieren, z. B. zur Vollnarkose oder zum Aufwachraum.",
+      "mandatory_question": null,
+      "supervisor_triggered": false,
+      "intervention_type": null,
+      "citations": {
+        "total_citations": 0,
+        "unique_sources": 0,
+        "citation_mapping": []
+      },
+      "prompt_messages": [
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Du bist ein erfahrener medizinischer Assistent. Dein Ziel ist es, eine genaue, streng kontextbasierte Patientenaufklärung zu bieten und sicherzustellen, dass der Patient den medizinischen Eingriff vollständig versteht.\n\nREGELN:\n- Beantworte die Patientenfrage basierend auf dem medizinischen Kontext\n- Sei einfühlsam und verwende verständliche Sprache\n- Halte deine Antwort fokussiert (max 300 Wörter)\n- Sei präzise und medizinisch korrekt\n\nZITIERREGELN:\n1. Bevorzuge Informationen aus dem 'MEDIZINISCHER KONTEXT' und zitiere sie mit [Quelle X]\n2. Für allgemeine medizinische Fragen (z.B. 'Tut es weh?', 'Wie lange dauert es?') darfst du OHNE Zitat antworten, wenn die Info im Kontext fehlt\n3. Für spezifische Details (Risiken, Ablauf, Komplikationen) MUSS eine [Quelle X] vorhanden sein\n4. Erfinde KEINE spezifischen medizinischen Fakten\n5. Bei fehlenden Informationen sage: 'Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.'"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Folgende Pflichtfragen sollten idealerweise im Gespräch abgedeckt werden, aber entscheide selbst, wann sie passen:\n- (nark_01) Bevorzugen Sie eine Regionalanästhesie (wach sein) oder eine Vollnarkose (schlafen)?\n- (nark_02) Nutzen Sie hormonelle Verhütungsmittel (z. B. die Pille oder eine Hormonspirale)?\n- (nark_03) Haben Sie lose Zähne, Kronen oder Piercings im Mundbereich?\n- (nark_04) Ist. es sichergestellt, dass Sie nach dem Eingriff für 24 Stunden von einer erwachsenen Person betreut werden?\n- (nark_05) Ist Ihnen bewusst, dass Sie für 24 Stunden nicht aktiv am Straßenverkehr teilnehmen oder Alkohol trinken dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "system",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "MEDIZINISCHER KONTEXT:\n---\n[Quelle 1]\n(Datei: Narkose.md)\nINHALT:\nNarkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem \n---\n---\n[Quelle 2]\n(Datei: Narkose.md)\nINHALT:\nNarkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. \n---\n---\n[Quelle 3]\n(Datei: Narkose.md)\nINHALT:\nmüssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. \n---"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "ok, wie läuft die Narkose genau ab?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Gern. Laut Unterlagen läuft die Narkose in mehreren Schritten ab:\n\n1. **Vorbereitung:** Vor der Anästhesie wird eine **Verweilkanüle in eine Vene** gelegt, meist an Hand oder Arm. Darüber bekommen Sie bei Bedarf Infusionslösungen und Medikamente [Quelle 1].\n\n2. **Einleitung der Narkose:** Der Arzt spritzt ein **schnell wirkendes Narkosemittel** über diese Vene [Quelle 2].\n\n3. **Aufrechterhaltung:** Danach werden weitere **Narkose- und Schmerzmittel** über die Vene gegeben oder **Narkosegase über die Atemluft** zugeführt. Oft werden beide Verfahren kombiniert [Quelle 2].\n\n4. **Atmung während der Narkose:** Sie werden dabei beatmet. Dafür wird je nach Situation entweder ein **Tubus** durch Mund oder Nase in die Luftröhre eingeführt oder eine **Kehlkopfmaske** bis vor die Kehlkopföfnung geschoben [Quelle 2].\n\nDer Arzt bespricht mit Ihnen vorher, welches Verfahren für Sie am besten geeignet ist und erklärt die Vor- und Nachteile sowie die Risiken [Quelle 1].\n\nWenn Sie möchten, kann ich Ihnen auch kurz erklären, **wie Sie sich vor der Narkose verhalten sollen**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Okay, das klingt schon mal nachvollziehbar. Mich würde noch interessieren: **Wache ich nach der Narkose direkt wieder auf oder bin ich erst mal total weggetreten?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach der Narkose sind Sie zunächst meist noch **benommen und schläfrig** und werden überwacht, bis Ihre wichtigen Körperfunktionen wieder stabil sind [Quelle 1]. Wie schnell Sie „wach“ wirken, hängt vom verwendeten Narkoseverfahren und den Medikamenten ab; dazu stehen in den Unterlagen keine genaueren Angaben.\n\nIn den Unterlagen wird außerdem erwähnt, dass es nach der Narkose zu **Verwirrtheit oder Einschränkungen der geistigen Fähigkeiten** kommen kann, besonders bei älteren Menschen; das dauert meist nur Stunden bis Tage, selten länger [Quelle 2].\n\nWenn Sie möchten, kann ich Ihnen auch sagen, **was direkt nach dem Aufwachen üblich ist** und worauf Sie achten sollten."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, nach dem Aufwachen ist man oft erst mal **sehr müde, benommen oder ein bisschen verwirrt** – das ist ziemlich normal und nicht direkt ein Grund zur Panik. Mir wäre nur wichtig zu wissen: **Wurde dir schon gesagt, ob du eine Vollnarkose oder eher eine Sedierung bekommst?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein gilt: **Bei einer Regionalanästhesie sind Sie wach**; bei Bedarf kann zusätzlich ein Beruhigungsmittel gegeben werden („Dämmerschlaf“/Sedierung) [Quelle 3]. Ob in Ihrem Fall eher **Vollnarkose** oder **Sedierung/Regionalanästhesie** geplant ist, muss das Anästhesieteam mit Ihnen besprechen.\n\nFalls noch offen:  \n- Bevorzugen Sie eine **Regionalanästhesie (wach sein)** oder eine **Vollnarkose (schlafen)**?  \n- Haben Sie **lose Zähne, Kronen oder Piercings im Mundbereich**?  \n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden betreut** werden und **nicht Auto fahren oder Alkohol trinken**?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Eher **Vollnarkose**, so wurde es mir bisher erklärt. Ich bin mir aber nicht ganz sicher, ob zusätzlich noch eine Sedierung geplant ist. Was genau ist denn der Unterschied für mich danach?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Wenn es eine **Vollnarkose** ist, sind Sie während des Eingriffs nicht bewusst und spüren keine Schmerzen, weil das Bewusstsein und Schmerzempfinden vorübergehend im ganzen Körper aufgehoben werden [Quelle 1].\n\nEine **Sedierung** ist etwas anderes: Sie bekommen ein Beruhigungsmittel, sind dann oft **schläfrig oder dösen**, können aber je nach Tiefe noch ansprechbar sein. Nach einer Sedierung können Sie sich **nur eingeschränkt oder gar nicht an die Operation erinnern** [Quelle 2].\n\nFür **danach** heißt das praktisch:\n- Nach **Vollnarkose**: meist zunächst deutlich benommen, Aufwachen unter Überwachung.\n- Nach **Sedierung**: ebenfalls Müdigkeit/Benommenheit möglich, oft mit Erinnerungslücken [Quelle 2].\n\nIn den Unterlagen steht außerdem, dass Sie nach der Anästhesie Medikamente und Infusionen über die Vene bekommen können und gegebenenfalls beatmet werden [Quelle 3].  \nDazu habe ich keine weiteren Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWichtige Sicherheitsfragen, falls noch nicht geklärt:\n- Ist sichergestellt, dass Sie nach dem Eingriff **24 Stunden von einer erwachsenen Person betreut** werden?\n- Ist Ihnen bewusst, dass Sie **24 Stunden nicht aktiv am Straßenverkehr teilnehmen und keinen Alkohol trinken** dürfen?"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Nach einer **Vollnarkose** bin ich danach meistens erstmal **deutlich benommen und eher komplett platt**, bei einer **Sedierung** eher „halb wach“ mit weniger tiefem Wegtreten. Für mich wäre der Unterschied danach vor allem: bei Vollnarkose eher längeres Aufwachen und mehr Überwachung, bei Sedierung oft schneller klar, aber trotzdem noch müde und evtl. mit Erinnerungslücken.\n\nWeißt du, ob bei dir auch ein **Beatmungsschlauch oder eine Kehlkopfmaske** geplant ist?"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nAllgemein steht in den Unterlagen: Wenn Sie mit Sauerstoff beatmet und ggf. mit Narkosegas versorgt werden, kann entweder ein **Beatmungsschlauch (Tubus)** durch Mund oder Nase in die Luftröhre eingeführt werden oder eine **Kehlkopfmaske** durch den Mund bis vor die Kehlkopföfnung geschoben werden [Quelle 3].\n\nWenn Sie das noch nicht besprochen haben, fragen Sie das Anästhesieteam bitte direkt vor dem Eingriff."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Hm, das würde ich echt noch vorher wissen wollen, weil das für mich den Ablauf ziemlich verändert. **Wird das im Vorgespräch noch konkret festgelegt, oder erfahre ich das erst direkt vor der OP?**"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das wird in der Regel **im Vorgespräch mit dem Arzt besprochen**. In den Unterlagen steht, dass der Arzt mit Ihnen das **geeignete Anästhesieverfahren** auswählt und – falls mehrere Verfahren infrage kommen – auch **Vor- und Nachteile sowie Risiken** mit Ihnen bespricht [Quelle 2].\n\nFür die konkrete Atemwegssicherung (also **Tubus** oder **Kehlkopfmaske**) steht in den Unterlagen nur, **dass solche Verfahren verwendet werden können**, aber **nicht genau, wann final entschieden wird** [Quelle 3]. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nWenn Sie möchten, kann ich Ihnen die **wichtigsten Fragen für das Narkosegespräch** kurz als Liste zusammenstellen."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, genau das würde ich auch vorher klären wollen, sonst macht mich das eher nervös. Ich würde im Vorgespräch direkt fragen, **ob die Entscheidung für Tubus oder Kehlkopfmaske schon vorher feststeht oder erst nach der Untersuchung kurz vor der OP**."
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Das ist eine sehr sinnvolle Frage. **Ja, genau das sollten Sie im Vorgespräch direkt ansprechen.**\n\nDie Unterlagen sagen, dass der Arzt mit Ihnen das **geeignete Anästhesieverfahren** bespricht und dabei auch die **Vor- und Nachteile sowie Risiken** erklärt [Quelle 1]. Zur Frage, **ob Tubus oder Kehlkopfmaske schon vorher festgelegt wird oder erst nach der Untersuchung kurz vor der OP**, stehen in den Unterlagen **keine genauen Angaben**. Dazu habe ich keine Details in den Unterlagen. Der Chatbot kann das nicht weiter ausführen.\n\nSie können im Gespräch ganz konkret fragen:\n- „Ist bei mir ein **Tubus** oder eher eine **Kehlkopfmaske** geplant?“\n- „Wird das **vorher festgelegt** oder **erst nach der Untersuchung kurz vor der OP** entschieden?“\n- „Warum ist dieses Verfahren für mich am besten?“\n\nWenn Sie möchten, formuliere ich Ihnen daraus eine **kurze, direkte Frage für das Vorgespräch**."
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "meta": {},
+          "name": null,
+          "content": [
+            {
+              "text": "Ja, das würde ich genau so fragen. Ich würde einfach direkt sagen: **„Wird bei mir Tubus oder Kehlkopfmaske schon vorher festgelegt, oder entscheidet dein das erst nach der Untersuchung kurz vor der OP?“**\n\nWillst du, dass ich dir noch eine **noch kürzere Version** formuliere, die du 1:1 sagen kannst?"
+            }
+          ]
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "content": "Narkosemittel, Schmerzmittel, Antibiotika) erhalten. Die Narkose Zur Einleitung der Narkose spritzt der Arzt ein schnell wirkendes Narkosemittel über die Verweilkanüle.\nZur Fortführung der Narkose verabreicht der Arzt weitere Narkose-/Schmerzmittel (intravenöse Narkose) oder führt Narkosegase über die Atemluft zu. Oft werden beide Verfahren auch kombiniert. Man beatmet Sie dabei, z. B. mit Sauerstoff beatmet und, falls nötig, mit Narkosegas versorgt werden können, wird ein Beatmungsschlauch (Tubus) durch den Mund (oder die Nase) in Ihre Luftröhre eingeführt (Intubationsnarkose) oder\neine Kehlkopfmaske (Larynxmaske, ein Beatmungsschlauch mit einem aufblasbaren Wulst an der Spitze) durch den Mund bis vor die Kehlkopföfnung geschoben (Narkose mit einer Kehlkopfmaske). Vor allem ",
+          "score": 0.5578890912965964,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 1,
+            "split_idx_start": 764
+          },
+          "id": "9e7f305594e8a09f33b006364231c80fb6a15dd1474b8b5955cb5caa7fbdbe1b"
+        },
+        {
+          "content": "Narkose Wahl des Betäubungsverfahrens Damit Sie bei dem geplanten Eingriff keine Schmerzen verspüren, kann eine Narkose (Allgemeinanästhesie) erfolgen, die das Bewusstsein und das Schmerzempfinden vorübergehend im ganzen Körper aufhebt,\nkann gezielt der Körperbereich betäubt werden, der operiert werden soll (Regionalanästhesie). Die beiden Verfahren können auch kombiniert werden. Der Arzt bespricht mit Ihnen, welches Anästhesieverfahren sich für Sie am besten eignet und, falls auch andere Verfahren in Betracht kommen, deren Vor- und Nachteile sowie die unterschiedlichen Belastungen und Risiken.\nVor der Anästhesie wird eine Verweilkanüle in eine Vene (z. B. Ihre Hand- oder Armvene) gelegt, über die Sie Infusionslösungen und nach Bedarf Medikamente (z. B. ",
+          "score": 0.5362623495787908,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 0,
+            "split_idx_start": 0
+          },
+          "id": "e106e49296f401b23b05ecbe8665d1e0ac47a40ff80c98abd042def682b7ae40"
+        },
+        {
+          "content": "müssen vor der Anästhesie entfernt werden. Bitte klären Sie, wo Sie diese aufbewahren können und ob Sie ggf. Brille und Hörgerät noch bis in den Vorraum des Operationssaals mitnehmen dürfen. Verwenden Sie bitte kein Gesichtsschminke und Kosmetika (Make-up, Nagellack etc.)! Nach der Anästhesie Bis Ihre wichtigen Körperfunktionen wieder stabil sind, werden Sie noch eine Zeit lang überwacht, eventuell auf einer Wach- oder Intensivstation. Um Sie vor Verletzungen zu schützen, kann es nötig sein, Ihre Bewegungsfreiheit vorübergehend einzuschränken (z. B. durch Bettgitter). Wegen der Sturzgefahr dürfen Sie zunächst nicht allein aufstehen! Bitte schützen Sie eventuell noch betäubte Körperbereiche vor Druckschäden und Verletzungen. ",
+          "score": 0.5021506721146306,
+          "meta": {
+            "file_path": "Narkose.md",
+            "source_id": "f6a7ab6e360d6a7fff2e228babe380309612c19a6fe8f4f15af4fdf0d18d34bf",
+            "page_number": 1,
+            "split_id": 22,
+            "split_idx_start": 17899
+          },
+          "id": "5e4f8c848191fbbd53ac41ed948b97b77af677c1676fdf9fda9dc26ab2d8f54b"
+        }
+      ],
+      "timestamp": "2026-04-12T00:04:26.122738"
+    }
+  ],
+  "summary": {
+    "total_patient_questions": 8,
+    "total_chatbot_responses": 8,
+    "avg_response_length": 769.5,
+    "total_citations": 16,
+    "turns_missing_citations": 1
+  }
+}
