@@ -7,8 +7,8 @@ from typing import Dict, List, Tuple
 import numpy as np
 
 GROUND_TRUTH_PATH = Path("data/ground_truth.json")
-CONVERSATIONS_DIR = Path("data/conversations")
-RESULTS_DIR = Path("data/evaluation_results")
+CONVERSATIONS_DIR = Path(os.getenv("CONVERSATIONS_DIR", "data/conversations/v1"))
+RESULTS_DIR = Path(os.getenv("RESULTS_DIR", "data/evaluation_results"))
 
 EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-8B"
 EMBEDDING_DEVICE = os.getenv("EMBEDDING_DEVICE", "cpu")
@@ -239,7 +239,7 @@ def run_evaluation(
 
 	conversation_files = [
 		fp for fp in sorted(conversations_dir.glob("*.json"))
-		if fp.name != "conversation_index_all.json"
+		if not fp.name.startswith("conversation_index_")
 	]
 	total_files = len(conversation_files)
 

@@ -7,8 +7,8 @@ from typing import Dict, List
 import numpy as np
 
 GROUND_TRUTH_PATH = Path("data/ground_truth.json")
-CONVERSATIONS_DIR = Path("data/conversations")
-RESULTS_DIR = Path("data/evaluation_results")
+CONVERSATIONS_DIR = Path(os.getenv("CONVERSATIONS_DIR", "data/conversations/v1"))
+RESULTS_DIR = Path(os.getenv("RESULTS_DIR", "data/evaluation_results"))
 
 BI_ENCODER_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 CROSS_ENCODER_MODEL = "cross-encoder/nli-deberta-v3-base"
@@ -335,7 +335,7 @@ def run_evaluation(
 	target_file = os.getenv("COVERAGE_TARGET_FILE")
 	conversation_files = [
 		fp for fp in sorted(conversations_dir.glob("*.json"))
-		if fp.name != "conversation_index_all.json"
+		if not fp.name.startswith("conversation_index_")
 	]
 	if target_file:
 		conversation_files = [fp for fp in conversation_files if fp.name == target_file]

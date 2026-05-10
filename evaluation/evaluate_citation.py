@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 import re
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -7,8 +8,8 @@ from typing import Dict, List, Tuple
 from utils.llm_config import make_api_call
 
 
-CONVERSATIONS_DIR = Path("data/conversations/v1")
-RESULTS_DIR = Path("data/evaluation_results")
+CONVERSATIONS_DIR = Path(os.getenv("CONVERSATIONS_DIR", "data/conversations/v1"))
+RESULTS_DIR = Path(os.getenv("RESULTS_DIR", "data/evaluation_results"))
 DEFAULT_JUDGE_MODEL = "gpt-4o-mini"
 
 CITATION_PATTERN = re.compile(r"\[Quelle\s*(\d+)\]")

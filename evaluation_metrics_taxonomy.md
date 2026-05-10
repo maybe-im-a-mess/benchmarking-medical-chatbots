@@ -8,7 +8,7 @@
 
 **Judge models used:**
 - Citation: `gpt-4o-mini` (or configurable)
-- Coverage (Approach C): `gpt-5.4-mini` (or configurable)
+- Coverage (Approach C): `gpt-4o-mini` (or configurable)
 - Mandatory questions: `gpt-4o-mini` (or configurable)
 
 **Default thresholds:**
