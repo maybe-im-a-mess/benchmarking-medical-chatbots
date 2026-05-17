@@ -22,7 +22,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]  # code/
 DATA_DIR = PROJECT_ROOT / "data"
 
 # Information extraction evaluation
-IE_RESULTS_DIR = DATA_DIR / "evaluation_results" / "informtion_extraction"
+IE_RESULTS_DIR = DATA_DIR / "evaluation_results" / "information_extraction"
 IE_PER_DOC_PATH = IE_RESULTS_DIR / "per_document_thr55.json"
 IE_SUSWIR_PATH = IE_RESULTS_DIR / "suswir_evaluation.json"
 

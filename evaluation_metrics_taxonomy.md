@@ -13,7 +13,7 @@
 
 **Default thresholds:**
 - IE similarity threshold: 0.55
-- Coverage similarity threshold (Approach A): 0.75
+- Coverage similarity threshold (Approach A): 0.6
 - Coverage entailment threshold (Approach B): 0.5
 - SUSWIR coverage sub-threshold for source sentences: 0.6
 - SUSWIR redundancy sub-threshold: 0.5
@@ -175,7 +175,7 @@ Where $w_i$ is the importance weight for fact $i$:
 **Embedding and threshold:**
 - Embedding model: `Qwen/Qwen3-Embedding-8B`
 - L2 normalization applied
-- Default threshold: 0.75
+- Default threshold: 0.6
 - Utterance extraction: chatbot responses are split by sentence boundaries and bullet points, with fragments < 10 characters filtered out
 
 ### Approach B: Bi-encoder + Cross-encoder Entailment
