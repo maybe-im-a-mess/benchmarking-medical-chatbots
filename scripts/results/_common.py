@@ -28,7 +28,7 @@ IE_SUSWIR_PATH = IE_RESULTS_DIR / "suswir_evaluation.json"
 
 # Dataset A  (v1, 60 conversations, GPT-5.4)
 EVAL_A_DIR = DATA_DIR / "evaluation_results"
-COVERAGE_A_HUNGARIAN = EVAL_A_DIR / "coverage" / "coverage_evaluation_thr75.json"
+COVERAGE_A_HUNGARIAN = EVAL_A_DIR / "coverage" / "coverage_evaluation_thr75_recalc_thr60.json"
 COVERAGE_A_SBERT = EVAL_A_DIR / "coverage_sbert" / "coverage_sbert_evaluation_thr50.json"
 COVERAGE_A_LLM = EVAL_A_DIR / "coverage_llm_judge" / "coverage_llm_judge_evaluation.json"
 CITATION_A_METRICS = EVAL_A_DIR / "citation_metrics.json"
@@ -38,7 +38,7 @@ MANDATORY_A_PER_CONV = EVAL_A_DIR / "mandatory_q_per_conversation.json"
 
 # Dataset B  (v3, 216 conversations, GPT-5.4-mini)
 EVAL_B_DIR = DATA_DIR / "evaluation_results" / "v3"
-COVERAGE_B_HUNGARIAN = EVAL_B_DIR / "coverage" / "coverage_evaluation_thr75.json"
+COVERAGE_B_HUNGARIAN = EVAL_B_DIR / "coverage" / "coverage_evaluation_thr75_recalc_thr60.json"
 COVERAGE_B_SBERT = EVAL_B_DIR / "coverage_sbert" / "coverage_sbert_evaluation_thr50.json"
 COVERAGE_B_LLM = EVAL_B_DIR / "coverage_llm_judge" / "coverage_llm_judge_evaluation.json"
 CITATION_B_METRICS = EVAL_B_DIR / "citation_metrics.json"

@@ -10,6 +10,7 @@ RESULTS_ROOT = Path("data/evaluation_results")
 PLOTS_DIR = RESULTS_ROOT / "plots"
 
 BASELINE_PATH = RESULTS_ROOT / "coverage" / "coverage_evaluation_thr75_recalc_thr60.json"
+ORIGINAL_BASELINE_PATH = RESULTS_ROOT / "coverage" / "coverage_evaluation_thr75.json"
 SBERT_PATH = RESULTS_ROOT / "coverage_sbert" / "coverage_sbert_evaluation_thr50.json"
 LLM_JUDGE_PATH = RESULTS_ROOT / "coverage_llm_judge" / "coverage_llm_judge_evaluation.json"
 
@@ -18,6 +19,223 @@ METHODS = {
     "SBERT + Cross-Encoder": SBERT_PATH,
     "LLM Judge": LLM_JUDGE_PATH,
 }
+
+METHOD_COLORS = {
+    "Semantic + Hungarian": "#00B894",
+    "SBERT + Cross-Encoder": "#6C5CE7",
+    "LLM Judge": "#FD79A8",
+}
+
+
+def build_plot_bundle(method_rows, suffix: str = ""):
+    if suffix:
+        suffix = f"_{suffix}"
+
+    def out(name: str) -> Path:
+        stem = Path(name)
+        return PLOTS_DIR / f"{stem.stem}{suffix}{stem.suffix}"
+
+    names = list(method_rows.keys())
+    colors = [METHOD_COLORS.get(name, "#636E72") for name in names]
+
+    hit_means = []
+    hit_stds = []
+    wcr_means = []
+    wcr_stds = []
+
+    for n in names:
+        m = method_metrics(method_rows[n])
+        hit_means.append(m["mean_hit_rate"])
+        hit_stds.append(m["std_hit_rate"])
+        wcr_means.append(m["mean_wcr"])
+        wcr_stds.append(m["std_wcr"])
+
+    x = np.arange(len(names))
+    width = 0.38
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.bar(x - width / 2, hit_means, width, yerr=hit_stds, capsize=4, label="Hit Rate", color=colors)
+    ax.bar(x + width / 2, wcr_means, width, yerr=wcr_stds, capsize=4, label="Weighted Critical Recall", color=colors)
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Score")
+    ax.set_title("Overall Coverage Comparison")
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, rotation=10)
+    ax.legend()
+    fig.tight_layout()
+
+    fig.savefig(out("coverage_overall_comparison.png"), dpi=180)
+    plt.close(fig)
+    print(f"Saved: {out('coverage_overall_comparison.png')}")
+
+    x = np.arange(len(names))
+    width = 0.36
+
+    active_vals = []
+    passive_vals = []
+
+    for name in names:
+        mode_map = by_mode(method_rows[name])
+        active_vals.append(mode_map.get("active", {}).get("mean_hit_rate", 0.0))
+        passive_vals.append(mode_map.get("passive", {}).get("mean_hit_rate", 0.0))
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.bar(x - width / 2, active_vals, width, label="Active", color=METHOD_COLORS.get(names[0], "#6C5CE7"))
+    ax.bar(x + width / 2, passive_vals, width, label="Passive", color=METHOD_COLORS.get(names[1], "#00B894") if len(names) > 1 else "#00B894")
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Mean Hit Rate")
+    ax.set_title("Coverage by Dialogue Mode")
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, rotation=10)
+    ax.legend()
+    fig.tight_layout()
+
+    fig.savefig(out("coverage_mode_split_hit_rate.png"), dpi=180)
+    plt.close(fig)
+    print(f"Saved: {out('coverage_mode_split_hit_rate.png')}")
+
+    procedures = sorted(
+        {
+            r.get("procedure")
+            for rows in method_rows.values()
+            for r in rows
+            if r.get("procedure")
+        }
+    )
+
+    hit_matrix = np.zeros((len(procedures), len(names)), dtype=float)
+    wcr_matrix = np.zeros((len(procedures), len(names)), dtype=float)
+
+    for j, name in enumerate(names):
+        proc_map = by_procedure(method_rows[name])
+        for i, proc in enumerate(procedures):
+            hit_matrix[i, j] = proc_map.get(proc, {}).get("mean_hit_rate", 0.0)
+            wcr_matrix[i, j] = proc_map.get(proc, {}).get("mean_wcr", 0.0)
+
+    def draw_heatmap(matrix, title, out_name):
+        fig, ax = plt.subplots(figsize=(10, 6))
+        im = ax.imshow(matrix, cmap="YlGnBu", vmin=0, vmax=1, aspect="auto")
+        ax.set_title(title)
+        ax.set_xticks(np.arange(len(names)))
+        ax.set_xticklabels(names, rotation=10)
+        ax.set_yticks(np.arange(len(procedures)))
+        ax.set_yticklabels(procedures)
+
+        for i in range(matrix.shape[0]):
+            for j in range(matrix.shape[1]):
+                ax.text(j, i, f"{matrix[i, j]:.2f}", ha="center", va="center", color="black", fontsize=8)
+
+        cbar = fig.colorbar(im, ax=ax)
+        cbar.set_label("Score")
+        fig.tight_layout()
+
+        fig.savefig(out(out_name), dpi=180)
+        plt.close(fig)
+        print(f"Saved: {out(out_name)}")
+
+    draw_heatmap(hit_matrix, "Procedure-Level Mean Hit Rate", "coverage_procedure_heatmap_hit_rate.png")
+    draw_heatmap(wcr_matrix, "Procedure-Level Mean Weighted Critical Recall", "coverage_procedure_heatmap_wcr.png")
+
+    if len(method_rows) >= 3:
+        aligned = align_by_file(method_rows)
+        pairs = [
+            (names[0], names[1]),
+            (names[0], names[2]),
+            (names[1], names[2]),
+        ]
+
+        fig, axes = plt.subplots(1, 3, figsize=(15, 4), sharex=True, sharey=True)
+        for ax, (a, b) in zip(axes, pairs):
+            xs = []
+            ys = []
+            for _, data in aligned.items():
+                if a in data and b in data:
+                    xs.append(data[a]["hit_rate"])
+                    ys.append(data[b]["hit_rate"])
+
+            ax.scatter(xs, ys, alpha=0.7)
+            ax.plot([0, 1], [0, 1], linestyle="--", linewidth=1)
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.set_title(f"{a} vs {b}")
+            ax.set_xlabel(f"{a}\nHit Rate")
+            ax.set_ylabel(f"{b}\nHit Rate")
+
+        fig.suptitle("Conversation-Level Agreement (Hit Rate)")
+        fig.tight_layout()
+
+        fig.savefig(out("coverage_pairwise_scatter_hit_rate.png"), dpi=180)
+        plt.close(fig)
+        print(f"Saved: {out('coverage_pairwise_scatter_hit_rate.png')}")
+
+
+def plot_thesis_style_coverage(method_rows, suffix: str = ""):
+    if suffix:
+        suffix = f"_{suffix}"
+
+    def out(name: str) -> Path:
+        stem = Path(name)
+        return PLOTS_DIR / f"{stem.stem}{suffix}{stem.suffix}"
+
+    approaches = [
+        "SBERT + Cross-Encoder",
+        "Semantic + Hungarian",
+        "LLM Judge",
+    ]
+    colors = ["#6C5CE7", "#00B894", "#FD79A8"]
+    modes = ["passive", "active"]
+    mode_labels = ["Naive", "Supervised"]
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5), sharey=True)
+    metrics = [
+        ("hit_rate", "Mean Hit Rate"),
+        ("weighted_critical_recall", "Mean Weighted Critical Recall"),
+    ]
+
+    for ax, (metric, ylabel) in zip(axes, metrics):
+        x = np.arange(len(modes))
+        n_app = len(approaches)
+        w = 0.75 / n_app
+        for j, approach in enumerate(approaches):
+            rows = method_rows.get(approach, [])
+            vals = []
+            errs = []
+            for mode in modes:
+                sub = [r for r in rows if (r.get("mode") or "").lower() == mode]
+                vals.append(float(np.mean([r.get(metric, 0.0) for r in sub])) if sub else 0.0)
+                errs.append(float(np.std([r.get(metric, 0.0) for r in sub])) if sub else 0.0)
+            bars = ax.bar(
+                x + j * w - (n_app - 1) * w / 2,
+                vals,
+                w,
+                yerr=errs,
+                capsize=3,
+                label=approach,
+                color=colors[j],
+                edgecolor="white",
+                linewidth=0.5,
+            )
+            for bar, v in zip(bars, vals):
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_height() + 0.015,
+                    f"{v:.2f}",
+                    ha="center",
+                    va="bottom",
+                    fontsize=8,
+                    color="#444",
+                )
+        ax.set_xticks(x)
+        ax.set_xticklabels(mode_labels)
+        ax.set_ylabel(ylabel)
+        ax.set_ylim(0, 1.0)
+
+    axes[0].legend(title="Approach", loc="upper left", fontsize=9)
+    fig.suptitle("Topic Coverage — Thesis Style", fontsize=13, fontweight="bold")
+    fig.tight_layout()
+    fig.savefig(out("coverage_thesis_style.png"), dpi=180)
+    plt.close(fig)
+    print(f"Saved: {out('coverage_thesis_style.png')}")
 
 
 def load_rows(path: Path):
@@ -236,26 +454,34 @@ def plot_pairwise_scatter(method_rows):
 def main():
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    method_rows = {name: load_rows(path) for name, path in METHODS.items()}
-    available = {k: v for k, v in method_rows.items() if v}
+    plot_sets = [
+        ("recalc_thr60", METHODS),
+        (
+            "orig_thr75",
+            {
+                "Semantic + Hungarian": ORIGINAL_BASELINE_PATH,
+                "SBERT + Cross-Encoder": SBERT_PATH,
+                "LLM Judge": LLM_JUDGE_PATH,
+            },
+        ),
+    ]
 
-    if len(available) < 2:
-        print("Need at least two result files to create comparison plots.")
-        return
+    for label, paths in plot_sets:
+        method_rows = {name: load_rows(path) for name, path in paths.items()}
+        available = {k: v for k, v in method_rows.items() if v}
 
-    # Keep plot ordering stable based on METHODS declaration.
-    method_rows = {k: available[k] for k in METHODS.keys() if k in available}
+        if len(available) < 2:
+            print(f"Need at least two result files to create comparison plots for {label}.")
+            continue
 
-    print("Building plots for methods:")
-    for k, rows in method_rows.items():
-        print(f"  - {k}: {len(rows)} conversations")
+        method_rows = {k: available[k] for k in paths.keys() if k in available}
 
-    plot_overall_comparison(method_rows)
-    plot_mode_split(method_rows)
-    plot_procedure_heatmaps(method_rows)
+        print(f"Building plots for {label}:")
+        for k, rows in method_rows.items():
+            print(f"  - {k}: {len(rows)} conversations")
 
-    if len(method_rows) >= 3:
-        plot_pairwise_scatter(method_rows)
+        build_plot_bundle(method_rows, suffix=label)
+        plot_thesis_style_coverage(method_rows, suffix=label)
 
     print("Done.")
 
